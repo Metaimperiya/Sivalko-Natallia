@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наталья Сивалко | Sivalko System</title>
 
-    <!-- Подключение премиальных шрифтов -->
+    <!-- Подключение шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #070709;
+            --bg-dark: #050508;
             --c-crimson: #8b0000;
             --c-crimson-bright: #d62828;
             --c-crimson-dim: rgba(139, 0, 0, 0.4);
@@ -20,8 +20,8 @@
             --c-white: #f0f0f5;
             --c-grey: #a0a0b0;
             --c-ash: #2a2a35;
-            --glass: rgba(18, 18, 24, 0.75);
-            --border: 1px solid rgba(255, 255, 255, 0.08);
+            --glass: rgba(15, 15, 22, 0.8);
+            --border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -43,6 +43,7 @@
             position: relative;
         }
 
+        /* WebGL Background Canvas */
         #canvas-bg {
             position: fixed;
             top: 0;
@@ -77,7 +78,7 @@
             padding: 18px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
             position: relative;
         }
 
@@ -93,7 +94,7 @@
             opacity: 0.8;
         }
 
-        /* Profile Area + Avatar */
+        /* Фотография и профиль */
         .profile-area {
             display: flex;
             align-items: center;
@@ -101,11 +102,11 @@
             padding: 5px 0;
         }
         .profile-avatar {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             border: 2px solid var(--c-gold);
-            box-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
             object-fit: cover;
             background: #111;
         }
@@ -117,7 +118,7 @@
             text-transform: uppercase;
         }
 
-        /* Telegram Button */
+        /* Telegram кнопка */
         .telegram-btn {
             display: flex;
             align-items: center;
@@ -139,7 +140,7 @@
         }
         .telegram-btn:hover {
             border-color: var(--c-gold);
-            box-shadow: 0 0 15px rgba(179, 155, 108, 0.2);
+            box-shadow: 0 0 15px rgba(179, 155, 108, 0.3);
             color: var(--c-gold);
         }
         .telegram-icon {
@@ -158,7 +159,7 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* Chat Toggle */
+        /* Чат */
         .chat-toggle-btn {
             width: 100%;
             background: none;
@@ -185,7 +186,7 @@
         }
         .display-window {
             height: 180px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--c-ash);
             border-radius: 6px;
             padding: 10px;
@@ -261,7 +262,7 @@
         }
         .send-btn:hover { background: var(--c-crimson-bright); }
 
-        /* Key Directions */
+        /* Направления */
         .directions-box {
             background: var(--glass);
             border: var(--border);
@@ -296,7 +297,7 @@
             color: var(--c-white);
         }
 
-        /* Promo Offer */
+        /* Промо оффер */
         .promo-headline {
             font-size: 13px;
             font-weight: 600;
@@ -329,14 +330,14 @@
             font-weight: 700;
             letter-spacing: 1px;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
         }
         .cta-btn:hover {
-            box-shadow: 0 0 20px rgba(214, 40, 40, 0.5);
+            box-shadow: 0 0 20px rgba(214, 40, 40, 0.6);
             transform: translateY(-1px);
         }
 
-        /* Player */
+        /* Плеер */
         .fem-player { text-align: center; }
         #track-name {
             font-family: 'Cinzel', serif;
@@ -425,7 +426,7 @@
             border-left-width: 3px;
         }
 
-        /* Footer Log */
+        /* Футер лог */
         .footer-log {
             padding: 12px 15px;
             font-size: 10px;
@@ -450,15 +451,15 @@
 </head>
 <body>
 
-    <!-- Canvas для WebGL эффекта Северного Сияния -->
+    <!-- Canvas WebGL: Северное Сияние над Горами -->
     <canvas id="canvas-bg"></canvas>
 
     <div class="main-deck">
         
-        <!-- 1. ВЕРХНИЙ БЛОК: ФОТО + ТИТУЛ -->
+        <!-- 1. ВЕРХНИЙ БЛОК: ФОТОГРАФИЯ + ИМЯ -->
         <div class="col-section">
             <div class="profile-area">
-                <!-- Вернули фото профиля -->
+                <!-- ФОТОГРАФИЯ ВОЗВРАЩЕНА -->
                 <img class="profile-avatar" src="https://i.ibb.co/9kZWjsrd/arle.gif" alt="Наталья Сивалко">
                 <div class="profile-text">
                     <p>The Fourth Fatui Harbinger</p>
@@ -729,7 +730,7 @@
             pBar.style.width = '0%';
         });
 
-        // --- WEBGL HIGH-CONTRAST AURORA BOREALIS ---
+        // --- WEBGL: СЕВЕРНОЕ СИЯНИЕ И СИЛУЭТЫ ГОР ---
         const canvas = document.getElementById('canvas-bg');
         const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
@@ -746,9 +747,9 @@
                 uniform vec2 u_resolution;
                 uniform float u_time;
 
-                // Цветовая гамма: тёмный космос, ярко-багровый и мерцающее золото
-                vec3 colorDark = vec3(0.03, 0.02, 0.05);
-                vec3 colorCrimson = vec3(0.75, 0.05, 0.12);
+                // Палитра
+                vec3 colorDark = vec3(0.02, 0.02, 0.04);
+                vec3 colorCrimson = vec3(0.80, 0.05, 0.12);
                 vec3 colorGold = vec3(0.85, 0.65, 0.25);
 
                 float hash(vec2 p) {
@@ -774,13 +775,20 @@
                     return v;
                 }
 
+                // Генерация силуэта гор
+                float mountain(vec2 st) {
+                    float h = fbm(vec2(st.x * 2.5, 0.0)) * 0.25 + 0.15;
+                    h += sin(st.x * 5.0) * 0.05;
+                    return step(st.y, h);
+                }
+
                 void main() {
                     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
                     vec2 st = uv;
                     st.x *= u_resolution.x / u_resolution.y;
 
-                    // Вертикальные лучи и волны Северного сияния
-                    float time = u_time * 0.4;
+                    // Анимация лучей Северного Сияния
+                    float time = u_time * 0.35;
                     
                     vec2 q = vec2(0.0);
                     q.x = fbm(st + vec2(0.0, time * 0.2));
@@ -792,20 +800,24 @@
 
                     float f = fbm(st + r * 2.0);
 
-                    // Формируем вертикальное распределение плазмы
-                    float auroraMask = smoothstep(0.1, 0.9, f);
+                    // Отрисовка занавеса сияния
+                    float auroraMask = smoothstep(0.05, 0.85, f);
 
-                    vec3 color = mix(colorDark, colorCrimson, auroraMask * 1.2);
-                    color = mix(color, colorGold, pow(r.x, 2.0) * 0.8);
+                    vec3 skyColor = mix(colorDark, colorCrimson, auroraMask * 1.3);
+                    skyColor = mix(skyColor, colorGold, pow(r.x, 2.0) * 0.7);
 
-                    // Добавляем эффект вертикальных штор (aurora curtains)
-                    float curtains = sin(st.x * 12.0 + fbm(st * 3.0) * 6.0 + time) * 0.5 + 0.5;
-                    color += colorCrimson * curtains * 0.15 * auroraMask;
+                    // Вертикальные световые столбы
+                    float curtains = sin(st.x * 14.0 + fbm(st * 2.5) * 6.0 + time) * 0.5 + 0.5;
+                    skyColor += colorCrimson * curtains * 0.2 * auroraMask;
 
-                    // Виньетка по краям
-                    color *= 0.5 + 0.5 * pow(16.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y), 0.3);
+                    // Отрисовка гор поверх сияния
+                    float m = mountain(uv);
+                    vec3 finalColor = mix(skyColor, vec3(0.01, 0.01, 0.02), m);
 
-                    gl_FragColor = vec4(color, 1.0);
+                    // Мягкая виньетка
+                    finalColor *= 0.6 + 0.4 * pow(16.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y), 0.25);
+
+                    gl_FragColor = vec4(finalColor, 1.0);
                 }
             `;
 
