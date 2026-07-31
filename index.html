@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- 
+      Название: Natalia Sivalko Crimson Ember
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Наталья Сивалко 💎</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Quicksand:wght@400;700&family=Italiana&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --c-void: #050505;
+            --c-smoke: #121212;
+            --c-ash: #2a2a2a;
+            --c-crimson: #8b0000;
+            --c-crimson-dim: #4a0000;
+            --c-gold: #b39b6c;
+            --c-white: #ffffff;
+            --c-grey: #999999;
+            --glass: rgba(8, 8, 8, 0.96);
+            --border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes breathe-pyro {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.3)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 40px rgba(139, 0, 0, 0.5)); transform: scale(1.02); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--c-void);
+            background-image: radial-gradient(var(--c-crimson-dim) 1px, transparent 1px);
+            background-size: 40px 40px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--c-white);
+            overflow-x: hidden;
+            padding: 10px;
+        }
+
+        #canvas-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .main-deck {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 10px 0 20px 0;
+            z-index: 10;
+            position: relative;
+        }
+
+        .col-section {
+            animation: float 6s ease-in-out infinite;
+            width: 100%;
+        }
+
+        /* ============================================
+           ПРОФИЛЬ
+           ============================================ */
+        .profile-area {
+            position: relative;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .render-float {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 280px;
+            background: url('https://i.ibb.co/Cs5h7SMN/arle.png') center bottom no-repeat;
+            background-size: contain;
+            z-index: 1;
+            animation: breathe-pyro 5s ease-in-out infinite;
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        .profile-text {
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .profile-text h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0;
+            color: var(--c-white);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+        }
+        .profile-text p {
+            font-size: 9px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            color: var(--c-grey);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           БОКСЫ И ШАПКИ
+           ============================================ */
+        .box {
+            background: var(--glass);
+            border: var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(139, 0, 0, 0.1);
+            position: relative;
+            margin-bottom: 12px;
+            transition: 0.4s;
+            width: 100%;
+        }
+
+        .label {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: var(--c-crimson);
+            color: var(--c-white);
+            padding: 3px 14px;
+            border-radius: 0px;
+            font-family: 'Cinzel', serif;
+            font-size: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           ВЫДВИЖНОЙ ЧАТ
+           ============================================ */
+        .chat-toggle-btn {
+            width: 100%;
+            background: rgba(20, 0, 0, 0.6);
+            border: var(--border);
+            color: var(--c-white);
+            padding: 10px 14px;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+            margin-top: 4px;
+        }
+        .chat-toggle-btn:hover, .chat-toggle-btn:active {
+            background: var(--c-crimson-dim);
+            border-color: var(--c-crimson);
+        }
+
+        .chat-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-drawer.open {
+            max-height: 800px;
+            margin-top: 10px;
+        }
+
+        .display-window {
+            width: 100%;
+            height: 220px;
+            background: rgba(5, 5, 5, 0.9);
+            border-radius: 8px;
+            border: 1px solid var(--c-ash);
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .log-item {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 11px;
+            position: relative;
+        }
+
+        .is-reply {
+            margin-left: 15px;
+            border-left: 2px solid var(--c-crimson);
+            background: rgba(30, 10, 10, 0.6);
+        }
+
+        .log-user { font-weight: bold; color: var(--c-gold); font-family: 'Cinzel', serif; font-size: 10px; }
+        .log-time { font-size: 8px; color: var(--c-grey); float: right; }
+        
+        .reply-btn {
+            background: none;
+            border: none;
+            color: var(--c-crimson);
+            font-size: 9px;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .input-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 8px 12px;
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid var(--c-ash);
+            border-radius: 6px;
+            color: var(--c-white);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 11px;
+            outline: none;
+        }
+        .input-field:focus {
+            border-color: var(--c-crimson);
+        }
+
+        #reply-info {
+            display: none;
+            background: rgba(40, 0, 0, 0.6);
+            padding: 5px 10px;
+            font-size: 10px;
+            border-radius: 4px;
+            border-left: 3px solid var(--c-crimson);
+            color: var(--c-grey);
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--c-crimson-dim);
+            color: var(--c-white);
+            border: 1px solid var(--c-crimson);
+            border-radius: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .send-btn:active {
+            background: var(--c-crimson);
+            box-shadow: 0 0 10px var(--c-crimson);
+        }
+
+        /* ============================================
+           СЕТКА С ГИФКАМИ
+           ============================================ */
+        .col-center-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .gif-bubble {
+            background: var(--c-smoke);
+            border: var(--border);
+            border-radius: 10px;
+            padding: 4px;
+            overflow: hidden;
+            transition: 0.5s;
+            aspect-ratio: 1 / 1;
+        }
+        .gif-bubble:active {
+            transform: scale(0.97);
+            border-color: var(--c-crimson);
+        }
+        .gif-bubble img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+            opacity: 0.85;
+            filter: contrast(1.1) brightness(0.9);
+        }
+
+        /* ============================================
+           ПЛЕЕР
+           ============================================ */
+        .fem-player {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid var(--c-ash);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .fem-player::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: var(--c-crimson);
+            filter: blur(3px);
+            opacity: 0.6;
+        }
+
+        #track-name {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            margin-bottom: 12px;
+            color: var(--c-white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-height: 20px;
+        }
+
+        .btn-ctrl {
+            background: none;
+            border: 1px solid var(--c-ash);
+            color: var(--c-white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            touch-action: manipulation;
+        }
+        .btn-ctrl:active {
+            background: var(--c-crimson);
+            color: var(--c-white);
+            border-color: var(--c-crimson);
+            box-shadow: 0 0 25px var(--c-crimson);
+            transform: scale(0.92);
+        }
+        .btn-ctrl#play-btn {
+            width: 44px;
+            height: 44px;
+            border-color: var(--c-crimson);
+            color: var(--c-crimson);
+            font-size: 18px;
+        }
+
+        .progress-wrapper {
+            width: 100%;
+            height: 3px;
+            background: var(--c-ash);
+            cursor: pointer;
+            border-radius: 2px;
+            margin-top: 6px;
+            touch-action: none;
+        }
+        #p-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--c-crimson);
+            box-shadow: 0 0 15px var(--c-crimson);
+            border-radius: 2px;
+            transition: width 0.05s linear;
+        }
+
+        /* ============================================
+           ТРЕК-ЛИСТ
+           ============================================ */
+        .track-list {
+            overflow-y: auto;
+            flex: 1;
+            max-height: 150px;
+            padding-right: 4px;
+        }
+        .track-item {
+            background: rgba(255,255,255,0.01);
+            border-radius: 5px;
+            padding: 8px 10px;
+            cursor: pointer;
+            font-size: 10px;
+            margin-bottom: 4px;
+            transition: 0.3s;
+            display: flex;
+            gap: 8px;
+            border: 1px solid transparent;
+            color: var(--c-grey);
+            touch-action: manipulation;
+        }
+        .track-item:active {
+            background: rgba(139, 0, 0, 0.1);
+            color: var(--c-white);
+            padding-left: 14px;
+            border-color: var(--c-crimson);
+        }
+        .track-item.active {
+            border-color: var(--c-crimson);
+            background: rgba(139, 0, 0, 0.1);
+            color: var(--c-white);
+            font-weight: bold;
+            border-left-width: 3px;
+        }
+
+        /* ============================================
+           ФУТЕР
+           ============================================ */
+        .footer-log {
+            padding: 12px 15px;
+            font-size: 10px;
+            line-height: 1.5;
+            border: var(--border);
+            border-radius: 10px;
+            background: var(--glass);
+            color: var(--c-grey);
+            border-top: 2px solid var(--c-crimson);
+            margin-top: 0;
+        }
+        .footer-log b {
+            color: var(--c-white);
+            font-family: 'Cinzel', serif;
+            font-size: 8px;
+            letter-spacing: 1px;
+        }
+
+        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar-thumb { background: var(--c-crimson-dim); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+    </style>
+</head>
+<body>
+
+    <!-- CANVAS ДЛЯ ИСКР -->
+    <canvas id="canvas-bg"></canvas>
+
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
+    <div class="main-deck">
+        
+        <!-- 1. ВЕРХНИЙ БЛОК: Профиль, Наталья Сивалко 💎 и Выдвижной Чат -->
+        <div class="col-section">
+            <div class="profile-area">
+                <div class="render-float"></div>
+                <div class="profile-text">
+                    <h2>Наталья Сивалко 💎</h2>
+                    <p>The Fourth Fatui Harbinger</p>
+                </div>
+            </div>
+
+            <!-- Первым блоком идёт Наталья Сивалко 💎 вместо House of the Hearth -->
+            <div class="box">
+                <span class="label">Affiliation</span>
+                <div style="text-align:center; font-size:13px; font-family:'Cinzel', serif; color:var(--c-gold); font-weight:bold;">Наталья Сивалко 💎</div>
+            </div>
+
+            <!-- ВЫДВИЖНОЙ ЧАТ -->
+            <div class="box">
+                <span class="label">Chat</span>
+                <button class="chat-toggle-btn" onclick="toggleChat()">
+                    <span>💬 TOGGLE LIVE CHAT</span>
+                    <span id="arrow-icon">▼</span>
+                </button>
+
+                <div class="chat-drawer" id="chat-drawer">
+                    <div class="display-window" id="screen">
+                        <div style="color: var(--c-grey); text-align: center; margin-top: 80px; font-size:10px;">Подключение к чату...</div>
+                    </div>
+
+                    <div class="input-box">
+                        <div id="reply-info">
+                            Ответ для: <b id="reply-to-user" style="color:var(--c-white);"></b> 
+                            <span onclick="cancelReply()" style="color:var(--c-crimson); cursor:pointer; float:right;">[X]</span>
+                        </div>
+                        <input type="text" id="nick" class="input-field" placeholder="Твой ник...">
+                        <input type="text" id="message" class="input-field" placeholder="Сообщение...">
+                        <button onclick="push()" class="send-btn">ОТПРАВИТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. СРЕДНИЙ БЛОК: Сетка с гифками -->
+        <div class="col-section">
+            <div class="col-center-grid">
+                <div class="gif-bubble"><img src="https://i.ibb.co/9kZWjsrd/arle.gif" alt="arle1" loading="lazy"></div>
+                <div class="gif-bubble"><img src="https://i.ibb.co/bg2YKDg6/arle1.gif" alt="arle2" loading="lazy"></div>
+                <div class="gif-bubble"><img src="https://i.ibb.co/jPBn9jV9/arle2.gif" alt="arle3" loading="lazy"></div>
+                <div class="gif-bubble"><img src="https://i.ibb.co/XZ1zyC4W/arle3.gif" alt="arle4" loading="lazy"></div>
+            </div>
+        </div>
+
+        <!-- 3. НИЖНИЙ БЛОК: Плеер и лог -->
+        <div class="col-section">
+            <div class="box" style="display:flex; flex-direction:column; margin-bottom:12px;">
+                <span class="label">Crimson Melodies</span>
+                <div class="fem-player">
+                    <div id="track-name">Select a Melody</div>
+                    <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
+                        <button class="btn-ctrl" onclick="prevTrack()" aria-label="Previous">❮</button>
+                        <button class="btn-ctrl" id="play-btn" onclick="togglePlay()" aria-label="Play/Pause">▶</button>
+                        <button class="btn-ctrl" onclick="nextTrack()" aria-label="Next">❯</button>
+                    </div>
+                    <div class="progress-wrapper" onclick="seek(event)" ontouchstart="seekTouch(event)">
+                        <div id="p-bar"></div>
+                    </div>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. The Knave's Aria</div>
+                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Hearth's Shadow</div>
+                    <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Children of Ash</div>
+                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Crimson Moon</div>
+                </div>
+            </div>
+            <div class="footer-log">
+                <b>FATHER'S LOG</b><br>
+                "Weakness is a slow-burning fire. It consumes you from within until nothing remains but ash. In my house, we are the flame, not the fuel."
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-engine"></audio>
+
+    <!-- FIREBASE SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+
+    <script>
+        // =============================================
+        // FIREBASE INITIALIZATION
+        // =============================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5L2GQ-2CYj-GNYsHENASdvKVF68rsEb0",
+            authDomain: "metaimperiya-14d1b.firebaseapp.com",
+            databaseURL: "https://metaimperiya-14d1b-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "metaimperiya-14d1b",
+            storageBucket: "metaimperiya-14d1b.firebasestorage.app",
+            messagingSenderId: "415206276902",
+            appId: "1:415206276902:web:1e38287b922191eac00be7"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        let currentReplyId = null;
+
+        function toggleChat() {
+            const drawer = document.getElementById('chat-drawer');
+            const icon = document.getElementById('arrow-icon');
+            drawer.classList.toggle('open');
+            icon.innerText = drawer.classList.contains('open') ? '▲' : '▼';
+        }
+
+        function setReply(id, user) {
+            currentReplyId = id;
+            document.getElementById('reply-info').style.display = 'block';
+            document.getElementById('reply-to-user').innerText = user;
+            document.getElementById('message').focus();
+        }
+
+        function cancelReply() {
+            currentReplyId = null;
+            document.getElementById('reply-info').style.display = 'none';
+        }
+
+        function push() {
+            const u = document.getElementById('nick').value || 'User';
+            const m = document.getElementById('message').value;
+            if(m.trim() !== "") {
+                db.ref('chat_logs').push().set({
+                    user: u,
+                    text: m,
+                    time: new Date().toLocaleTimeString(),
+                    parentId: currentReplyId
+                });
+                document.getElementById('message').value = '';
+                cancelReply();
+            }
+        }
+
+        db.ref('chat_logs').on('value', (snapshot) => {
+            const screen = document.getElementById('screen');
+            screen.innerHTML = '';
+            
+            const allMsgs = [];
+            snapshot.forEach(child => {
+                allMsgs.push({ id: child.key, ...child.val() });
+            });
+
+            allMsgs.filter(m => !m.parentId).forEach(parent => {
+                renderMsg(parent, false);
+                allMsgs.filter(m => m.parentId === parent.id).forEach(reply => {
+                    renderMsg(reply, true);
+                });
+            });
+
+            screen.scrollTop = screen.scrollHeight;
+        });
+
+        function renderMsg(data, isReply) {
+            const screen = document.getElementById('screen');
+            const replyClass = isReply ? 'is-reply' : '';
+            screen.innerHTML += `
+                <div class="log-item ${replyClass}">
+                    <span class="log-user">${data.user}</span>
+                    <span class="log-time">${data.time}</span>
+                    <div style="margin-top:4px; color:var(--c-white);">${data.text}</div>
+                    ${!isReply ? `<button class="reply-btn" onclick="setReply('${data.id}', '${data.user}')">Ответить</button>` : ''}
+                </div>
+            `;
+        }
+
+        // =============================================
+        // АУДИО ПЛЕЕР
+        // =============================================
+        const audio = document.getElementById('audio-engine');
+        const playBtn = document.getElementById('play-btn');
+        const pBar = document.getElementById('p-bar');
+        const nameDisp = document.getElementById('track-name');
+        const items = document.querySelectorAll('.track-item');
+        let currentIdx = -1;
+
+        function selectTrack(idx) {
+            currentIdx = idx;
+            items.forEach(i => i.classList.remove('active'));
+            items[idx].classList.add('active');
+            audio.src = items[idx].getAttribute('data-url');
+            nameDisp.innerText = items[idx].innerText;
+            audio.play()
+                .then(() => playBtn.innerText = '❚❚')
+                .catch(() => playBtn.innerText = '▶');
+        }
+
+        function togglePlay() {
+            if (currentIdx === -1) { selectTrack(0); return; }
+            if (audio.paused) {
+                audio.play().catch(() => {});
+                playBtn.innerText = '❚❚';
+            } else {
+                audio.pause();
+                playBtn.innerText = '▶';
+            }
+        }
+
+        function nextTrack() {
+            selectTrack((currentIdx + 1) % items.length);
+        }
+
+        function prevTrack() {
+            selectTrack((currentIdx - 1 + items.length) % items.length);
+        }
+
+        audio.ontimeupdate = () => {
+            if (audio.duration) {
+                pBar.style.width = (audio.currentTime / audio.duration) * 100 + '%';
+            }
+        };
+
+        function seek(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            if (audio.duration) {
+                audio.currentTime = x * audio.duration;
+            }
+        }
+
+        function seekTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            if (!touch) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = (touch.clientX - rect.left) / rect.width;
+            if (audio.duration) {
+                audio.currentTime = x * audio.duration;
+            }
+        }
+
+        audio.addEventListener('ended', () => {
+            playBtn.innerText = '▶';
+            pBar.style.width = '0%';
+        });
+
+        // =============================================
+        // ИСКРЫ (Pyro Embers)
+        // =============================================
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            pts = [];
+            const count = Math.min(80, Math.floor(window.innerWidth / 8));
+            for (let i = 0; i < count; i++) {
+                pts.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height + canvas.height,
+                    s: Math.random() * 2 + 1,
+                    spY: Math.random() * -1.5 - 0.5,
+                    spX: Math.random() * 1 - 0.5,
+                    o: Math.random() * 5,
+                    c: Math.random() > 0.4 ? '#8b0000' : '#b39b6c',
+                    a: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
+
+        function drawEmbers() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'lighter';
+            pts.forEach(p => {
+                ctx.fillStyle = p.c;
+                ctx.globalAlpha = p.a;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = p.c;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                p.y += p.spY;
+                p.x += p.spX + Math.sin(p.o += 0.02) * 0.4;
+
+                if (p.y < -20) {
+                    p.y = canvas.height + 20;
+                    p.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(drawEmbers);
+        }
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+        });
+
+        initCanvas();
+        drawEmbers();
+    </script>
+</body>
+</html>
