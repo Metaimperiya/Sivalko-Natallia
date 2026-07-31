@@ -12,16 +12,17 @@
 
     <style>
         :root {
-            --bg-dark: #050508;
-            --c-crimson: #8b0000;
-            --c-crimson-bright: #d62828;
-            --c-crimson-dim: rgba(139, 0, 0, 0.4);
-            --c-gold: #b39b6c;
-            --c-white: #f0f0f5;
-            --c-grey: #a0a0b0;
-            --c-ash: #2a2a35;
-            --glass: rgba(15, 15, 22, 0.8);
-            --border: 1px solid rgba(255, 255, 255, 0.1);
+            --bg-dark: #020b14;
+            --c-cyan: #00f2fe;
+            --c-cyan-bright: #4facfe;
+            --c-cyan-dim: rgba(0, 242, 254, 0.3);
+            --c-emerald: #00c853;
+            --c-gold: #49e1e3;
+            --c-white: #f0fdfd;
+            --c-grey: #90a4ae;
+            --c-ash: #1c2b36;
+            --glass: rgba(6, 20, 32, 0.85);
+            --border: 1px solid rgba(0, 242, 254, 0.2);
         }
 
         * {
@@ -43,8 +44,8 @@
             position: relative;
         }
 
-        /* WebGL Background Canvas */
-        #canvas-bg {
+        /* Бирюзовое Северное Сияние на заднем фоне */
+        #canvas-aurora {
             position: fixed;
             top: 0;
             left: 0;
@@ -78,7 +79,7 @@
             padding: 18px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
             position: relative;
         }
 
@@ -89,36 +90,41 @@
             font-family: 'Cinzel', serif;
             font-size: 9px;
             letter-spacing: 1.5px;
-            color: var(--c-gold);
+            color: var(--c-cyan);
             text-transform: uppercase;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
-        /* Фотография и профиль */
-        .profile-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 5px 0;
+        /* Главная фотография сверху (прямоугольная, без кругов) */
+        .top-photo-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--c-cyan-dim);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+            background: #000;
+            margin-bottom: 6px;
         }
-        .profile-avatar {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            border: 2px solid var(--c-gold);
-            box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
+
+        .top-photo-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
             object-fit: cover;
-            background: #111;
+            display: block;
         }
-        .profile-text p {
+
+        .profile-subtitle {
             font-family: 'Cinzel', serif;
             font-size: 11px;
             letter-spacing: 2px;
-            color: var(--c-gold);
+            color: var(--c-cyan);
             text-transform: uppercase;
+            text-align: center;
+            margin-top: 4px;
         }
 
-        /* Telegram кнопка */
+        /* Кнопка Telegram */
         .telegram-btn {
             display: flex;
             align-items: center;
@@ -126,8 +132,8 @@
             gap: 10px;
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-            border: 1px solid var(--c-ash);
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(0, 242, 254, 0.02));
+            border: 1px solid var(--c-cyan-dim);
             border-radius: 8px;
             color: var(--c-white);
             text-decoration: none;
@@ -139,9 +145,9 @@
             margin-bottom: 12px;
         }
         .telegram-btn:hover {
-            border-color: var(--c-gold);
-            box-shadow: 0 0 15px rgba(179, 155, 108, 0.3);
-            color: var(--c-gold);
+            border-color: var(--c-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            color: var(--c-cyan);
         }
         .telegram-icon {
             width: 16px;
@@ -156,7 +162,7 @@
             text-align: center;
             letter-spacing: 1px;
             color: var(--c-white);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
         }
 
         /* Чат */
@@ -186,7 +192,7 @@
         }
         .display-window {
             height: 180px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 10, 20, 0.6);
             border: 1px solid var(--c-ash);
             border-radius: 6px;
             padding: 10px;
@@ -204,10 +210,10 @@
         }
         .log-item.is-reply {
             margin-left: 15px;
-            border-left: 2px solid var(--c-gold);
+            border-left: 2px solid var(--c-cyan);
         }
         .log-user {
-            color: var(--c-gold);
+            color: var(--c-cyan);
             font-weight: 600;
         }
         .log-time {
@@ -239,7 +245,7 @@
             border-radius: 4px;
         }
         .input-field {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 10, 20, 0.6);
             border: 1px solid var(--c-ash);
             border-radius: 4px;
             padding: 8px 10px;
@@ -247,9 +253,9 @@
             font-size: 11px;
             outline: none;
         }
-        .input-field:focus { border-color: var(--c-gold); }
+        .input-field:focus { border-color: var(--c-cyan); }
         .send-btn {
-            background: var(--c-crimson);
+            background: linear-gradient(135deg, #00838f, #00acc1);
             border: none;
             color: var(--c-white);
             padding: 8px;
@@ -260,7 +266,7 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .send-btn:hover { background: var(--c-crimson-bright); }
+        .send-btn:hover { background: var(--c-cyan); color: #000; }
 
         /* Направления */
         .directions-box {
@@ -293,11 +299,11 @@
             transition: 0.3s;
         }
         .preview-tag:hover {
-            border-color: var(--c-gold);
+            border-color: var(--c-cyan);
             color: var(--c-white);
         }
 
-        /* Промо оффер */
+        /* Промо */
         .promo-headline {
             font-size: 13px;
             font-weight: 600;
@@ -321,19 +327,19 @@
             width: 100%;
             text-align: center;
             padding: 10px;
-            background: linear-gradient(135deg, var(--c-crimson), #500000);
-            border: 1px solid var(--c-crimson-bright);
+            background: linear-gradient(135deg, #00838f, #00e5ff);
+            border: 1px solid var(--c-cyan);
             border-radius: 6px;
-            color: var(--c-white);
+            color: #020b14;
             text-decoration: none;
             font-size: 10px;
             font-weight: 700;
             letter-spacing: 1px;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
         }
         .cta-btn:hover {
-            box-shadow: 0 0 20px rgba(214, 40, 40, 0.6);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
             transform: translateY(-1px);
         }
 
@@ -361,17 +367,17 @@
             touch-action: manipulation;
         }
         .btn-ctrl:active {
-            background: var(--c-crimson);
-            color: var(--c-white);
-            border-color: var(--c-crimson);
-            box-shadow: 0 0 25px var(--c-crimson);
+            background: var(--c-cyan);
+            color: #000;
+            border-color: var(--c-cyan);
+            box-shadow: 0 0 25px var(--c-cyan);
             transform: scale(0.92);
         }
         .btn-ctrl#play-btn {
             width: 44px;
             height: 44px;
-            border-color: var(--c-crimson);
-            color: var(--c-crimson);
+            border-color: var(--c-cyan);
+            color: var(--c-cyan);
             font-size: 18px;
         }
         .progress-wrapper {
@@ -386,8 +392,8 @@
         #p-bar {
             width: 0%;
             height: 100%;
-            background: var(--c-crimson);
-            box-shadow: 0 0 15px var(--c-crimson);
+            background: var(--c-cyan);
+            box-shadow: 0 0 15px var(--c-cyan);
             border-radius: 2px;
             transition: width 0.05s linear;
         }
@@ -413,20 +419,19 @@
             touch-action: manipulation;
         }
         .track-item:active {
-            background: rgba(139, 0, 0, 0.1);
+            background: rgba(0, 242, 254, 0.1);
             color: var(--c-white);
             padding-left: 14px;
-            border-color: var(--c-crimson);
+            border-color: var(--c-cyan);
         }
         .track-item.active {
-            border-color: var(--c-crimson);
-            background: rgba(139, 0, 0, 0.1);
+            border-color: var(--c-cyan);
+            background: rgba(0, 242, 254, 0.1);
             color: var(--c-white);
             font-weight: bold;
             border-left-width: 3px;
         }
 
-        /* Футер лог */
         .footer-log {
             padding: 12px 15px;
             font-size: 10px;
@@ -435,7 +440,7 @@
             border-radius: 10px;
             background: var(--glass);
             color: var(--c-grey);
-            border-top: 2px solid var(--c-crimson);
+            border-top: 2px solid var(--c-cyan);
         }
         .footer-log b {
             color: var(--c-white);
@@ -445,26 +450,23 @@
         }
 
         ::-webkit-scrollbar { width: 2px; }
-        ::-webkit-scrollbar-thumb { background: var(--c-crimson-dim); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--c-cyan-dim); border-radius: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
     </style>
 </head>
 <body>
 
-    <!-- Canvas WebGL: Северное Сияние над Горами -->
-    <canvas id="canvas-bg"></canvas>
+    <!-- БИРЮЗОВОЕ СЕВЕРНОЕ СИЯНИЕ И ГОРЫ -->
+    <canvas id="canvas-aurora"></canvas>
 
     <div class="main-deck">
         
-        <!-- 1. ВЕРХНИЙ БЛОК: ФОТОГРАФИЯ + ИМЯ -->
+        <!-- 1. ВЕРХНИЙ БЛОК С ФОТОГРАФИЕЙ СВЕРХУ -->
         <div class="col-section">
-            <div class="profile-area">
-                <!-- ФОТОГРАФИЯ ВОЗВРАЩЕНА -->
-                <img class="profile-avatar" src="https://i.ibb.co/9kZWjsrd/arle.gif" alt="Наталья Сивалко">
-                <div class="profile-text">
-                    <p>The Fourth Fatui Harbinger</p>
-                </div>
+            <div class="top-photo-wrapper">
+                <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/bg.jpg" alt="Наталья Сивалко">
             </div>
+            <div class="profile-subtitle">Sivalko System</div>
 
             <div class="box">
                 <a href="https://t.me/sivalko_system" target="_blank" class="telegram-btn">
@@ -491,7 +493,7 @@
                     <div class="input-box">
                         <div id="reply-info">
                             Ответ для: <b id="reply-to-user" style="color:var(--c-white);"></b> 
-                            <span onclick="cancelReply()" style="color:var(--c-crimson); cursor:pointer; float:right;">[X]</span>
+                            <span onclick="cancelReply()" style="color:var(--c-cyan); cursor:pointer; float:right;">[X]</span>
                         </div>
                         <input type="text" id="nick" class="input-field" placeholder="Твой ник...">
                         <input type="text" id="message" class="input-field" placeholder="Сообщение...">
@@ -522,7 +524,7 @@
                 <div class="promo-content">
                     <div class="promo-headline">Хочешь 150+ живых подписчиков и продажи на 50–250 тыс. за неделю?</div>
                     <p style="margin-bottom: 8px;">Это не курс, не марафон или папки, которые никто не открывает.</p>
-                    <p style="color: var(--c-gold); font-weight: bold; margin-bottom: 8px;">
+                    <p style="color: var(--c-cyan); font-weight: bold; margin-bottom: 8px;">
                         🔥 ДВИЖ: ПРИВЛЕКАЙ И ПРОДАВАЙ В MAX И TELEGRAM
                     </p>
                     <p style="margin-bottom: 8px;">
@@ -544,10 +546,10 @@
             </div>
         </div>
 
-        <!-- 4. НИЖНИЙ БЛОК: Плеер и лог -->
+        <!-- 4. ПЛЕЕР И ЛОГ -->
         <div class="col-section">
             <div class="box" style="display:flex; flex-direction:column; margin-bottom:12px;">
-                <span class="label">Crimson Melodies</span>
+                <span class="label">Northern Melodies</span>
                 <div class="fem-player">
                     <div id="track-name">Select a Melody</div>
                     <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
@@ -560,15 +562,15 @@
                     </div>
                 </div>
                 <div class="track-list">
-                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. The Knave's Aria</div>
-                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Hearth's Shadow</div>
-                    <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Children of Ash</div>
-                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Crimson Moon</div>
+                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Aurora Borealis</div>
+                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Emerald Lights</div>
+                    <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Polar Night</div>
+                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Mountain Wind</div>
                 </div>
             </div>
             <div class="footer-log">
-                <b>FATHER'S LOG</b><br>
-                "Weakness is a slow-burning fire. It consumes you from within until nothing remains but ash. In my house, we are the flame, not the fuel."
+                <b>SYSTEM LOG</b><br>
+                "The northern lights dance for those who look up. Build your system and control the flow."
             </div>
         </div>
     </div>
@@ -580,7 +582,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        // --- FIREBASE CONFIG & CHAT LOGIC ---
+        // --- FIREBASE CHAT ---
         const firebaseConfig = {
             apiKey: "AIzaSyC5L2GQ-2CYj-GNYsHENASdvKVF68rsEb0",
             authDomain: "metaimperiya-14d1b.firebaseapp.com",
@@ -662,7 +664,7 @@
             `;
         }
 
-        // --- AUDIO PLAYER LOGIC ---
+        // --- AUDIO PLAYER ---
         const audio = document.getElementById('audio-engine');
         const playBtn = document.getElementById('play-btn');
         const pBar = document.getElementById('p-bar');
@@ -730,8 +732,8 @@
             pBar.style.width = '0%';
         });
 
-        // --- WEBGL: СЕВЕРНОЕ СИЯНИЕ И СИЛУЭТЫ ГОР ---
-        const canvas = document.getElementById('canvas-bg');
+        // --- ШЕЙДЕР БИРЮЗОВОГО СЕВЕРНОГО СИЯНИЯ ---
+        const canvas = document.getElementById('canvas-aurora');
         const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
         if (gl) {
@@ -747,10 +749,9 @@
                 uniform vec2 u_resolution;
                 uniform float u_time;
 
-                // Палитра
-                vec3 colorDark = vec3(0.02, 0.02, 0.04);
-                vec3 colorCrimson = vec3(0.80, 0.05, 0.12);
-                vec3 colorGold = vec3(0.85, 0.65, 0.25);
+                vec3 colorDark = vec3(0.01, 0.05, 0.09);
+                vec3 colorCyan = vec3(0.0, 0.95, 0.99);
+                vec3 colorEmerald = vec3(0.0, 0.8, 0.35);
 
                 float hash(vec2 p) {
                     return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
@@ -769,16 +770,15 @@
                     float a = 0.5;
                     for (int i = 0; i < 4; i++) {
                         v += a * noise(p);
-                        p *= 2.2;
-                        a *= 0.45;
+                        p *= 2.1;
+                        a *= 0.48;
                     }
                     return v;
                 }
 
-                // Генерация силуэта гор
                 float mountain(vec2 st) {
-                    float h = fbm(vec2(st.x * 2.5, 0.0)) * 0.25 + 0.15;
-                    h += sin(st.x * 5.0) * 0.05;
+                    float h = fbm(vec2(st.x * 2.8, 0.0)) * 0.22 + 0.1;
+                    h += sin(st.x * 5.0) * 0.03;
                     return step(st.y, h);
                 }
 
@@ -787,34 +787,29 @@
                     vec2 st = uv;
                     st.x *= u_resolution.x / u_resolution.y;
 
-                    // Анимация лучей Северного Сияния
-                    float time = u_time * 0.35;
+                    float time = u_time * 0.25;
                     
                     vec2 q = vec2(0.0);
-                    q.x = fbm(st + vec2(0.0, time * 0.2));
-                    q.y = fbm(st + vec2(1.0, time * 0.3));
+                    q.x = fbm(st + vec2(0.0, time * 0.15));
+                    q.y = fbm(st + vec2(1.0, time * 0.25));
 
                     vec2 r = vec2(0.0);
-                    r.x = fbm(st + 1.5 * q + vec2(1.7, 9.2) + time * 0.15);
-                    r.y = fbm(st + 1.5 * q + vec2(8.3, 2.8) + time * 0.1);
+                    r.x = fbm(st + 1.5 * q + vec2(1.7, 9.2) + time * 0.12);
+                    r.y = fbm(st + 1.5 * q + vec2(8.3, 2.8) + time * 0.08);
 
-                    float f = fbm(st + r * 2.0);
+                    float f = fbm(st + r * 2.2);
 
-                    // Отрисовка занавеса сияния
-                    float auroraMask = smoothstep(0.05, 0.85, f);
+                    float auroraMask = smoothstep(0.1, 0.8, f);
 
-                    vec3 skyColor = mix(colorDark, colorCrimson, auroraMask * 1.3);
-                    skyColor = mix(skyColor, colorGold, pow(r.x, 2.0) * 0.7);
+                    vec3 skyColor = mix(colorDark, colorEmerald, auroraMask * 1.2);
+                    skyColor = mix(skyColor, colorCyan, pow(r.x, 2.0) * 0.85);
 
-                    // Вертикальные световые столбы
-                    float curtains = sin(st.x * 14.0 + fbm(st * 2.5) * 6.0 + time) * 0.5 + 0.5;
-                    skyColor += colorCrimson * curtains * 0.2 * auroraMask;
+                    float curtains = sin(st.x * 15.0 + fbm(st * 3.0) * 6.0 + time * 1.5) * 0.5 + 0.5;
+                    skyColor += colorCyan * curtains * 0.3 * auroraMask;
 
-                    // Отрисовка гор поверх сияния
                     float m = mountain(uv);
-                    vec3 finalColor = mix(skyColor, vec3(0.01, 0.01, 0.02), m);
+                    vec3 finalColor = mix(skyColor, vec3(0.005, 0.02, 0.04), m);
 
-                    // Мягкая виньетка
                     finalColor *= 0.6 + 0.4 * pow(16.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y), 0.25);
 
                     gl_FragColor = vec4(finalColor, 1.0);
