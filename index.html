@@ -12,17 +12,16 @@
 
     <style>
         :root {
-            --bg-dark: #020b14;
+            --bg-dark: #000000;
             --c-cyan: #00f2fe;
             --c-cyan-bright: #4facfe;
             --c-cyan-dim: rgba(0, 242, 254, 0.3);
             --c-emerald: #00c853;
-            --c-gold: #49e1e3;
             --c-white: #f0fdfd;
             --c-grey: #90a4ae;
             --c-ash: #1c2b36;
-            --glass: rgba(6, 20, 32, 0.85);
-            --border: 1px solid rgba(0, 242, 254, 0.2);
+            --glass: rgba(6, 20, 32, 0.75);
+            --border: 1px solid rgba(0, 242, 254, 0.25);
         }
 
         * {
@@ -44,13 +43,14 @@
             position: relative;
         }
 
-        /* Бирюзовое Северное Сияние на заднем фоне */
-        #canvas-aurora {
+        /* Твой WebGL Canvas с оригинальным северным сиянием */
+        #glcanvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            display: block;
             z-index: 0;
             pointer-events: none;
         }
@@ -77,9 +77,9 @@
             border: var(--border);
             border-radius: 12px;
             padding: 18px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
             position: relative;
         }
 
@@ -95,13 +95,13 @@
             opacity: 0.9;
         }
 
-        /* Главная фотография сверху (прямоугольная, без кругов) */
+        /* Главное фото из репозитория */
         .top-photo-wrapper {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--c-cyan-dim);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
             background: #000;
             margin-bottom: 6px;
         }
@@ -132,7 +132,7 @@
             gap: 10px;
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(0, 242, 254, 0.02));
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(0, 242, 254, 0.02));
             border: 1px solid var(--c-cyan-dim);
             border-radius: 8px;
             color: var(--c-white);
@@ -146,7 +146,7 @@
         }
         .telegram-btn:hover {
             border-color: var(--c-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
             color: var(--c-cyan);
         }
         .telegram-icon {
@@ -192,7 +192,7 @@
         }
         .display-window {
             height: 180px;
-            background: rgba(0, 10, 20, 0.6);
+            background: rgba(0, 10, 20, 0.7);
             border: 1px solid var(--c-ash);
             border-radius: 6px;
             padding: 10px;
@@ -245,7 +245,7 @@
             border-radius: 4px;
         }
         .input-field {
-            background: rgba(0, 10, 20, 0.6);
+            background: rgba(0, 10, 20, 0.7);
             border: 1px solid var(--c-ash);
             border-radius: 4px;
             padding: 8px 10px;
@@ -274,7 +274,7 @@
             border: var(--border);
             border-radius: 12px;
             padding: 18px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             position: relative;
         }
         .directions-title {
@@ -456,9 +456,178 @@
 </head>
 <body>
 
-    <!-- БИРЮЗОВОЕ СЕВЕРНОЕ СИЯНИЕ И ГОРЫ -->
-    <canvas id="canvas-aurora"></canvas>
+    <!-- CANVAS С ТВОИМ ОРИГИНАЛЬНЫМ СЕВЕРНЫМ СИЯНИЕМ -->
+    <canvas id="glcanvas"></canvas>
 
+    <!-- Vertex Shader -->
+    <script id="vertex-shader" type="x-shader/x-vertex">
+#version 300 es
+in vec4 a_position;
+void main() {
+    gl_Position = a_position;
+}
+    </script>
+
+    <!-- Fragment Shader (Твой оригинальный код) -->
+    <script id="fragment-shader" type="x-shader/x-fragment">
+#version 300 es
+precision highp float;
+precision highp int;
+
+uniform vec2 iResolution;
+uniform float iTime;
+uniform vec3 uColor1;
+uniform vec3 uColor2;
+uniform float uThickness; 
+uniform float uScale; 
+
+out vec4 fragColor;
+
+mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
+mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
+float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
+vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
+
+float triNoise2d(in vec2 p, float spd)
+{
+    float z=1.8;
+    float z2=2.5;
+    float rz = 0.;
+    p *= mm2(p.x*0.06);
+    vec2 bp = p;
+    for (float i=0.; i<5.; i++ )
+    {
+        vec2 dg = tri2(bp*1.85)*.75;
+        dg *= mm2(iTime*spd);
+        p -= dg/z2;
+
+        bp *= 1.3;
+        z2 *= .45;
+        z *= .42;
+        p *= 1.21 + (rz-1.0)*.02;
+        
+        rz += tri(p.x+tri(p.y))*z;
+        p*= -m2;
+    }
+    return clamp(1./pow(rz*29., 1.3),0.,.55);
+}
+
+float hash21(in vec2 n){ return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); }
+
+// Силуэт гор на горизонте
+float mountainHeight(float x) {
+    float h = sin(x * 1.5) * 0.12;
+    h += sin(x * 3.7 + 1.2) * 0.06;
+    h += sin(x * 8.3 + 2.5) * 0.025;
+    h += sin(x * 19.1) * 0.01;
+    return h - 0.08;
+}
+
+vec4 aurora(vec3 ro, vec3 rd)
+{
+    vec4 col = vec4(0);
+    vec4 avgCol = vec4(0);
+    
+    for(float i=0.;i<50.;i++)
+    {
+        float of = 0.006*hash21(gl_FragCoord.xy)*smoothstep(0.,15., i);
+        float pt = ((.8+pow(i,1.4)*.002)-ro.y)/(rd.y*2.+0.4);
+        pt -= of;
+        vec3 bpos = ro + pt*rd;
+        vec2 p = bpos.zx;
+        float rzt = triNoise2d(p * uScale, 0.05); 
+        vec4 col2 = vec4(0,0,0, rzt * uThickness); 
+        
+        col2.rgb = mix(uColor1, uColor2, rzt) * rzt * 1.3; 
+        avgCol = mix(avgCol, col2, .5);
+        col += avgCol*exp2(-i*0.065 - 2.5)*smoothstep(0.,5., i);
+    }
+    
+    col *= (clamp(rd.y*15.+.4,0.,1.));
+    return col*1.8;
+}
+
+//-------------------Звёзды и Фон--------------------
+
+vec3 nmzHash33(vec3 q)
+{
+    uvec3 p = uvec3(ivec3(q));
+    p = p*uvec3(374761393U, 1103515245U, 668265263U) + p.zxy + p.yzx;
+    p = p.yzx*(p.zxy^(p >> 3U));
+    return vec3(p^(p >> 16U))*(1.0/vec3(0xffffffffU));
+}
+
+vec3 stars(in vec3 p)
+{
+    vec3 c = vec3(0.);
+    float res = iResolution.x*1.;
+    
+    for (float i=0.;i<4.;i++)
+    {
+        vec3 q = fract(p*(.15*res))-0.5;
+        vec3 id = floor(p*(.15*res));
+        vec2 rn = nmzHash33(id).xy;
+        float c2 = 1.-smoothstep(0.,.6,length(q));
+        c2 *= step(rn.x, 0.0015 + i*i*0.001); 
+        c += c2*(mix(vec3(1.0,0.49,0.1),vec3(0.75,0.9,1.),rn.y)*0.1+0.9);
+        p *= 1.3;
+    }
+    return c*c*.8;
+}
+
+vec3 bg(in vec3 rd)
+{
+    float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd)*0.5+0.5;
+    sd = pow(sd, 5.);
+    vec3 col = mix(vec3(0.01,0.03,0.08), vec3(0.05,0.02,0.10), sd);
+    return col*.63;
+}
+
+void main()
+{
+    vec2 q = gl_FragCoord.xy / iResolution.xy;
+    vec2 p = q - 0.5;
+    p.x *= iResolution.x/iResolution.y;
+    
+    vec3 ro = vec3(0,0,-6.7);
+    vec3 rd = normalize(vec3(p,1.3));
+    
+    float camY = sin(iTime * 0.08) * 0.05 + 0.02;
+    float camX = sin(iTime * 0.04) * 0.2;
+    
+    rd.yz *= mm2(camY);
+    rd.xz *= mm2(camX);
+    
+    vec3 col = vec3(0.);
+    vec3 brd = rd;
+    float fade = smoothstep(0.,0.01,abs(brd.y))*0.1+0.9;
+    
+    col = bg(rd)*fade;
+    
+    // Подсчет вершины гор
+    float mHeight = mountainHeight(rd.x * 2.5 + camX * 2.0);
+    
+    if (rd.y > mHeight) {
+        vec4 aur = smoothstep(0.,1.5,aurora(ro,rd))*fade;
+        col += stars(rd);
+        col = col*(1.-aur.a) + aur.rgb;
+        
+        // Легкая контурная подсветка на вершинах гор от сияния
+        float edge = smoothstep(mHeight + 0.04, mHeight, rd.y);
+        col += mix(uColor1, uColor2, 0.5) * edge * 0.15;
+    } 
+    else {
+        // Силуэт гор (темная суша с легким градиентом)
+        float depth = (mHeight - rd.y) * 4.0;
+        vec3 mountainColor = mix(vec3(0.01, 0.02, 0.03), vec3(0.002, 0.004, 0.006), clamp(depth, 0.0, 1.0));
+        col = mountainColor;
+    }
+    
+    fragColor = vec4(col, 1.);
+}
+    </script>
+
+    <!-- ИНТЕРФЕЙС САЙТА -->
     <div class="main-deck">
         
         <!-- 1. ВЕРХНИЙ БЛОК С ФОТОГРАФИЕЙ СВЕРХУ -->
@@ -732,144 +901,134 @@
             pBar.style.width = '0%';
         });
 
-        // --- ШЕЙДЕР БИРЮЗОВОГО СЕВЕРНОГО СИЯНИЯ ---
-        const canvas = document.getElementById('canvas-aurora');
-        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        // --- ИНИЦИАЛИЗАЦИЯ ТВОЕГО WEBGL2 ШЕЙДЕРА СЕВЕРНОГО СИЯНИЯ ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('glcanvas');
+            const gl = canvas.getContext('webgl2');
 
-        if (gl) {
-            const vsSource = `
-                attribute vec2 position;
-                void main() {
-                    gl_Position = vec4(position, 0.0, 1.0);
-                }
-            `;
-
-            const fsSource = `
-                precision mediump float;
-                uniform vec2 u_resolution;
-                uniform float u_time;
-
-                vec3 colorDark = vec3(0.01, 0.05, 0.09);
-                vec3 colorCyan = vec3(0.0, 0.95, 0.99);
-                vec3 colorEmerald = vec3(0.0, 0.8, 0.35);
-
-                float hash(vec2 p) {
-                    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
-                }
-
-                float noise(vec2 p) {
-                    vec2 i = floor(p);
-                    vec2 f = fract(p);
-                    f = f * f * (3.0 - 2.0 * f);
-                    return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
-                               mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
-                }
-
-                float fbm(vec2 p) {
-                    float v = 0.0;
-                    float a = 0.5;
-                    for (int i = 0; i < 4; i++) {
-                        v += a * noise(p);
-                        p *= 2.1;
-                        a *= 0.48;
-                    }
-                    return v;
-                }
-
-                float mountain(vec2 st) {
-                    float h = fbm(vec2(st.x * 2.8, 0.0)) * 0.22 + 0.1;
-                    h += sin(st.x * 5.0) * 0.03;
-                    return step(st.y, h);
-                }
-
-                void main() {
-                    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-                    vec2 st = uv;
-                    st.x *= u_resolution.x / u_resolution.y;
-
-                    float time = u_time * 0.25;
-                    
-                    vec2 q = vec2(0.0);
-                    q.x = fbm(st + vec2(0.0, time * 0.15));
-                    q.y = fbm(st + vec2(1.0, time * 0.25));
-
-                    vec2 r = vec2(0.0);
-                    r.x = fbm(st + 1.5 * q + vec2(1.7, 9.2) + time * 0.12);
-                    r.y = fbm(st + 1.5 * q + vec2(8.3, 2.8) + time * 0.08);
-
-                    float f = fbm(st + r * 2.2);
-
-                    float auroraMask = smoothstep(0.1, 0.8, f);
-
-                    vec3 skyColor = mix(colorDark, colorEmerald, auroraMask * 1.2);
-                    skyColor = mix(skyColor, colorCyan, pow(r.x, 2.0) * 0.85);
-
-                    float curtains = sin(st.x * 15.0 + fbm(st * 3.0) * 6.0 + time * 1.5) * 0.5 + 0.5;
-                    skyColor += colorCyan * curtains * 0.3 * auroraMask;
-
-                    float m = mountain(uv);
-                    vec3 finalColor = mix(skyColor, vec3(0.005, 0.02, 0.04), m);
-
-                    finalColor *= 0.6 + 0.4 * pow(16.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y), 0.25);
-
-                    gl_FragColor = vec4(finalColor, 1.0);
-                }
-            `;
+            if (!gl) {
+                console.error('WebGL 2 не поддерживается');
+                return;
+            }
 
             function createShader(gl, type, source) {
                 const shader = gl.createShader(type);
                 gl.shaderSource(shader, source);
                 gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    console.error(gl.getShaderInfoLog(shader));
+                    gl.deleteShader(shader);
+                    return null;
+                }
                 return shader;
             }
 
-            const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
-            const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
-            const program = gl.createProgram();
-            gl.attachShader(program, vs);
-            gl.attachShader(program, fs);
-            gl.linkProgram(program);
+            function createProgram(gl, vertexShader, fragmentShader) {
+                const program = gl.createProgram();
+                gl.attachShader(program, vertexShader);
+                gl.attachShader(program, fragmentShader);
+                gl.linkProgram(program);
+                if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                    console.error(gl.getProgramInfoLog(program));
+                    return null;
+                }
+                return program;
+            }
+
+            const vertexShaderSource = document.getElementById('vertex-shader').text.trim();
+            const fragmentShaderSource = document.getElementById('fragment-shader').text.trim();
+
+            const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+            const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+            const shaderProgram = createProgram(gl, vertexShader, fragmentShader);
+            gl.useProgram(shaderProgram);
 
             const positionBuffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-                -1, -1,
-                 1, -1,
-                -1,  1,
-                -1,  1,
-                 1, -1,
-                 1,  1,
-            ]), gl.STATIC_DRAW);
+            const positions = [
+                -1.0,  1.0, 
+                 1.0,  1.0, 
+                -1.0, -1.0, 
+                 1.0,  1.0, 
+                 1.0, -1.0, 
+                -1.0, -1.0
+            ];
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
-            const posAttr = gl.getAttribLocation(program, "position");
-            const resUniform = gl.getUniformLocation(program, "u_resolution");
-            const timeUniform = gl.getUniformLocation(program, "u_time");
+            const positionLocation = gl.getAttribLocation(shaderProgram, 'a_position');
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
 
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+            const resolutionUniformLocation = gl.getUniformLocation(shaderProgram, 'iResolution');
+            const timeUniformLocation = gl.getUniformLocation(shaderProgram, 'iTime');
+            const color1UniformLocation = gl.getUniformLocation(shaderProgram, 'uColor1');
+            const color2UniformLocation = gl.getUniformLocation(shaderProgram, 'uColor2');
+            const thicknessUniformLocation = gl.getUniformLocation(shaderProgram, 'uThickness');
+            const scaleUniformLocation = gl.getUniformLocation(shaderProgram, 'uScale'); 
+
+            function onResize() {
+                const dpi = window.devicePixelRatio || 1;
+                canvas.width = window.innerWidth * dpi;
+                canvas.height = window.innerHeight * dpi;
                 gl.viewport(0, 0, canvas.width, canvas.height);
+                gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
             }
 
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
+            window.addEventListener('resize', onResize);
+            onResize();
 
-            function render(time) {
-                time *= 0.001;
-                gl.useProgram(program);
-                gl.enableVertexAttribArray(posAttr);
-                gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-                gl.vertexAttribPointer(posAttr, 2, gl.FLOAT, false, 0, 0);
+            const startTime = Date.now();
 
-                gl.uniform2f(resUniform, canvas.width, canvas.height);
-                gl.uniform1f(timeUniform, time);
+            const auroraPalette = [
+                [0.1, 0.9, 0.4],
+                [0.2, 0.8, 0.7],
+                [0.5, 0.2, 0.9],
+                [0.9, 0.2, 0.6],
+                [0.1, 0.9, 0.2],
+                [0.2, 0.4, 1.0]
+            ];
 
+            function getDynamicColor(time, offset) {
+                const speed = 0.12;
+                const t = (time * speed + offset) % auroraPalette.length;
+                const index1 = Math.floor(t);
+                const index2 = (index1 + 1) % auroraPalette.length;
+                const factor = t - index1;
+
+                const c1 = auroraPalette[index1];
+                const c2 = auroraPalette[index2];
+
+                return [
+                    c1[0] + (c2[0] - c1[0]) * factor,
+                    c1[1] + (c2[1] - c1[1]) * factor,
+                    c1[2] + (c2[2] - c1[2]) * factor
+                ];
+            }
+
+            function renderLoop() {
+                const currentTime = (Date.now() - startTime) / 1000;
+                
+                gl.uniform1f(timeUniformLocation, currentTime);
+
+                const dynamicThickness = 0.8 + Math.sin(currentTime * 0.3) * 0.3;
+                const dynamicScale = 1.0 + Math.cos(currentTime * 0.2) * 0.2;
+
+                const color1 = getDynamicColor(currentTime, 0);
+                const color2 = getDynamicColor(currentTime, 2.5);
+
+                gl.uniform3f(color1UniformLocation, color1[0], color1[1], color1[2]);
+                gl.uniform3f(color2UniformLocation, color2[0], color2[1], color2[2]);
+                gl.uniform1f(thicknessUniformLocation, dynamicThickness);
+                gl.uniform1f(scaleUniformLocation, dynamicScale);
+                
                 gl.drawArrays(gl.TRIANGLES, 0, 6);
-                requestAnimationFrame(render);
+                
+                requestAnimationFrame(renderLoop);
             }
 
-            requestAnimationFrame(render);
-        }
+            renderLoop();
+        });
     </script>
 </body>
 </html>
