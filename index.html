@@ -80,7 +80,7 @@
         }
 
         /* ============================================
-           ПРОФИЛЬ
+           ПРОФИЛЬ (ЗДЕСЬ ВСТАВЛЕНА ТВОЯ КАРТИНКА)
            ============================================ */
         .profile-area {
             position: relative;
@@ -97,7 +97,7 @@
             top: 0;
             width: 100%;
             height: 280px;
-            background: url('https://i.ibb.co/Cs5h7SMN/arle.png') center bottom no-repeat;
+            background: url('images/Sivalko-Natallia.png') center bottom no-repeat;
             background-size: contain;
             z-index: 1;
             animation: breathe-pyro 5s ease-in-out infinite;
@@ -110,15 +110,6 @@
             text-align: center;
             width: 100%;
             margin-bottom: 10px;
-        }
-        .profile-text h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            font-weight: 900;
-            margin: 0;
-            color: var(--c-white);
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
         }
         .profile-text p {
             font-size: 9px;
@@ -157,6 +148,17 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .main-box-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0;
+            color: var(--c-white);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+            text-align: center;
         }
 
         /* ============================================
@@ -469,26 +471,22 @@
 </head>
 <body>
 
-    <!-- CANVAS ДЛЯ ИСКР -->
     <canvas id="canvas-bg"></canvas>
 
-    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
     <div class="main-deck">
         
-        <!-- 1. ВЕРХНИЙ БЛОК: Профиль, Наталья Сивалко 💎 и Выдвижной Чат -->
+        <!-- 1. ВЕРХНИЙ БЛОК -->
         <div class="col-section">
             <div class="profile-area">
                 <div class="render-float"></div>
                 <div class="profile-text">
-                    <h2>Наталья Сивалко 💎</h2>
                     <p>The Fourth Fatui Harbinger</p>
                 </div>
             </div>
 
-            <!-- Первым блоком идёт Наталья Сивалко 💎 вместо House of the Hearth -->
             <div class="box">
                 <span class="label">Affiliation</span>
-                <div style="text-align:center; font-size:13px; font-family:'Cinzel', serif; color:var(--c-gold); font-weight:bold;">Наталья Сивалко 💎</div>
+                <h2 class="main-box-title">Наталья Сивалко 💎</h2>
             </div>
 
             <!-- ВЫДВИЖНОЙ ЧАТ -->
@@ -563,9 +561,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        // =============================================
-        // FIREBASE INITIALIZATION
-        // =============================================
         const firebaseConfig = {
             apiKey: "AIzaSyC5L2GQ-2CYj-GNYsHENASdvKVF68rsEb0",
             authDomain: "metaimperiya-14d1b.firebaseapp.com",
