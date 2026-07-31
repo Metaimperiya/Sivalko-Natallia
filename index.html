@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -15,10 +15,10 @@
             --c-cyan: #00f2fe;
             --c-cyan-dim: rgba(0, 242, 254, 0.3);
             --c-white: #f0fdfd;
-            --c-grey: #90a4ae;
+            --c-grey: #a0b2c6;
             --c-ash: #1c2b36;
-            --glass: rgba(6, 20, 32, 0.75);
-            --border: 1px solid rgba(0, 242, 254, 0.25);
+            --glass: rgba(6, 20, 32, 0.85);
+            --border: 1px solid rgba(0, 242, 254, 0.3);
         }
 
         * {
@@ -38,6 +38,7 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
+            padding: 10px 0;
         }
 
         /* WEBGL ШЕЙДЕР СЕВЕРНОГО СИЯНИЯ СЗАДИ */
@@ -52,47 +53,48 @@
             pointer-events: none;
         }
 
+        /* ОСНОВНОЙ ГИБКИЙ КОНТЕЙНЕР (АДАПТИВ) */
         .main-deck {
             position: relative;
             z-index: 1;
-            width: 100%;
-            max-width: 460px;
-            padding: 20px 15px;
+            width: 94%;
+            max-width: 520px;
+            padding: 15px 5px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
         }
 
         .col-section {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
 
         .box {
             background: var(--glass);
             border: var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            border-radius: 16px;
+            padding: clamp(16px, 4vw, 24px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
             position: relative;
         }
 
         .label {
             position: absolute;
-            top: 10px;
-            right: 14px;
+            top: 12px;
+            right: 16px;
             font-family: 'Cinzel', serif;
-            font-size: 9px;
+            font-size: 11px;
             letter-spacing: 1.5px;
             color: var(--c-cyan);
             text-transform: uppercase;
             opacity: 0.9;
         }
 
-        /* БЛОК С ВЫРЕЗАННОЙ ФОТОГРАФИЕЙ И ИМЕНЕМ ПОВЕРХ НЕЁ */
+        /* БЛОК С ВЫРЕЗАННОЙ ФОТОГРАФИЕЙ И ИМЕНЕМ */
         .hero-photo-container {
             position: relative;
             width: 100%;
@@ -104,47 +106,62 @@
 
         .hero-photo-container img {
             width: 100%;
+            max-width: 440px;
             height: auto;
             display: block;
             object-fit: contain;
-            /* Плавное мягкое свечение вокруг вырезанной фигурки */
-            filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.25));
+            animation: photoPulse 4s ease-in-out infinite alternate;
         }
 
-        /* ОВЕРЛЕЙ С ИМЕНЕМ ПРЯМО НА ФОТОГРАФИИ ВНИЗУ */
+        @keyframes photoPulse {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.25));
+            }
+            50% {
+                transform: scale(1.025);
+                filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.55));
+            }
+            100% {
+                transform: scale(1.005);
+                filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.35));
+            }
+        }
+
         .photo-caption-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 25px 10px 10px 10px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+            padding: 35px 15px 15px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            pointer-events: none;
         }
 
         .main-box-title {
             font-family: 'Cinzel', serif;
-            font-size: 22px;
+            font-size: clamp(22px, 6vw, 28px);
             font-weight: 700;
             text-align: center;
             letter-spacing: 1px;
             color: var(--c-white);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 242, 254, 0.6);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 242, 254, 0.7);
         }
 
         .profile-subtitle {
             font-family: 'Cinzel', serif;
-            font-size: 11px;
+            font-size: clamp(12px, 3.5vw, 14px);
             letter-spacing: 2px;
             color: var(--c-cyan);
             text-transform: uppercase;
             text-align: center;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
         }
 
@@ -152,15 +169,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(0, 242, 254, 0.02));
+            padding: 14px 18px;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(0, 242, 254, 0.05));
             border: 1px solid var(--c-cyan-dim);
-            border-radius: 8px;
+            border-radius: 10px;
             color: var(--c-white);
             text-decoration: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -168,12 +185,12 @@
         }
         .telegram-btn:hover {
             border-color: var(--c-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
             color: var(--c-cyan);
         }
         .telegram-icon {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
         }
 
@@ -186,8 +203,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 5px 0;
-            font-size: 11px;
+            padding: 4px 0;
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 1px;
             cursor: pointer;
@@ -199,37 +216,37 @@
             transition: max-height 0.4s ease;
         }
         .chat-drawer.open {
-            max-height: 400px;
-            margin-top: 12px;
+            max-height: 480px;
+            margin-top: 14px;
         }
         .display-window {
-            height: 180px;
-            background: rgba(0, 10, 20, 0.7);
+            height: 200px;
+            background: rgba(0, 10, 20, 0.75);
             border: 1px solid var(--c-ash);
-            border-radius: 6px;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 12px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
         .log-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 11px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
             position: relative;
         }
         .log-item.is-reply {
             margin-left: 15px;
-            border-left: 2px solid var(--c-cyan);
+            border-left: 3px solid var(--c-cyan);
         }
         .log-user {
             color: var(--c-cyan);
             font-weight: 600;
         }
         .log-time {
-            font-size: 9px;
+            font-size: 10px;
             color: var(--c-grey);
             float: right;
         }
@@ -237,32 +254,32 @@
             background: none;
             border: none;
             color: var(--c-grey);
-            font-size: 9px;
+            font-size: 11px;
             cursor: pointer;
-            margin-top: 4px;
+            margin-top: 6px;
         }
         .reply-btn:hover { color: var(--c-white); }
         .input-box {
-            margin-top: 10px;
+            margin-top: 12px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
         #reply-info {
             display: none;
-            font-size: 10px;
+            font-size: 12px;
             color: var(--c-grey);
             background: rgba(255,255,255,0.05);
-            padding: 4px 8px;
+            padding: 6px 10px;
             border-radius: 4px;
         }
         .input-field {
-            background: rgba(0, 10, 20, 0.7);
+            background: rgba(0, 10, 20, 0.75);
             border: 1px solid var(--c-ash);
-            border-radius: 4px;
-            padding: 8px 10px;
+            border-radius: 6px;
+            padding: 10px 12px;
             color: var(--c-white);
-            font-size: 11px;
+            font-size: 13px;
             outline: none;
         }
         .input-field:focus { border-color: var(--c-cyan); }
@@ -270,10 +287,10 @@
             background: linear-gradient(135deg, #00838f, #00acc1);
             border: none;
             color: var(--c-white);
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 600;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
             letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s;
@@ -284,74 +301,75 @@
         .directions-box {
             background: var(--glass);
             border: var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: clamp(16px, 4vw, 24px);
+            backdrop-filter: blur(12px);
             position: relative;
         }
         .directions-title {
             font-family: 'Cinzel', serif;
-            font-size: 12px;
+            font-size: clamp(13px, 3.5vw, 15px);
             letter-spacing: 1.5px;
             color: var(--c-white);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .preview-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         .preview-tag {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--c-ash);
             border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 11px;
-            color: var(--c-grey);
+            padding: 8px 14px;
+            font-size: 13px;
+            color: var(--c-white);
             transition: 0.3s;
         }
         .preview-tag:hover {
             border-color: var(--c-cyan);
-            color: var(--c-white);
+            color: var(--c-cyan);
         }
 
         /* ПРОМО */
         .promo-headline {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: clamp(14px, 4vw, 16px);
+            font-weight: 700;
             color: var(--c-white);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.4;
         }
         .promo-content p {
-            font-size: 11px;
+            font-size: clamp(12px, 3.5vw, 14px);
+            color: var(--c-grey);
+            line-height: 1.6;
+        }
+        .promo-list {
+            margin: 10px 0 16px 20px;
+            font-size: clamp(12px, 3.5vw, 14px);
             color: var(--c-grey);
             line-height: 1.5;
         }
-        .promo-list {
-            margin: 8px 0 14px 18px;
-            font-size: 11px;
-            color: var(--c-grey);
-        }
-        .promo-list li { margin-bottom: 4px; }
+        .promo-list li { margin-bottom: 6px; }
         .cta-btn {
             display: block;
             width: 100%;
             text-align: center;
-            padding: 10px;
+            padding: 14px;
             background: linear-gradient(135deg, #00838f, #00e5ff);
             border: 1px solid var(--c-cyan);
-            border-radius: 6px;
+            border-radius: 8px;
             color: #020b14;
             text-decoration: none;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.35);
         }
         .cta-btn:hover {
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
             transform: translateY(-1px);
         }
 
@@ -359,8 +377,8 @@
         .fem-player { text-align: center; }
         #track-name {
             font-family: 'Cinzel', serif;
-            font-size: 11px;
-            margin-bottom: 12px;
+            font-size: 13px;
+            margin-bottom: 14px;
             color: var(--c-white);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -370,12 +388,12 @@
             background: none;
             border: 1px solid var(--c-ash);
             color: var(--c-white);
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             transition: 0.3s;
-            font-size: 14px;
+            font-size: 16px;
             touch-action: manipulation;
         }
         .btn-ctrl:active {
@@ -386,19 +404,19 @@
             transform: scale(0.92);
         }
         .btn-ctrl#play-btn {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-color: var(--c-cyan);
             color: var(--c-cyan);
-            font-size: 18px;
+            font-size: 20px;
         }
         .progress-wrapper {
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: var(--c-ash);
             cursor: pointer;
             border-radius: 2px;
-            margin-top: 6px;
+            margin-top: 10px;
             touch-action: none;
         }
         #p-bar {
@@ -412,17 +430,17 @@
         .track-list {
             overflow-y: auto;
             flex: 1;
-            max-height: 150px;
+            max-height: 160px;
             padding-right: 4px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
         .track-item {
-            background: rgba(255,255,255,0.01);
-            border-radius: 5px;
-            padding: 8px 10px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            padding: 10px 12px;
             cursor: pointer;
-            font-size: 10px;
-            margin-bottom: 4px;
+            font-size: 12px;
+            margin-bottom: 6px;
             transition: 0.3s;
             display: flex;
             gap: 8px;
@@ -433,7 +451,7 @@
         .track-item:active {
             background: rgba(0, 242, 254, 0.1);
             color: var(--c-white);
-            padding-left: 14px;
+            padding-left: 16px;
             border-color: var(--c-cyan);
         }
         .track-item.active {
@@ -445,11 +463,11 @@
         }
 
         .footer-log {
-            padding: 12px 15px;
-            font-size: 10px;
-            line-height: 1.5;
+            padding: 14px 16px;
+            font-size: 11px;
+            line-height: 1.6;
             border: var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             background: var(--glass);
             color: var(--c-grey);
             border-top: 2px solid var(--c-cyan);
@@ -457,13 +475,19 @@
         .footer-log b {
             color: var(--c-white);
             font-family: 'Cinzel', serif;
-            font-size: 8px;
+            font-size: 10px;
             letter-spacing: 1px;
         }
 
-        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--c-cyan-dim); border-radius: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
+
+        /* МЕДИА-ЗАПРОСЫ ДЛЯ СВЕРХМАЛЕНЬКИХ И БОЛЬШИХ ЭКРАНОВ */
+        @media (max-width: 360px) {
+            .main-deck { width: 98%; padding: 10px 2px; }
+            .preview-tag { font-size: 11px; padding: 6px 10px; }
+        }
     </style>
 </head>
 <body>
@@ -637,7 +661,7 @@ void main()
     <div class="main-deck">
         <div class="col-section">
             
-            <!-- ВЫРЕЗАННАЯ ФОТОГРАФИЯ БЕЗ РАМОК С ИМЕНЕМ ПРЯМО НА НЕЙ -->
+            <!-- ВЫРЕЗАННАЯ ФОТОГРАФИЯ C ПУЛЬСАЦИЕЙ И ИМЕНЕМ -->
             <div class="hero-photo-container">
                 <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 <div class="photo-caption-overlay">
@@ -664,7 +688,7 @@ void main()
 
                 <div class="chat-drawer" id="chat-drawer">
                     <div class="display-window" id="screen">
-                        <div style="color: var(--c-grey); text-align: center; margin-top: 80px; font-size:10px;">Подключение к чату...</div>
+                        <div style="color: var(--c-grey); text-align: center; margin-top: 80px; font-size:12px;">Подключение к чату...</div>
                     </div>
 
                     <div class="input-box">
@@ -698,15 +722,15 @@ void main()
                 <span class="label">Special Offer</span>
                 <div class="promo-content">
                     <div class="promo-headline">Хочешь 150+ живых подписчиков и продажи на 50–250 тыс. за неделю?</div>
-                    <p style="margin-bottom: 8px;">Это не курс, не марафон или папки, которые никто не открывает.</p>
-                    <p style="color: var(--c-cyan); font-weight: bold; margin-bottom: 8px;">
+                    <p style="margin-bottom: 10px;">Это не курс, не марафон или папки, которые никто не открывает.</p>
+                    <p style="color: var(--c-cyan); font-weight: bold; margin-bottom: 10px;">
                         🔥 ДВИЖ: ПРИВЛЕКАЙ И ПРОДАВАЙ В MAX И TELEGRAM
                     </p>
-                    <p style="margin-bottom: 8px;">
+                    <p style="margin-bottom: 10px;">
                         Система, которая идёт сразу в двух чатах (TG + MAX). Выполняешь простые задания, получаешь живых подписчиков сразу и превращаешь их в клиентов по моей методике.
                     </p>
                     
-                    <div style="font-weight: bold; color: var(--c-white); margin-top: 10px;">Результаты участников в прошлом потоке:</div>
+                    <div style="font-weight: bold; color: var(--c-white); margin-top: 12px; font-size: 14px;">Результаты участников в прошлом потоке:</div>
                     <ul class="promo-list">
                         <li>+67 подписчиков и 3 коллаборации за один день</li>
                         <li>рост канала с 17 до 157 человек</li>
@@ -726,7 +750,7 @@ void main()
                 <span class="label">Northern Melodies</span>
                 <div class="fem-player">
                     <div id="track-name">Select a Melody</div>
-                    <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
+                    <div style="display:flex; justify-content:center; gap:12px; margin-bottom:12px;">
                         <button class="btn-ctrl" onclick="prevTrack()" aria-label="Previous">❮</button>
                         <button class="btn-ctrl" id="play-btn" onclick="togglePlay()" aria-label="Play/Pause">▶</button>
                         <button class="btn-ctrl" onclick="nextTrack()" aria-label="Next">❯</button>
