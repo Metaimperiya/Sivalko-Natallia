@@ -2,509 +2,342 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- ============================================ -->
-    <!-- PREVIEW / OPEN GRAPH META TAGS (FB / TG / VK) -->
-    <!-- ============================================ -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sivalko-natallia.vercel.app/">
-    <meta property="og:title" content="Наталья Сивалко 💎">
-    <meta property="og:description" content="Кочёвая наука, воронки продаж, стартапы. ДВИЖ: Привлекай и продавай в TG + MAX.">
-    <!-- Прямая рабочая ссылка на твоё превью с GitHub -->
-    <meta property="og:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    
-    <!-- Для Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Наталья Сивалко 💎">
-    <meta name="twitter:description" content="Кочёвая наука, воронки продаж, стартапы. ДВИЖ: Привлекай и продавай в TG + MAX.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png">
-    <!-- ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наталья Сивалко | Sivalko System</title>
 
-    <title>Наталья Сивалко 💎</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Quicksand:wght@400;700&family=Italiana&display=swap" rel="stylesheet">
+    <!-- Подключение премиальных шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --c-void: #050505;
-            --c-smoke: #121212;
-            --c-ash: #2a2a2a;
+            --bg-dark: #070709;
             --c-crimson: #8b0000;
-            --c-crimson-bright: #ff1a1a;
-            --c-crimson-dim: #4a0000;
+            --c-crimson-bright: #d62828;
+            --c-crimson-dim: rgba(139, 0, 0, 0.4);
             --c-gold: #b39b6c;
-            --c-white: #ffffff;
-            --c-grey: #999999;
-            --glass: rgba(8, 8, 8, 0.96);
-            --border: 1px solid rgba(139, 0, 0, 0.3);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-
-        @keyframes breathe-pyro {
-            0%, 100% { filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.3)); transform: scale(1); }
-            50% { filter: drop-shadow(0 0 40px rgba(139, 0, 0, 0.5)); transform: scale(1.02); }
-        }
-
-        @keyframes steel-shine {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 26, 26, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1); }
-            50% { box-shadow: 0 0 20px rgba(255, 26, 26, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.3); }
+            --c-white: #f0f0f5;
+            --c-grey: #a0a0b0;
+            --c-ash: #2a2a35;
+            --glass: rgba(18, 18, 24, 0.75);
+            --border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
         body {
-            background-color: var(--c-void);
-            background-image: radial-gradient(var(--c-crimson-dim) 1px, transparent 1px);
-            background-size: 40px 40px;
-            margin: 0;
+            background-color: var(--bg-dark);
+            color: var(--c-white);
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            font-family: 'Quicksand', sans-serif;
-            color: var(--c-white);
+            align-items: center;
             overflow-x: hidden;
-            padding: 10px;
+            position: relative;
         }
 
         #canvas-bg {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
             pointer-events: none;
-            z-index: 1;
         }
 
         .main-deck {
+            position: relative;
+            z-index: 1;
             width: 100%;
-            max-width: 480px;
+            max-width: 460px;
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            padding: 10px 0 20px 0;
-            z-index: 10;
-            position: relative;
+            gap: 16px;
         }
 
         .col-section {
-            animation: float 6s ease-in-out infinite;
-            width: 100%;
-        }
-
-        .profile-area {
-            position: relative;
-            height: 280px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            margin-bottom: 10px;
-        }
-
-        .render-float {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 280px;
-            background: url('https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png') center bottom no-repeat;
-            background-size: contain;
-            z-index: 1;
-            animation: breathe-pyro 5s ease-in-out infinite;
-            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-        }
-
-        .profile-text {
-            z-index: 2;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .profile-text p {
-            font-size: 9px;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            color: var(--c-grey);
-            text-transform: uppercase;
-            margin-top: 2px;
+            gap: 12px;
         }
 
         .box {
             background: var(--glass);
             border: var(--border);
-            border-radius: 10px;
-            padding: 16px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(139, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             position: relative;
-            margin-bottom: 12px;
-            transition: 0.4s;
-            width: 100%;
         }
 
         .label {
             position: absolute;
-            top: -10px;
-            left: 16px;
-            background: var(--c-crimson);
-            color: var(--c-white);
-            padding: 3px 14px;
-            border-radius: 0px;
+            top: 10px;
+            right: 14px;
             font-family: 'Cinzel', serif;
-            font-size: 8px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .telegram-btn {
-            position: absolute;
-            top: -12px;
-            left: 16px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 16px;
-            border-radius: 4px;
-            font-family: 'Cinzel', serif;
-            font-size: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
+            font-size: 9px;
             letter-spacing: 1.5px;
-            color: #ffffff;
-            
-            background: linear-gradient(
-                120deg, 
-                #2b2b2b 0%, 
-                #555555 25%, 
-                #ffffff 50%, 
-                #555555 75%, 
-                #2b2b2b 100%
-            );
-            background-size: 200% 100%;
-            border: 1px solid #888888;
-            
-            animation: steel-shine 4s linear infinite, pulse-glow 2.5s infinite ease-in-out;
-            transition: transform 0.2s, filter 0.2s;
-            cursor: pointer;
-            z-index: 5;
+            color: var(--c-gold);
+            text-transform: uppercase;
+            opacity: 0.8;
         }
 
+        /* Profile Area + Avatar */
+        .profile-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 5px 0;
+        }
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--c-gold);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+            object-fit: cover;
+            background: #111;
+        }
+        .profile-text p {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--c-gold);
+            text-transform: uppercase;
+        }
+
+        /* Telegram Button */
+        .telegram-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid var(--c-ash);
+            border-radius: 8px;
+            color: var(--c-white);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
         .telegram-btn:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
+            border-color: var(--c-gold);
+            box-shadow: 0 0 15px rgba(179, 155, 108, 0.2);
+            color: var(--c-gold);
         }
-
         .telegram-icon {
-            width: 12px;
-            height: 12px;
-            fill: #ffffff;
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         .main-box-title {
             font-family: 'Cinzel', serif;
-            font-size: 24px;
-            font-weight: 900;
-            margin: 0;
-            color: var(--c-white);
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
-            text-align: center;
-        }
-
-        .directions-box {
-            background: rgba(12, 12, 12, 0.9);
-            border: 1px solid rgba(139, 0, 0, 0.5);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            position: relative;
-            margin-bottom: 12px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.9), inset 0 0 15px rgba(139, 0, 0, 0.2);
-        }
-
-        .directions-title {
-            font-family: 'Cinzel', serif;
-            font-size: 14px;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--c-white);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
-        }
-
-        .preview-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .preview-tag {
-            background: rgba(40, 10, 10, 0.8);
-            border: 1px solid var(--c-crimson);
-            color: #ddd;
-            font-size: 10px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .promo-content {
-            font-size: 11px;
-            line-height: 1.6;
-            color: #ddd;
-        }
-
-        .promo-headline {
-            font-family: 'Cinzel', serif;
-            font-size: 13px;
-            color: var(--c-gold);
-            font-weight: bold;
-            margin-bottom: 10px;
             text-align: center;
             letter-spacing: 1px;
-        }
-
-        .promo-list {
-            list-style: none;
-            margin: 10px 0;
-            padding-left: 0;
-        }
-
-        .promo-list li {
-            position: relative;
-            padding-left: 16px;
-            margin-bottom: 6px;
-        }
-
-        .promo-list li::before {
-            content: "▫️";
-            position: absolute;
-            left: 0;
-        }
-
-        .cta-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: linear-gradient(90deg, var(--c-crimson-dim), var(--c-crimson), var(--c-crimson-dim));
             color: var(--c-white);
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid var(--c-crimson-bright);
-            margin-top: 12px;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(139,0,0,0.5);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        .cta-btn:hover {
-            box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
-            transform: translateY(-2px);
-        }
-
+        /* Chat Toggle */
         .chat-toggle-btn {
             width: 100%;
-            background: rgba(20, 0, 0, 0.6);
-            border: var(--border);
+            background: none;
+            border: none;
             color: var(--c-white);
-            padding: 10px 14px;
-            font-family: 'Cinzel', serif;
-            font-size: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: 0.3s;
-            margin-top: 4px;
+            padding: 5px 0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            outline: none;
         }
-        .chat-toggle-btn:hover, .chat-toggle-btn:active {
-            background: var(--c-crimson-dim);
-            border-color: var(--c-crimson);
-        }
-
         .chat-drawer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            transition: max-height 0.4s ease;
         }
-
         .chat-drawer.open {
-            max-height: 800px;
-            margin-top: 10px;
+            max-height: 400px;
+            margin-top: 12px;
         }
-
         .display-window {
-            width: 100%;
-            height: 220px;
-            background: rgba(5, 5, 5, 0.9);
-            border-radius: 8px;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--c-ash);
-            overflow-y: auto;
+            border-radius: 6px;
             padding: 10px;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
-
         .log-item {
-            background: rgba(20, 20, 20, 0.8);
-            padding: 8px 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px;
+            border-radius: 4px;
             font-size: 11px;
             position: relative;
         }
-
-        .is-reply {
+        .log-item.is-reply {
             margin-left: 15px;
-            border-left: 2px solid var(--c-crimson);
-            background: rgba(30, 10, 10, 0.6);
+            border-left: 2px solid var(--c-gold);
         }
-
-        .log-user { font-weight: bold; color: var(--c-gold); font-family: 'Cinzel', serif; font-size: 10px; }
-        .log-time { font-size: 8px; color: var(--c-grey); float: right; }
-        
+        .log-user {
+            color: var(--c-gold);
+            font-weight: 600;
+        }
+        .log-time {
+            font-size: 9px;
+            color: var(--c-grey);
+            float: right;
+        }
         .reply-btn {
             background: none;
             border: none;
-            color: var(--c-crimson);
+            color: var(--c-grey);
             font-size: 9px;
             cursor: pointer;
-            padding: 0;
             margin-top: 4px;
-            text-transform: uppercase;
-            font-weight: bold;
         }
-
+        .reply-btn:hover { color: var(--c-white); }
         .input-box {
-            width: 100%;
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
-
+        #reply-info {
+            display: none;
+            font-size: 10px;
+            color: var(--c-grey);
+            background: rgba(255,255,255,0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
         .input-field {
-            width: 100%;
-            padding: 8px 12px;
-            background: rgba(15, 15, 15, 0.9);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--c-ash);
-            border-radius: 6px;
+            border-radius: 4px;
+            padding: 8px 10px;
             color: var(--c-white);
-            font-family: 'Quicksand', sans-serif;
             font-size: 11px;
             outline: none;
         }
-        .input-field:focus {
-            border-color: var(--c-crimson);
-        }
-
-        #reply-info {
-            display: none;
-            background: rgba(40, 0, 0, 0.6);
-            padding: 5px 10px;
-            font-size: 10px;
-            border-radius: 4px;
-            border-left: 3px solid var(--c-crimson);
-            color: var(--c-grey);
-        }
-
+        .input-field:focus { border-color: var(--c-gold); }
         .send-btn {
-            width: 100%;
-            padding: 10px;
-            background: var(--c-crimson-dim);
+            background: var(--c-crimson);
+            border: none;
             color: var(--c-white);
-            border: 1px solid var(--c-crimson);
-            border-radius: 6px;
-            font-family: 'Cinzel', serif;
+            padding: 8px;
+            border-radius: 4px;
             font-size: 10px;
-            font-weight: bold;
+            font-weight: 600;
+            letter-spacing: 1px;
             cursor: pointer;
-            text-transform: uppercase;
             transition: 0.3s;
         }
-        .send-btn:active {
-            background: var(--c-crimson);
-            box-shadow: 0 0 10px var(--c-crimson);
-        }
+        .send-btn:hover { background: var(--c-crimson-bright); }
 
-        .col-center-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .gif-bubble {
-            background: var(--c-smoke);
+        /* Key Directions */
+        .directions-box {
+            background: var(--glass);
             border: var(--border);
-            border-radius: 10px;
-            padding: 4px;
-            overflow: hidden;
-            transition: 0.5s;
-            aspect-ratio: 1 / 1;
-        }
-        .gif-bubble:active {
-            transform: scale(0.97);
-            border-color: var(--c-crimson);
-        }
-        .gif-bubble img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6px;
-            opacity: 0.85;
-            filter: contrast(1.1) brightness(0.9);
-        }
-
-        .fem-player {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid var(--c-ash);
-            border-radius: 10px;
-            padding: 14px;
-            text-align: center;
-            margin-bottom: 12px;
+            border-radius: 12px;
+            padding: 18px;
+            backdrop-filter: blur(12px);
             position: relative;
         }
-        .fem-player::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 10%;
-            width: 80%;
-            height: 2px;
-            background: var(--c-crimson);
-            filter: blur(3px);
-            opacity: 0.6;
+        .directions-title {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: var(--c-white);
+            margin-bottom: 12px;
+        }
+        .preview-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .preview-tag {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--c-ash);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 11px;
+            color: var(--c-grey);
+            transition: 0.3s;
+        }
+        .preview-tag:hover {
+            border-color: var(--c-gold);
+            color: var(--c-white);
         }
 
+        /* Promo Offer */
+        .promo-headline {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--c-white);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .promo-content p {
+            font-size: 11px;
+            color: var(--c-grey);
+            line-height: 1.5;
+        }
+        .promo-list {
+            margin: 8px 0 14px 18px;
+            font-size: 11px;
+            color: var(--c-grey);
+        }
+        .promo-list li { margin-bottom: 4px; }
+        .cta-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--c-crimson), #500000);
+            border: 1px solid var(--c-crimson-bright);
+            border-radius: 6px;
+            color: var(--c-white);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+        .cta-btn:hover {
+            box-shadow: 0 0 20px rgba(214, 40, 40, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* Player */
+        .fem-player { text-align: center; }
         #track-name {
             font-family: 'Cinzel', serif;
             font-size: 11px;
@@ -514,7 +347,6 @@
             letter-spacing: 1px;
             min-height: 20px;
         }
-
         .btn-ctrl {
             background: none;
             border: 1px solid var(--c-ash);
@@ -541,7 +373,6 @@
             color: var(--c-crimson);
             font-size: 18px;
         }
-
         .progress-wrapper {
             width: 100%;
             height: 3px;
@@ -559,12 +390,12 @@
             border-radius: 2px;
             transition: width 0.05s linear;
         }
-
         .track-list {
             overflow-y: auto;
             flex: 1;
             max-height: 150px;
             padding-right: 4px;
+            margin-top: 10px;
         }
         .track-item {
             background: rgba(255,255,255,0.01);
@@ -594,6 +425,7 @@
             border-left-width: 3px;
         }
 
+        /* Footer Log */
         .footer-log {
             padding: 12px 15px;
             font-size: 10px;
@@ -603,7 +435,6 @@
             background: var(--glass);
             color: var(--c-grey);
             border-top: 2px solid var(--c-crimson);
-            margin-top: 0;
         }
         .footer-log b {
             color: var(--c-white);
@@ -619,14 +450,16 @@
 </head>
 <body>
 
+    <!-- Canvas для WebGL эффекта Северного Сияния -->
     <canvas id="canvas-bg"></canvas>
 
     <div class="main-deck">
         
-        <!-- 1. ВЕРХНИЙ БЛОК: КАРТИНКА И ИМЯ С СТАЛЬНОЙ КНОПКОЙ TELEGRAM -->
+        <!-- 1. ВЕРХНИЙ БЛОК: ФОТО + ТИТУЛ -->
         <div class="col-section">
             <div class="profile-area">
-                <div class="render-float"></div>
+                <!-- Вернули фото профиля -->
+                <img class="profile-avatar" src="https://i.ibb.co/9kZWjsrd/arle.gif" alt="Наталья Сивалко">
                 <div class="profile-text">
                     <p>The Fourth Fatui Harbinger</p>
                 </div>
@@ -667,17 +500,7 @@
             </div>
         </div>
 
-        <!-- 2. СРЕДНИЙ БЛОК: Сетка с гифками -->
-        <div class="col-section">
-            <div class="col-center-grid">
-                <div class="gif-bubble"><img src="https://i.ibb.co/9kZWjsrd/arle.gif" alt="arle1" loading="lazy"></div>
-                <div class="gif-bubble"><img src="https://i.ibb.co/bg2YKDg6/arle1.gif" alt="arle2" loading="lazy"></div>
-                <div class="gif-bubble"><img src="https://i.ibb.co/jPBn9jV9/arle2.gif" alt="arle3" loading="lazy"></div>
-                <div class="gif-bubble"><img src="https://i.ibb.co/XZ1zyC4W/arle3.gif" alt="arle4" loading="lazy"></div>
-            </div>
-        </div>
-
-        <!-- 3. КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ -->
+        <!-- 2. КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ -->
         <div class="col-section">
             <div class="directions-box">
                 <span class="label">Focus</span>
@@ -691,7 +514,7 @@
             </div>
         </div>
 
-        <!-- 4. ПРОМО-БЛОК SPECIAL OFFER -->
+        <!-- 3. ПРОМО-БЛОК SPECIAL OFFER -->
         <div class="col-section">
             <div class="box">
                 <span class="label">Special Offer</span>
@@ -720,7 +543,7 @@
             </div>
         </div>
 
-        <!-- 5. НИЖНИЙ БЛОК: Плеер и лог -->
+        <!-- 4. НИЖНИЙ БЛОК: Плеер и лог -->
         <div class="col-section">
             <div class="box" style="display:flex; flex-direction:column; margin-bottom:12px;">
                 <span class="label">Crimson Melodies</span>
@@ -756,6 +579,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
+        // --- FIREBASE CONFIG & CHAT LOGIC ---
         const firebaseConfig = {
             apiKey: "AIzaSyC5L2GQ-2CYj-GNYsHENASdvKVF68rsEb0",
             authDomain: "metaimperiya-14d1b.firebaseapp.com",
@@ -837,6 +661,7 @@
             `;
         }
 
+        // --- AUDIO PLAYER LOGIC ---
         const audio = document.getElementById('audio-engine');
         const playBtn = document.getElementById('play-btn');
         const pBar = document.getElementById('p-bar');
@@ -904,59 +729,140 @@
             pBar.style.width = '0%';
         });
 
+        // --- WEBGL HIGH-CONTRAST AURORA BOREALIS ---
         const canvas = document.getElementById('canvas-bg');
-        const ctx = canvas.getContext('2d');
-        let pts = [];
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            pts = [];
-            const count = Math.min(80, Math.floor(window.innerWidth / 8));
-            for (let i = 0; i < count; i++) {
-                pts.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height + canvas.height,
-                    s: Math.random() * 2 + 1,
-                    spY: Math.random() * -1.5 - 0.5,
-                    spX: Math.random() * 1 - 0.5,
-                    o: Math.random() * 5,
-                    c: Math.random() > 0.4 ? '#8b0000' : '#b39b6c',
-                    a: Math.random() * 0.5 + 0.2
-                });
-            }
-        }
-
-        function drawEmbers() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.globalCompositeOperation = 'lighter';
-            pts.forEach(p => {
-                ctx.fillStyle = p.c;
-                ctx.globalAlpha = p.a;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = p.c;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                p.y += p.spY;
-                p.x += p.spX + Math.sin(p.o += 0.02) * 0.4;
-
-                if (p.y < -20) {
-                    p.y = canvas.height + 20;
-                    p.x = Math.random() * canvas.width;
+        if (gl) {
+            const vsSource = `
+                attribute vec2 position;
+                void main() {
+                    gl_Position = vec4(position, 0.0, 1.0);
                 }
-            });
-            requestAnimationFrame(drawEmbers);
+            `;
+
+            const fsSource = `
+                precision mediump float;
+                uniform vec2 u_resolution;
+                uniform float u_time;
+
+                // Цветовая гамма: тёмный космос, ярко-багровый и мерцающее золото
+                vec3 colorDark = vec3(0.03, 0.02, 0.05);
+                vec3 colorCrimson = vec3(0.75, 0.05, 0.12);
+                vec3 colorGold = vec3(0.85, 0.65, 0.25);
+
+                float hash(vec2 p) {
+                    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+                }
+
+                float noise(vec2 p) {
+                    vec2 i = floor(p);
+                    vec2 f = fract(p);
+                    f = f * f * (3.0 - 2.0 * f);
+                    return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
+                               mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+                }
+
+                float fbm(vec2 p) {
+                    float v = 0.0;
+                    float a = 0.5;
+                    for (int i = 0; i < 4; i++) {
+                        v += a * noise(p);
+                        p *= 2.2;
+                        a *= 0.45;
+                    }
+                    return v;
+                }
+
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+                    vec2 st = uv;
+                    st.x *= u_resolution.x / u_resolution.y;
+
+                    // Вертикальные лучи и волны Северного сияния
+                    float time = u_time * 0.4;
+                    
+                    vec2 q = vec2(0.0);
+                    q.x = fbm(st + vec2(0.0, time * 0.2));
+                    q.y = fbm(st + vec2(1.0, time * 0.3));
+
+                    vec2 r = vec2(0.0);
+                    r.x = fbm(st + 1.5 * q + vec2(1.7, 9.2) + time * 0.15);
+                    r.y = fbm(st + 1.5 * q + vec2(8.3, 2.8) + time * 0.1);
+
+                    float f = fbm(st + r * 2.0);
+
+                    // Формируем вертикальное распределение плазмы
+                    float auroraMask = smoothstep(0.1, 0.9, f);
+
+                    vec3 color = mix(colorDark, colorCrimson, auroraMask * 1.2);
+                    color = mix(color, colorGold, pow(r.x, 2.0) * 0.8);
+
+                    // Добавляем эффект вертикальных штор (aurora curtains)
+                    float curtains = sin(st.x * 12.0 + fbm(st * 3.0) * 6.0 + time) * 0.5 + 0.5;
+                    color += colorCrimson * curtains * 0.15 * auroraMask;
+
+                    // Виньетка по краям
+                    color *= 0.5 + 0.5 * pow(16.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y), 0.3);
+
+                    gl_FragColor = vec4(color, 1.0);
+                }
+            `;
+
+            function createShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
+            }
+
+            const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
+            const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+            const program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1,
+                 1, -1,
+                -1,  1,
+                -1,  1,
+                 1, -1,
+                 1,  1,
+            ]), gl.STATIC_DRAW);
+
+            const posAttr = gl.getAttribLocation(program, "position");
+            const resUniform = gl.getUniformLocation(program, "u_resolution");
+            const timeUniform = gl.getUniformLocation(program, "u_time");
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            function render(time) {
+                time *= 0.001;
+                gl.useProgram(program);
+                gl.enableVertexAttribArray(posAttr);
+                gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+                gl.vertexAttribPointer(posAttr, 2, gl.FLOAT, false, 0, 0);
+
+                gl.uniform2f(resUniform, canvas.width, canvas.height);
+                gl.uniform1f(timeUniform, time);
+
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+
+            requestAnimationFrame(render);
         }
-
-        window.addEventListener('resize', () => {
-            initCanvas();
-        });
-
-        initCanvas();
-        drawEmbers();
     </script>
 </body>
 </html>
