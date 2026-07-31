@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
 <head>
-    <!-- 
-      Название: Natalia Sivalko Crimson Ember
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Наталья Сивалко 💎</title>
@@ -15,6 +12,7 @@
             --c-smoke: #121212;
             --c-ash: #2a2a2a;
             --c-crimson: #8b0000;
+            --c-crimson-bright: #ff1a1a;
             --c-crimson-dim: #4a0000;
             --c-gold: #b39b6c;
             --c-white: #ffffff;
@@ -25,12 +23,19 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
 
-        @keyframes breathe-pyro {
-            0%, 100% { filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.3)); transform: scale(1); }
-            50% { filter: drop-shadow(0 0 40px rgba(139, 0, 0, 0.5)); transform: scale(1.02); }
+        /* Анимация стального отблеска для кнопки Telegram */
+        @keyframes steel-shine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Мягкое мерцание кнопки */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 26, 26, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(255, 26, 26, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.3); }
         }
 
         * {
@@ -80,44 +85,58 @@
         }
 
         /* ============================================
-           ПРОФИЛЬ (ЗДЕСЬ ВСТАВЛЕНА ТВОЯ КАРТИНКА)
+           ЧИСТОЕ HTML/CSS ПРЕВЬЮ (БЕЗ ФОТО)
            ============================================ */
-        .profile-area {
-            position: relative;
-            height: 280px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            margin-bottom: 10px;
-        }
-
-        .render-float {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 280px;
-            background: url('images/Sivalko-Natallia.png') center bottom no-repeat;
-            background-size: contain;
-            z-index: 1;
-            animation: breathe-pyro 5s ease-in-out infinite;
-            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-        }
-
-        .profile-text {
-            z-index: 2;
+        .preview-box {
+            background: rgba(12, 12, 12, 0.9);
+            border: 1px solid rgba(139, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
-            width: 100%;
-            margin-bottom: 10px;
+            position: relative;
+            margin-bottom: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.9), inset 0 0 15px rgba(139, 0, 0, 0.2);
         }
-        .profile-text p {
+
+        .preview-badge {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
             font-size: 9px;
             letter-spacing: 2px;
-            opacity: 0.8;
-            color: var(--c-grey);
+            color: var(--c-gold);
+            border: 1px solid var(--c-gold);
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            margin-top: 2px;
+        }
+
+        .preview-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--c-white);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
+        }
+
+        .preview-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .preview-tag {
+            background: rgba(40, 10, 10, 0.8);
+            border: 1px solid var(--c-crimson);
+            color: #ddd;
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
         }
 
         /* ============================================
@@ -135,19 +154,51 @@
             width: 100%;
         }
 
-        .label {
+        /* СТАЛЬНАЯ КНОПКА TELEGRAM */
+        .telegram-btn {
             position: absolute;
-            top: -10px;
+            top: -12px;
             left: 16px;
-            background: var(--c-crimson);
-            color: var(--c-white);
-            padding: 3px 14px;
-            border-radius: 0px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 16px;
+            border-radius: 4px;
             font-family: 'Cinzel', serif;
-            font-size: 8px;
-            font-weight: bold;
+            font-size: 10px;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            
+            /* Стальной градиент */
+            background: linear-gradient(
+                120deg, 
+                #2b2b2b 0%, 
+                #555555 25%, 
+                #ffffff 50%, 
+                #555555 75%, 
+                #2b2b2b 100%
+            );
+            background-size: 200% 100%;
+            border: 1px solid #888888;
+            
+            animation: steel-shine 4s linear infinite, pulse-glow 2.5s infinite ease-in-out;
+            transition: transform 0.2s, filter 0.2s;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        .telegram-icon {
+            width: 12px;
+            height: 12px;
+            fill: #ffffff;
         }
 
         .main-box-title {
@@ -159,6 +210,67 @@
             letter-spacing: 2px;
             text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
             text-align: center;
+        }
+
+        /* ============================================
+           ПРОМО-БЛОК (ДВИЖ)
+           ============================================ */
+        .promo-content {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .promo-headline {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            color: var(--c-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .promo-list {
+            list-style: none;
+            margin: 10px 0;
+            padding-left: 0;
+        }
+
+        .promo-list li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 6px;
+        }
+
+        .promo-list li::before {
+            content: "▫️";
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(90deg, var(--c-crimson-dim), var(--c-crimson), var(--c-crimson-dim));
+            color: var(--c-white);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--c-crimson-bright);
+            margin-top: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(139,0,0,0.5);
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
+            transform: translateY(-2px);
         }
 
         /* ============================================
@@ -406,9 +518,6 @@
             transition: width 0.05s linear;
         }
 
-        /* ============================================
-           ТРЕК-ЛИСТ
-           ============================================ */
         .track-list {
             overflow-y: auto;
             flex: 1;
@@ -443,9 +552,6 @@
             border-left-width: 3px;
         }
 
-        /* ============================================
-           ФУТЕР
-           ============================================ */
         .footer-log {
             padding: 12px 15px;
             font-size: 10px;
@@ -477,15 +583,27 @@
         
         <!-- 1. ВЕРХНИЙ БЛОК -->
         <div class="col-section">
-            <div class="profile-area">
-                <div class="render-float"></div>
-                <div class="profile-text">
-                    <p>The Fourth Fatui Harbinger</p>
+            
+            <!-- ТЕКСТОВОЕ HTML-ПРЕВЬЮ ВМЕСТО КАРТИНКИ -->
+            <div class="preview-box">
+                <span class="preview-badge">SYSTEM: ACTIVE</span>
+                <div class="preview-title">КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ</div>
+                <div class="preview-tags">
+                    <span class="preview-tag">🧬 Кочёвая наука</span>
+                    <span class="preview-tag">🚀 Продажа стартапов</span>
+                    <span class="preview-tag">⚙️ Воронки продаж</span>
+                    <span class="preview-tag">📡 TG + MAX Systems</span>
                 </div>
             </div>
 
+            <!-- ИМЯ С КНОПКОЙ TELEGRAM (ВМЕСТО AFFILIATION) -->
             <div class="box">
-                <span class="label">Affiliation</span>
+                <a href="https://t.me/sivalko_system" target="_blank" class="telegram-btn">
+                    <svg class="telegram-icon" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/>
+                    </svg>
+                    Telegram
+                </a>
                 <h2 class="main-box-title">Наталья Сивалко 💎</h2>
             </div>
 
@@ -525,7 +643,36 @@
             </div>
         </div>
 
-        <!-- 3. НИЖНИЙ БЛОК: Плеер и лог -->
+        <!-- 3. НОВЫЙ БЛОК ПРЕДЛОЖЕНИЯ (ПОД ГИФКАМИ И ПЕРЕД ПЛЕЕРОМ) -->
+        <div class="col-section">
+            <div class="box">
+                <span class="label">Special Offer</span>
+                <div class="promo-content">
+                    <div class="promo-headline">Хочешь 150+ живых подписчиков и продажи на 50–250 тыс. за неделю?</div>
+                    <p style="margin-bottom: 8px;">Это не курс, не марафон или папки, которые никто не открывает.</p>
+                    <p style="color: var(--c-gold); font-weight: bold; margin-bottom: 8px;">
+                        🔥 ДВИЖ: ПРИВЛЕКАЙ И ПРОДАВАЙ В MAX И TELEGRAM
+                    </p>
+                    <p style="margin-bottom: 8px;">
+                        Система, которая идёт сразу в двух чатах (TG + MAX). Выполняешь простые задания, получаешь живых подписчиков сразу и превращаешь их в клиентов по моей методике.
+                    </p>
+                    
+                    <div style="font-weight: bold; color: var(--c-white); margin-top: 10px;">Результаты участников в прошлом потоке:</div>
+                    <ul class="promo-list">
+                        <li>+67 подписчиков и 3 коллаборации за один день</li>
+                        <li>рост канала с 17 до 157 человек</li>
+                        <li>клиент в сопровождение с чеком 55 000 ₽</li>
+                        <li>более 100 живых подписок на канал за неделю</li>
+                    </ul>
+
+                    <a href="https://t.me/sivalko_system" target="_blank" class="cta-btn">
+                        УСПЕЙ ЗАНЯТЬ МЕСТО БЕСПЛАТНО 👇
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. НИЖНИЙ БЛОК: Плеер и лог -->
         <div class="col-section">
             <div class="box" style="display:flex; flex-direction:column; margin-bottom:12px;">
                 <span class="label">Crimson Melodies</span>
