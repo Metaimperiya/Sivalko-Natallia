@@ -11,14 +11,15 @@
 
     <style>
         :root {
-            --bg-dark: #000000;
-            --c-cyan: #00f2fe;
-            --c-cyan-dim: rgba(0, 242, 254, 0.3);
-            --c-white: #f0fdfd;
-            --c-grey: #a0b2c6;
-            --c-ash: #1c2b36;
-            --glass: rgba(6, 20, 32, 0.85);
-            --border: 1px solid rgba(0, 242, 254, 0.3);
+            --bg-dark: #05020a;
+            --c-violet: #a855f7;
+            --c-violet-bright: #c084fc;
+            --c-violet-dim: rgba(168, 85, 247, 0.35);
+            --c-white: #f5f3ff;
+            --c-grey: #a78bfa;
+            --c-ash: #2e1065;
+            --glass: rgba(15, 7, 26, 0.85);
+            --border: 1px solid rgba(168, 85, 247, 0.35);
         }
 
         * {
@@ -38,7 +39,7 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
-            padding: 10px 0;
+            padding: 15px 0;
         }
 
         /* WEBGL ШЕЙДЕР СЕВЕРНОГО СИЯНИЯ СЗАДИ */
@@ -53,7 +54,7 @@
             pointer-events: none;
         }
 
-        /* ОСНОВНОЙ ГИБКИЙ КОНТЕЙНЕР (АДАПТИВ) */
+        /* ОСНОВНОЙ КОНТЕЙНЕР */
         .main-deck {
             position: relative;
             z-index: 1;
@@ -76,9 +77,9 @@
             border: var(--border);
             border-radius: 16px;
             padding: clamp(16px, 4vw, 24px);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), 0 0 15px rgba(168, 85, 247, 0.15);
             position: relative;
         }
 
@@ -89,7 +90,7 @@
             font-family: 'Cinzel', serif;
             font-size: 11px;
             letter-spacing: 1.5px;
-            color: var(--c-cyan);
+            color: var(--c-violet-bright);
             text-transform: uppercase;
             opacity: 0.9;
         }
@@ -116,15 +117,15 @@
         @keyframes photoPulse {
             0% {
                 transform: scale(1);
-                filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.25));
+                filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.3));
             }
             50% {
                 transform: scale(1.025);
-                filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.55));
+                filter: drop-shadow(0 0 30px rgba(192, 132, 252, 0.65));
             }
             100% {
                 transform: scale(1.005);
-                filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.35));
+                filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.4));
             }
         }
 
@@ -134,7 +135,7 @@
             left: 0;
             width: 100%;
             padding: 35px 15px 15px 15px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(to top, rgba(5, 2, 10, 0.95) 10%, rgba(0, 0, 0, 0) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -151,47 +152,111 @@
             text-align: center;
             letter-spacing: 1px;
             color: var(--c-white);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 242, 254, 0.7);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 18px rgba(192, 132, 252, 0.8);
         }
 
         .profile-subtitle {
             font-family: 'Cinzel', serif;
             font-size: clamp(12px, 3.5vw, 14px);
             letter-spacing: 2px;
-            color: var(--c-cyan);
+            color: var(--c-violet-bright);
             text-transform: uppercase;
             text-align: center;
             margin-bottom: 6px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
         }
 
-        .telegram-btn {
+        /* БЛОК СО СВЕТЯЩИМИСЯ СИРЕНЕВЫМИ КНОПКАМИ */
+        .buttons-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .glow-btn {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             width: 100%;
-            padding: 14px 18px;
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(0, 242, 254, 0.05));
-            border: 1px solid var(--c-cyan-dim);
-            border-radius: 10px;
-            color: var(--c-white);
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: #ffffff;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
+            overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            border: 1px solid rgba(216, 180, 254, 0.6);
+            background: linear-gradient(135deg, #7e22ce 0%, #a855f7 50%, #9333ea 100%);
+            animation: btnGlowPulse 3s infinite alternate;
         }
-        .telegram-btn:hover {
-            border-color: var(--c-cyan);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
-            color: var(--c-cyan);
+
+        .glow-btn-max {
+            background: linear-gradient(135deg, #6b21a8 0%, #8b5cf6 50%, #7c3aed 100%);
+            animation-delay: 1.5s;
         }
-        .telegram-icon {
+
+        /* АНИМАЦИЯ ПУЛЬСАЦИИ И НЕОНОВОГО СВЕЧЕНИЯ КНОПОК */
+        @keyframes btnGlowPulse {
+            0% {
+                box-shadow: 0 0 12px rgba(168, 85, 247, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.2);
+                border-color: rgba(192, 132, 252, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(192, 132, 252, 0.8), 0 0 35px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
+                border-color: rgba(255, 255, 255, 0.9);
+                transform: translateY(-1px);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+                border-color: rgba(192, 132, 252, 0.6);
+            }
+        }
+
+        /* БЛИК, ПРОБЕГАЮЩИЙ ПО КНОПКАМ */
+        .glow-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.35) 50%,
+                transparent 70%
+            );
+            transform: rotate(30deg);
+            animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .glow-btn:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 0 30px rgba(192, 132, 252, 0.95);
+            color: #ffffff;
+        }
+
+        .btn-icon {
             width: 20px;
             height: 20px;
             fill: currentColor;
+            z-index: 2;
+        }
+
+        .btn-text {
+            z-index: 2;
         }
 
         /* ЧАТ */
@@ -221,7 +286,7 @@
         }
         .display-window {
             height: 200px;
-            background: rgba(0, 10, 20, 0.75);
+            background: rgba(10, 3, 20, 0.8);
             border: 1px solid var(--c-ash);
             border-radius: 8px;
             padding: 12px;
@@ -231,7 +296,7 @@
             gap: 10px;
         }
         .log-item {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             padding: 10px;
             border-radius: 6px;
             font-size: 13px;
@@ -239,10 +304,10 @@
         }
         .log-item.is-reply {
             margin-left: 15px;
-            border-left: 3px solid var(--c-cyan);
+            border-left: 3px solid var(--c-violet-bright);
         }
         .log-user {
-            color: var(--c-cyan);
+            color: var(--c-violet-bright);
             font-weight: 600;
         }
         .log-time {
@@ -274,7 +339,7 @@
             border-radius: 4px;
         }
         .input-field {
-            background: rgba(0, 10, 20, 0.75);
+            background: rgba(10, 3, 20, 0.8);
             border: 1px solid var(--c-ash);
             border-radius: 6px;
             padding: 10px 12px;
@@ -282,9 +347,9 @@
             font-size: 13px;
             outline: none;
         }
-        .input-field:focus { border-color: var(--c-cyan); }
+        .input-field:focus { border-color: var(--c-violet-bright); }
         .send-btn {
-            background: linear-gradient(135deg, #00838f, #00acc1);
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
             border: none;
             color: var(--c-white);
             padding: 12px;
@@ -295,7 +360,7 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .send-btn:hover { background: var(--c-cyan); color: #000; }
+        .send-btn:hover { background: var(--c-violet-bright); color: #000; }
 
         /* НАПРАВЛЕНИЯ */
         .directions-box {
@@ -303,7 +368,7 @@
             border: var(--border);
             border-radius: 16px;
             padding: clamp(16px, 4vw, 24px);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
             position: relative;
         }
         .directions-title {
@@ -328,8 +393,8 @@
             transition: 0.3s;
         }
         .preview-tag:hover {
-            border-color: var(--c-cyan);
-            color: var(--c-cyan);
+            border-color: var(--c-violet-bright);
+            color: var(--c-violet-bright);
         }
 
         /* ПРОМО */
@@ -357,19 +422,19 @@
             width: 100%;
             text-align: center;
             padding: 14px;
-            background: linear-gradient(135deg, #00838f, #00e5ff);
-            border: 1px solid var(--c-cyan);
+            background: linear-gradient(135deg, #7e22ce, #c084fc);
+            border: 1px solid var(--c-violet-bright);
             border-radius: 8px;
-            color: #020b14;
+            color: #ffffff;
             text-decoration: none;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.35);
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
         }
         .cta-btn:hover {
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+            box-shadow: 0 0 28px rgba(192, 132, 252, 0.8);
             transform: translateY(-1px);
         }
 
@@ -397,17 +462,17 @@
             touch-action: manipulation;
         }
         .btn-ctrl:active {
-            background: var(--c-cyan);
+            background: var(--c-violet-bright);
             color: #000;
-            border-color: var(--c-cyan);
-            box-shadow: 0 0 25px var(--c-cyan);
+            border-color: var(--c-violet-bright);
+            box-shadow: 0 0 25px var(--c-violet-bright);
             transform: scale(0.92);
         }
         .btn-ctrl#play-btn {
             width: 48px;
             height: 48px;
-            border-color: var(--c-cyan);
-            color: var(--c-cyan);
+            border-color: var(--c-violet-bright);
+            color: var(--c-violet-bright);
             font-size: 20px;
         }
         .progress-wrapper {
@@ -422,8 +487,8 @@
         #p-bar {
             width: 0%;
             height: 100%;
-            background: var(--c-cyan);
-            box-shadow: 0 0 15px var(--c-cyan);
+            background: var(--c-violet-bright);
+            box-shadow: 0 0 15px var(--c-violet-bright);
             border-radius: 2px;
             transition: width 0.05s linear;
         }
@@ -449,14 +514,14 @@
             touch-action: manipulation;
         }
         .track-item:active {
-            background: rgba(0, 242, 254, 0.1);
+            background: rgba(168, 85, 247, 0.15);
             color: var(--c-white);
             padding-left: 16px;
-            border-color: var(--c-cyan);
+            border-color: var(--c-violet-bright);
         }
         .track-item.active {
-            border-color: var(--c-cyan);
-            background: rgba(0, 242, 254, 0.1);
+            border-color: var(--c-violet-bright);
+            background: rgba(168, 85, 247, 0.15);
             color: var(--c-white);
             font-weight: bold;
             border-left-width: 3px;
@@ -470,7 +535,7 @@
             border-radius: 12px;
             background: var(--glass);
             color: var(--c-grey);
-            border-top: 2px solid var(--c-cyan);
+            border-top: 2px solid var(--c-violet-bright);
         }
         .footer-log b {
             color: var(--c-white);
@@ -480,10 +545,9 @@
         }
 
         ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--c-cyan-dim); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--c-violet-dim); border-radius: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
 
-        /* МЕДИА-ЗАПРОСЫ ДЛЯ СВЕРХМАЛЕНЬКИХ И БОЛЬШИХ ЭКРАНОВ */
         @media (max-width: 360px) {
             .main-deck { width: 98%; padding: 10px 2px; }
             .preview-tag { font-size: 11px; padding: 6px 10px; }
@@ -602,7 +666,7 @@ vec3 stars(in vec3 p)
         vec2 rn = nmzHash33(id).xy;
         float c2 = 1.-smoothstep(0.,.6,length(q));
         c2 *= step(rn.x, 0.0015 + i*i*0.001); 
-        c += c2*(mix(vec3(1.0,0.49,0.1),vec3(0.75,0.9,1.),rn.y)*0.1+0.9);
+        c += c2*(mix(vec3(0.8,0.4,1.0),vec3(0.6,0.8,1.),rn.y)*0.1+0.9);
         p *= 1.3;
     }
     return c*c*.8;
@@ -612,7 +676,7 @@ vec3 bg(in vec3 rd)
 {
     float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd)*0.5+0.5;
     sd = pow(sd, 5.);
-    vec3 col = mix(vec3(0.01,0.03,0.08), vec3(0.05,0.02,0.10), sd);
+    vec3 col = mix(vec3(0.04,0.01,0.08), vec3(0.08,0.02,0.12), sd);
     return col*.63;
 }
 
@@ -649,7 +713,7 @@ void main()
     } 
     else {
         float depth = (mHeight - rd.y) * 4.0;
-        vec3 mountainColor = mix(vec3(0.01, 0.02, 0.03), vec3(0.002, 0.004, 0.006), clamp(depth, 0.0, 1.0));
+        vec3 mountainColor = mix(vec3(0.03, 0.01, 0.05), vec3(0.005, 0.002, 0.008), clamp(depth, 0.0, 1.0));
         col = mountainColor;
     }
     
@@ -670,13 +734,24 @@ void main()
                 </div>
             </div>
 
-            <!-- TELEGRAM КНОПКА ПОД ФОТОГРАФИЕЙ -->
-            <a href="https://t.me/sivalko_system" target="_blank" class="telegram-btn">
-                <svg class="telegram-icon" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/>
-                </svg>
-                Telegram
-            </a>
+            <!-- ГРУППА СВЕТЯЩИХСЯ СИРЕНЕВЫХ КНОПОК -->
+            <div class="buttons-group">
+                <!-- TELEGRAM КНОПКА -->
+                <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="glow-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/>
+                    </svg>
+                    <span class="btn-text">Telegram</span>
+                </a>
+
+                <!-- MAX КНОПКА -->
+                <a href="https://max.ru/join/Tu3PIYPMn1dDYSvihbVR8gVhtxAIxb6HOadKL0eRlWM" target="_blank" class="glow-btn glow-btn-max">
+                    <svg class="btn-icon" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <span class="btn-text">Присоединиться к Max</span>
+                </a>
+            </div>
 
             <!-- ЧАТ -->
             <div class="box">
@@ -694,7 +769,7 @@ void main()
                     <div class="input-box">
                         <div id="reply-info">
                             Ответ для: <b id="reply-to-user" style="color:var(--c-white);"></b> 
-                            <span onclick="cancelReply()" style="color:var(--c-cyan); cursor:pointer; float:right;">[X]</span>
+                            <span onclick="cancelReply()" style="color:var(--c-violet-bright); cursor:pointer; float:right;">[X]</span>
                         </div>
                         <input type="text" id="nick" class="input-field" placeholder="Твой ник...">
                         <input type="text" id="message" class="input-field" placeholder="Сообщение...">
@@ -723,7 +798,7 @@ void main()
                 <div class="promo-content">
                     <div class="promo-headline">Хочешь 150+ живых подписчиков и продажи на 50–250 тыс. за неделю?</div>
                     <p style="margin-bottom: 10px;">Это не курс, не марафон или папки, которые никто не открывает.</p>
-                    <p style="color: var(--c-cyan); font-weight: bold; margin-bottom: 10px;">
+                    <p style="color: var(--c-violet-bright); font-weight: bold; margin-bottom: 10px;">
                         🔥 ДВИЖ: ПРИВЛЕКАЙ И ПРОДАВАЙ В MAX И TELEGRAM
                     </p>
                     <p style="margin-bottom: 10px;">
@@ -738,7 +813,7 @@ void main()
                         <li>более 100 живых подписок на канал за неделю</li>
                     </ul>
 
-                    <a href="https://t.me/sivalko_system" target="_blank" class="cta-btn">
+                    <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="cta-btn">
                         УСПЕЙ ЗАНЯТЬ МЕСТО БЕСПЛАТНО 👇
                     </a>
                 </div>
@@ -760,10 +835,10 @@ void main()
                     </div>
                 </div>
                 <div class="track-list">
-                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Aurora Borealis</div>
-                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Emerald Lights</div>
+                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Violet Aurora</div>
+                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Amethyst Glow</div>
                     <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Polar Night</div>
-                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Mountain Wind</div>
+                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Purple Wind</div>
                 </div>
             </div>
             <div class="footer-log">
@@ -919,7 +994,7 @@ void main()
             pBar.style.width = '0%';
         });
 
-        /* ШЕЙДЕР WEBGL2 */
+        /* ШЕЙДЕР WEBGL2 С СИРЕНЕВОЙ ПАЛИТРОЙ */
         window.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             const gl = canvas.getContext('webgl2');
@@ -991,13 +1066,14 @@ void main()
 
             const startTime = Date.now();
 
+            /* СИРЕНЕВО-ФИОЛЕТОВАЯ ПАЛИТРА */
             const auroraPalette = [
-                [0.1, 0.9, 0.4],
-                [0.2, 0.8, 0.7],
-                [0.5, 0.2, 0.9],
-                [0.9, 0.2, 0.6],
-                [0.1, 0.9, 0.2],
-                [0.2, 0.4, 1.0]
+                [0.6, 0.2, 0.9],
+                [0.8, 0.3, 1.0],
+                [0.5, 0.1, 0.8],
+                [0.9, 0.4, 0.9],
+                [0.4, 0.1, 0.7],
+                [0.7, 0.2, 0.95]
             ];
 
             function getDynamicColor(time, offset) {
