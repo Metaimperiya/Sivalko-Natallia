@@ -3,6 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- ============================================ -->
+    <!-- PREVIEW / OPEN GRAPH META TAGS (FB / TG / VK) -->
+    <!-- ============================================ -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sivalko-natallia.vercel.app/">
+    <meta property="og:title" content="Наталья Сивалко 💎">
+    <meta property="og:description" content="Кочёвая наука, воронки продаж, стартапы. ДВИЖ: Привлекай и продавай в TG + MAX.">
+    <!-- Прямая рабочая ссылка на твоё превью с GitHub -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Для Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Наталья Сивалко 💎">
+    <meta name="twitter:description" content="Кочёвая наука, воронки продаж, стартапы. ДВИЖ: Привлекай и продавай в TG + MAX.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png">
+    <!-- ============================================ -->
+
     <title>Наталья Сивалко 💎</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Quicksand:wght@400;700&family=Italiana&display=swap" rel="stylesheet">
 
@@ -31,13 +51,11 @@
             50% { filter: drop-shadow(0 0 40px rgba(139, 0, 0, 0.5)); transform: scale(1.02); }
         }
 
-        /* Анимация стального отблеска для кнопки Telegram */
         @keyframes steel-shine {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
 
-        /* Мягкое мерцание кнопки */
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 10px rgba(255, 26, 26, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1); }
             50% { box-shadow: 0 0 20px rgba(255, 26, 26, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.3); }
@@ -89,9 +107,6 @@
             width: 100%;
         }
 
-        /* ============================================
-           ПРОФИЛЬ (ВЕРНУЛИ ФОТОГРАФИЮ)
-           ============================================ */
         .profile-area {
             position: relative;
             height: 280px;
@@ -107,7 +122,7 @@
             top: 0;
             width: 100%;
             height: 280px;
-            background: url('images/Sivalko-Natallia.png') center bottom no-repeat;
+            background: url('https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png') center bottom no-repeat;
             background-size: contain;
             z-index: 1;
             animation: breathe-pyro 5s ease-in-out infinite;
@@ -130,9 +145,6 @@
             margin-top: 2px;
         }
 
-        /* ============================================
-           БОКСЫ И СТАЛЬНАЯ КНОПКА TELEGRAM
-           ============================================ */
         .box {
             background: var(--glass);
             border: var(--border);
@@ -177,7 +189,6 @@
             letter-spacing: 1.5px;
             color: #ffffff;
             
-            /* Стальной градиент */
             background: linear-gradient(
                 120deg, 
                 #2b2b2b 0%, 
@@ -217,9 +228,6 @@
             text-align: center;
         }
 
-        /* ============================================
-           БЛОК: КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ (СПУЩЕН НИЖЕ)
-           ============================================ */
         .directions-box {
             background: rgba(12, 12, 12, 0.9);
             border: 1px solid rgba(139, 0, 0, 0.5);
@@ -258,9 +266,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ============================================
-           ПРОМО-БЛОК (ДВИЖ)
-           ============================================ */
         .promo-content {
             font-size: 11px;
             line-height: 1.6;
@@ -319,9 +324,6 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================
-           ВЫДВИЖНОЙ ЧАТ
-           ============================================ */
         .chat-toggle-btn {
             width: 100%;
             background: rgba(20, 0, 0, 0.6);
@@ -453,9 +455,6 @@
             box-shadow: 0 0 10px var(--c-crimson);
         }
 
-        /* ============================================
-           СЕТКА С ГИФКАМИ
-           ============================================ */
         .col-center-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -485,9 +484,6 @@
             filter: contrast(1.1) brightness(0.9);
         }
 
-        /* ============================================
-           ПЛЕЕР
-           ============================================ */
         .fem-player {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid var(--c-ash);
@@ -636,7 +632,6 @@
                 </div>
             </div>
 
-            <!-- ИМЯ С КНОПКОЙ TELEGRAM -->
             <div class="box">
                 <a href="https://t.me/sivalko_system" target="_blank" class="telegram-btn">
                     <svg class="telegram-icon" viewBox="0 0 24 24">
@@ -647,7 +642,6 @@
                 <h2 class="main-box-title">Наталья Сивалко 💎</h2>
             </div>
 
-            <!-- ВЫДВИЖНОЙ ЧАТ -->
             <div class="box">
                 <span class="label">Chat</span>
                 <button class="chat-toggle-btn" onclick="toggleChat()">
@@ -683,7 +677,7 @@
             </div>
         </div>
 
-        <!-- 3. КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ (МЕЖДУ ГИФКАМИ И SPECIAL OFFER) -->
+        <!-- 3. КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ -->
         <div class="col-section">
             <div class="directions-box">
                 <span class="label">Focus</span>
@@ -843,9 +837,6 @@
             `;
         }
 
-        // =============================================
-        // АУДИО ПЛЕЕР
-        // =============================================
         const audio = document.getElementById('audio-engine');
         const playBtn = document.getElementById('play-btn');
         const pBar = document.getElementById('p-bar');
@@ -913,9 +904,6 @@
             pBar.style.width = '0%';
         });
 
-        // =============================================
-        // ИСКРЫ (Pyro Embers)
-        // =============================================
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let pts = [];
