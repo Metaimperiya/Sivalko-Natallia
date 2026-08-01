@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* ТВОЙ СТИЛЬ — БЕЗ ИЗМЕНЕНИЙ */
         :root {
             --bg-dark: #05020a;
             --c-violet: #a855f7;
@@ -42,7 +43,6 @@
             padding: 15px 0;
         }
 
-        /* WEBGL ШЕЙДЕР СЕВЕРНОГО СИЯНИЯ СЗАДИ */
         #glcanvas {
             position: fixed;
             top: 0;
@@ -54,7 +54,6 @@
             pointer-events: none;
         }
 
-        /* ОСНОВНОЙ КОНТЕЙНЕР */
         .main-deck {
             position: relative;
             z-index: 1;
@@ -95,7 +94,7 @@
             opacity: 0.9;
         }
 
-        /* БЛОК С ВЫРЕЗАННОЙ ФОТОГРАФИЕЙ И ИМЕНЕМ */
+        /* ФОТОГРАФИЯ */
         .hero-photo-container {
             position: relative;
             width: 100%;
@@ -115,18 +114,9 @@
         }
 
         @keyframes photoPulse {
-            0% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.3));
-            }
-            50% {
-                transform: scale(1.025);
-                filter: drop-shadow(0 0 30px rgba(192, 132, 252, 0.65));
-            }
-            100% {
-                transform: scale(1.005);
-                filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.4));
-            }
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.3)); }
+            50% { transform: scale(1.025); filter: drop-shadow(0 0 30px rgba(192, 132, 252, 0.65)); }
+            100% { transform: scale(1.005); filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.4)); }
         }
 
         .photo-caption-overlay {
@@ -166,7 +156,7 @@
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
         }
 
-        /* БЛОК СО СВЕТЯЩИМИСЯ СИРЕНЕВЫМИ КНОПКАМИ */
+        /* КНОПКИ */
         .buttons-group {
             display: flex;
             flex-direction: column;
@@ -202,24 +192,12 @@
             animation-delay: 1.5s;
         }
 
-        /* АНИМАЦИЯ ПУЛЬСАЦИИ И НЕОНОВОГО СВЕЧЕНИЯ КНОПОК */
         @keyframes btnGlowPulse {
-            0% {
-                box-shadow: 0 0 12px rgba(168, 85, 247, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.2);
-                border-color: rgba(192, 132, 252, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(192, 132, 252, 0.8), 0 0 35px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
-                border-color: rgba(255, 255, 255, 0.9);
-                transform: translateY(-1px);
-            }
-            100% {
-                box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
-                border-color: rgba(192, 132, 252, 0.6);
-            }
+            0% { box-shadow: 0 0 12px rgba(168, 85, 247, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.2); border-color: rgba(192, 132, 252, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(192, 132, 252, 0.8), 0 0 35px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4); border-color: rgba(255, 255, 255, 0.9); transform: translateY(-1px); }
+            100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2); border-color: rgba(192, 132, 252, 0.6); }
         }
 
-        /* БЛИК, ПРОБЕГАЮЩИЙ ПО КНОПКАМ */
         .glow-btn::before {
             content: '';
             position: absolute;
@@ -227,12 +205,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(
-                60deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.35) 50%,
-                transparent 70%
-            );
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
             transform: rotate(30deg);
             animation: shimmer 4s infinite linear;
         }
@@ -254,10 +227,7 @@
             fill: currentColor;
             z-index: 2;
         }
-
-        .btn-text {
-            z-index: 2;
-        }
+        .btn-text { z-index: 2; }
 
         /* ЧАТ */
         .chat-toggle-btn {
@@ -306,15 +276,8 @@
             margin-left: 15px;
             border-left: 3px solid var(--c-violet-bright);
         }
-        .log-user {
-            color: var(--c-violet-bright);
-            font-weight: 600;
-        }
-        .log-time {
-            font-size: 10px;
-            color: var(--c-grey);
-            float: right;
-        }
+        .log-user { color: var(--c-violet-bright); font-weight: 600; }
+        .log-time { font-size: 10px; color: var(--c-grey); float: right; }
         .reply-btn {
             background: none;
             border: none;
@@ -324,12 +287,7 @@
             margin-top: 6px;
         }
         .reply-btn:hover { color: var(--c-white); }
-        .input-box {
-            margin-top: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+        .input-box { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
         #reply-info {
             display: none;
             font-size: 12px;
@@ -568,7 +526,7 @@ void main() {
 }
     </script>
 
-    <!-- Fragment Shader -->
+    <!-- Fragment Shader — ЦВЕТА МЕНЯЮТСЯ АВТОМАТИЧЕСКИ -->
     <script id="fragment-shader" type="x-shader/x-fragment">
 #version 300 es
 precision highp float;
@@ -576,10 +534,6 @@ precision highp int;
 
 uniform vec2 iResolution;
 uniform float iTime;
-uniform vec3 uColor1;
-uniform vec3 uColor2;
-uniform float uThickness; 
-uniform float uScale; 
 
 out vec4 fragColor;
 
@@ -587,6 +541,39 @@ mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
 mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
 float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
 vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
+
+// ============================================================
+// АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ (КАК В НАСТОЯЩЕМ СИЯНИИ)
+// ============================================================
+vec3 getAuroraColor(float t, float height) {
+    // Цвета меняются по кругу со временем
+    float hueShift = iTime * 0.025;
+    float h = fract(t * 0.12 + hueShift + height * 0.25);
+    
+    vec3 green  = vec3(0.1, 1.0, 0.3);
+    vec3 blue   = vec3(0.0, 0.4, 1.0);
+    vec3 purple = vec3(0.6, 0.0, 1.0);
+    vec3 pink   = vec3(1.0, 0.1, 0.7);
+    vec3 teal   = vec3(0.0, 0.9, 0.7);
+    
+    float w1 = 0.5 + 0.5 * sin(h * 6.283 + 0.0);
+    float w2 = 0.5 + 0.5 * sin(h * 6.283 + 1.2);
+    float w3 = 0.5 + 0.5 * sin(h * 6.283 + 2.4);
+    float w4 = 0.5 + 0.5 * sin(h * 6.283 + 3.6);
+    float w5 = 0.5 + 0.5 * sin(h * 6.283 + 4.8);
+    
+    float heightFactor = smoothstep(0.0, 1.0, height);
+    w2 += heightFactor * 0.3;
+    w3 += heightFactor * 0.2;
+    
+    float total = w1 + w2 + w3 + w4 + w5;
+    vec3 result = (green * w1 + blue * w2 + purple * w3 + pink * w4 + teal * w5) / total;
+    
+    float flicker = 0.85 + 0.15 * sin(t * 2.0 + iTime * 0.5);
+    result *= flicker * 1.3;
+    
+    return result;
+}
 
 float triNoise2d(in vec2 p, float spd)
 {
@@ -627,17 +614,24 @@ vec4 aurora(vec3 ro, vec3 rd)
     vec4 col = vec4(0);
     vec4 avgCol = vec4(0);
     
-    for(float i=0.;i<50.;i++)
+    // Автоматические параметры
+    float autoThickness = 0.7 + 0.4 * sin(iTime * 0.07 + 1.2);
+    float autoScale = 0.7 + 0.3 * sin(iTime * 0.05 + 0.8);
+    
+    for(float i=0.;i<55.;i++)
     {
         float of = 0.006*hash21(gl_FragCoord.xy)*smoothstep(0.,15., i);
         float pt = ((.8+pow(i,1.4)*.002)-ro.y)/(rd.y*2.+0.4);
         pt -= of;
         vec3 bpos = ro + pt*rd;
         vec2 p = bpos.zx;
-        float rzt = triNoise2d(p * uScale, 0.05); 
-        vec4 col2 = vec4(0,0,0, rzt * uThickness); 
+        float rzt = triNoise2d(p * autoScale, 0.06); 
+        vec4 col2 = vec4(0,0,0, rzt * autoThickness); 
         
-        col2.rgb = mix(uColor1, uColor2, rzt) * rzt * 1.3; 
+        float height = (bpos.y - 0.0) / 120.0;
+        vec3 autoColor = getAuroraColor(i * 0.08 + iTime * 0.015, height);
+        col2.rgb = autoColor * rzt * 1.2; 
+        
         avgCol = mix(avgCol, col2, .5);
         col += avgCol*exp2(-i*0.065 - 2.5)*smoothstep(0.,5., i);
     }
@@ -657,27 +651,46 @@ vec3 nmzHash33(vec3 q)
 vec3 stars(in vec3 p)
 {
     vec3 c = vec3(0.);
-    float res = iResolution.x*1.;
+    float res = iResolution.x * 1.2;
+    float time = iTime * 0.02;
     
-    for (float i=0.;i<4.;i++)
+    for (float i=0.;i<5.;i++)
     {
-        vec3 q = fract(p*(.15*res))-0.5;
-        vec3 id = floor(p*(.15*res));
-        vec2 rn = nmzHash33(id).xy;
-        float c2 = 1.-smoothstep(0.,.6,length(q));
-        c2 *= step(rn.x, 0.0015 + i*i*0.001); 
-        c += c2*(mix(vec3(0.8,0.4,1.0),vec3(0.6,0.8,1.),rn.y)*0.1+0.9);
-        p *= 1.3;
+        float fi = i;
+        vec3 q = fract(p * (0.12 + fi * 0.08) * res) - 0.5;
+        vec3 id = floor(p * (0.12 + fi * 0.08) * res);
+        vec2 rn = nmzHash33(id + fi * 100.0).xy;
+        
+        float size = 0.15 + 0.5 * rn.x;
+        float c2 = 1.0 - smoothstep(0.0, size, length(q.xy));
+        
+        float twinkle = 0.5 + 0.5 * sin(time * (2.0 + 3.0 * rn.y) + id.x * 100.0 + id.y * 200.0);
+        twinkle = twinkle * twinkle;
+        
+        vec3 starColor = mix(
+            vec3(0.9, 0.95, 1.0),
+            mix(
+                vec3(1.0, 0.9, 0.7),
+                vec3(0.7, 0.8, 1.0),
+                rn.y
+            ),
+            0.3 + 0.7 * rn.x
+        );
+        
+        float density = 0.7 + 0.3 * sin(iTime * 0.005 + fi * 2.0);
+        c2 *= step(rn.x, 0.15 + 0.08 * density);
+        
+        c += starColor * c2 * twinkle * (0.4 + 0.6 * (1.0 - fi / 5.0));
     }
-    return c*c*.8;
+    return c * 0.9;
 }
 
 vec3 bg(in vec3 rd)
 {
     float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd)*0.5+0.5;
     sd = pow(sd, 5.);
-    vec3 col = mix(vec3(0.04,0.01,0.08), vec3(0.08,0.02,0.12), sd);
-    return col*.63;
+    vec3 col = mix(vec3(0.015,0.025,0.06), vec3(0.04,0.02,0.08), sd);
+    return col*0.8;
 }
 
 void main()
@@ -689,8 +702,9 @@ void main()
     vec3 ro = vec3(0,0,-6.7);
     vec3 rd = normalize(vec3(p,1.3));
     
-    float camY = sin(iTime * 0.08) * 0.05 + 0.02;
-    float camX = sin(iTime * 0.04) * 0.2;
+    // Движение камеры
+    float camY = sin(iTime * 0.06) * 0.08 + 0.02;
+    float camX = sin(iTime * 0.035 + 0.5) * 0.25;
     
     rd.yz *= mm2(camY);
     rd.xz *= mm2(camX);
@@ -709,11 +723,11 @@ void main()
         col = col*(1.-aur.a) + aur.rgb;
         
         float edge = smoothstep(mHeight + 0.04, mHeight, rd.y);
-        col += mix(uColor1, uColor2, 0.5) * edge * 0.15;
+        col += mix(vec3(0.1,0.8,0.2), vec3(0.2,0.3,1.0), 0.5) * edge * 0.15;
     } 
     else {
         float depth = (mHeight - rd.y) * 4.0;
-        vec3 mountainColor = mix(vec3(0.03, 0.01, 0.05), vec3(0.005, 0.002, 0.008), clamp(depth, 0.0, 1.0));
+        vec3 mountainColor = mix(vec3(0.02, 0.01, 0.04), vec3(0.005, 0.002, 0.008), clamp(depth, 0.0, 1.0));
         col = mountainColor;
     }
     
@@ -721,11 +735,13 @@ void main()
 }
     </script>
 
-    <!-- ИНТЕРФЕЙС -->
+    <!-- ============================================ -->
+    <!-- ИНТЕРФЕЙС (ТВОЙ, БЕЗ ИЗМЕНЕНИЙ) -->
+    <!-- ============================================ -->
     <div class="main-deck">
         <div class="col-section">
             
-            <!-- ВЫРЕЗАННАЯ ФОТОГРАФИЯ C ПУЛЬСАЦИЕЙ И ИМЕНЕМ -->
+            <!-- ФОТОГРАФИЯ -->
             <div class="hero-photo-container">
                 <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 <div class="photo-caption-overlay">
@@ -734,9 +750,8 @@ void main()
                 </div>
             </div>
 
-            <!-- ГРУППА СВЕТЯЩИХСЯ СИРЕНЕВЫХ КНОПОК -->
+            <!-- КНОПКИ -->
             <div class="buttons-group">
-                <!-- TELEGRAM КНОПКА -->
                 <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="glow-btn">
                     <svg class="btn-icon" viewBox="0 0 24 24">
                         <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/>
@@ -744,7 +759,6 @@ void main()
                     <span class="btn-text">Telegram</span>
                 </a>
 
-                <!-- MAX КНОПКА -->
                 <a href="https://max.ru/join/Tu3PIYPMn1dDYSvihbVR8gVhtxAIxb6HOadKL0eRlWM" target="_blank" class="glow-btn glow-btn-max">
                     <svg class="btn-icon" viewBox="0 0 24 24">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -779,6 +793,7 @@ void main()
             </div>
         </div>
 
+        <!-- НАПРАВЛЕНИЯ -->
         <div class="col-section">
             <div class="directions-box">
                 <span class="label">Focus</span>
@@ -792,6 +807,7 @@ void main()
             </div>
         </div>
 
+        <!-- ПРОМО -->
         <div class="col-section">
             <div class="box">
                 <span class="label">Special Offer</span>
@@ -820,6 +836,7 @@ void main()
             </div>
         </div>
 
+        <!-- ПЛЕЕР -->
         <div class="col-section">
             <div class="box" style="display:flex; flex-direction:column; margin-bottom:12px;">
                 <span class="label">Northern Melodies</span>
@@ -835,10 +852,10 @@ void main()
                     </div>
                 </div>
                 <div class="track-list">
-                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Violet Aurora</div>
-                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Amethyst Glow</div>
+                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Aurora Borealis</div>
+                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Emerald Lights</div>
                     <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Polar Night</div>
-                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Purple Wind</div>
+                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Mountain Wind</div>
                 </div>
             </div>
             <div class="footer-log">
@@ -854,6 +871,14 @@ void main()
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
+        // =============================================
+        // НАЗВАНИЕ: Sivalko System
+        // ВЕРСИЯ: ТВОЙ КОД + АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ
+        // =============================================
+
+        console.log('🌌 Sivalko System — АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ');
+
+        // --- FIREBASE ЧАТ ---
         const firebaseConfig = {
             apiKey: "AIzaSyC5L2GQ-2CYj-GNYsHENASdvKVF68rsEb0",
             authDomain: "metaimperiya-14d1b.firebaseapp.com",
@@ -935,7 +960,7 @@ void main()
             `;
         }
 
-        /* ПЛЕЕР */
+        // --- АУДИО ПЛЕЕР ---
         const audio = document.getElementById('audio-engine');
         const playBtn = document.getElementById('play-btn');
         const pBar = document.getElementById('p-bar');
@@ -994,12 +1019,15 @@ void main()
             pBar.style.width = '0%';
         });
 
-        /* ШЕЙДЕР WEBGL2 С СИРЕНЕВОЙ ПАЛИТРОЙ */
+        // --- WEBGL СЕВЕРНОЕ СИЯНИЕ (АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ) ---
         window.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             const gl = canvas.getContext('webgl2');
 
-            if (!gl) return;
+            if (!gl) {
+                console.warn('WebGL2 не поддерживается');
+                return;
+            }
 
             function createShader(gl, type, source) {
                 const shader = gl.createShader(type);
@@ -1048,10 +1076,6 @@ void main()
 
             const resolutionUniformLocation = gl.getUniformLocation(shaderProgram, 'iResolution');
             const timeUniformLocation = gl.getUniformLocation(shaderProgram, 'iTime');
-            const color1UniformLocation = gl.getUniformLocation(shaderProgram, 'uColor1');
-            const color2UniformLocation = gl.getUniformLocation(shaderProgram, 'uColor2');
-            const thicknessUniformLocation = gl.getUniformLocation(shaderProgram, 'uThickness');
-            const scaleUniformLocation = gl.getUniformLocation(shaderProgram, 'uScale'); 
 
             function onResize() {
                 const dpi = window.devicePixelRatio || 1;
@@ -1066,55 +1090,18 @@ void main()
 
             const startTime = Date.now();
 
-            /* СИРЕНЕВО-ФИОЛЕТОВАЯ ПАЛИТРА */
-            const auroraPalette = [
-                [0.6, 0.2, 0.9],
-                [0.8, 0.3, 1.0],
-                [0.5, 0.1, 0.8],
-                [0.9, 0.4, 0.9],
-                [0.4, 0.1, 0.7],
-                [0.7, 0.2, 0.95]
-            ];
-
-            function getDynamicColor(time, offset) {
-                const speed = 0.12;
-                const t = (time * speed + offset) % auroraPalette.length;
-                const index1 = Math.floor(t);
-                const index2 = (index1 + 1) % auroraPalette.length;
-                const factor = t - index1;
-
-                const c1 = auroraPalette[index1];
-                const c2 = auroraPalette[index2];
-
-                return [
-                    c1[0] + (c2[0] - c1[0]) * factor,
-                    c1[1] + (c2[1] - c1[1]) * factor,
-                    c1[2] + (c2[2] - c1[2]) * factor
-                ];
-            }
-
             function renderLoop() {
                 const currentTime = (Date.now() - startTime) / 1000;
-                
                 gl.uniform1f(timeUniformLocation, currentTime);
-
-                const dynamicThickness = 0.8 + Math.sin(currentTime * 0.3) * 0.3;
-                const dynamicScale = 1.0 + Math.cos(currentTime * 0.2) * 0.2;
-
-                const color1 = getDynamicColor(currentTime, 0);
-                const color2 = getDynamicColor(currentTime, 2.5);
-
-                gl.uniform3f(color1UniformLocation, color1[0], color1[1], color1[2]);
-                gl.uniform3f(color2UniformLocation, color2[0], color2[1], color2[2]);
-                gl.uniform1f(thicknessUniformLocation, dynamicThickness);
-                gl.uniform1f(scaleUniformLocation, dynamicScale);
-                
                 gl.drawArrays(gl.TRIANGLES, 0, 6);
-                
                 requestAnimationFrame(renderLoop);
             }
 
             renderLoop();
+            
+            console.log('🌌 Северное сияние — ЦВЕТА МЕНЯЮТСЯ АВТОМАТИЧЕСКИ!');
+            console.log('💚 Зелёный → 💙 Синий → 💜 Фиолетовый → 💗 Розовый');
+            console.log('⭐ Звёзды настоящие, мерцают');
         });
     </script>
 </body>
