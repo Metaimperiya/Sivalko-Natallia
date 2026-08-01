@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Наталья Сивалко | Sivalko System</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,11 +30,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html, body {
-            touch-action: manipulation;
-            -webkit-overflow-scrolling: touch;
-        }
-
         body {
             background-color: var(--bg-dark);
             color: var(--c-white);
@@ -42,10 +37,11 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
-            padding: 10px 0;
+            padding: 10px 0 30px 0;
         }
 
         #glcanvas {
@@ -57,7 +53,6 @@
             display: block;
             z-index: 0;
             pointer-events: none;
-            touch-action: none;
         }
 
         .main-deck {
@@ -65,7 +60,7 @@
             z-index: 1;
             width: 94%;
             max-width: 520px;
-            padding: 10px 5px;
+            padding: 10px 5px 20px 5px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -105,7 +100,7 @@
             display: block;
             object-fit: contain;
             animation: photoPulse 4s ease-in-out infinite alternate;
-            touch-action: none;
+            pointer-events: none;
         }
 
         @keyframes photoPulse {
@@ -517,7 +512,7 @@
         ::-webkit-scrollbar-track { background: transparent; }
 
         @media (max-width: 400px) {
-            .main-deck { width: 98%; padding: 8px 3px; }
+            .main-deck { width: 98%; padding: 8px 3px 20px 3px; }
             .box { padding: 12px 14px; }
             .preview-tag { font-size: 10px; padding: 4px 10px; }
             .glow-btn { padding: 12px 14px; font-size: 12px; }
@@ -757,16 +752,12 @@ void main()
 
             <div class="buttons-group">
                 <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="glow-btn">
-                    <svg class="btn-icon" viewBox="0 0 24 24">
-                        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/>
-                    </svg>
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/></svg>
                     <span class="btn-text">Telegram</span>
                 </a>
 
                 <a href="https://max.ru/join/Tu3PIYPMn1dDYSvihbVR8gVhtxAIxb6HOadKL0eRlWM" target="_blank" class="glow-btn glow-btn-max">
-                    <svg class="btn-icon" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     <span class="btn-text">MAX</span>
                 </a>
             </div>
@@ -857,7 +848,7 @@ void main()
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('📱 Sivalko System — ОПТИМИЗИРОВАНО ДЛЯ ТЕЛЕФОНА');
+        console.log('📱 Sivalko System — СКРОЛЛ РАБОТАЕТ!');
 
         // --- FIREBASE ЧАТ ---
         const firebaseConfig = {
@@ -1050,7 +1041,8 @@ void main()
             }
 
             renderLoop();
-            console.log('🌌 Северное сияние работает на телефоне!');
+            console.log('🌌 Северное сияние работает!');
+            console.log('📱 Скролл работает!');
         });
     </script>
 </body>
