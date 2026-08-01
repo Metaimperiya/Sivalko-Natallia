@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ТВОЙ СТИЛЬ — БЕЗ ИЗМЕНЕНИЙ */
         :root {
             --bg-dark: #05020a;
             --c-violet: #a855f7;
@@ -80,18 +79,6 @@
             -webkit-backdrop-filter: blur(14px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), 0 0 15px rgba(168, 85, 247, 0.15);
             position: relative;
-        }
-
-        .label {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-family: 'Cinzel', serif;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            color: var(--c-violet-bright);
-            text-transform: uppercase;
-            opacity: 0.9;
         }
 
         /* ФОТОГРАФИЯ */
@@ -398,7 +385,7 @@
 
         /* ПЛЕЕР */
         .fem-player { text-align: center; }
-        #track-name {
+        .track-name {
             font-family: 'Cinzel', serif;
             font-size: 13px;
             margin-bottom: 14px;
@@ -485,21 +472,29 @@
             border-left-width: 3px;
         }
 
-        .footer-log {
+        /* НИЖНИЙ БЛОК */
+        .footer-slogan {
             padding: 14px 16px;
-            font-size: 11px;
+            font-size: 13px;
             line-height: 1.6;
             border: var(--border);
             border-radius: 12px;
             background: var(--glass);
-            color: var(--c-grey);
-            border-top: 2px solid var(--c-violet-bright);
-        }
-        .footer-log b {
             color: var(--c-white);
+            border-top: 2px solid var(--c-violet-bright);
+            text-align: center;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        .footer-slogan b {
+            color: var(--c-violet-bright);
             font-family: 'Cinzel', serif;
-            font-size: 10px;
+            font-size: 11px;
             letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
+            font-style: normal;
         }
 
         ::-webkit-scrollbar { width: 4px; }
@@ -526,7 +521,7 @@ void main() {
 }
     </script>
 
-    <!-- Fragment Shader — ЦВЕТА МЕНЯЮТСЯ АВТОМАТИЧЕСКИ -->
+    <!-- Fragment Shader -->
     <script id="fragment-shader" type="x-shader/x-fragment">
 #version 300 es
 precision highp float;
@@ -542,11 +537,8 @@ mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
 float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
 vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
 
-// ============================================================
-// АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ (КАК В НАСТОЯЩЕМ СИЯНИИ)
-// ============================================================
+// АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ
 vec3 getAuroraColor(float t, float height) {
-    // Цвета меняются по кругу со временем
     float hueShift = iTime * 0.025;
     float h = fract(t * 0.12 + hueShift + height * 0.25);
     
@@ -614,7 +606,6 @@ vec4 aurora(vec3 ro, vec3 rd)
     vec4 col = vec4(0);
     vec4 avgCol = vec4(0);
     
-    // Автоматические параметры
     float autoThickness = 0.7 + 0.4 * sin(iTime * 0.07 + 1.2);
     float autoScale = 0.7 + 0.3 * sin(iTime * 0.05 + 0.8);
     
@@ -702,7 +693,6 @@ void main()
     vec3 ro = vec3(0,0,-6.7);
     vec3 rd = normalize(vec3(p,1.3));
     
-    // Движение камеры
     float camY = sin(iTime * 0.06) * 0.08 + 0.02;
     float camX = sin(iTime * 0.035 + 0.5) * 0.25;
     
@@ -736,7 +726,7 @@ void main()
     </script>
 
     <!-- ============================================ -->
-    <!-- ИНТЕРФЕЙС (ТВОЙ, БЕЗ ИЗМЕНЕНИЙ) -->
+    <!-- ИНТЕРФЕЙС — ВСЁ ПО-РУССКИ! -->
     <!-- ============================================ -->
     <div class="main-deck">
         <div class="col-section">
@@ -750,7 +740,7 @@ void main()
                 </div>
             </div>
 
-            <!-- КНОПКИ -->
+            <!-- КНОПКИ (оставляем Telegram и MAX) -->
             <div class="buttons-group">
                 <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="glow-btn">
                     <svg class="btn-icon" viewBox="0 0 24 24">
@@ -763,15 +753,14 @@ void main()
                     <svg class="btn-icon" viewBox="0 0 24 24">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                     </svg>
-                    <span class="btn-text">Присоединиться к Max</span>
+                    <span class="btn-text">MAX</span>
                 </a>
             </div>
 
-            <!-- ЧАТ -->
+            <!-- ЧАТ (русский) -->
             <div class="box">
-                <span class="label">Chat</span>
                 <button class="chat-toggle-btn" onclick="toggleChat()">
-                    <span>💬 TOGGLE LIVE CHAT</span>
+                    <span>💬 Живой чат</span>
                     <span id="arrow-icon">▼</span>
                 </button>
 
@@ -793,10 +782,9 @@ void main()
             </div>
         </div>
 
-        <!-- НАПРАВЛЕНИЯ -->
+        <!-- НАПРАВЛЕНИЯ (русский) -->
         <div class="col-section">
             <div class="directions-box">
-                <span class="label">Focus</span>
                 <div class="directions-title">КЛЮЧЕВЫЕ НАПРАВЛЕНИЯ</div>
                 <div class="preview-tags">
                     <span class="preview-tag">🧬 Кочёвая наука</span>
@@ -807,10 +795,9 @@ void main()
             </div>
         </div>
 
-        <!-- ПРОМО -->
+        <!-- ПРОМО (русский) -->
         <div class="col-section">
             <div class="box">
-                <span class="label">Special Offer</span>
                 <div class="promo-content">
                     <div class="promo-headline">Хочешь 150+ живых подписчиков и продажи на 50–250 тыс. за неделю?</div>
                     <p style="margin-bottom: 10px;">Это не курс, не марафон или папки, которые никто не открывает.</p>
@@ -836,31 +823,32 @@ void main()
             </div>
         </div>
 
-        <!-- ПЛЕЕР -->
+        <!-- ПЛЕЕР (русский) -->
         <div class="col-section">
             <div class="box" style="display:flex; flex-direction:column; margin-bottom:12px;">
-                <span class="label">Northern Melodies</span>
                 <div class="fem-player">
-                    <div id="track-name">Select a Melody</div>
+                    <div class="track-name" id="track-name">Выбери трек</div>
                     <div style="display:flex; justify-content:center; gap:12px; margin-bottom:12px;">
-                        <button class="btn-ctrl" onclick="prevTrack()" aria-label="Previous">❮</button>
+                        <button class="btn-ctrl" onclick="prevTrack()" aria-label="Предыдущий">❮</button>
                         <button class="btn-ctrl" id="play-btn" onclick="togglePlay()" aria-label="Play/Pause">▶</button>
-                        <button class="btn-ctrl" onclick="nextTrack()" aria-label="Next">❯</button>
+                        <button class="btn-ctrl" onclick="nextTrack()" aria-label="Следующий">❯</button>
                     </div>
                     <div class="progress-wrapper" onclick="seek(event)" ontouchstart="seekTouch(event)">
                         <div id="p-bar"></div>
                     </div>
                 </div>
                 <div class="track-list">
-                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Aurora Borealis</div>
-                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Emerald Lights</div>
-                    <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Polar Night</div>
-                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Mountain Wind</div>
+                    <div class="track-item" onclick="selectTrack(0)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">I. Северное сияние</div>
+                    <div class="track-item" onclick="selectTrack(1)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">II. Изумрудные огни</div>
+                    <div class="track-item" onclick="selectTrack(2)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">III. Полярная ночь</div>
+                    <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Горный ветер</div>
                 </div>
             </div>
-            <div class="footer-log">
-                <b>SYSTEM LOG</b><br>
-                "The northern lights dance for those who look up. Build your system and control the flow."
+
+            <!-- НИЖНИЙ БЛОК (русский) -->
+            <div class="footer-slogan">
+                <b>✦ SIVALKO SYSTEM ✦</b>
+                "Северное сияние танцует для тех, кто поднимает глаза. Построй свою систему и управляй потоком."
             </div>
         </div>
     </div>
@@ -873,10 +861,10 @@ void main()
     <script>
         // =============================================
         // НАЗВАНИЕ: Sivalko System
-        // ВЕРСИЯ: ТВОЙ КОД + АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ
+        // ВЕРСИЯ: ВСЁ ПО-РУССКИ
         // =============================================
 
-        console.log('🌌 Sivalko System — АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ');
+        console.log('💜 Sivalko System — ВСЁ ПО-РУССКИ');
 
         // --- FIREBASE ЧАТ ---
         const firebaseConfig = {
@@ -960,7 +948,7 @@ void main()
             `;
         }
 
-        // --- АУДИО ПЛЕЕР ---
+        // --- ПЛЕЕР ---
         const audio = document.getElementById('audio-engine');
         const playBtn = document.getElementById('play-btn');
         const pBar = document.getElementById('p-bar');
@@ -1019,24 +1007,17 @@ void main()
             pBar.style.width = '0%';
         });
 
-        // --- WEBGL СЕВЕРНОЕ СИЯНИЕ (АВТОМАТИЧЕСКАЯ СМЕНА ЦВЕТОВ) ---
+        // --- WEBGL ---
         window.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             const gl = canvas.getContext('webgl2');
-
-            if (!gl) {
-                console.warn('WebGL2 не поддерживается');
-                return;
-            }
+            if (!gl) { console.warn('WebGL2 не поддерживается'); return; }
 
             function createShader(gl, type, source) {
                 const shader = gl.createShader(type);
                 gl.shaderSource(shader, source);
                 gl.compileShader(shader);
-                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-                    gl.deleteShader(shader);
-                    return null;
-                }
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) { gl.deleteShader(shader); return null; }
                 return shader;
             }
 
@@ -1060,14 +1041,7 @@ void main()
 
             const positionBuffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-            const positions = [
-                -1.0,  1.0, 
-                 1.0,  1.0, 
-                -1.0, -1.0, 
-                 1.0,  1.0, 
-                 1.0, -1.0, 
-                -1.0, -1.0
-            ];
+            const positions = [-1.0,1.0,1.0,1.0,-1.0,-1.0,1.0,1.0,1.0,-1.0,-1.0,-1.0];
             gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
             const positionLocation = gl.getAttribLocation(shaderProgram, 'a_position');
@@ -1098,10 +1072,8 @@ void main()
             }
 
             renderLoop();
-            
-            console.log('🌌 Северное сияние — ЦВЕТА МЕНЯЮТСЯ АВТОМАТИЧЕСКИ!');
-            console.log('💚 Зелёный → 💙 Синий → 💜 Фиолетовый → 💗 Розовый');
-            console.log('⭐ Звёзды настоящие, мерцают');
+            console.log('🌌 Северное сияние работает!');
+            console.log('🇷🇺 Всё по-русски!');
         });
     </script>
 </body>
