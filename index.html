@@ -7,18 +7,18 @@
     <!-- ============================================
     SEO И МЕТА-ТЕГИ
     ============================================ -->
-    <title>Наталья Сивалко | Sivalko System — Кочёвая наука, воронки продаж, стартапы</title>
+    <title>Наталья Сивалко | Sivalko System — Практикум по продажам</title>
 
-    <meta name="description" content="Наталья Сивалко — Sivalko System. Кочёвая наука, воронки продаж, стартапы, MAX + Telegram системы. Результаты: +67 подписчиков за день, рост канала до 157 человек.">
-    <meta name="keywords" content="Наталья Сивалко, Sivalko System, кочёвая наука, воронки продаж, стартапы, MAX, Telegram, ДВИЖ, привлечение подписчиков, продажи">
+    <meta name="description" content="Бесплатный 7-дневный практикум по системе продаж на 300K+ в месяц. Наталья Сивалко — Sivalko System. Старт во вторник в 17:00.">
+    <meta name="keywords" content="Наталья Сивалко, Sivalko System, практикум, продажи, система, 300K, эксперты, воронки, трафик">
 
     <!-- ============================================
     OPEN GRAPH / ПРЕВЬЮШКА ДЛЯ СОЦСЕТЕЙ
     ============================================ -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sivalko-natallia.vercel.app/">
-    <meta property="og:title" content="Наталья Сивалко | Sivalko System 💎">
-    <meta property="og:description" content="Кочёвая наука, воронки продаж, стартапы. ДВИЖ: Привлекай и продавай в MAX + Telegram.">
+    <meta property="og:title" content="Наталья Сивалко | Бесплатный 7-дневный практикум по продажам 💎">
+    <meta property="og:description" content="Система продаж на 300K+ в месяц. Старт во вторник в 17:00. Бронируйте место сейчас!">
     <meta property="og:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -27,8 +27,8 @@
     TWITTER / X
     ============================================ -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Наталья Сивалко | Sivalko System 💎">
-    <meta name="twitter:description" content="Кочёвая наука, воронки продаж, стартапы. ДВИЖ: Привлекай и продавай в MAX + Telegram.">
+    <meta name="twitter:title" content="Наталья Сивалко | Бесплатный 7-дневный практикум по продажам 💎">
+    <meta name="twitter:description" content="Система продаж на 300K+ в месяц. Старт во вторник в 17:00. Бронируйте место сейчас!">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/preview.jpg">
 
     <!-- ============================================
@@ -336,41 +336,144 @@
             transition: 0.3s;
         }
 
-        /* ПРОМО */
-        .promo-headline {
-            font-size: clamp(16px, 4vw, 20px);
+        /* ============================================
+           СВОРАЧИВАЕМЫЕ БЛОКИ (как в Telegram)
+           ============================================ */
+        .accordion-block {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(168,85,247,0.2);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .accordion-block:last-child { margin-bottom: 0; }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: background 0.2s;
+            gap: 12px;
+        }
+        .accordion-header:active { background: rgba(168,85,247,0.1); }
+        .accordion-header .title {
             font-weight: 700;
             color: var(--c-white);
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 15px;
+            line-height: 1.3;
+        }
+        .accordion-header .arrow {
+            font-size: 18px;
+            color: var(--c-violet-bright);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+        .accordion-header .arrow.open { transform: rotate(180deg); }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 16px;
+        }
+        .accordion-body.open {
+            max-height: 600px;
+            padding: 0 16px 16px 16px;
+        }
+        .accordion-body .desc {
+            font-size: 14px;
+            color: var(--c-grey);
+            line-height: 1.6;
+        }
+        .accordion-body .desc li {
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+        .accordion-body .desc li::before {
+            content: "•";
+            color: var(--c-violet-bright);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* ПРОМО - ОБНОВЛЁННЫЙ СТИЛЬ ДЛЯ ПРАКТИКУМА */
+        .promo-headline {
+            font-size: clamp(18px, 4.5vw, 24px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            text-align: center;
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .promo-subhead {
+            font-size: clamp(14px, 3.2vw, 16px);
+            color: var(--c-grey);
+            line-height: 1.6;
+            margin-bottom: 18px;
+            text-align: center;
+            border-bottom: 1px solid rgba(168,85,247,0.2);
+            padding-bottom: 16px;
         }
         .promo-content p {
             font-size: clamp(14px, 3.5vw, 16px);
             color: var(--c-grey);
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
-        .promo-list {
-            margin: 10px 0 16px 20px;
-            font-size: clamp(14px, 3.5vw, 16px);
-            color: var(--c-grey);
-            line-height: 1.5;
+        .promo-content strong {
+            color: var(--c-violet-bright);
+            font-weight: 600;
+        }
+
+        .promo-highlight {
+            background: rgba(168,85,247,0.15);
+            border: 1px solid rgba(168,85,247,0.3);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 16px 0;
+            text-align: center;
+            color: var(--c-white);
+            font-weight: 600;
+            font-size: clamp(15px, 3.8vw, 18px);
         }
         .cta-btn {
             display: block;
             width: 100%;
             text-align: center;
-            padding: 16px;
+            padding: 18px 20px;
             background: linear-gradient(135deg, #7e22ce, #c084fc);
             border: 1px solid var(--c-violet-bright);
-            border-radius: 8px;
+            border-radius: 12px;
             color: #fff;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             letter-spacing: 1px;
             transition: 0.3s;
-            box-shadow: 0 4px 20px rgba(168,85,247,0.4);
+            box-shadow: 0 4px 25px rgba(168,85,247,0.5);
             touch-action: manipulation;
+            margin-top: 10px;
+        }
+        .cta-btn:active { transform: scale(0.97); }
+        .cta-small {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+            display: block;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
         }
 
         /* ПЛЕЕР */
@@ -438,6 +541,7 @@
             .glow-btn { padding: 14px 16px; font-size: 14px; }
             .btn-ctrl { width: 38px; height: 38px; font-size: 16px; }
             .btn-ctrl#play-btn { width: 44px; height: 44px; font-size: 18px; }
+            .accordion-header .title { font-size: 14px; }
         }
     </style>
 </head>
@@ -709,21 +813,92 @@ void main() {
             </div>
         </div>
 
+        <!-- ============================================ -->
+        <!-- БЛОК ПРАКТИКУМА - СВОРАЧИВАЕМЫЕ БЛОКИ        -->
+        <!-- ============================================ -->
         <div class="col-section">
             <div class="box">
                 <div class="promo-content">
-                    <div class="promo-headline">Хочешь 150+ живых подписчиков и продажи на 50–250 тыс. за неделю?</div>
-                    <p>Это не курс, не марафон или папки, которые никто не открывает.</p>
-                    <p style="color:var(--c-violet-bright);font-weight:bold;">🔥 ДВИЖ: ПРИВЛЕКАЙ И ПРОДАВАЙ В MAX И TELEGRAM</p>
-                    <p>Система, которая идёт сразу в двух чатах. Выполняешь простые задания, получаешь живых подписчиков и клиентов.</p>
-                    <div style="font-weight:bold;color:var(--c-white);margin-top:12px;font-size:16px;">Результаты участников:</div>
-                    <ul class="promo-list">
-                        <li>+67 подписчиков и 3 коллаборации за день</li>
-                        <li>рост канала с 17 до 157 человек</li>
-                        <li>клиент с чеком 55 000 ₽</li>
-                        <li>более 100 живых подписок за неделю</li>
-                    </ul>
-                    <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="cta-btn">УСПЕЙ ЗАНЯТЬ МЕСТО БЕСПЛАТНО 👇</a>
+                    <div class="promo-headline">
+                        💎 БЕСПЛАТНЫЙ 7-ДНЕВНЫЙ ПРАКТИКУМ: <br>СИСТЕМА ПРОДАЖ НА 300K+ В МЕСЯЦ
+                    </div>
+                    <div class="promo-subhead">
+                        <strong>Даже летом и на высоких чеках!</strong>
+                    </div>
+                    
+                    <p>
+                        Устали от ощущения «я знаю много, но зарабатываю мало»? Пора превратить ваши знания в понятную, управляемую систему и выйти на стабильный доход от <strong>150 000 до 300 000+ ₽ в месяц</strong> без выгорания, бесконечного контента и пустых созвонов.
+                    </p>
+                    <p>
+                        За 7 дней интенсивной работы в мини-группе мы не просто разберем теорию — мы <strong>внедрим ключевые инструменты с помощью нейросетей</strong>, упакуем ваш продукт и запустим поток клиентов.
+                    </p>
+
+                    <div style="margin: 18px 0 12px 0; font-weight:700; color:var(--c-white); font-size: 17px; letter-spacing: 0.5px;">
+                        🎯 ПРОГРАММА ПРАКТИКУМА:
+                    </div>
+
+                    <!-- Блок 1 -->
+                    <div class="accordion-block">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="title">🔹 Фундаментальное позиционирование</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="desc">
+                                <li>Разработаем короткое позиционирование для быстрого знакомства и мгновенного привлечения внимания.</li>
+                                <li>Сформируем расширенное позиционирование, которое станет основой вашей понятной и высококонверсионной продуктовой линейки.</li>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Блок 2 -->
+                    <div class="accordion-block">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="title">🔹 Продукт-бестселлер и Сочный Оффер</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="desc">
+                                <li>Создадим востребованный продукт на основе вашего уникального позиционирования из 1-го модуля.</li>
+                                <li>Разберем 3 формата продуктов, которые активно покупают даже летом.</li>
+                                <li>Поймем, что такое настоящий качественный оффер: как превратить его в продающий материал с высокой конверсией на вход.</li>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Блок 3 -->
+                    <div class="accordion-block">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="title">🔹 Продажи, Трафик и Авторская Каскадная Система</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="desc">
+                                <li>Авторская каскадная система из 3 простых шагов: технология, которая позволяет экспертам легко выходить на высокий чек от 150 000 ₽ до 300 000+ ₽ в месяц.</li>
+                                <li>Топ-4 воронки 2026 года: только рабочие, протестированные связки для быстрого набора групп.</li>
+                                <li>Бесплатный органический трафик: алгоритмы работы с Threads и секреты превращения читателей в клиентов.</li>
+                                <li>Новые каналы привлечения: как зайти в Max и использовать Telegram, чтобы стабильно получать горячие заявки.</li>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="promo-highlight">
+                        ⚡️ Проблема падающих продаж летом — это не вопрос сезона. Это отсутствие системы.<br>
+                        <span style="font-weight:400; font-size:0.9em; display:block; margin-top:6px; color:var(--c-grey);">
+                            Перестаньте гадать и сливать бюджеты. За 7 дней вы получите готовую, работающую модель экспертных продаж 365 дней в году.
+                        </span>
+                    </div>
+
+                    <div style="text-align:center; margin: 12px 0 4px 0;">
+                        <span style="background: rgba(168,85,247,0.2); padding: 6px 18px; border-radius: 30px; font-size: 15px; border: 1px solid rgba(168,85,247,0.3); display:inline-block;">
+                            📅 СТАРТ: ВТОРНИК в 17:00
+                        </span>
+                    </div>
+
+                    <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="cta-btn">
+                        🎁 Бронируйте место прямо сейчас и забирайте приветственные бонусы!
+                        <span class="cta-small">Количество мест в мини-группе ограничено</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -759,8 +934,29 @@ void main() {
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ГОТОВ!');
+        console.log('💎 Sivalko System — ПРАКТИКУМ С АККОРДЕОНОМ!');
         console.log('🌟 3D Звёзды, 💎 Алмаз, 🖼️ Превьюшка');
+
+        // ============================================
+        // АККОРДЕОН (сворачиваемые блоки)
+        // ============================================
+        function toggleAccordion(header) {
+            const block = header.closest('.accordion-block');
+            const body = block.querySelector('.accordion-body');
+            const arrow = header.querySelector('.arrow');
+            
+            // Закрываем все остальные
+            document.querySelectorAll('.accordion-block').forEach(b => {
+                if (b !== block) {
+                    b.querySelector('.accordion-body').classList.remove('open');
+                    b.querySelector('.arrow').classList.remove('open');
+                }
+            });
+            
+            // Переключаем текущий
+            body.classList.toggle('open');
+            arrow.classList.toggle('open');
+        }
 
         // --- FIREBASE ---
         const firebaseConfig = {
