@@ -86,7 +86,11 @@
             gap: 20px;
         }
 
-        .col-section { display: flex; flex-direction: column; gap: 14px; }
+        .col-section {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
         .box {
             background: var(--glass);
@@ -95,7 +99,7 @@
             padding: clamp(18px, 4vw, 24px);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.85), 0 0 15px rgba(168,85,247,0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), 0 0 15px rgba(168, 85, 247, 0.15);
             position: relative;
         }
 
@@ -123,45 +127,53 @@
         }
 
         @keyframes videoPulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(168,85,247,0.3)); }
-            50% { transform: scale(1.025); filter: drop-shadow(0 0 30px rgba(192,132,252,0.65)); }
-            100% { transform: scale(1.005); filter: drop-shadow(0 0 18px rgba(168,85,247,0.4)); }
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.3));
+            }
+            50% {
+                transform: scale(1.025);
+                filter: drop-shadow(0 0 30px rgba(192, 132, 252, 0.65));
+            }
+            100% {
+                transform: scale(1.005);
+                filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.4));
+            }
         }
 
         /* ============================================
-        АВАТАРКИ — ОДИНАКОВЫЙ РАЗМЕР, БЕЗ КРУЖКОВ, С ССЫЛКАМИ
+        АВАТАРКИ — ОДИНАКОВЫЙ РАЗМЕР, С АНИМАЦИЕЙ ПРЫЖКОВ
         ============================================ */
         .avatar-left,
         .avatar-right {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             z-index: 5;
             width: 75px;
             height: 75px;
-            /* ОДИНАКОВЫЙ РАЗМЕР */
             pointer-events: auto;
             cursor: pointer;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .avatar-left:hover,
-        .avatar-right:hover {
-            transform: translateY(-50%) scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        .avatar-left:active,
-        .avatar-right:active {
-            transform: translateY(-50%) scale(0.95);
+            transition: filter 0.3s ease, transform 0.2s ease;
         }
 
         .avatar-left {
             left: 3%;
+            animation: bounceLeft 1.8s ease-in-out infinite;
         }
 
         .avatar-right {
             right: 3%;
+            animation: bounceRight 1.8s ease-in-out infinite;
+        }
+
+        .avatar-left:hover,
+        .avatar-right:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .avatar-left:active,
+        .avatar-right:active {
+            transform: scale(0.93);
         }
 
         .avatar-left img,
@@ -170,7 +182,33 @@
             height: 100%;
             object-fit: contain;
             display: block;
-            /* НЕТ border-radius, НЕТ кружков! */
+        }
+
+        /* ============================================
+        АНИМАЦИЯ ПРЫЖКОВ — РАССИНХРОН
+        ============================================ */
+        @keyframes bounceLeft {
+            0%,
+            100% {
+                top: 48%;
+                transform: translateY(-50%);
+            }
+            50% {
+                top: 42%;
+                transform: translateY(-50%) scale(1.03);
+            }
+        }
+
+        @keyframes bounceRight {
+            0%,
+            100% {
+                top: 52%;
+                transform: translateY(-50%);
+            }
+            50% {
+                top: 46%;
+                transform: translateY(-50%) scale(1.03);
+            }
         }
 
         /* ============================================
@@ -182,7 +220,7 @@
             left: 0;
             width: 100%;
             padding: 35px 15px 15px 15px;
-            background: linear-gradient(to top, rgba(5,2,10,0.95) 10%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(5, 2, 10, 0.95) 10%, rgba(0, 0, 0, 0) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -198,7 +236,7 @@
             text-align: center;
             letter-spacing: 1px;
             color: var(--c-white);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 18px rgba(192,132,252,0.8);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 18px rgba(192, 132, 252, 0.8);
         }
 
         .profile-subtitle {
@@ -209,7 +247,7 @@
             text-transform: uppercase;
             text-align: center;
             margin-bottom: 6px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
         }
 
         /* ============================================
@@ -872,12 +910,12 @@
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
 
-                <!-- Аватарка Telegram (слева) - ССЫЛКА -->
+                <!-- Аватарка Telegram (слева) - ПРЫГАЕТ -->
                 <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="avatar-left">
                     <img src="images/telegram.png" alt="Telegram">
                 </a>
 
-                <!-- Аватарка Max (справа) - ССЫЛКА -->
+                <!-- Аватарка Max (справа) - ПРЫГАЕТ -->
                 <a href="https://max.ru/join/Tu3PIYPMn1dDYSvihbVR8gVhtxAIxb6HOadKL0eRlWM" target="_blank" class="avatar-right">
                     <img src="images/max.png" alt="MAX">
                 </a>
@@ -1048,7 +1086,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ВИДЕО + АВАТАРКИ (ОДИНАКОВЫЙ РАЗМЕР, ССЫЛКИ)!');
+        console.log('💎 Sivalko System — ИКОНКИ ПРЫГАЮТ!');
 
         // ============================================
         // АККОРДЕОН
