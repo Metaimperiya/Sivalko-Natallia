@@ -4,17 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 
-    <!-- ============================================
-    SEO И МЕТА-ТЕГИ
-    ============================================ -->
     <title>Наталья Сивалко | Sivalko System — Практикум по продажам</title>
 
     <meta name="description" content="Бесплатный 7-дневный практикум по системе продаж на 300K+ в месяц. Наталья Сивалко — Sivalko System. Старт во вторник в 17:00.">
     <meta name="keywords" content="Наталья Сивалко, Sivalko System, практикум, продажи, система, 300K, эксперты, воронки, трафик">
 
-    <!-- ============================================
-    OPEN GRAPH / ПРЕВЬЮШКА ДЛЯ СОЦСЕТЕЙ
-    ============================================ -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sivalko-natallia.vercel.app/">
     <meta property="og:title" content="Наталья Сивалко | Бесплатный 7-дневный практикум по продажам 💎">
@@ -23,17 +17,11 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <!-- ============================================
-    TWITTER / X
-    ============================================ -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Наталья Сивалко | Бесплатный 7-дневный практикум по продажам 💎">
     <meta name="twitter:description" content="Система продаж на 300K+ в месяц. Старт во вторник в 17:00. Бронируйте место сейчас!">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/preview.jpg">
 
-    <!-- ============================================
-    FAVICON — АЛМАЗИК 💎
-    ============================================ -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💎%3C/text%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💎%3C/text%3E%3C/svg%3E">
 
@@ -112,7 +100,7 @@
         }
 
         /* ============================================
-        ВИДЕО КОНТЕЙНЕР (вместо фото)
+        ВИДЕО КОНТЕЙНЕР — БЕЗ РАМКИ!
         ============================================ */
         .hero-video-container {
             position: relative;
@@ -121,9 +109,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            border-radius: 16px;
-            overflow: hidden;
-            background: #000;
+            /* НЕТ border-radius, НЕТ overflow, НЕТ рамки! */
+            background: transparent;
         }
 
         .hero-video-container video {
@@ -133,9 +120,10 @@
             display: block;
             object-fit: contain;
             pointer-events: none;
+            /* НЕТ border-radius, НЕТ рамки! */
         }
 
-        /* АНИМАЦИЯ ДЛЯ ВИДЕО (как у фото был пульс) */
+        /* АНИМАЦИЯ ПУЛЬСАЦИИ */
         .hero-video-container video {
             animation: videoPulse 4s ease-in-out infinite alternate;
         }
@@ -157,8 +145,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
             pointer-events: none;
         }
 
@@ -315,9 +301,7 @@
             touch-action: manipulation;
         }
 
-        /* ============================================
-        СВОРАЧИВАЕМЫЕ БЛОКИ (как в Telegram)
-        ============================================ */
+        /* АККОРДЕОН */
         .accordion-block {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(168,85,247,0.2);
@@ -383,7 +367,7 @@
             font-weight: 700;
         }
 
-        /* ПРОМО - ОБНОВЛЁННЫЙ СТИЛЬ ДЛЯ ПРАКТИКУМА */
+        /* ПРОМО */
         .promo-headline {
             font-size: clamp(18px, 4.5vw, 24px);
             font-weight: 700;
@@ -736,11 +720,11 @@ void main() {
     <!-- ============================================ -->
     <div class="main-deck">
         <div class="col-section">
-            <!-- ВИДЕО ВМЕСТО ФОТКИ -->
+            <!-- ВИДЕО БЕЗ РАМКИ, С ЗВУКОМ -->
             <div class="hero-video-container">
                 <video autoplay muted loop playsinline preload="auto">
                     <source src="video.webm" type="video/webm">
-                    <!-- Если видео не загрузилось - показываем картинку -->
+                    <!-- Заглушка -->
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
                 <div class="video-caption-overlay">
@@ -786,7 +770,7 @@ void main() {
         </div>
 
         <!-- ============================================ -->
-        <!-- БЛОК ПРАКТИКУМА - СВОРАЧИВАЕМЫЕ БЛОКИ        -->
+        <!-- БЛОК ПРАКТИКУМА -->
         <!-- ============================================ -->
         <div class="col-section">
             <div class="box">
@@ -906,18 +890,16 @@ void main() {
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ВИДЕО ВСТАВЛЕНО!');
-        console.log('🌟 3D Звёзды, 💎 Алмаз, 🖼️ Превьюшка');
+        console.log('💎 Sivalko System — ВИДЕО БЕЗ РАМКИ, СО ЗВУКОМ!');
 
         // ============================================
-        // АККОРДЕОН (сворачиваемые блоки)
+        // АККОРДЕОН
         // ============================================
         function toggleAccordion(header) {
             const block = header.closest('.accordion-block');
             const body = block.querySelector('.accordion-body');
             const arrow = header.querySelector('.arrow');
             
-            // Закрываем все остальные
             document.querySelectorAll('.accordion-block').forEach(b => {
                 if (b !== block) {
                     b.querySelector('.accordion-body').classList.remove('open');
@@ -925,7 +907,6 @@ void main() {
                 }
             });
             
-            // Переключаем текущий
             body.classList.toggle('open');
             arrow.classList.toggle('open');
         }
