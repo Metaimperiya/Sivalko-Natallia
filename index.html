@@ -100,7 +100,7 @@
         }
 
         /* ============================================
-        ВИДЕО КОНТЕЙНЕР — БЕЗ РАМКИ!
+        ВИДЕО КОНТЕЙНЕР — БЕЗ РАМКИ, С АВАТАРКАМИ
         ============================================ */
         .hero-video-container {
             position: relative;
@@ -109,7 +109,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            /* НЕТ border-radius, НЕТ overflow, НЕТ рамки! */
             background: transparent;
         }
 
@@ -120,11 +119,6 @@
             display: block;
             object-fit: contain;
             pointer-events: none;
-            /* НЕТ border-radius, НЕТ рамки! */
-        }
-
-        /* АНИМАЦИЯ ПУЛЬСАЦИИ */
-        .hero-video-container video {
             animation: videoPulse 4s ease-in-out infinite alternate;
         }
 
@@ -134,6 +128,68 @@
             100% { transform: scale(1.005); filter: drop-shadow(0 0 18px rgba(168,85,247,0.4)); }
         }
 
+        /* ============================================
+        АВАТАРКИ (логотипы) ПОВЕРХ ВИДЕО
+        ============================================ */
+        .avatar-left,
+        .avatar-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 20px rgba(168,85,247,0.5);
+            z-index: 5;
+            background: #000;
+            pointer-events: none;
+        }
+
+        .avatar-left {
+            left: 5%;
+        }
+
+        .avatar-right {
+            right: 5%;
+        }
+
+        .avatar-left img,
+        .avatar-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Подписи под аватарками */
+        .avatar-label {
+            position: absolute;
+            top: calc(50% + 40px);
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--c-white);
+            text-shadow: 0 0 10px rgba(0,0,0,0.9);
+            white-space: nowrap;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .avatar-label-left {
+            left: 5%;
+        }
+
+        .avatar-label-right {
+            right: 5%;
+        }
+
+        /* ============================================
+        ПОДПИСЬ ПОВЕРХ ВИДЕО (имя)
+        ============================================ */
         .video-caption-overlay {
             position: absolute;
             bottom: 0;
@@ -146,6 +202,7 @@
             align-items: center;
             justify-content: flex-end;
             pointer-events: none;
+            z-index: 3;
         }
 
         .main-box-title {
@@ -169,6 +226,9 @@
             text-shadow: 0 2px 5px rgba(0,0,0,0.9);
         }
 
+        /* ============================================
+        КНОПКИ
+        ============================================ */
         .buttons-group { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 
         .glow-btn {
@@ -227,7 +287,9 @@
         .btn-icon { width: 22px; height: 22px; fill: currentColor; z-index: 2; }
         .btn-text { z-index: 2; }
 
-        /* ЧАТ */
+        /* ============================================
+        ЧАТ
+        ============================================ */
         .chat-toggle-btn {
             width: 100%;
             background: none;
@@ -301,7 +363,9 @@
             touch-action: manipulation;
         }
 
-        /* АККОРДЕОН */
+        /* ============================================
+        АККОРДЕОН
+        ============================================ */
         .accordion-block {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(168,85,247,0.2);
@@ -367,7 +431,9 @@
             font-weight: 700;
         }
 
-        /* ПРОМО */
+        /* ============================================
+        ПРОМО
+        ============================================ */
         .promo-headline {
             font-size: clamp(18px, 4.5vw, 24px);
             font-weight: 700;
@@ -439,7 +505,9 @@
             letter-spacing: 0.5px;
         }
 
-        /* ПЛЕЕР */
+        /* ============================================
+        ПЛЕЕР
+        ============================================ */
         .fem-player { text-align: center; }
         .track-name {
             font-family: 'Cinzel', serif;
@@ -498,6 +566,9 @@
             font-style: normal;
         }
 
+        /* ============================================
+        АДАПТИВ
+        ============================================ */
         @media (max-width: 400px) {
             .main-deck { width: 98%; padding: 8px 3px 20px 3px; }
             .box { padding: 14px 16px; }
@@ -505,6 +576,25 @@
             .btn-ctrl { width: 38px; height: 38px; font-size: 16px; }
             .btn-ctrl#play-btn { width: 44px; height: 44px; font-size: 18px; }
             .accordion-header .title { font-size: 14px; }
+            .avatar-left, .avatar-right {
+                width: 40px;
+                height: 40px;
+            }
+            .avatar-label {
+                font-size: 8px;
+                top: calc(50% + 28px);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .avatar-left, .avatar-right {
+                width: 45px;
+                height: 45px;
+            }
+            .avatar-label {
+                font-size: 9px;
+                top: calc(50% + 32px);
+            }
         }
     </style>
 </head>
@@ -720,19 +810,33 @@ void main() {
     <!-- ============================================ -->
     <div class="main-deck">
         <div class="col-section">
-            <!-- ВИДЕО БЕЗ РАМКИ, С ЗВУКОМ -->
+            <!-- ВИДЕО + АВАТАРКИ -->
             <div class="hero-video-container">
                 <video autoplay muted loop playsinline preload="auto">
                     <source src="video.webm" type="video/webm">
-                    <!-- Заглушка -->
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
+
+                <!-- Аватарка Telegram (слева) -->
+                <div class="avatar-left">
+                    <img src="telegram.png" alt="Telegram">
+                </div>
+                <span class="avatar-label avatar-label-left">TELEGRAM</span>
+
+                <!-- Аватарка Max (справа) -->
+                <div class="avatar-right">
+                    <img src="max.png" alt="MAX">
+                </div>
+                <span class="avatar-label avatar-label-right">MAX</span>
+
+                <!-- Подпись поверх видео -->
                 <div class="video-caption-overlay">
                     <div class="profile-subtitle">Sivalko System</div>
                     <h1 class="main-box-title">Наталья Сивалко 💎</h1>
                 </div>
             </div>
 
+            <!-- КНОПКИ -->
             <div class="buttons-group">
                 <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="glow-btn">
                     <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/></svg>
@@ -745,6 +849,7 @@ void main() {
                 </a>
             </div>
 
+            <!-- ЧАТ -->
             <div class="box">
                 <button class="chat-toggle-btn" onclick="toggleChat()">
                     <span>💬 Живой чат</span>
@@ -793,7 +898,6 @@ void main() {
                         🎯 ПРОГРАММА ПРАКТИКУМА:
                     </div>
 
-                    <!-- Блок 1 -->
                     <div class="accordion-block">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
                             <span class="title">🔹 Фундаментальное позиционирование</span>
@@ -807,7 +911,6 @@ void main() {
                         </div>
                     </div>
 
-                    <!-- Блок 2 -->
                     <div class="accordion-block">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
                             <span class="title">🔹 Продукт-бестселлер и Сочный Оффер</span>
@@ -822,7 +925,6 @@ void main() {
                         </div>
                     </div>
 
-                    <!-- Блок 3 -->
                     <div class="accordion-block">
                         <div class="accordion-header" onclick="toggleAccordion(this)">
                             <span class="title">🔹 Продажи, Трафик и Авторская Каскадная Система</span>
@@ -859,6 +961,9 @@ void main() {
             </div>
         </div>
 
+        <!-- ============================================ -->
+        <!-- ПЛЕЕР И ФУТЕР -->
+        <!-- ============================================ -->
         <div class="col-section">
             <div class="box" style="display:flex;flex-direction:column;margin-bottom:10px;">
                 <div class="fem-player">
@@ -890,7 +995,7 @@ void main() {
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ВИДЕО БЕЗ РАМКИ, СО ЗВУКОМ!');
+        console.log('💎 Sivalko System — ВИДЕО + АВАТАРКИ!');
 
         // ============================================
         // АККОРДЕОН
