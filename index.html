@@ -129,62 +129,37 @@
         }
 
         /* ============================================
-        АВАТАРКИ (логотипы) ПОВЕРХ ВИДЕО
+        АВАТАРКИ (логотипы) ПОВЕРХ ВИДЕО — НЕ КРУЖКИ!
         ============================================ */
         .avatar-left,
         .avatar-right {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid rgba(255,255,255,0.3);
-            box-shadow: 0 0 20px rgba(168,85,247,0.5);
             z-index: 5;
-            background: #000;
             pointer-events: none;
+            /* НЕТ border-radius, НЕТ кружков! */
         }
 
         .avatar-left {
-            left: 5%;
+            left: 3%;
+            width: 70px;
+            height: 70px;
         }
 
         .avatar-right {
-            right: 5%;
+            right: 3%;
+            width: 60px;
+            height: 60px;
         }
 
         .avatar-left img,
         .avatar-right img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
-        }
-
-        /* Подписи под аватарками */
-        .avatar-label {
-            position: absolute;
-            top: calc(50% + 40px);
-            transform: translateX(-50%);
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--c-white);
-            text-shadow: 0 0 10px rgba(0,0,0,0.9);
-            white-space: nowrap;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        .avatar-label-left {
-            left: 5%;
-        }
-
-        .avatar-label-right {
-            right: 5%;
+            /* НЕТ border-radius! */
         }
 
         /* ============================================
@@ -576,25 +551,13 @@
             .btn-ctrl { width: 38px; height: 38px; font-size: 16px; }
             .btn-ctrl#play-btn { width: 44px; height: 44px; font-size: 18px; }
             .accordion-header .title { font-size: 14px; }
-            .avatar-left, .avatar-right {
-                width: 40px;
-                height: 40px;
-            }
-            .avatar-label {
-                font-size: 8px;
-                top: calc(50% + 28px);
-            }
+            .avatar-left { width: 50px; height: 50px; left: 2%; }
+            .avatar-right { width: 40px; height: 40px; right: 2%; }
         }
 
         @media (max-width: 500px) {
-            .avatar-left, .avatar-right {
-                width: 45px;
-                height: 45px;
-            }
-            .avatar-label {
-                font-size: 9px;
-                top: calc(50% + 32px);
-            }
+            .avatar-left { width: 55px; height: 55px; }
+            .avatar-right { width: 45px; height: 45px; }
         }
     </style>
 </head>
@@ -817,17 +780,15 @@ void main() {
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
 
-                <!-- Аватарка Telegram (слева) -->
+                <!-- Аватарка Telegram (слева) - БОЛЬШЕ -->
                 <div class="avatar-left">
                     <img src="images/telegram.png" alt="Telegram">
                 </div>
-                <span class="avatar-label avatar-label-left">TELEGRAM</span>
 
                 <!-- Аватарка Max (справа) -->
                 <div class="avatar-right">
                     <img src="images/max.png" alt="MAX">
                 </div>
-                <span class="avatar-label avatar-label-right">MAX</span>
 
                 <!-- Подпись поверх видео -->
                 <div class="video-caption-overlay">
@@ -995,7 +956,7 @@ void main() {
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ВИДЕО + АВАТАРКИ!');
+        console.log('💎 Sivalko System — ВИДЕО + АВАТАРКИ (БЕЗ КРУЖКОВ, БЕЗ ПОДПИСЕЙ)!');
 
         // ============================================
         // АККОРДЕОН
