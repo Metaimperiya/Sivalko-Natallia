@@ -142,14 +142,14 @@
         }
 
         /* ============================================
-        АВАТАРКИ — ОДИНАКОВЫЙ РАЗМЕР, С АНИМАЦИЕЙ ПРЫЖКОВ
+        АВАТАРКИ — ПОДНЯТЫ ВЫШЕ (top: 30% вместо 50%)
         ============================================ */
         .avatar-left,
         .avatar-right {
             position: absolute;
             z-index: 5;
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             pointer-events: auto;
             cursor: pointer;
             transition: filter 0.3s ease, transform 0.2s ease;
@@ -157,11 +157,13 @@
 
         .avatar-left {
             left: 3%;
+            top: 30%;
             animation: bounceLeft 1.8s ease-in-out infinite;
         }
 
         .avatar-right {
             right: 3%;
+            top: 30%;
             animation: bounceRight 1.8s ease-in-out infinite;
         }
 
@@ -185,42 +187,42 @@
         }
 
         /* ============================================
-        АНИМАЦИЯ ПРЫЖКОВ — РАССИНХРОН
+        АНИМАЦИЯ ПРЫЖКОВ
         ============================================ */
         @keyframes bounceLeft {
             0%,
             100% {
-                top: 48%;
-                transform: translateY(-50%);
+                top: 28%;
+                transform: translateY(0);
             }
             50% {
-                top: 42%;
-                transform: translateY(-50%) scale(1.03);
+                top: 22%;
+                transform: translateY(0) scale(1.03);
             }
         }
 
         @keyframes bounceRight {
             0%,
             100% {
-                top: 52%;
-                transform: translateY(-50%);
+                top: 32%;
+                transform: translateY(0);
             }
             50% {
-                top: 46%;
-                transform: translateY(-50%) scale(1.03);
+                top: 26%;
+                transform: translateY(0) scale(1.03);
             }
         }
 
         /* ============================================
-        ПОДПИСЬ ПОВЕРХ ВИДЕО (имя)
+        ПОДПИСЬ ПОВЕРХ ВИДЕО (имя) — ПОДНЯТА
         ============================================ */
         .video-caption-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 35px 15px 15px 15px;
-            background: linear-gradient(to top, rgba(5, 2, 10, 0.95) 10%, rgba(0, 0, 0, 0) 100%);
+            padding: 30px 15px 15px 15px;
+            background: linear-gradient(to top, rgba(5, 2, 10, 0.95) 15%, rgba(0, 0, 0, 0) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -231,7 +233,7 @@
 
         .main-box-title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(26px, 6vw, 34px);
+            font-size: clamp(22px, 5vw, 34px);
             font-weight: 700;
             text-align: center;
             letter-spacing: 1px;
@@ -241,12 +243,12 @@
 
         .profile-subtitle {
             font-family: 'Cinzel', serif;
-            font-size: clamp(13px, 3.5vw, 16px);
+            font-size: clamp(11px, 2.8vw, 16px);
             letter-spacing: 3px;
             color: var(--c-violet-bright);
             text-transform: uppercase;
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
         }
 
@@ -267,11 +269,11 @@
             justify-content: center;
             gap: 14px;
             width: 100%;
-            padding: 18px 20px;
+            padding: 16px 20px;
             border-radius: 14px;
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -330,8 +332,8 @@
             transform: scale(0.97);
         }
         .btn-icon {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
             z-index: 2;
         }
@@ -648,43 +650,127 @@
         /* ============================================
         АДАПТИВ
         ============================================ */
-        @media (max-width: 400px) {
-            .main-deck {
-                width: 98%;
-                padding: 8px 3px 20px 3px;
-            }
-            .box {
-                padding: 14px 16px;
-            }
-            .glow-btn {
-                padding: 14px 16px;
-                font-size: 14px;
-            }
-            .btn-ctrl {
-                width: 38px;
-                height: 38px;
-                font-size: 16px;
-            }
-            .btn-ctrl#play-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-            }
-            .accordion-header .title {
-                font-size: 14px;
-            }
+        @media (max-width: 600px) {
             .avatar-left,
             .avatar-right {
-                width: 55px;
-                height: 55px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .avatar-left {
+                left: 2%;
+                top: 25%;
+            }
+            .avatar-right {
+                right: 2%;
+                top: 25%;
+            }
+
+            @keyframes bounceLeft {
+                0%,
+                100% {
+                    top: 23%;
+                    transform: translateY(0);
+                }
+                50% {
+                    top: 18%;
+                    transform: translateY(0) scale(1.03);
+                }
+            }
+
+            @keyframes bounceRight {
+                0%,
+                100% {
+                    top: 27%;
+                    transform: translateY(0);
+                }
+                50% {
+                    top: 22%;
+                    transform: translateY(0) scale(1.03);
+                }
+            }
+
+            .main-box-title {
+                font-size: clamp(18px, 4.5vw, 22px);
+            }
+
+            .profile-subtitle {
+                font-size: clamp(10px, 2.5vw, 13px);
+            }
+
+            .glow-btn {
+                padding: 14px 16px;
+                font-size: 13px;
+            }
+
+            .btn-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .video-caption-overlay {
+                padding: 20px 12px 12px 12px;
             }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 400px) {
             .avatar-left,
             .avatar-right {
-                width: 60px;
-                height: 60px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .avatar-left {
+                left: 1%;
+                top: 22%;
+            }
+            .avatar-right {
+                right: 1%;
+                top: 22%;
+            }
+
+            @keyframes bounceLeft {
+                0%,
+                100% {
+                    top: 20%;
+                    transform: translateY(0);
+                }
+                50% {
+                    top: 16%;
+                    transform: translateY(0) scale(1.03);
+                }
+            }
+
+            @keyframes bounceRight {
+                0%,
+                100% {
+                    top: 24%;
+                    transform: translateY(0);
+                }
+                50% {
+                    top: 20%;
+                    transform: translateY(0) scale(1.03);
+                }
+            }
+
+            .main-box-title {
+                font-size: 16px;
+            }
+            .profile-subtitle {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+            .glow-btn {
+                padding: 12px 14px;
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+            .btn-icon {
+                width: 16px;
+                height: 16px;
+            }
+            .video-caption-overlay {
+                padding: 15px 10px 10px 10px;
             }
         }
     </style>
@@ -910,12 +996,12 @@
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
 
-                <!-- Аватарка Telegram (слева) - ПРЫГАЕТ -->
+                <!-- Аватарка Telegram (слева) -->
                 <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="avatar-left">
                     <img src="images/telegram.png" alt="Telegram">
                 </a>
 
-                <!-- Аватарка Max (справа) - ПРЫГАЕТ -->
+                <!-- Аватарка Max (справа) -->
                 <a href="https://max.ru/join/Tu3PIYPMn1dDYSvihbVR8gVhtxAIxb6HOadKL0eRlWM" target="_blank" class="avatar-right">
                     <img src="images/max.png" alt="MAX">
                 </a>
@@ -1086,7 +1172,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ИКОНКИ ПРЫГАЮТ!');
+        console.log('💎 Sivalko System — МОБИЛЬНАЯ ВЕРСИЯ ИСПРАВЛЕНА!');
 
         // ============================================
         // АККОРДЕОН
