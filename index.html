@@ -100,7 +100,7 @@
         }
 
         /* ============================================
-        ВИДЕО КОНТЕЙНЕР — БЕЗ РАМКИ, С АВАТАРКАМИ
+        ВИДЕО КОНТЕЙНЕР
         ============================================ */
         .hero-video-container {
             position: relative;
@@ -129,7 +129,7 @@
         }
 
         /* ============================================
-        АВАТАРКИ (логотипы) ПОВЕРХ ВИДЕО — НЕ КРУЖКИ!
+        АВАТАРКИ — ОДИНАКОВЫЙ РАЗМЕР, БЕЗ КРУЖКОВ, С ССЫЛКАМИ
         ============================================ */
         .avatar-left,
         .avatar-right {
@@ -137,20 +137,31 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 5;
-            pointer-events: none;
-            /* НЕТ border-radius, НЕТ кружков! */
+            width: 75px;
+            height: 75px;
+            /* ОДИНАКОВЫЙ РАЗМЕР */
+            pointer-events: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .avatar-left:hover,
+        .avatar-right:hover {
+            transform: translateY(-50%) scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .avatar-left:active,
+        .avatar-right:active {
+            transform: translateY(-50%) scale(0.95);
         }
 
         .avatar-left {
             left: 3%;
-            width: 70px;
-            height: 70px;
         }
 
         .avatar-right {
             right: 3%;
-            width: 60px;
-            height: 60px;
         }
 
         .avatar-left img,
@@ -159,7 +170,7 @@
             height: 100%;
             object-fit: contain;
             display: block;
-            /* НЕТ border-radius! */
+            /* НЕТ border-radius, НЕТ кружков! */
         }
 
         /* ============================================
@@ -204,7 +215,12 @@
         /* ============================================
         КНОПКИ
         ============================================ */
-        .buttons-group { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+        .buttons-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
 
         .glow-btn {
             position: relative;
@@ -223,8 +239,8 @@
             text-transform: uppercase;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(168,85,247,0.4);
-            border: 1px solid rgba(216,180,254,0.6);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            border: 1px solid rgba(216, 180, 254, 0.6);
             background: linear-gradient(135deg, #7e22ce 0%, #a855f7 50%, #9333ea 100%);
             animation: btnGlowPulse 3s infinite alternate;
             touch-action: manipulation;
@@ -236,9 +252,19 @@
         }
 
         @keyframes btnGlowPulse {
-            0% { box-shadow: 0 0 12px rgba(168,85,247,0.4), inset 0 0 8px rgba(255,255,255,0.2); border-color: rgba(192,132,252,0.5); }
-            50% { box-shadow: 0 0 25px rgba(192,132,252,0.8), 0 0 35px rgba(168,85,247,0.5), inset 0 0 15px rgba(255,255,255,0.4); border-color: rgba(255,255,255,0.9); transform: translateY(-1px); }
-            100% { box-shadow: 0 0 15px rgba(168,85,247,0.5), inset 0 0 10px rgba(255,255,255,0.2); border-color: rgba(192,132,252,0.6); }
+            0% {
+                box-shadow: 0 0 12px rgba(168, 85, 247, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.2);
+                border-color: rgba(192, 132, 252, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(192, 132, 252, 0.8), 0 0 35px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
+                border-color: rgba(255, 255, 255, 0.9);
+                transform: translateY(-1px);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+                border-color: rgba(192, 132, 252, 0.6);
+            }
         }
 
         .glow-btn::before {
@@ -248,19 +274,32 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(60deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
             transform: rotate(30deg);
             animation: shimmer 4s infinite linear;
         }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) rotate(30deg); }
+            0% {
+                transform: translateX(-100%) rotate(30deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(30deg);
+            }
         }
 
-        .glow-btn:active { transform: scale(0.97); }
-        .btn-icon { width: 22px; height: 22px; fill: currentColor; z-index: 2; }
-        .btn-text { z-index: 2; }
+        .glow-btn:active {
+            transform: scale(0.97);
+        }
+        .btn-icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            z-index: 2;
+        }
+        .btn-text {
+            z-index: 2;
+        }
 
         /* ============================================
         ЧАТ
@@ -281,12 +320,21 @@
             outline: none;
             touch-action: manipulation;
         }
-        .chat-toggle-btn:active { transform: scale(0.97); }
-        .chat-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-        .chat-drawer.open { max-height: 500px; margin-top: 14px; }
+        .chat-toggle-btn:active {
+            transform: scale(0.97);
+        }
+        .chat-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .chat-drawer.open {
+            max-height: 500px;
+            margin-top: 14px;
+        }
         .display-window {
             height: 200px;
-            background: rgba(10,3,20,0.8);
+            background: rgba(10, 3, 20, 0.8);
             border: 1px solid var(--c-ash);
             border-radius: 8px;
             padding: 12px;
@@ -297,14 +345,22 @@
             -webkit-overflow-scrolling: touch;
         }
         .log-item {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             padding: 10px 12px;
             border-radius: 6px;
             font-size: 14px;
             position: relative;
         }
-        .log-user { color: var(--c-violet-bright); font-weight: 600; font-size: 14px; }
-        .log-time { font-size: 10px; color: var(--c-grey); float: right; }
+        .log-user {
+            color: var(--c-violet-bright);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .log-time {
+            font-size: 10px;
+            color: var(--c-grey);
+            float: right;
+        }
         .reply-btn {
             background: none;
             border: none;
@@ -315,7 +371,7 @@
             touch-action: manipulation;
         }
         .input-field {
-            background: rgba(10,3,20,0.8);
+            background: rgba(10, 3, 20, 0.8);
             border: 1px solid var(--c-ash);
             border-radius: 6px;
             padding: 10px 14px;
@@ -342,14 +398,16 @@
         АККОРДЕОН
         ============================================ */
         .accordion-block {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(168,85,247,0.2);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(168, 85, 247, 0.2);
             border-radius: 12px;
             margin-bottom: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-        .accordion-block:last-child { margin-bottom: 0; }
+        .accordion-block:last-child {
+            margin-bottom: 0;
+        }
 
         .accordion-header {
             display: flex;
@@ -361,7 +419,9 @@
             transition: background 0.2s;
             gap: 12px;
         }
-        .accordion-header:active { background: rgba(168,85,247,0.1); }
+        .accordion-header:active {
+            background: rgba(168, 85, 247, 0.1);
+        }
         .accordion-header .title {
             font-weight: 700;
             color: var(--c-white);
@@ -375,7 +435,9 @@
             flex-shrink: 0;
             margin-left: auto;
         }
-        .accordion-header .arrow.open { transform: rotate(180deg); }
+        .accordion-header .arrow.open {
+            transform: rotate(180deg);
+        }
 
         .accordion-body {
             max-height: 0;
@@ -427,7 +489,7 @@
             line-height: 1.6;
             margin-bottom: 18px;
             text-align: center;
-            border-bottom: 1px solid rgba(168,85,247,0.2);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
             padding-bottom: 16px;
         }
         .promo-content p {
@@ -442,8 +504,8 @@
         }
 
         .promo-highlight {
-            background: rgba(168,85,247,0.15);
-            border: 1px solid rgba(168,85,247,0.3);
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
             border-radius: 10px;
             padding: 14px 16px;
             margin: 16px 0;
@@ -466,11 +528,13 @@
             font-weight: 700;
             letter-spacing: 1px;
             transition: 0.3s;
-            box-shadow: 0 4px 25px rgba(168,85,247,0.5);
+            box-shadow: 0 4px 25px rgba(168, 85, 247, 0.5);
             touch-action: manipulation;
             margin-top: 10px;
         }
-        .cta-btn:active { transform: scale(0.97); }
+        .cta-btn:active {
+            transform: scale(0.97);
+        }
         .cta-small {
             font-size: 13px;
             font-weight: 400;
@@ -483,7 +547,9 @@
         /* ============================================
         ПЛЕЕР
         ============================================ */
-        .fem-player { text-align: center; }
+        .fem-player {
+            text-align: center;
+        }
         .track-name {
             font-family: 'Cinzel', serif;
             font-size: 15px;
@@ -545,19 +611,43 @@
         АДАПТИВ
         ============================================ */
         @media (max-width: 400px) {
-            .main-deck { width: 98%; padding: 8px 3px 20px 3px; }
-            .box { padding: 14px 16px; }
-            .glow-btn { padding: 14px 16px; font-size: 14px; }
-            .btn-ctrl { width: 38px; height: 38px; font-size: 16px; }
-            .btn-ctrl#play-btn { width: 44px; height: 44px; font-size: 18px; }
-            .accordion-header .title { font-size: 14px; }
-            .avatar-left { width: 50px; height: 50px; left: 2%; }
-            .avatar-right { width: 40px; height: 40px; right: 2%; }
+            .main-deck {
+                width: 98%;
+                padding: 8px 3px 20px 3px;
+            }
+            .box {
+                padding: 14px 16px;
+            }
+            .glow-btn {
+                padding: 14px 16px;
+                font-size: 14px;
+            }
+            .btn-ctrl {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+            .btn-ctrl#play-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+            .accordion-header .title {
+                font-size: 14px;
+            }
+            .avatar-left,
+            .avatar-right {
+                width: 55px;
+                height: 55px;
+            }
         }
 
         @media (max-width: 500px) {
-            .avatar-left { width: 55px; height: 55px; }
-            .avatar-right { width: 45px; height: 45px; }
+            .avatar-left,
+            .avatar-right {
+                width: 60px;
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -566,206 +656,208 @@
     <canvas id="glcanvas"></canvas>
 
     <script id="vertex-shader" type="x-shader/x-vertex">
-#version 300 es
-in vec4 a_position;
-void main() { gl_Position = a_position; }
+        #version 300 es
+        in vec4 a_position;
+        void main() { gl_Position = a_position; }
     </script>
 
     <script id="fragment-shader" type="x-shader/x-fragment">
-#version 300 es
-precision highp float;
-precision highp int;
+        #version 300 es
+        precision highp float;
+        precision highp int;
 
-uniform vec2 iResolution;
-uniform float iTime;
+        uniform vec2 iResolution;
+        uniform float iTime;
 
-out vec4 fragColor;
+        out vec4 fragColor;
 
-mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
-mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
-float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
-vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
+        mat2 mm2(in float a) { float c = cos(a),
+            s = sin(a); return mat2(c, s, -s, c); }
+        mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
+        float tri(in float x) { return clamp(abs(fract(x) - .5), 0.01, 0.49); }
+        vec2 tri2(in vec2 p) { return vec2(tri(p.x) + tri(p.y), tri(p.y + tri(p.x))); }
 
-vec3 getAuroraColor(float t, float height) {
-    float hueShift = iTime * 0.025;
-    float h = fract(t * 0.12 + hueShift + height * 0.25);
-    
-    vec3 green  = vec3(0.1, 1.0, 0.3);
-    vec3 blue   = vec3(0.0, 0.4, 1.0);
-    vec3 purple = vec3(0.6, 0.0, 1.0);
-    vec3 pink   = vec3(1.0, 0.1, 0.7);
-    vec3 teal   = vec3(0.0, 0.9, 0.7);
-    
-    float w1 = 0.5 + 0.5 * sin(h * 6.283 + 0.0);
-    float w2 = 0.5 + 0.5 * sin(h * 6.283 + 1.2);
-    float w3 = 0.5 + 0.5 * sin(h * 6.283 + 2.4);
-    float w4 = 0.5 + 0.5 * sin(h * 6.283 + 3.6);
-    float w5 = 0.5 + 0.5 * sin(h * 6.283 + 4.8);
-    
-    float heightFactor = smoothstep(0.0, 1.0, height);
-    w2 += heightFactor * 0.3;
-    w3 += heightFactor * 0.2;
-    
-    float total = w1 + w2 + w3 + w4 + w5;
-    vec3 result = (green * w1 + blue * w2 + purple * w3 + pink * w4 + teal * w5) / total;
-    
-    float flicker = 0.85 + 0.15 * sin(t * 2.0 + iTime * 0.5);
-    result *= flicker * 1.3;
-    return result;
-}
+        vec3 getAuroraColor(float t, float height) {
+            float hueShift = iTime * 0.025;
+            float h = fract(t * 0.12 + hueShift + height * 0.25);
 
-float triNoise2d(in vec2 p, float spd) {
-    float z=1.8; float z2=2.5; float rz = 0.;
-    p *= mm2(p.x*0.06);
-    vec2 bp = p;
-    for (float i=0.; i<5.; i++ ) {
-        vec2 dg = tri2(bp*1.85)*.75;
-        dg *= mm2(iTime*spd);
-        p -= dg/z2;
-        bp *= 1.3;
-        z2 *= .45;
-        z *= .42;
-        p *= 1.21 + (rz-1.0)*.02;
-        rz += tri(p.x+tri(p.y))*z;
-        p*= -m2;
-    }
-    return clamp(1./pow(rz*29., 1.3),0.,.55);
-}
+            vec3 green = vec3(0.1, 1.0, 0.3);
+            vec3 blue = vec3(0.0, 0.4, 1.0);
+            vec3 purple = vec3(0.6, 0.0, 1.0);
+            vec3 pink = vec3(1.0, 0.1, 0.7);
+            vec3 teal = vec3(0.0, 0.9, 0.7);
 
-float hash21(in vec2 n){ return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); }
+            float w1 = 0.5 + 0.5 * sin(h * 6.283 + 0.0);
+            float w2 = 0.5 + 0.5 * sin(h * 6.283 + 1.2);
+            float w3 = 0.5 + 0.5 * sin(h * 6.283 + 2.4);
+            float w4 = 0.5 + 0.5 * sin(h * 6.283 + 3.6);
+            float w5 = 0.5 + 0.5 * sin(h * 6.283 + 4.8);
 
-float mountainHeight(float x) {
-    float h = sin(x * 1.5) * 0.12;
-    h += sin(x * 3.7 + 1.2) * 0.06;
-    h += sin(x * 8.3 + 2.5) * 0.025;
-    h += sin(x * 19.1) * 0.01;
-    return h - 0.08;
-}
+            float heightFactor = smoothstep(0.0, 1.0, height);
+            w2 += heightFactor * 0.3;
+            w3 += heightFactor * 0.2;
 
-vec4 aurora(vec3 ro, vec3 rd) {
-    vec4 col = vec4(0);
-    vec4 avgCol = vec4(0);
-    
-    float autoThickness = 0.7 + 0.4 * sin(iTime * 0.07 + 1.2);
-    float autoScale = 0.7 + 0.3 * sin(iTime * 0.05 + 0.8);
-    
-    for(float i=0.;i<55.;i++) {
-        float of = 0.006*hash21(gl_FragCoord.xy)*smoothstep(0.,15., i);
-        float pt = ((.8+pow(i,1.4)*.002)-ro.y)/(rd.y*2.+0.4);
-        pt -= of;
-        vec3 bpos = ro + pt*rd;
-        vec2 p = bpos.zx;
-        float rzt = triNoise2d(p * autoScale, 0.06); 
-        vec4 col2 = vec4(0,0,0, rzt * autoThickness); 
-        
-        float height = (bpos.y - 0.0) / 120.0;
-        vec3 autoColor = getAuroraColor(i * 0.08 + iTime * 0.015, height);
-        col2.rgb = autoColor * rzt * 1.2; 
-        
-        avgCol = mix(avgCol, col2, .5);
-        col += avgCol*exp2(-i*0.065 - 2.5)*smoothstep(0.,5., i);
-    }
-    
-    col *= (clamp(rd.y*15.+.4,0.,1.));
-    return col*1.8;
-}
+            float total = w1 + w2 + w3 + w4 + w5;
+            vec3 result = (green * w1 + blue * w2 + purple * w3 + pink * w4 + teal * w5) / total;
 
-// ============================================================
-// 3D ЗВЁЗДЫ — 6 СЛОЁВ С ГЛУБИНОЙ
-// ============================================================
-vec3 nmzHash33(vec3 q) {
-    uvec3 p = uvec3(ivec3(q));
-    p = p*uvec3(374761393U, 1103515245U, 668265263U) + p.zxy + p.yzx;
-    p = p.yzx*(p.zxy^(p >> 3U));
-    return vec3(p^(p >> 16U))*(1.0/vec3(0xffffffffU));
-}
+            float flicker = 0.85 + 0.15 * sin(t * 2.0 + iTime * 0.5);
+            result *= flicker * 1.3;
+            return result;
+        }
 
-vec3 stars3D(in vec3 p) {
-    vec3 c = vec3(0.);
-    float res = iResolution.x * 1.5;
-    float time = iTime * 0.02;
-    
-    // 6 слоёв с разной глубиной
-    for (float i=0.; i<6.; i++) {
-        float fi = i;
-        float depthScale = 0.08 + fi * 0.04;
-        float sizeScale = 0.2 + fi * 0.25;
-        
-        vec3 q = fract(p * depthScale * res + fi * 50.0) - 0.5;
-        vec3 id = floor(p * depthScale * res + fi * 50.0);
-        vec2 rn = nmzHash33(id + fi * 100.0 + 0.1).xy;
-        
-        float size = 0.1 + 0.4 * rn.x * sizeScale;
-        float c2 = 1.0 - smoothstep(0.0, size, length(q.xy));
-        
-        float twinkle = 0.5 + 0.5 * sin(time * (1.5 + 3.0 * rn.y) + id.x * 50.0 + id.y * 80.0 + fi * 20.0);
-        twinkle = twinkle * twinkle;
-        
-        vec3 starColor = mix(
-            vec3(0.85, 0.9, 1.0),
-            mix(
-                vec3(1.0, 0.95, 0.7),
-                vec3(0.6, 0.7, 1.0),
-                rn.y
-            ),
-            0.3 + 0.7 * rn.x
-        );
-        
-        float density = 0.65 + 0.35 * sin(iTime * 0.003 + fi * 3.0);
-        c2 *= step(rn.x, 0.12 + 0.06 * density);
-        
-        float depthFade = 0.4 + 0.6 * (1.0 - fi / 6.0);
-        c += starColor * c2 * twinkle * depthFade;
-    }
-    return c * 1.2;
-}
+        float triNoise2d(in vec2 p, float spd) {
+            float z = 1.8;
+            float z2 = 2.5;
+            float rz = 0.;
+            p *= mm2(p.x * 0.06);
+            vec2 bp = p;
+            for (float i = 0.; i < 5.; i++) {
+                vec2 dg = tri2(bp * 1.85) * .75;
+                dg *= mm2(iTime * spd);
+                p -= dg / z2;
+                bp *= 1.3;
+                z2 *= .45;
+                z *= .42;
+                p *= 1.21 + (rz - 1.0) * .02;
+                rz += tri(p.x + tri(p.y)) * z;
+                p *= -m2;
+            }
+            return clamp(1. / pow(rz * 29., 1.3), 0., .55);
+        }
 
-vec3 bg(in vec3 rd) {
-    float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd)*0.5+0.5;
-    sd = pow(sd, 5.);
-    vec3 col = mix(vec3(0.015,0.025,0.06), vec3(0.04,0.02,0.08), sd);
-    return col*0.8;
-}
+        float hash21(in vec2 n) { return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); }
 
-void main() {
-    vec2 q = gl_FragCoord.xy / iResolution.xy;
-    vec2 p = q - 0.5;
-    p.x *= iResolution.x/iResolution.y;
-    
-    vec3 ro = vec3(0,0,-6.7);
-    vec3 rd = normalize(vec3(p,1.3));
-    
-    float camY = sin(iTime * 0.06) * 0.08 + 0.02;
-    float camX = sin(iTime * 0.035 + 0.5) * 0.25;
-    
-    rd.yz *= mm2(camY);
-    rd.xz *= mm2(camX);
-    
-    vec3 col = vec3(0.);
-    float fade = smoothstep(0.,0.01,abs(rd.y))*0.1+0.9;
-    col = bg(rd)*fade;
-    
-    float mHeight = mountainHeight(rd.x * 2.5 + camX * 2.0);
-    
-    if (rd.y > mHeight) {
-        vec4 aur = smoothstep(0.,1.5,aurora(ro,rd))*fade;
+        float mountainHeight(float x) {
+            float h = sin(x * 1.5) * 0.12;
+            h += sin(x * 3.7 + 1.2) * 0.06;
+            h += sin(x * 8.3 + 2.5) * 0.025;
+            h += sin(x * 19.1) * 0.01;
+            return h - 0.08;
+        }
+
+        vec4 aurora(vec3 ro, vec3 rd) {
+            vec4 col = vec4(0);
+            vec4 avgCol = vec4(0);
+
+            float autoThickness = 0.7 + 0.4 * sin(iTime * 0.07 + 1.2);
+            float autoScale = 0.7 + 0.3 * sin(iTime * 0.05 + 0.8);
+
+            for (float i = 0.; i < 55.; i++) {
+                float of = 0.006 * hash21(gl_FragCoord.xy) * smoothstep(0., 15., i);
+                float pt = ((.8 + pow(i, 1.4) * .002) - ro.y) / (rd.y * 2. + 0.4);
+                pt -= of;
+                vec3 bpos = ro + pt * rd;
+                vec2 p = bpos.zx;
+                float rzt = triNoise2d(p * autoScale, 0.06);
+                vec4 col2 = vec4(0, 0, 0, rzt * autoThickness);
+
+                float height = (bpos.y - 0.0) / 120.0;
+                vec3 autoColor = getAuroraColor(i * 0.08 + iTime * 0.015, height);
+                col2.rgb = autoColor * rzt * 1.2;
+
+                avgCol = mix(avgCol, col2, .5);
+                col += avgCol * exp2(-i * 0.065 - 2.5) * smoothstep(0., 5., i);
+            }
+
+            col *= (clamp(rd.y * 15. + .4, 0., 1.));
+            return col * 1.8;
+        }
+
         // ============================================================
-        // 3D ЗВЁЗДЫ — ВОТ ОНИ ТУТ!
+        // 3D ЗВЁЗДЫ — 6 СЛОЁВ С ГЛУБИНОЙ
         // ============================================================
-        col += stars3D(rd);
-        col = col*(1.-aur.a) + aur.rgb;
-        
-        float edge = smoothstep(mHeight + 0.04, mHeight, rd.y);
-        col += mix(vec3(0.1,0.8,0.2), vec3(0.2,0.3,1.0), 0.5) * edge * 0.15;
-    } 
-    else {
-        float depth = (mHeight - rd.y) * 4.0;
-        vec3 mountainColor = mix(vec3(0.02, 0.01, 0.04), vec3(0.005, 0.002, 0.008), clamp(depth, 0.0, 1.0));
-        col = mountainColor;
-    }
-    
-    fragColor = vec4(col, 1.);
-}
+        vec3 nmzHash33(vec3 q) {
+            uvec3 p = uvec3(ivec3(q));
+            p = p * uvec3(374761393U, 1103515245U, 668265263U) + p.zxy + p.yzx;
+            p = p.yzx * (p.zxy ^ (p >> 3U));
+            return vec3(p ^ (p >> 16U)) * (1.0 / vec3(0xffffffffU));
+        }
+
+        vec3 stars3D(in vec3 p) {
+            vec3 c = vec3(0.);
+            float res = iResolution.x * 1.5;
+            float time = iTime * 0.02;
+
+            // 6 слоёв с разной глубиной
+            for (float i = 0.; i < 6.; i++) {
+                float fi = i;
+                float depthScale = 0.08 + fi * 0.04;
+                float sizeScale = 0.2 + fi * 0.25;
+
+                vec3 q = fract(p * depthScale * res + fi * 50.0) - 0.5;
+                vec3 id = floor(p * depthScale * res + fi * 50.0);
+                vec2 rn = nmzHash33(id + fi * 100.0 + 0.1).xy;
+
+                float size = 0.1 + 0.4 * rn.x * sizeScale;
+                float c2 = 1.0 - smoothstep(0.0, size, length(q.xy));
+
+                float twinkle = 0.5 + 0.5 * sin(time * (1.5 + 3.0 * rn.y) + id.x * 50.0 + id.y * 80.0 + fi * 20.0);
+                twinkle = twinkle * twinkle;
+
+                vec3 starColor = mix(
+                    vec3(0.85, 0.9, 1.0),
+                    mix(
+                        vec3(1.0, 0.95, 0.7),
+                        vec3(0.6, 0.7, 1.0),
+                        rn.y
+                    ),
+                    0.3 + 0.7 * rn.x
+                );
+
+                float density = 0.65 + 0.35 * sin(iTime * 0.003 + fi * 3.0);
+                c2 *= step(rn.x, 0.12 + 0.06 * density);
+
+                float depthFade = 0.4 + 0.6 * (1.0 - fi / 6.0);
+                c += starColor * c2 * twinkle * depthFade;
+            }
+            return c * 1.2;
+        }
+
+        vec3 bg(in vec3 rd) {
+            float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd) * 0.5 + 0.5;
+            sd = pow(sd, 5.);
+            vec3 col = mix(vec3(0.015, 0.025, 0.06), vec3(0.04, 0.02, 0.08), sd);
+            return col * 0.8;
+        }
+
+        void main() {
+            vec2 q = gl_FragCoord.xy / iResolution.xy;
+            vec2 p = q - 0.5;
+            p.x *= iResolution.x / iResolution.y;
+
+            vec3 ro = vec3(0, 0, -6.7);
+            vec3 rd = normalize(vec3(p, 1.3));
+
+            float camY = sin(iTime * 0.06) * 0.08 + 0.02;
+            float camX = sin(iTime * 0.035 + 0.5) * 0.25;
+
+            rd.yz *= mm2(camY);
+            rd.xz *= mm2(camX);
+
+            vec3 col = vec3(0.);
+            float fade = smoothstep(0., 0.01, abs(rd.y)) * 0.1 + 0.9;
+            col = bg(rd) * fade;
+
+            float mHeight = mountainHeight(rd.x * 2.5 + camX * 2.0);
+
+            if (rd.y > mHeight) {
+                vec4 aur = smoothstep(0., 1.5, aurora(ro, rd)) * fade;
+                // ============================================================
+                // 3D ЗВЁЗДЫ — ВОТ ОНИ ТУТ!
+                // ============================================================
+                col += stars3D(rd);
+                col = col * (1. - aur.a) + aur.rgb;
+
+                float edge = smoothstep(mHeight + 0.04, mHeight, rd.y);
+                col += mix(vec3(0.1, 0.8, 0.2), vec3(0.2, 0.3, 1.0), 0.5) * edge * 0.15;
+            } else {
+                float depth = (mHeight - rd.y) * 4.0;
+                vec3 mountainColor = mix(vec3(0.02, 0.01, 0.04), vec3(0.005, 0.002, 0.008), clamp(depth, 0.0, 1.0));
+                col = mountainColor;
+            }
+
+            fragColor = vec4(col, 1.);
+        }
     </script>
 
     <!-- ============================================ -->
@@ -780,15 +872,15 @@ void main() {
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
 
-                <!-- Аватарка Telegram (слева) - БОЛЬШЕ -->
-                <div class="avatar-left">
+                <!-- Аватарка Telegram (слева) - ССЫЛКА -->
+                <a href="https://t.me/+dIcSH3xpz8Q3YTgy" target="_blank" class="avatar-left">
                     <img src="images/telegram.png" alt="Telegram">
-                </div>
+                </a>
 
-                <!-- Аватарка Max (справа) -->
-                <div class="avatar-right">
+                <!-- Аватарка Max (справа) - ССЫЛКА -->
+                <a href="https://max.ru/join/Tu3PIYPMn1dDYSvihbVR8gVhtxAIxb6HOadKL0eRlWM" target="_blank" class="avatar-right">
                     <img src="images/max.png" alt="MAX">
-                </div>
+                </a>
 
                 <!-- Подпись поверх видео -->
                 <div class="video-caption-overlay">
@@ -847,7 +939,7 @@ void main() {
                     <div class="promo-subhead">
                         <strong>Даже летом и на высоких чеках!</strong>
                     </div>
-                    
+
                     <p>
                         Устали от ощущения «я знаю много, но зарабатываю мало»? Пора превратить ваши знания в понятную, управляемую систему и выйти на стабильный доход от <strong>150 000 до 300 000+ ₽ в месяц</strong> без выгорания, бесконечного контента и пустых созвонов.
                     </p>
@@ -956,7 +1048,7 @@ void main() {
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ВИДЕО + АВАТАРКИ (БЕЗ КРУЖКОВ, БЕЗ ПОДПИСЕЙ)!');
+        console.log('💎 Sivalko System — ВИДЕО + АВАТАРКИ (ОДИНАКОВЫЙ РАЗМЕР, ССЫЛКИ)!');
 
         // ============================================
         // АККОРДЕОН
@@ -965,14 +1057,14 @@ void main() {
             const block = header.closest('.accordion-block');
             const body = block.querySelector('.accordion-body');
             const arrow = header.querySelector('.arrow');
-            
+
             document.querySelectorAll('.accordion-block').forEach(b => {
                 if (b !== block) {
                     b.querySelector('.accordion-body').classList.remove('open');
                     b.querySelector('.arrow').classList.remove('open');
                 }
             });
-            
+
             body.classList.toggle('open');
             arrow.classList.toggle('open');
         }
@@ -1015,7 +1107,7 @@ void main() {
         function push() {
             const u = document.getElementById('nick').value || 'User';
             const m = document.getElementById('message').value;
-            if(m.trim() !== "") {
+            if (m.trim() !== "") {
                 db.ref('chat_logs').push().set({
                     user: u,
                     text: m,
@@ -1081,6 +1173,7 @@ void main() {
         }
 
         function nextTrack() { selectTrack((currentIdx + 1) % items.length); }
+
         function prevTrack() { selectTrack((currentIdx - 1 + items.length) % items.length); }
 
         audio.ontimeupdate = () => { if (audio.duration) { pBar.style.width = (audio.currentTime / audio.duration) * 100 + '%'; } };
@@ -1100,7 +1193,8 @@ void main() {
             if (audio.duration) audio.currentTime = x * audio.duration;
         }
 
-        audio.addEventListener('ended', () => { playBtn.innerText = '▶'; pBar.style.width = '0%'; });
+        audio.addEventListener('ended', () => { playBtn.innerText = '▶';
+            pBar.style.width = '0%'; });
 
         // --- WEBGL ---
         window.addEventListener('DOMContentLoaded', () => {
@@ -1135,7 +1229,7 @@ void main() {
 
             const positionBuffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-            const positions = [-1.0,1.0,1.0,1.0,-1.0,-1.0,1.0,1.0,1.0,-1.0,-1.0,-1.0];
+            const positions = [-1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0];
             gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
             const positionLocation = gl.getAttribLocation(shaderProgram, 'a_position');
