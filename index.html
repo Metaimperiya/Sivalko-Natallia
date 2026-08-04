@@ -339,6 +339,194 @@
         }
 
         /* ============================================
+        АДМИНКА — ШЕСТЕРЁНКА
+        ============================================ */
+        .admin-gear {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--c-violet-bright);
+            touch-action: manipulation;
+        }
+
+        .admin-gear:hover {
+            background: rgba(168, 85, 247, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .admin-gear:active {
+            transform: scale(0.9);
+        }
+
+        /* ============================================
+        МОДАЛКА АДМИНКИ
+        ============================================ */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 2, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .admin-modal.active {
+            display: flex;
+        }
+
+        .admin-modal-content {
+            background: var(--glass);
+            border: var(--border);
+            border-radius: 20px;
+            padding: 30px 24px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 0 60px rgba(168, 85, 247, 0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .admin-modal-content .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 24px;
+            color: var(--c-grey);
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+            touch-action: manipulation;
+        }
+
+        .admin-modal-content .close-btn:hover {
+            color: var(--c-white);
+        }
+
+        .admin-modal-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--c-violet-bright);
+        }
+
+        .admin-modal-content .field-group {
+            margin-bottom: 16px;
+        }
+
+        .admin-modal-content .field-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--c-grey);
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .admin-modal-content .field-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            background: rgba(10, 3, 20, 0.8);
+            color: var(--c-white);
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .admin-modal-content .field-group input:focus {
+            border-color: var(--c-violet-bright);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .admin-modal-content .save-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #7e22ce, #c084fc);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+            touch-action: manipulation;
+        }
+
+        .admin-modal-content .save-btn:active {
+            transform: scale(0.97);
+        }
+
+        .admin-modal-content .save-btn:hover {
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .admin-modal-content .status-msg {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 12px;
+            color: var(--c-violet-bright);
+            min-height: 24px;
+        }
+
+        .admin-modal-content .password-field {
+            margin-top: 20px;
+        }
+
+        .admin-modal-content .login-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            touch-action: manipulation;
+        }
+
+        .admin-modal-content .login-btn:active {
+            transform: scale(0.97);
+        }
+
+        .admin-modal-content .login-error {
+            color: #ff6b6b;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 8px;
+            min-height: 20px;
+        }
+
+        /* ============================================
         ЧАТ
         ============================================ */
         .chat-toggle-btn {
@@ -357,18 +545,22 @@
             outline: none;
             touch-action: manipulation;
         }
+
         .chat-toggle-btn:active {
             transform: scale(0.97);
         }
+
         .chat-drawer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease;
         }
+
         .chat-drawer.open {
             max-height: 500px;
             margin-top: 14px;
         }
+
         .display-window {
             height: 200px;
             background: rgba(10, 3, 20, 0.8);
@@ -381,6 +573,7 @@
             gap: 10px;
             -webkit-overflow-scrolling: touch;
         }
+
         .log-item {
             background: rgba(255, 255, 255, 0.05);
             padding: 10px 12px;
@@ -388,16 +581,19 @@
             font-size: 14px;
             position: relative;
         }
+
         .log-user {
             color: var(--c-violet-bright);
             font-weight: 600;
             font-size: 14px;
         }
+
         .log-time {
             font-size: 10px;
             color: var(--c-grey);
             float: right;
         }
+
         .reply-btn {
             background: none;
             border: none;
@@ -407,6 +603,7 @@
             margin-top: 4px;
             touch-action: manipulation;
         }
+
         .input-field {
             background: rgba(10, 3, 20, 0.8);
             border: 1px solid var(--c-ash);
@@ -417,6 +614,7 @@
             outline: none;
             -webkit-appearance: none;
         }
+
         .send-btn {
             background: linear-gradient(135deg, #7e22ce, #a855f7);
             border: none;
@@ -442,6 +640,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
         }
+
         .accordion-block:last-child {
             margin-bottom: 0;
         }
@@ -456,15 +655,18 @@
             transition: background 0.2s;
             gap: 12px;
         }
+
         .accordion-header:active {
             background: rgba(168, 85, 247, 0.1);
         }
+
         .accordion-header .title {
             font-weight: 700;
             color: var(--c-white);
             font-size: 15px;
             line-height: 1.3;
         }
+
         .accordion-header .arrow {
             font-size: 18px;
             color: var(--c-violet-bright);
@@ -472,6 +674,7 @@
             flex-shrink: 0;
             margin-left: auto;
         }
+
         .accordion-header .arrow.open {
             transform: rotate(180deg);
         }
@@ -482,21 +685,25 @@
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 0 16px;
         }
+
         .accordion-body.open {
             max-height: 600px;
             padding: 0 16px 16px 16px;
         }
+
         .accordion-body .desc {
             font-size: 14px;
             color: var(--c-grey);
             line-height: 1.6;
         }
+
         .accordion-body .desc li {
             list-style: none;
             padding-left: 20px;
             position: relative;
             margin-bottom: 4px;
         }
+
         .accordion-body .desc li::before {
             content: "•";
             color: var(--c-violet-bright);
@@ -520,6 +727,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .promo-subhead {
             font-size: clamp(14px, 3.2vw, 16px);
             color: var(--c-grey);
@@ -529,12 +737,14 @@
             border-bottom: 1px solid rgba(168, 85, 247, 0.2);
             padding-bottom: 16px;
         }
+
         .promo-content p {
             font-size: clamp(14px, 3.5vw, 16px);
             color: var(--c-grey);
             line-height: 1.7;
             margin-bottom: 12px;
         }
+
         .promo-content strong {
             color: var(--c-violet-bright);
             font-weight: 600;
@@ -551,6 +761,7 @@
             font-weight: 600;
             font-size: clamp(15px, 3.8vw, 18px);
         }
+
         .cta-btn {
             display: block;
             width: 100%;
@@ -569,9 +780,11 @@
             touch-action: manipulation;
             margin-top: 10px;
         }
+
         .cta-btn:active {
             transform: scale(0.97);
         }
+
         .cta-small {
             font-size: 13px;
             font-weight: 400;
@@ -587,6 +800,7 @@
         .fem-player {
             text-align: center;
         }
+
         .track-name {
             font-family: 'Cinzel', serif;
             font-size: 15px;
@@ -596,6 +810,7 @@
             letter-spacing: 1px;
             min-height: 20px;
         }
+
         .btn-ctrl {
             background: none;
             border: 1px solid var(--c-ash);
@@ -608,6 +823,7 @@
             font-size: 18px;
             touch-action: manipulation;
         }
+
         .btn-ctrl#play-btn {
             width: 52px;
             height: 52px;
@@ -615,6 +831,7 @@
             color: var(--c-violet-bright);
             font-size: 22px;
         }
+
         .track-item {
             padding: 10px 12px;
             font-size: 14px;
@@ -638,17 +855,20 @@
             gap: 30px;
             flex-wrap: wrap;
         }
+
         .counter-box .counter-item {
             display: flex;
             align-items: center;
             gap: 8px;
             color: var(--c-grey);
         }
+
         .counter-box .counter-item span {
             color: var(--c-white);
             font-weight: 700;
             font-size: 18px;
         }
+
         .counter-box .counter-item .icon {
             font-size: 20px;
         }
@@ -670,6 +890,7 @@
             font-weight: 300;
             letter-spacing: 0.5px;
         }
+
         .footer-slogan b {
             color: var(--c-violet-bright);
             font-family: 'Cinzel', serif;
@@ -752,6 +973,18 @@
             .counter-box .counter-item span {
                 font-size: 16px;
             }
+
+            .admin-gear {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .admin-modal-content {
+                padding: 20px 16px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -821,6 +1054,14 @@
             }
             .counter-box .counter-item span {
                 font-size: 14px;
+            }
+
+            .admin-gear {
+                width: 32px;
+                height: 32px;
+                font-size: 15px;
+                top: 8px;
+                right: 8px;
             }
         }
     </style>
@@ -1046,11 +1287,11 @@
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
 
-                <a href="https://t.me/+cV9jLGT5sGgzZDAy" target="_blank" class="avatar-left">
+                <a href="#" target="_blank" class="avatar-left" id="avatar-tg-link">
                     <img src="images/telegram.png" alt="Telegram">
                 </a>
 
-                <a href="https://max.ru/join/MKbvhJGkq_rACHA1cw28DYLN-t-fmyz8_DaxVkTgF1U" target="_blank" class="avatar-right">
+                <a href="#" target="_blank" class="avatar-right" id="avatar-max-link">
                     <img src="images/max.png" alt="MAX">
                 </a>
 
@@ -1062,12 +1303,12 @@
 
             <!-- КНОПКИ -->
             <div class="buttons-group">
-                <a href="https://t.me/+cV9jLGT5sGgzZDAy" target="_blank" class="glow-btn">
+                <a href="#" target="_blank" class="glow-btn" id="btn-tg-link">
                     <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.68-.55.84-1.12.52l-3.05-2.25-1.47 1.42c-.16.16-.3.3-.62.3l.22-3.11 5.67-5.12c.25-.22-.05-.34-.38-.12l-7.01 4.41-3.02-.95c-.66-.21-.67-.66.14-.98l11.8-4.55c.55-.2 1.03.13.81.95z"/></svg>
                     <span class="btn-text">Telegram</span>
                 </a>
 
-                <a href="https://max.ru/join/MKbvhJGkq_rACHA1cw28DYLN-t-fmyz8_DaxVkTgF1U" target="_blank" class="glow-btn glow-btn-max">
+                <a href="#" target="_blank" class="glow-btn glow-btn-max" id="btn-max-link">
                     <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     <span class="btn-text">MAX</span>
                 </a>
@@ -1177,7 +1418,7 @@
                         </span>
                     </div>
 
-                    <a href="https://t.me/+cV9jLGT5sGgzZDAy" target="_blank" class="cta-btn">
+                    <a href="#" target="_blank" class="cta-btn" id="cta-tg-link">
                         🎁 Бронируйте место прямо сейчас и забирайте приветственные бонусы!
                         <span class="cta-small">Количество мест в мини-группе ограничено</span>
                     </a>
@@ -1207,9 +1448,7 @@
                 </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- СЧЁТЧИК ПОСЕТИТЕЛЕЙ (Всего + Сегодня) -->
-            <!-- ========================================== -->
+            <!-- СЧЁТЧИК ПОСЕТИТЕЛЕЙ -->
             <div class="counter-box">
                 <div class="counter-item">
                     <span class="icon">👁️</span>
@@ -1228,13 +1467,177 @@
         </div>
     </div>
 
+    <!-- ============================================ -->
+    <!-- АДМИНКА — ШЕСТЕРЁНКА -->
+    <!-- ============================================ -->
+    <div class="admin-gear" id="admin-gear" title="Админка">⚙️</div>
+
+    <!-- МОДАЛКА АДМИНКИ -->
+    <div class="admin-modal" id="admin-modal">
+        <div class="admin-modal-content">
+            <button class="close-btn" onclick="closeAdmin()">✕</button>
+            <h2>🔐 Админка</h2>
+
+            <!-- Логин -->
+            <div id="login-form">
+                <div class="field-group password-field">
+                    <label>Введите пароль</label>
+                    <input type="password" id="admin-password" placeholder="Пароль..." onkeydown="if(event.key==='Enter') loginAdmin()">
+                </div>
+                <button class="login-btn" onclick="loginAdmin()">Войти</button>
+                <div class="login-error" id="login-error"></div>
+            </div>
+
+            <!-- Панель управления (скрыта) -->
+            <div id="admin-panel" style="display:none;">
+                <div class="field-group">
+                    <label>📱 Ссылка для Telegram</label>
+                    <input type="url" id="edit-tg-link" placeholder="https://t.me/...">
+                </div>
+                <div class="field-group">
+                    <label>📱 Ссылка для MAX</label>
+                    <input type="url" id="edit-max-link" placeholder="https://max.ru/join/...">
+                </div>
+                <button class="save-btn" onclick="saveLinks()">💾 Сохранить ссылки</button>
+                <div class="status-msg" id="status-msg"></div>
+            </div>
+        </div>
+    </div>
+
     <audio id="audio-engine"></audio>
 
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — СЧЁТЧИК ПОСЕТИТЕЛЕЙ ДОБАВЛЕН!');
+        console.log('💎 Sivalko System — АДМИНКА ГОТОВА!');
+
+        // ============================================
+        // АДМИНКА
+        // ============================================
+        const ADMIN_PASSWORD = '12345';
+        let isAdmin = false;
+
+        // Элементы
+        const gear = document.getElementById('admin-gear');
+        const modal = document.getElementById('admin-modal');
+        const loginForm = document.getElementById('login-form');
+        const adminPanel = document.getElementById('admin-panel');
+        const loginError = document.getElementById('login-error');
+        const statusMsg = document.getElementById('status-msg');
+
+        // Поля для ссылок
+        const editTg = document.getElementById('edit-tg-link');
+        const editMax = document.getElementById('edit-max-link');
+
+        // Сами ссылки
+        const btnTg = document.getElementById('btn-tg-link');
+        const btnMax = document.getElementById('btn-max-link');
+        const avatarTg = document.getElementById('avatar-tg-link');
+        const avatarMax = document.getElementById('avatar-max-link');
+        const ctaTg = document.getElementById('cta-tg-link');
+
+        // Ключи для localStorage
+        const STORAGE_KEY_TG = 'sivalko_tg_link';
+        const STORAGE_KEY_MAX = 'sivalko_max_link';
+
+        // Дефолтные ссылки
+        const DEFAULT_TG = 'https://t.me/+cV9jLGT5sGgzZDAy';
+        const DEFAULT_MAX = 'https://max.ru/join/MKbvhJGkq_rACHA1cw28DYLN-t-fmyz8_DaxVkTgF1U';
+
+        // ============================================
+        // ЗАГРУЗКА СОХРАНЁННЫХ ССЫЛОК
+        // ============================================
+        function loadLinks() {
+            const tg = localStorage.getItem(STORAGE_KEY_TG) || DEFAULT_TG;
+            const max = localStorage.getItem(STORAGE_KEY_MAX) || DEFAULT_MAX;
+
+            // Кнопки
+            btnTg.href = tg;
+            btnMax.href = max;
+            avatarTg.href = tg;
+            avatarMax.href = max;
+            ctaTg.href = tg;
+
+            // Поля в админке
+            editTg.value = tg;
+            editMax.value = max;
+        }
+
+        // ============================================
+        // СОХРАНЕНИЕ ССЫЛОК
+        // ============================================
+        function saveLinks() {
+            const tg = editTg.value.trim();
+            const max = editMax.value.trim();
+
+            if (!tg || !max) {
+                statusMsg.textContent = '❌ Заполни оба поля!';
+                statusMsg.style.color = '#ff6b6b';
+                return;
+            }
+
+            localStorage.setItem(STORAGE_KEY_TG, tg);
+            localStorage.setItem(STORAGE_KEY_MAX, max);
+
+            // Обновляем все кнопки
+            btnTg.href = tg;
+            btnMax.href = max;
+            avatarTg.href = tg;
+            avatarMax.href = max;
+            ctaTg.href = tg;
+
+            statusMsg.textContent = '✅ Ссылки сохранены!';
+            statusMsg.style.color = '#51cf66';
+            setTimeout(() => { statusMsg.textContent = ''; }, 3000);
+        }
+
+        // ============================================
+        // ЛОГИН
+        // ============================================
+        function loginAdmin() {
+            const pass = document.getElementById('admin-password').value;
+            if (pass === ADMIN_PASSWORD) {
+                isAdmin = true;
+                loginForm.style.display = 'none';
+                adminPanel.style.display = 'block';
+                loginError.textContent = '';
+                document.getElementById('admin-password').value = '';
+                loadLinks();
+            } else {
+                loginError.textContent = '❌ Неверный пароль!';
+                document.getElementById('admin-password').value = '';
+                setTimeout(() => { loginError.textContent = ''; }, 3000);
+            }
+        }
+
+        // ============================================
+        // ОТКРЫТИЕ / ЗАКРЫТИЕ МОДАЛКИ
+        // ============================================
+        gear.addEventListener('click', () => {
+            modal.classList.add('active');
+            // Если уже админ — показываем панель
+            if (isAdmin) {
+                loginForm.style.display = 'none';
+                adminPanel.style.display = 'block';
+                loadLinks();
+            } else {
+                loginForm.style.display = 'block';
+                adminPanel.style.display = 'none';
+                document.getElementById('admin-password').value = '';
+                loginError.textContent = '';
+            }
+        });
+
+        function closeAdmin() {
+            modal.classList.remove('active');
+            statusMsg.textContent = '';
+        }
+
+        // Закрытие по клику вне модалки
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeAdmin();
+        });
 
         // ============================================
         // АККОРДЕОН
@@ -1255,7 +1658,9 @@
             arrow.classList.toggle('open');
         }
 
-        // --- FIREBASE ---
+        // ============================================
+        // FIREBASE
+        // ============================================
         const firebaseConfig = {
             apiKey: "AIzaSyC5L2GQ-2CYj-GNYsHENASdvKVF68rsEb0",
             authDomain: "metaimperiya-14d1b.firebaseapp.com",
@@ -1270,7 +1675,7 @@
         const db = firebase.database();
 
         // ============================================
-        // СЧЁТЧИК ПОСЕТИТЕЛЕЙ (Всего + Сегодня)
+        // СЧЁТЧИК ПОСЕТИТЕЛЕЙ
         // ============================================
         function updateVisitorCounter() {
             const visitorId = localStorage.getItem('visitorId') || Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
@@ -1280,29 +1685,18 @@
             const todayRef = db.ref('visitors/today');
             const today = new Date().toISOString().split('T')[0];
 
-            // Проверяем, был ли сегодня
             const lastVisit = localStorage.getItem('lastVisit');
             if (lastVisit !== today) {
                 localStorage.setItem('lastVisit', today);
-
-                // Увеличиваем счётчик за сегодня
-                todayRef.transaction((current) => {
-                    return (current || 0) + 1;
-                });
-
-                // Увеличиваем общий счётчик
-                totalRef.transaction((current) => {
-                    return (current || 0) + 1;
-                });
+                todayRef.transaction((current) => { return (current || 0) + 1; });
+                totalRef.transaction((current) => { return (current || 0) + 1; });
             }
 
-            // Показываем общее количество
             totalRef.on('value', (snap) => {
                 const el = document.getElementById('total-counter');
                 if (el) el.textContent = snap.val() || 0;
             });
 
-            // Показываем количество за сегодня
             todayRef.on('value', (snap) => {
                 const el = document.getElementById('today-counter');
                 if (el) el.textContent = snap.val() || 0;
@@ -1428,11 +1822,14 @@
             pBar.style.width = '0%'; });
 
         // ============================================
-        // ЗАПУСК СЧЁТЧИКА ПОСЛЕ ЗАГРУЗКИ FIREBASE
+        // ЗАПУСК
         // ============================================
         if (typeof db !== 'undefined') {
             updateVisitorCounter();
         }
+
+        // Загружаем ссылки при старте
+        loadLinks();
 
         // ============================================
         // WEBGL
