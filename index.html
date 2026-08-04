@@ -142,7 +142,7 @@
         }
 
         /* ============================================
-        АВАТАРКИ — ПОДНЯТЫ ВЫШЕ (top: 30% вместо 50%)
+        АВАТАРКИ
         ============================================ */
         .avatar-left,
         .avatar-right {
@@ -186,9 +186,6 @@
             display: block;
         }
 
-        /* ============================================
-        АНИМАЦИЯ ПРЫЖКОВ
-        ============================================ */
         @keyframes bounceLeft {
             0%,
             100% {
@@ -214,7 +211,7 @@
         }
 
         /* ============================================
-        ПОДПИСЬ ПОВЕРХ ВИДЕО (имя) — ПОДНЯТА
+        ПОДПИСЬ ПОВЕРХ ВИДЕО
         ============================================ */
         .video-caption-overlay {
             position: absolute;
@@ -623,6 +620,42 @@
             font-size: 14px;
         }
 
+        /* ============================================
+        СЧЁТЧИК
+        ============================================ */
+        .counter-box {
+            padding: 14px 16px;
+            font-size: 14px;
+            line-height: 1.8;
+            border: var(--border);
+            border-radius: 12px;
+            background: var(--glass);
+            color: var(--c-white);
+            border-top: 2px solid var(--c-violet-bright);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .counter-box .counter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--c-grey);
+        }
+        .counter-box .counter-item span {
+            color: var(--c-white);
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .counter-box .counter-item .icon {
+            font-size: 20px;
+        }
+
+        /* ============================================
+        ФУТЕР
+        ============================================ */
         .footer-slogan {
             padding: 14px 16px;
             font-size: 15px;
@@ -711,6 +744,14 @@
             .video-caption-overlay {
                 padding: 20px 12px 12px 12px;
             }
+
+            .counter-box {
+                gap: 16px;
+                font-size: 13px;
+            }
+            .counter-box .counter-item span {
+                font-size: 16px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -771,6 +812,15 @@
             }
             .video-caption-overlay {
                 padding: 15px 10px 10px 10px;
+            }
+
+            .counter-box {
+                gap: 12px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+            .counter-box .counter-item span {
+                font-size: 14px;
             }
         }
     </style>
@@ -996,17 +1046,14 @@
                     <img src="https://raw.githubusercontent.com/Metaimperiya/Sivalko-Natallia/main/images/Sivalko-Natallia.png" alt="Наталья Сивалко">
                 </video>
 
-                <!-- Аватарка Telegram (слева) -->
                 <a href="https://t.me/+cV9jLGT5sGgzZDAy" target="_blank" class="avatar-left">
                     <img src="images/telegram.png" alt="Telegram">
                 </a>
 
-                <!-- Аватарка Max (справа) -->
                 <a href="https://max.ru/join/MKbvhJGkq_rACHA1cw28DYLN-t-fmyz8_DaxVkTgF1U" target="_blank" class="avatar-right">
                     <img src="images/max.png" alt="MAX">
                 </a>
 
-                <!-- Подпись поверх видео -->
                 <div class="video-caption-overlay">
                     <div class="profile-subtitle">Sivalko System</div>
                     <h1 class="main-box-title">Наталья Сивалко 💎</h1>
@@ -1139,7 +1186,7 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- ПЛЕЕР И ФУТЕР -->
+        <!-- ПЛЕЕР + СЧЁТЧИК + ФУТЕР -->
         <!-- ============================================ -->
         <div class="col-section">
             <div class="box" style="display:flex;flex-direction:column;margin-bottom:10px;">
@@ -1159,6 +1206,21 @@
                     <div class="track-item" onclick="selectTrack(3)" data-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">IV. Горный ветер</div>
                 </div>
             </div>
+
+            <!-- ========================================== -->
+            <!-- СЧЁТЧИК ПОСЕТИТЕЛЕЙ (Всего + Сегодня) -->
+            <!-- ========================================== -->
+            <div class="counter-box">
+                <div class="counter-item">
+                    <span class="icon">👁️</span>
+                    Всего: <span id="total-counter">...</span>
+                </div>
+                <div class="counter-item">
+                    <span class="icon">📅</span>
+                    Сегодня: <span id="today-counter">...</span>
+                </div>
+            </div>
+
             <div class="footer-slogan">
                 <b>✦ SIVALKO SYSTEM ✦</b>
                 "Северное сияние танцует для тех, кто поднимает глаза. Построй свою систему и управляй потоком."
@@ -1172,7 +1234,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
     <script>
-        console.log('💎 Sivalko System — ССЫЛКИ ОБНОВЛЕНЫ!');
+        console.log('💎 Sivalko System — СЧЁТЧИК ПОСЕТИТЕЛЕЙ ДОБАВЛЕН!');
 
         // ============================================
         // АККОРДЕОН
@@ -1207,6 +1269,49 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
+        // ============================================
+        // СЧЁТЧИК ПОСЕТИТЕЛЕЙ (Всего + Сегодня)
+        // ============================================
+        function updateVisitorCounter() {
+            const visitorId = localStorage.getItem('visitorId') || Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+            localStorage.setItem('visitorId', visitorId);
+
+            const totalRef = db.ref('visitors/total');
+            const todayRef = db.ref('visitors/today');
+            const today = new Date().toISOString().split('T')[0];
+
+            // Проверяем, был ли сегодня
+            const lastVisit = localStorage.getItem('lastVisit');
+            if (lastVisit !== today) {
+                localStorage.setItem('lastVisit', today);
+
+                // Увеличиваем счётчик за сегодня
+                todayRef.transaction((current) => {
+                    return (current || 0) + 1;
+                });
+
+                // Увеличиваем общий счётчик
+                totalRef.transaction((current) => {
+                    return (current || 0) + 1;
+                });
+            }
+
+            // Показываем общее количество
+            totalRef.on('value', (snap) => {
+                const el = document.getElementById('total-counter');
+                if (el) el.textContent = snap.val() || 0;
+            });
+
+            // Показываем количество за сегодня
+            todayRef.on('value', (snap) => {
+                const el = document.getElementById('today-counter');
+                if (el) el.textContent = snap.val() || 0;
+            });
+        }
+
+        // ============================================
+        // ЧАТ
+        // ============================================
         let currentReplyId = null;
 
         function toggleChat() {
@@ -1268,7 +1373,9 @@
             `;
         }
 
-        // --- ПЛЕЕР ---
+        // ============================================
+        // ПЛЕЕР
+        // ============================================
         const audio = document.getElementById('audio-engine');
         const playBtn = document.getElementById('play-btn');
         const pBar = document.getElementById('p-bar');
@@ -1320,7 +1427,16 @@
         audio.addEventListener('ended', () => { playBtn.innerText = '▶';
             pBar.style.width = '0%'; });
 
-        // --- WEBGL ---
+        // ============================================
+        // ЗАПУСК СЧЁТЧИКА ПОСЛЕ ЗАГРУЗКИ FIREBASE
+        // ============================================
+        if (typeof db !== 'undefined') {
+            updateVisitorCounter();
+        }
+
+        // ============================================
+        // WEBGL
+        // ============================================
         window.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             const gl = canvas.getContext('webgl2');
