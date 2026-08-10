@@ -10,7 +10,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #080b14; color: #f0f4ff; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(8,11,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(168,85,247,0.1); padding: 14px 0; }
+        
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(8,11,20,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(168,85,247,0.1); padding: 14px 0; }
         .navbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .logo { font-size: 22px; font-weight: 900; color: #f0f4ff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .logo span { color: #c084fc; }
@@ -21,19 +22,35 @@
         .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168,85,247,0.3); }
         .menu-toggle { display: none; background: none; border: none; color: #f0f4ff; font-size: 28px; cursor: pointer; }
         @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding: 16px 0; gap: 16px; } .nav-links.open { display: flex; } }
-        .page-hero { padding: 130px 0 60px; background: linear-gradient(145deg, #111a2a, #0a0f1e); border-bottom: 1px solid #1f2a40; }
-        .page-hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 16px; }
+        
+        .page-hero { padding: 130px 0 50px; background: linear-gradient(145deg, #111a2a, #0a0f1e); border-bottom: 1px solid #1f2a40; }
+        .page-hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 12px; }
         .page-hero h1 span { color: #c084fc; }
-        .page-hero p { color: #b0c4e8; font-size: 18px; max-width: 700px; }
-        .content { padding: 60px 0; }
-        .content h2 { font-size: 28px; margin: 30px 0 12px; color: #c084fc; }
-        .content p { color: #b0c4e8; font-size: 17px; max-width: 800px; margin-bottom: 16px; }
-        .content ul { color: #b0c4e8; font-size: 17px; padding-left: 24px; max-width: 800px; margin-bottom: 16px; }
+        .page-hero .subtitle { color: #b0c4e8; font-size: 20px; max-width: 700px; margin-bottom: 8px; }
+        .page-hero .badge-exp { display: inline-block; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.2); padding: 4px 18px; border-radius: 40px; font-size: 14px; color: #c084fc; margin-top: 12px; }
+        
+        .content { padding: 50px 0; }
+        .content h2 { font-size: 28px; margin: 40px 0 16px; color: #c084fc; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content p { color: #b0c4e8; font-size: 17px; max-width: 850px; margin-bottom: 16px; }
+        .content ul { color: #b0c4e8; font-size: 17px; padding-left: 24px; max-width: 850px; margin-bottom: 16px; }
         .content ul li { margin-bottom: 8px; }
+        
+        .exp-block { background: #111a2a; border-radius: 16px; padding: 24px 28px; border: 1px solid #1f2a40; margin-bottom: 24px; }
+        .exp-block .company { font-size: 20px; font-weight: 700; color: #f0f4ff; }
+        .exp-block .period { color: #8899bb; font-size: 14px; margin: 4px 0 8px; }
+        .exp-block .position { color: #c084fc; font-weight: 600; font-size: 16px; }
+        .exp-block ul { padding-left: 20px; margin-top: 8px; }
+        .exp-block ul li { font-size: 15px; margin-bottom: 4px; }
+        
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 8px; }
+        .tags span { background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.12); padding: 4px 16px; border-radius: 30px; font-size: 13px; color: #c084fc; }
+        
         footer { padding: 40px 0; border-top: 1px solid #1f2a40; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: #556688; font-size: 14px; }
         footer a { color: #8899bb; text-decoration: none; }
         footer a:hover { color: #c084fc; }
-        @media (max-width: 768px) { .page-hero h1 { font-size: 32px; } }
+        
+        @media (max-width: 768px) { .page-hero h1 { font-size: 32px; } .exp-block { padding: 18px 16px; } }
     </style>
 </head>
 <body>
@@ -50,28 +67,96 @@
             </ul>
         </div>
     </nav>
+
     <section class="page-hero">
         <div class="container">
             <h1>Наталья <span>Сивалко</span></h1>
-            <p>Бизнес-тренер, наставник, основатель Sivalko System. Помогаю экспертам выстроить систему продаж и выйти на доход от 150 000 ₽ в месяц.</p>
+            <div class="subtitle">Эксперт по управлению продажами · Бизнес-тренер · Наставник</div>
+            <div class="badge-exp">📅 Общий опыт: 16 лет 8 месяцев</div>
         </div>
     </section>
+
     <section class="content">
         <div class="container">
-            <h2>Путь к системе</h2>
-            <p>Наталья Сивалко более 7 лет в бизнес-консалтинге. Разработала <strong>каскадную систему</strong> из 3 шагов, которая помогла сотням специалистов выйти на стабильный доход.</p>
-            <h2>Авторская философия</h2>
-            <p>Главный принцип — бизнес должен приносить удовольствие и деньги. Наталья учит выстраивать системные процессы, которые работают без постоянного контроля.</p>
+            
+            <h2>💎 Профессиональный профиль</h2>
+            <p>
+                Сильный управленец и бизнес-наставник с общим опытом работы более <strong>16 лет</strong>. 
+                Специализируется на комплексном аутсорсинге и выстраивании бизнес-процессов <strong>«под ключ»</strong>: 
+                от операционного управления розничными и оптовыми сетями до внедрения систем мотивации, 
+                корпоративного обучения и коучинга.
+            </p>
+            <p>
+                Обладает мощной экспертизой на стыке <strong>жёсткого коммерческого менеджмента</strong> 
+                и современной практической психологии (КПТ, гештальт, НЛП), что позволяет эффективно растить команды, 
+                трансформировать хаос в прибыльные структуры и выводить бизнес на новый уровень.
+            </p>
+
+            <div class="tags">
+                <span>🏆 Бизнес-тренер</span>
+                <span>🎯 Ментор</span>
+                <span>📈 Эксперт по продажам</span>
+                <span>⚙️ Операционный аутсорсинг</span>
+                <span>🧠 Коуч</span>
+                <span>📊 Стратегическое управление</span>
+            </div>
+
+            <h2>📋 Ключевые компетенции</h2>
             <ul>
-                <li>🎯 <strong>Система продаж</strong> — каскадная модель из 3 шагов</li>
-                <li>🧠 <strong>Воронки и трафик</strong> — топ-4 воронки 2026 года</li>
-                <li>📞 <strong>Продажи и переговоры</strong> — скрипты без скидок</li>
-                <li>💎 <strong>Продукт-бестселлер</strong> — создание востребованного оффера</li>
+                <li><strong>Бизнес-тренер и ментор</strong> — разработка обучающих программ, повышение личной эффективности, разбор кейсов, работа с возражениями.</li>
+                <li><strong>Куратор и наставник</strong> — сопровождение проектов, контроль стандартов, выстраивание дисциплины и управление коллективами.</li>
+                <li><strong>Эксперт по продажам и развитию</strong> — управление оптовыми и розничными каналами, масштабирование, увеличение товарооборота и маржинальности.</li>
+                <li><strong>Операционный аутсорсинг управления</strong> — полный контроль финансово-экономической деятельности, бюджетирование, оптимизация издержек, логистика.</li>
             </ul>
-            <h2>Результаты учеников</h2>
-            <p>300+ выпускников. Средний рост дохода — 3x. Многие вышли на 200–300 тыс. ₽ в месяц через 2–3 месяца.</p>
+
+            <h2>🏢 Опыт работы</h2>
+
+            <div class="exp-block">
+                <div class="company">АВТОСПЕЙС</div>
+                <div class="period">Ноябрь 2023 — апрель 2026 · 2 года 10 месяцев</div>
+                <div class="position">Руководитель сети розничных магазинов (г. Витебск)</div>
+                <ul>
+                    <li>✅ Руководство оптовой и розничной торговлей на территории Витебской области.</li>
+                    <li>✅ Привлечение новых клиентов, заключение договоров с оптовыми покупателями.</li>
+                    <li>✅ Управление оптовыми и розничными продажами, контроль выполнения плана.</li>
+                    <li>✅ Управление коллективом и логистикой, проведение обучающих тренингов для персонала.</li>
+                    <li>✅ Разработка маркетинговых стратегий и маршрутов для оптовых менеджеров.</li>
+                    <li>✅ Работа с дебиторской задолженностью и возражениями покупателей.</li>
+                </ul>
+            </div>
+
+            <div class="exp-block">
+                <div class="company">ООО «Автоспейс-Витебск»</div>
+                <div class="period">Август 2020 — ноябрь 2023 · 3 года 4 месяца</div>
+                <div class="position">Директор</div>
+                <ul>
+                    <li>✅ Антикризисное и стратегическое руководство экономической и финансовой деятельностью.</li>
+                    <li>✅ Рост ключевых финансовых показателей, увеличение продаж и управление бюджетами.</li>
+                    <li>✅ Заключение договоров и работа с новыми и ключевыми клиентами.</li>
+                    <li>✅ Проведение обучающих тренингов для персонала.</li>
+                    <li>✅ Оптимизация и контроль расходной части бюджета магазинов.</li>
+                    <li>✅ Решение вопросов с арендодателями и инкассацией.</li>
+                </ul>
+            </div>
+
+            <h2>🎓 Образование и экспертиза</h2>
+            <ul>
+                <li><strong>Институт Когнитивно-поведенческой психотерапии</strong> (2025)</li>
+                <li><strong>Международный университет профессиональной переподготовки</strong> (2024)</li>
+                <li><strong>Витебский государственный технологический университет</strong> (2014)</li>
+                <li><strong>Витебский государственный университет им. Машерова</strong> (2009)</li>
+            </ul>
+
+            <h2>📚 Повышение квалификации и курсы</h2>
+            <ul>
+                <li><strong>Professional COACH ICU</strong> (Coach.by, 2024) — профессиональный коучинг для бизнеса и жизни.</li>
+                <li><strong>Основы Гештальт-терапии</strong> (Московский гештальт институт, 2023).</li>
+                <li><strong>НЛП-практик</strong> (Московский институт Нейро Лингвистического Программирования, 2009) — работа с коммуникациями, убеждениями и управлением состояниями.</li>
+            </ul>
+
         </div>
     </section>
+
     <div class="container">
         <footer>
             <div><strong style="color:#f0f4ff;">Наталья Сивалко</strong> · Sivalko System</div>
@@ -79,6 +164,7 @@
             <div>© 2026 · Все права защищены</div>
         </footer>
     </div>
+
     <script>
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('open');
