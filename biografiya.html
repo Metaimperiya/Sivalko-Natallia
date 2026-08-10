@@ -21,30 +21,25 @@
         .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168,85,247,0.3); }
         .menu-toggle { display: none; background: none; border: none; color: #f0f4ff; font-size: 28px; cursor: pointer; }
         @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding: 16px 0; gap: 16px; } .nav-links.open { display: flex; } }
-        
         .page-hero { padding: 130px 0 60px; background: linear-gradient(145deg, #111a2a, #0a0f1e); border-bottom: 1px solid #1f2a40; }
         .page-hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 16px; }
         .page-hero h1 span { color: #c084fc; }
         .page-hero p { color: #b0c4e8; font-size: 18px; max-width: 700px; }
-        
         .content { padding: 60px 0; }
         .content h2 { font-size: 28px; margin: 30px 0 12px; color: #c084fc; }
         .content p { color: #b0c4e8; font-size: 17px; max-width: 800px; margin-bottom: 16px; }
         .content ul { color: #b0c4e8; font-size: 17px; padding-left: 24px; max-width: 800px; margin-bottom: 16px; }
         .content ul li { margin-bottom: 8px; }
-        
         footer { padding: 40px 0; border-top: 1px solid #1f2a40; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: #556688; font-size: 14px; }
         footer a { color: #8899bb; text-decoration: none; }
         footer a:hover { color: #c084fc; }
-        .back-link { display: inline-block; margin: 20px 0 0; color: #c084fc; text-decoration: none; font-weight: 600; }
-        .back-link:hover { text-decoration: underline; }
         @media (max-width: 768px) { .page-hero h1 { font-size: 32px; } }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="/" class="logo">💎 <span>Sivalko</span> System</a>
+            <a href="index.html" class="logo">💎 <span>Sivalko</span> System</a>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Главная</a></li>
@@ -55,35 +50,28 @@
             </ul>
         </div>
     </nav>
-
     <section class="page-hero">
         <div class="container">
             <h1>Наталья <span>Сивалко</span></h1>
-            <p>Бизнес-тренер, наставник, основатель Sivalko System. Помогаю экспертам и предпринимателям выстроить систему продаж и выйти на доход от 150 000 ₽ в месяц.</p>
+            <p>Бизнес-тренер, наставник, основатель Sivalko System. Помогаю экспертам выстроить систему продаж и выйти на доход от 150 000 ₽ в месяц.</p>
         </div>
     </section>
-
     <section class="content">
         <div class="container">
             <h2>Путь к системе</h2>
-            <p>Наталья Сивалко более 7 лет в бизнес-консалтинге. За это время она разработала собственную <strong>каскадную систему</strong> из 3 шагов, которая позволила сотням специалистов выйти на стабильный доход без выгорания.</p>
-            
+            <p>Наталья Сивалко более 7 лет в бизнес-консалтинге. Разработала <strong>каскадную систему</strong> из 3 шагов, которая помогла сотням специалистов выйти на стабильный доход.</p>
             <h2>Авторская философия</h2>
-            <p>Главный принцип Натальи — бизнес должен приносить удовольствие и деньги одновременно. Она учит не просто продавать, а выстраивать системные процессы, которые работают без постоянного контроля.</p>
+            <p>Главный принцип — бизнес должен приносить удовольствие и деньги. Наталья учит выстраивать системные процессы, которые работают без постоянного контроля.</p>
             <ul>
                 <li>🎯 <strong>Система продаж</strong> — каскадная модель из 3 шагов</li>
                 <li>🧠 <strong>Воронки и трафик</strong> — топ-4 воронки 2026 года</li>
                 <li>📞 <strong>Продажи и переговоры</strong> — скрипты без скидок</li>
                 <li>💎 <strong>Продукт-бестселлер</strong> — создание востребованного оффера</li>
             </ul>
-
             <h2>Результаты учеников</h2>
-            <p>Более 300 выпускников курсов. Средний рост дохода — 3x. Многие вышли на доход 200–300 тыс. ₽ в месяц уже через 2–3 месяца после начала работы по системе Натальи.</p>
-            
-            <a href="index.html" class="back-link">← На главную</a>
+            <p>300+ выпускников. Средний рост дохода — 3x. Многие вышли на 200–300 тыс. ₽ в месяц через 2–3 месяца.</p>
         </div>
     </section>
-
     <div class="container">
         <footer>
             <div><strong style="color:#f0f4ff;">Наталья Сивалко</strong> · Sivalko System</div>
@@ -91,7 +79,6 @@
             <div>© 2026 · Все права защищены</div>
         </footer>
     </div>
-
     <script>
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('open');
