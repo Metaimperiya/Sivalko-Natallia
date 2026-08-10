@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ===== ПОДТВЕРЖДЕНИЕ GOOGLE SEARCH CONSOLE (ДЛЯ САЙТА НАТАЛЬИ СИВАЛКО) ===== -->
+    <!-- ===== ПОДТВЕРЖДЕНИЕ GOOGLE SEARCH CONSOLE ===== -->
     <meta name="google-site-verification" content="Yn606XFsYaK55tYUjokpJvAKsIjNrOrABhzal_gNKqw" />
 
-    <title>Наталья Сивалко | Sivalko System — Бизнес-тренер, Коуч, Наставник</title>
-    <meta name="description" content="Наталья Сивалко — бизнес-тренер, коуч и наставник. Система продаж, стратегия, масштабирование бизнеса. Sivalko System." />
+    <title>Наталья Сивалко | Sivalko System</title>
+    <meta name="description" content="Наталья Сивалко — бизнес-тренер, коуч и наставник. Система продаж, стратегия, масштабирование бизнеса." />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💎%3C/text%3E%3C/svg%3E" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* ===== RESET & BASE ===== */
+        /* ===== СБРОС И БАЗА ===== */
         * {
             margin: 0;
             padding: 0;
@@ -34,21 +34,126 @@
             padding: 0 24px;
         }
 
-        /* ===== 3D HERO ===== */
+        /* ===== ШАПКА С НАВИГАЦИЕЙ ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(8, 11, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+            padding: 14px 0;
+            transition: 0.3s;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: #f0f4ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span {
+            color: #c084fc;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #b0c4e8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+        .nav-links a.active {
+            color: #c084fc;
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #a855f7;
+            border-radius: 4px;
+        }
+        .btn-nav {
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #f0f4ff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 16px 0;
+                gap: 16px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+        }
+
+        /* ===== ГЕРОЙ ===== */
         #canvas-container {
             position: relative;
             width: 100%;
             height: 100vh;
-            min-height: 600px;
+            min-height: 500px;
             background: #080b14;
             overflow: hidden;
+            margin-top: 70px;
         }
         #canvas-container canvas {
             display: block;
             width: 100% !important;
             height: 100% !important;
         }
-
         .hero-overlay {
             position: absolute;
             inset: 0;
@@ -77,7 +182,7 @@
             backdrop-filter: blur(4px);
         }
         .hero-overlay h1 {
-            font-size: clamp(38px, 8vw, 80px);
+            font-size: clamp(36px, 7vw, 72px);
             font-weight: 900;
             line-height: 1.1;
             letter-spacing: -1px;
@@ -91,12 +196,11 @@
             background-clip: text;
         }
         .hero-overlay p {
-            font-size: clamp(16px, 2.2vw, 24px);
+            font-size: clamp(16px, 2vw, 22px);
             color: #b0c4e8;
             margin: 16px 0 32px;
             max-width: 600px;
             pointer-events: auto;
-            font-weight: 400;
         }
         .hero-overlay .btn-group {
             display: flex;
@@ -142,7 +246,6 @@
             background: rgba(168, 85, 247, 0.08);
             transform: translateY(-3px);
         }
-
         .scroll-hint {
             position: absolute;
             bottom: 30px;
@@ -165,18 +268,6 @@
             }
         }
 
-        .gallery-hint {
-            position: absolute;
-            bottom: 80px;
-            right: 30px;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 12px;
-            letter-spacing: 1px;
-            pointer-events: none;
-            text-align: right;
-            line-height: 1.4;
-        }
-
         /* ===== СЕКЦИИ ===== */
         section {
             padding: 80px 0;
@@ -197,163 +288,87 @@
             margin-bottom: 48px;
         }
 
-        /* О себе */
-        .about-grid {
+        /* ===== КАРТОЧКИ ===== */
+        .grid-3 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
-        .about-image {
-            border-radius: 20px;
-            overflow: hidden;
-            background: #141c2c;
-            aspect-ratio: 4/3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(168, 85, 247, 0.15);
-        }
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 16px;
-        }
-        .about-text p {
-            color: #b0c4e8;
-            margin-bottom: 16px;
-            font-size: 17px;
-        }
-        .about-text .highlight {
-            color: #c084fc;
-            font-weight: 700;
-        }
-
-        /* Направления */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
-        }
-        .service-card {
+        .card {
             background: #111a2a;
             border-radius: 20px;
-            padding: 32px 24px;
+            padding: 28px 24px;
             border: 1px solid #1f2a40;
             transition: all 0.3s ease;
-            text-align: center;
+            text-decoration: none;
+            color: #f0f4ff;
+            display: block;
         }
-        .service-card:hover {
+        .card:hover {
             border-color: #a855f7;
             transform: translateY(-6px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
-        .service-card .emoji {
+        .card .emoji {
             font-size: 40px;
             display: block;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        .service-card h4 {
+        .card h4 {
             font-size: 20px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
-        .service-card p {
+        .card p {
             color: #8899bb;
             font-size: 15px;
         }
-
-        /* Результаты / цифры */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 24px;
-            text-align: center;
-            margin: 40px 0;
-        }
-        .stat-item .number {
-            font-size: 48px;
-            font-weight: 900;
+        .card .tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.12);
             color: #c084fc;
-        }
-        .stat-item .label {
-            color: #8899bb;
-            font-size: 16px;
-        }
-
-        /* Отзывы */
-        .testimonial-card {
-            background: #111a2a;
+            font-size: 12px;
+            padding: 2px 14px;
             border-radius: 20px;
-            padding: 32px;
-            border: 1px solid #1f2a40;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .testimonial-card .quote {
-            font-size: 18px;
-            color: #d0dfff;
-            font-style: italic;
-        }
-        .testimonial-card .author {
-            margin-top: 16px;
-            font-weight: 700;
-            color: #c084fc;
-        }
-        .testimonial-card .role {
-            color: #8899bb;
-            font-size: 14px;
+            margin-top: 12px;
+            font-weight: 600;
         }
 
-        /* Форма */
-        .form-section {
+        /* ===== СТРАНИЦА ДЕТАЛЬНО ===== */
+        .detail-hero {
+            padding: 120px 0 40px;
             background: linear-gradient(145deg, #111a2a, #0a0f1e);
-            border-radius: 30px;
-            padding: 60px 40px;
-            border: 1px solid #1f2a40;
-            text-align: center;
+            border-bottom: 1px solid #1f2a40;
         }
-        .form-section h2 {
-            font-size: 32px;
+        .detail-hero h1 {
+            font-size: 42px;
+            font-weight: 900;
             margin-bottom: 12px;
         }
-        .form-section p {
+        .detail-hero .meta {
             color: #8899bb;
-            margin-bottom: 32px;
-        }
-        .form-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .form-group input {
-            flex: 1 1 200px;
-            padding: 16px 24px;
-            border-radius: 60px;
-            border: 1px solid #2a3650;
-            background: #0a0f1e;
-            color: #fff;
             font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-            min-width: 180px;
         }
-        .form-group input:focus {
-            border-color: #a855f7;
-            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+        .detail-content {
+            padding: 60px 0;
         }
-        .form-group input::placeholder {
-            color: #556688;
+        .detail-content p {
+            color: #b0c4e8;
+            font-size: 18px;
+            max-width: 720px;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
         }
 
-        /* Футер */
+        /* ===== ФУТЕР ===== */
         footer {
             padding: 40px 0;
             border-top: 1px solid #1f2a40;
@@ -372,26 +387,18 @@
             color: #c084fc;
         }
 
-        /* Адаптив */
         @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
             .hero-overlay h1 {
                 font-size: 32px;
             }
-            .form-section {
-                padding: 40px 20px;
+            section {
+                padding: 50px 0;
             }
-            .form-group input {
-                flex: 1 1 100%;
+            .detail-hero {
+                padding: 100px 0 30px;
             }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .gallery-hint {
-                display: none;
+            .detail-hero h1 {
+                font-size: 30px;
             }
         }
         @media (max-width: 480px) {
@@ -406,19 +413,27 @@
                 padding: 14px 20px;
                 font-size: 16px;
             }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-            .stat-item .number {
-                font-size: 32px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== 3D HERO ===== -->
+    <!-- ===== НАВИГАЦИЯ ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">💎 <span>Sivalko</span> System</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Меню">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" class="active">Главная</a></li>
+                <li><a href="/biografiya.html">Биография</a></li>
+                <li><a href="/knigi.html">Книги</a></li>
+                <li><a href="/kursy.html">Курсы</a></li>
+                <li><a href="/#contact" class="btn-nav">Консультация</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== 3D ГЕРОЙ ===== -->
     <div id="canvas-container">
         <div class="hero-overlay">
             <div class="badge">💎 Sivalko System · Бизнес-тренер · Наставник</div>
@@ -426,123 +441,109 @@
             <p>Стратегия, воронки, трафик — превращаю знания в управляемый доход. Для экспертов и предпринимателей.</p>
             <div class="btn-group">
                 <a href="#contact" class="btn-primary">Записаться на консультацию</a>
-                <a href="#about" class="btn-secondary">Узнать больше</a>
+                <a href="/biografiya.html" class="btn-secondary">Узнать больше</a>
             </div>
         </div>
         <div class="scroll-hint">↓ Листай вниз</div>
-        <div class="gallery-hint">↔ тяни галерею · скролл для скорости</div>
     </div>
 
-    <!-- ===== О СЕБЕ ===== -->
+    <!-- ===== БИОГРАФИЯ (ПРЕВЬЮ) ===== -->
     <section id="about">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="images/biznes-trener.jpg" alt="Наталья Сивалко" />
+            <h2 class="section-title">Наталья <span>Сивалко</span></h2>
+            <p class="section-sub">Бизнес-тренер, наставник, основатель Sivalko System. Помогаю экспертам выйти на доход от 150 000 ₽ в месяц.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;">
+                <div style="flex:1;min-width:240px;">
+                    <p style="color:#b0c4e8;font-size:17px;">
+                        Авторская <span style="color:#c084fc;font-weight:700;">каскадная система</span> из 3 шагов. 
+                        Более 300 выпускников. Средний рост дохода — 3x. 
+                        Работаю с воронками, трафиком, продажами и стратегией.
+                    </p>
+                    <a href="/biografiya.html" style="color:#c084fc;font-weight:600;display:inline-block;margin-top:16px;">Читать полную биографию →</a>
                 </div>
-                <div class="about-text">
-                    <span class="badge" style="display:inline-block;background:rgba(168,85,247,0.1);padding:4px 16px;border-radius:40px;font-size:13px;color:#c084fc;margin-bottom:12px;border:1px solid rgba(168,85,247,0.15);">Обо мне</span>
-                    <h3>Наталья Сивалко</h3>
-                    <p>
-                        Бизнес-тренер, наставник и основатель <span class="highlight">Sivalko System</span>.
-                        Помогаю экспертам и предпринимателям выстроить <span class="highlight">систему продаж</span>,
-                        которая приносит от 150 000 до 300 000+ ₽ в месяц без выгорания.
-                    </p>
-                    <p>
-                        Моя авторская <span class="highlight">каскадная система</span> из 3 шагов уже помогла
-                        сотням специалистов выйти на стабильный доход. Воронки, трафик, нейросети —
-                        всё в одной работающей модели.
-                    </p>
-                    <p style="font-size:15px;color:#8899bb;margin-top:8px;">
-                        🎯 Продажи · Воронки · Трафик · Стратегия
-                    </p>
+                <div style="flex:0 0 200px;border-radius:20px;overflow:hidden;border:1px solid #1f2a40;">
+                    <img src="images/biznes-trener.jpg" alt="Наталья Сивалко" style="width:100%;display:block;" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ЦИФРЫ ===== -->
-    <section style="padding-top:0;">
+    <!-- ===== КНИГИ (ПРЕВЬЮ) ===== -->
+    <section id="books" style="background:#0a0f1e;">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item"><div class="number">7+</div><div class="label">лет в бизнес-консалтинге</div></div>
-                <div class="stat-item"><div class="number">300+</div><div class="label">выпускников курсов</div></div>
-                <div class="stat-item"><div class="number">3x</div><div class="label">средний рост дохода</div></div>
-                <div class="stat-item"><div class="number">100%</div><div class="label">гарантия результата</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== НАПРАВЛЕНИЯ ===== -->
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">Ключевые <span>направления</span></h2>
-            <p class="section-sub">Работаю с экспертами и предпринимателями, чтобы бизнес стал прибыльным и масштабируемым.</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="emoji">📈</span>
+            <h2 class="section-title">📚 Мои <span>книги</span></h2>
+            <p class="section-sub">Практические руководства по продажам, стратегии и масштабированию.</p>
+            <div class="grid-3">
+                <a href="/knigi/sistema-prodazh.html" class="card">
+                    <span class="emoji">📖</span>
                     <h4>Система продаж</h4>
-                    <p>Авторская каскадная система из 3 шагов для выхода на доход от 150 000 ₽ в месяц.</p>
-                </div>
-                <div class="service-card">
-                    <span class="emoji">🧠</span>
-                    <h4>Воронки &amp; трафик</h4>
-                    <p>Топ-4 воронки 2026 года + бесплатный органический трафик из Threads и Telegram.</p>
-                </div>
-                <div class="service-card">
-                    <span class="emoji">📞</span>
-                    <h4>Продажи &amp; переговоры</h4>
-                    <p>Скрипты, отработка возражений, закрытие сделок — без скидок и уговоров.</p>
-                </div>
-                <div class="service-card">
-                    <span class="emoji">💎</span>
-                    <h4>Продукт-бестселлер</h4>
-                    <p>Создание востребованного продукта и сочного оффера с высокой конверсией.</p>
-                </div>
-                <div class="service-card">
+                    <p>Пошаговый алгоритм выхода на доход от 150 000 ₽ в месяц.</p>
+                    <span class="tag">Бестселлер</span>
+                </a>
+                <a href="/knigi/strategiya-rosta.html" class="card">
+                    <span class="emoji">🚀</span>
+                    <h4>Стратегия роста</h4>
+                    <p>Как масштабировать бизнес без выгорания и потери качества.</p>
+                    <span class="tag">Новинка</span>
+                </a>
+                <a href="/knigi/voronki-traffic.html" class="card">
+                    <span class="emoji">🎯</span>
+                    <h4>Воронки и трафик</h4>
+                    <p>Топ-4 воронки 2026 года и бесплатный органический трафик.</p>
+                    <span class="tag">Практика</span>
+                </a>
+            </div>
+            <div style="text-align:center;margin-top:30px;">
+                <a href="/knigi.html" class="btn-secondary" style="display:inline-block;">Смотреть все книги →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== КУРСЫ (ПРЕВЬЮ) ===== -->
+    <section id="courses">
+        <div class="container">
+            <h2 class="section-title">🎓 <span>Курсы</span> и программы</h2>
+            <p class="section-sub">Обучение для экспертов и предпринимателей. От воронок до системного бизнеса.</p>
+            <div class="grid-3">
+                <a href="/kursy/kaskadnaya-sistema.html" class="card">
                     <span class="emoji">⚡</span>
+                    <h4>Каскадная система</h4>
+                    <p>3 шага к стабильному доходу. Воронки, трафик, продажи.</p>
+                    <span class="tag">Флагман</span>
+                </a>
+                <a href="/kursy/biznes-koching.html" class="card">
+                    <span class="emoji">💎</span>
                     <h4>Бизнес-коучинг 1:1</h4>
-                    <p>Индивидуальные сессии для экспертов и предпринимателей. Фокус на результат.</p>
-                </div>
-                <div class="service-card">
+                    <p>Индивидуальные сессии с разбором вашего бизнеса.</p>
+                    <span class="tag">VIP</span>
+                </a>
+                <a href="/kursy/korporativnyy-trening.html" class="card">
                     <span class="emoji">🏆</span>
-                    <h4>Корпоративные тренинги</h4>
-                    <p>Программы для команд: от стратегических сессий до навыков продаж.</p>
-                </div>
+                    <h4>Корпоративный тренинг</h4>
+                    <p>Программы для команд: стратегия, продажи, лидерство.</p>
+                    <span class="tag">Для компаний</span>
+                </a>
+            </div>
+            <div style="text-align:center;margin-top:30px;">
+                <a href="/kursy.html" class="btn-secondary" style="display:inline-block;">Все курсы →</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== ОТЗЫВ ===== -->
-    <section id="testimonials" style="padding-top:0;">
+    <!-- ===== КОНТАКТ ===== -->
+    <section id="contact" style="background:#0a0f1e;">
         <div class="container">
-            <div style="max-width:800px;margin:0 auto;">
-                <div class="testimonial-card">
-                    <div class="quote">«Система Натальи — это прорыв! Я перестала гадать, где брать клиентов, и вышла на 250 000 ₽ за второй месяц работы по её каскадной системе. Теперь у меня понятная структура и стабильный поток.»</div>
-                    <div class="author">— Анна Тихонова</div>
-                    <div class="role">Эксперт по маркетингу, выпускница Sivalko System</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ФОРМА / КОНТАКТ ===== -->
-    <section id="contact">
-        <div class="container">
-            <div class="form-section">
-                <h2>Готовы <span style="color:#c084fc;">расти</span>?</h2>
-                <p>Оставьте заявку на бесплатную 30-минутную диагностику вашего бизнеса. Разберём точки роста и следующие шаги.</p>
+            <div style="background:linear-gradient(145deg,#111a2a,#0a0f1e);border-radius:30px;padding:60px 40px;border:1px solid #1f2a40;text-align:center;">
+                <h2 style="font-size:32px;margin-bottom:12px;">Готовы <span style="color:#c084fc;">расти</span>?</h2>
+                <p style="color:#8899bb;margin-bottom:32px;">Запишитесь на бесплатную 30-минутную диагностику вашего бизнеса.</p>
                 <form onsubmit="alert('Спасибо! Я свяжусь с вами в ближайшее время.'); return false;">
-                    <div class="form-group">
-                        <input type="text" placeholder="Ваше имя" required />
-                        <input type="tel" placeholder="+7 (999) 999-99-99" required />
-                        <input type="email" placeholder="E-mail (опционально)" />
+                    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:600px;margin:0 auto;">
+                        <input type="text" placeholder="Ваше имя" required style="flex:1 1 200px;padding:16px 24px;border-radius:60px;border:1px solid #2a3650;background:#0a0f1e;color:#fff;font-size:16px;outline:none;min-width:180px;" />
+                        <input type="tel" placeholder="+7 (999) 999-99-99" required style="flex:1 1 200px;padding:16px 24px;border-radius:60px;border:1px solid #2a3650;background:#0a0f1e;color:#fff;font-size:16px;outline:none;min-width:180px;" />
                         <button type="submit" class="btn-primary" style="padding:16px 44px;">Записаться</button>
                     </div>
                 </form>
-                <p style="font-size:14px;color:#556688;margin-top:20px;">
-                    🔒 Никакого спама. Только полезный контент и предложения по делу.
-                </p>
+                <p style="font-size:14px;color:#556688;margin-top:20px;">🔒 Никакого спама. Только полезный контент.</p>
             </div>
         </div>
     </section>
@@ -550,67 +551,36 @@
     <!-- ===== ФУТЕР ===== -->
     <div class="container">
         <footer>
-            <div>
-                <strong style="color:#f0f4ff;">Наталья Сивалко</strong> · Sivalko System
-            </div>
-            <div>
-                <a href="#">Telegram</a> · <a href="#">Instagram</a> · <a href="#">YouTube</a>
-            </div>
+            <div><strong style="color:#f0f4ff;">Наталья Сивалко</strong> · Sivalko System</div>
+            <div><a href="#">Telegram</a> · <a href="#">Instagram</a> · <a href="#">YouTube</a></div>
             <div>© 2026 · Все права защищены</div>
         </footer>
     </div>
 
-    <!-- ===== THREE.JS + 3D GALLERY ===== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-    </script>
-
+    <!-- ===== THREE.JS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ============================================================
-        // 3D ГАЛЕРЕЯ С ИЗОБРАЖЕНИЯМИ ИЗ ПАПКИ images/
-        // ============================================================
-
-        // ---------- СПИСОК ИЗОБРАЖЕНИЙ (все из папки images/) ----------
+        // ---------- СПИСОК ИЗОБРАЖЕНИЙ ----------
         const imageFiles = [
-            'biznes-ekspert.jpg',
-            'biznes-konsalting.jpg',
-            'biznes-konsultant.jpg',
-            'biznes-kouch.jpg',
-            'biznes-kursy.jpg',
-            'biznes-mentor.jpg',
-            'biznes-nastavnik.jpg',
-            'biznes-obuchenie.jpg',
-            'biznes-rost.jpg',
-            'biznes-strategiya.jpg',
-            'biznes-trener.jpg',
-            'biznes-trening.jpg',
-            'liderstvo.jpg',
-            'masshtabirovanie-biznesa.jpg',
-            'max.png',
-            'predprinimatel.jpg',
-            'predprinimatelstvo.jpg',
-            'razvitie-biznesa.jpg',
-            'rost-prodazh.jpg',
-            'upravlenie-biznesom.jpg'
+            'biznes-ekspert.jpg', 'biznes-konsalting.jpg', 'biznes-konsultant.jpg',
+            'biznes-kouch.jpg', 'biznes-kursy.jpg', 'biznes-mentor.jpg',
+            'biznes-nastavnik.jpg', 'biznes-obuchenie.jpg', 'biznes-rost.jpg',
+            'biznes-strategiya.jpg', 'biznes-trener.jpg', 'biznes-trening.jpg',
+            'liderstvo.jpg', 'masshtabirovanie-biznesa.jpg', 'max.png',
+            'predprinimatel.jpg', 'predprinimatelstvo.jpg', 'razvitie-biznesa.jpg',
+            'rost-prodazh.jpg', 'upravlenie-biznesom.jpg'
         ];
-
-        // Дублируем и перемешиваем для наполнения галереи
         let imagePaths = [];
-        for (let i = 0; i < 3; i++) {
-            imagePaths = imagePaths.concat(imageFiles);
-        }
+        for (let i = 0; i < 3; i++) imagePaths = imagePaths.concat(imageFiles);
         for (let i = imagePaths.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [imagePaths[i], imagePaths[j]] = [imagePaths[j], imagePaths[i]];
         }
-
-        // Добавляем путь к папке images/
         const IMAGE_BASE_PATH = 'images/';
 
-        // ---------- НАСТРОЙКИ 3D ----------
         const container3D = document.getElementById('canvas-container');
         const DEPTH_LAYERS = 4;
         const IMAGES_PER_LAYER = 14;
-
         const LAYER_CONFIG = [
             { scale: 1.6, speed: 70, opacity: 0.95 },
             { scale: 1.1, speed: 45, opacity: 0.8 },
@@ -627,17 +597,11 @@
         let dragActive = false;
         let lastX = 0;
 
-        // ---------- THREE.JS ----------
         const scene = new THREE.Scene();
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true,
-            powerPreference: "high-performance"
-        });
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         renderer.setClearColor(0x080b14, 0);
         container3D.appendChild(renderer.domElement);
-
         let camera;
 
         function resizeRenderer() {
@@ -655,40 +619,13 @@
             rebuildSprites();
         }
 
-        // ---------- ЗАГРУЗКА ТЕКСТУР ----------
         const loader = new THREE.TextureLoader();
-        loader.crossOrigin = "anonymous";
-
-        function loadAllTextures() {
-            const selected = [];
-            for (let i = 0; i < totalImages; i++) {
-                selected.push(imagePaths[i % imagePaths.length]);
-            }
-            selected.forEach(path => {
-                const fullPath = IMAGE_BASE_PATH + path;
-                loader.load(
-                    fullPath,
-                    tex => { textures.push(tex);
-                        loadedCount++;
-                        checkLoaded(); },
-                    undefined,
-                    () => {
-                        const fallback = createFallbackTexture();
-                        textures.push(fallback);
-                        loadedCount++;
-                        checkLoaded();
-                    }
-                );
-            });
-        }
-
         function createFallbackTexture() {
             const c = document.createElement('canvas');
             c.width = 160;
             c.height = 160;
             const ctx = c.getContext('2d');
-            const colors = ['#2a3a5a', '#1e2c44', '#142030', '#0c1624'];
-            ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+            ctx.fillStyle = '#1a2640';
             ctx.fillRect(0, 0, 160, 160);
             ctx.fillStyle = '#c084fc';
             ctx.font = '60px sans-serif';
@@ -698,35 +635,40 @@
             return new THREE.CanvasTexture(c);
         }
 
-        function checkLoaded() {
-            if (loadedCount === totalImages) {
-                buildSprites();
+        function loadAllTextures() {
+            const selected = [];
+            for (let i = 0; i < totalImages; i++) {
+                selected.push(imagePaths[i % imagePaths.length]);
             }
+            selected.forEach(path => {
+                const fullPath = IMAGE_BASE_PATH + path;
+                loader.load(fullPath, tex => { textures.push(tex);
+                    loadedCount++;
+                    checkLoaded(); }, undefined, () => {
+                    textures.push(createFallbackTexture());
+                    loadedCount++;
+                    checkLoaded();
+                });
+            });
         }
 
-        // ---------- ПОСТРОЕНИЕ СПРАЙТОВ ----------
+        function checkLoaded() {
+            if (loadedCount === totalImages) buildSprites();
+        }
+
         function buildSprites() {
-            for (let l = 0; l < DEPTH_LAYERS; l++) {
-                layers[l] = [];
-            }
+            for (let l = 0; l < DEPTH_LAYERS; l++) layers[l] = [];
             const w = container3D.clientWidth || 1200;
             const h = container3D.clientHeight || 800;
-
             for (let l = 0; l < DEPTH_LAYERS; l++) {
                 const cfg = LAYER_CONFIG[l];
                 let xPos = -w * 0.2;
                 for (let i = 0; i < IMAGES_PER_LAYER; i++) {
                     const texIdx = (l * IMAGES_PER_LAYER + i) % textures.length;
                     const tex = textures[texIdx] || createFallbackTexture();
-                    const mat = new THREE.SpriteMaterial({
-                        map: tex,
-                        transparent: true,
-                        opacity: cfg.opacity,
-                        depthWrite: false,
-                        depthTest: false
-                    });
+                    const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: cfg.opacity,
+                        depthWrite: false, depthTest: false });
                     const sprite = new THREE.Sprite(mat);
-
                     const img = tex.image;
                     let wImg = 160,
                         hImg = 160;
@@ -740,22 +682,10 @@
                     const sw = wImg * cfg.scale * sizeVar;
                     const sh = hImg * cfg.scale * sizeVar;
                     const spacing = sw * (0.5 + Math.random() * 0.5);
-
                     sprite.scale.set(sw, sh, 1);
-                    sprite.position.set(
-                        xPos + sw / 2 + spacing * 0.5,
-                        h * 0.1 + Math.random() * h * 0.8,
-                        -l * 60
-                    );
-
-                    sprite.userData = {
-                        speed: cfg.speed * (0.5 + Math.random() * 0.8),
-                        width: sw,
-                        height: sh,
-                        seed: Math.random() * 1000,
-                        baseY: h * 0.1 + Math.random() * h * 0.8,
-                        opacity: cfg.opacity
-                    };
+                    sprite.position.set(xPos + sw / 2 + spacing * 0.5, h * 0.1 + Math.random() * h * 0.8, -l * 60);
+                    sprite.userData = { speed: cfg.speed * (0.5 + Math.random() * 0.8), width: sw, height: sh,
+                        seed: Math.random() * 1000, baseY: h * 0.1 + Math.random() * h * 0.8, opacity: cfg.opacity };
                     layers[l].push(sprite);
                     scene.add(sprite);
                     xPos += sw + spacing;
@@ -766,18 +696,14 @@
         function rebuildSprites() {
             for (let l = 0; l < layers.length; l++) {
                 if (layers[l]) {
-                    for (const s of layers[l]) {
-                        scene.remove(s);
-                        if (s.material.map) s.material.map.dispose();
-                        s.material.dispose();
-                    }
+                    for (const s of layers[l]) { scene.remove(s);
+                        s.material.dispose(); }
                 }
             }
             layers = [];
             buildSprites();
         }
 
-        // ---------- АНИМАЦИЯ ----------
         function animate() {
             const w = container3D.clientWidth || 1200;
             const h = container3D.clientHeight || 800;
@@ -785,14 +711,12 @@
             if (Math.abs(dragVelocity) > 0.001) {
                 speedFactor = Math.sign(dragVelocity) * Math.min(5, Math.abs(dragVelocity) * 0.5);
             }
-
             for (let l = 0; l < layers.length; l++) {
                 const sprites = layers[l];
                 if (!sprites) continue;
                 for (const s of sprites) {
                     const ud = s.userData;
                     s.position.x += ud.speed * speedFactor * 0.016;
-
                     if (speedFactor > 0 && s.position.x - ud.width / 2 > w + 100) {
                         s.position.x = -ud.width / 2 - 50 - Math.random() * 200;
                         s.position.y = h * 0.1 + Math.random() * h * 0.8;
@@ -802,79 +726,55 @@
                         s.position.y = h * 0.1 + Math.random() * h * 0.8;
                         ud.baseY = s.position.y;
                     }
-
                     const pulse = 1 + Math.sin(performance.now() * 0.0008 + ud.seed) * 0.02;
                     s.scale.x = ud.width * pulse;
                     s.scale.y = ud.height * pulse;
                     s.position.y = ud.baseY + Math.sin(performance.now() * 0.0006 + ud.seed) * 6;
                 }
             }
-
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
 
-        // ---------- УПРАВЛЕНИЕ ----------
-        function getX(e) {
-            return e.touches ? e.touches[0].clientX : e.clientX;
-        }
-
-        container3D.addEventListener('mousedown', e => {
-            dragActive = true;
-            lastX = getX(e);
-        });
-        container3D.addEventListener('mousemove', e => {
-            if (!dragActive) return;
-            const dx = getX(e) - lastX;
-            lastX = getX(e);
-            dragVelocity = dx * 0.03;
-        });
+        function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
+        container3D.addEventListener('mousedown', e => { dragActive = true;
+            lastX = getX(e); });
+        container3D.addEventListener('mousemove', e => { if (!dragActive) return;
+            dragVelocity = (getX(e) - lastX) * 0.03;
+            lastX = getX(e); });
         window.addEventListener('mouseup', () => { dragActive = false; });
-
-        container3D.addEventListener('touchstart', e => {
-            dragActive = true;
-            lastX = getX(e);
-        }, { passive: true });
-        container3D.addEventListener('touchmove', e => {
-            if (!dragActive) return;
-            const dx = getX(e) - lastX;
-            lastX = getX(e);
-            dragVelocity = dx * 0.03;
-        }, { passive: true });
+        container3D.addEventListener('touchstart', e => { dragActive = true;
+            lastX = getX(e); }, { passive: true });
+        container3D.addEventListener('touchmove', e => { if (!dragActive) return;
+            dragVelocity = (getX(e) - lastX) * 0.03;
+            lastX = getX(e); }, { passive: true });
         window.addEventListener('touchend', () => { dragActive = false; });
+        container3D.addEventListener('wheel', e => { e.preventDefault();
+            speedFactor = Math.max(-6, Math.min(6, speedFactor + Math.sign(e.deltaY) * 0.5)); if (Math.abs(speedFactor) <
+                0.3) speedFactor = 0;
+            dragVelocity = 0; }, { passive: false });
 
-        container3D.addEventListener('wheel', e => {
-            e.preventDefault();
-            const dir = Math.sign(e.deltaY);
-            speedFactor += dir * 0.5;
-            const maxSp = 6;
-            speedFactor = Math.max(-maxSp, Math.min(maxSp, speedFactor));
-            if (Math.abs(speedFactor) < 0.3) speedFactor = 0;
-            dragVelocity = 0;
-        }, { passive: false });
-
-        // ---------- ЗАПУСК ----------
         function init() {
             loadAllTextures();
             resizeRenderer();
             animate();
         }
-
         window.addEventListener('resize', resizeRenderer);
-
         setTimeout(() => {
             if (textures.length === 0) {
-                for (let i = 0; i < totalImages; i++) {
-                    textures.push(createFallbackTexture());
-                }
+                for (let i = 0; i < totalImages; i++) textures.push(createFallbackTexture());
                 loadedCount = totalImages;
                 buildSprites();
             }
         }, 3000);
-
         init();
-        console.log('💎 Sivalko System — 3D галерея запущена!');
-    </script>
 
+        // -------- МОБИЛЬНОЕ МЕНЮ --------
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        console.log('💎 Sivalko System — сайт с полноценной структурой!');
+    </script>
 </body>
 </html>
