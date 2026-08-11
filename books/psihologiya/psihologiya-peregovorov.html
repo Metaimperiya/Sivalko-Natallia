@@ -55,4 +55,103 @@
         .related h3 { color: #c084fc; font-size: 18px; margin-bottom: 12px; }
         .related a { color: #b0c4e8; text-decoration: none; display: inline-block; margin-right: 16px; font-size: 15px; }
         .related a:hover { color: #c084fc; text-decoration: underline; }
-        footer { padding: 40px 0; border-top: 1px solid #1f2a40; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: #556688; font-size: 14
+        footer { padding: 40px 0; border-top: 1px solid #1f2a40; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: #556688; font-size: 14px; }
+        footer a { color: #8899bb; text-decoration: none; }
+        footer a:hover { color: #c084fc; }
+        @media (max-width: 768px) { .hero h1 { font-size: 28px; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">💎 <span>Sivalko</span> System</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../../index.html">Главная</a></li>
+                <li><a href="../../biografiya.html">Биография</a></li>
+                <li><a href="../../books.html">Книги</a></li>
+                <li><a href="../../courses.html">Курсы</a></li>
+                <li><a href="../../index.html#contact" class="btn-nav">Консультация</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <a href="../../books.html" class="back">← Все книги</a>
+            <h1>📖 <span>Психология переговоров</span></h1>
+            <div class="meta">Книга #33 · Автор: Наталья Сивалко · 2026</div>
+            <div class="tags">
+                <span>Психология</span>
+                <span>Переговоры</span>
+                <span>Диалог</span>
+                <span>Убеждение</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+
+            <h2>О книге</h2>
+            <p>
+                <strong>«Психология переговоров»</strong> — это книга о мастерстве диалога. 
+                Наталья Сивалко показывает, <strong>как вести переговоры</strong>, убеждать оппонента 
+                и достигать своих целей в любой ситуации.
+            </p>
+            <p>
+                В этой книге вы узнаете психологические приёмы, которые работают в переговорах, 
+                и научитесь выходить из любых переговорных ситуаций победителем.
+            </p>
+
+            <div class="highlight">
+                <p>«Переговоры — это не борьба. Это поиск взаимовыгодного решения. 
+                И когда вы это поймёте — вы станете мастером переговоров.»</p>
+            </div>
+
+            <h2>Что вы узнаете</h2>
+            <ul>
+                <li>✅ Психологические приёмы в переговорах</li>
+                <li>✅ Как убеждать оппонента и влиять на его решение</li>
+                <li>✅ Как управлять эмоциями в переговорах</li>
+                <li>✅ Как выходить из сложных переговорных ситуаций</li>
+                <li>✅ Как достигать своих целей в любых переговорах</li>
+            </ul>
+
+            <h2>Для кого эта книга</h2>
+            <ul>
+                <li>🔸 Менеджеров по продажам</li>
+                <li>🔸 Переговорщиков</li>
+                <li>🔸 Предпринимателей</li>
+                <li>🔸 Всех, кто хочет стать мастером переговоров</li>
+            </ul>
+
+            <div class="related">
+                <h3>📚 Похожие книги</h3>
+                <a href="../prodazhi/peregovory-k-sdelke.html">Переговоры к сделке</a>
+                <a href="psihologiya-uspeshnyh-prodazh.html">Психология успешных продаж</a>
+                <a href="uverennost-v-peregovorah.html">Уверенность в переговорах</a>
+            </div>
+
+            <a href="../../index.html#contact" class="btn-order">📚 Заказать книгу</a>
+
+        </div>
+    </section>
+
+    <div class="container">
+        <footer>
+            <div><strong style="color:#f0f4ff;">Наталья Сивалко</strong> · Sivalko System</div>
+            <div><a href="#">Telegram</a> · <a href="#">Instagram</a> · <a href="#">YouTube</a></div>
+            <div>© 2026 · Все права защищены</div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>
