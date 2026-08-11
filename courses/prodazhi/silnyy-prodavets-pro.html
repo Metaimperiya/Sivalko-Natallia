@@ -2,97 +2,1203 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- ===== SEO ===== -->
     <title>Сильный продавец PRO — курс Натальи Сивалко</title>
     <meta name="description" content="Курс «Сильный продавец PRO»: как развить мышление и навыки сильного продавца. Практика и результат.">
     <meta name="keywords" content="сильный продавец, навыки продаж, мышление, Наталья Сивалко">
-    <link rel="canonical" href="https://sivalko-natallia.com/courses/prodazhi/silnyy-prodavets-pro.html">
+    <link rel="canonical" href="https://metaimperiya.com/courses/prodazhi/silnyy-prodavets-pro.html">
+
+    <!-- ===== SEO ДЛЯ GOOGLE ===== -->
+    <meta name="robots" content="index, follow" />
+
     <meta property="og:title" content="Сильный продавец PRO — курс Натальи Сивалко">
     <meta property="og:description" content="Как развить мышление и навыки сильного продавца.">
     <meta property="og:type" content="course">
-    <meta property="og:url" content="https://sivalko-natallia.com/courses/prodazhi/silnyy-prodavets-pro.html">
-    <meta property="og:image" content="https://sivalko-natallia.com/images/biznes-trener.jpg">
+    <meta property="og:url" content="https://metaimperiya.com/courses/prodazhi/silnyy-prodavets-pro.html">
+    <meta property="og:image" content="https://metaimperiya.com/images/silnyy-prodavets.jpg">
+
+    <!-- ===== МИКРОРАЗМЕТКА JSON-LD ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Сильный продавец PRO",
+      "description": "Как развить мышление и навыки сильного продавца. Практика и результат.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Sivalko System",
+        "url": "https://metaimperiya.com"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Наталья Сивалко"
+      },
+      "educationalCredentialAwarded": "Сертификат о прохождении курса",
+      "offers": {
+        "@type": "Offer",
+        "price": "4900",
+        "priceCurrency": "BYN"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "423"
+      }
+    }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎓%3C/text%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #080b14; color: #f0f4ff; line-height: 1.6; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(8,11,20,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(168,85,247,0.1); padding: 14px 0; }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .logo { font-size: 22px; font-weight: 900; color: #f0f4ff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .logo span { color: #c084fc; }
-        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
-        .nav-links a { color: #b0c4e8; text-decoration: none; font-weight: 600; font-size: 15px; transition: 0.3s; }
-        .nav-links a:hover { color: #c084fc; }
-        .btn-nav { background: linear-gradient(135deg, #a855f7, #7e22ce); color: #fff; padding: 10px 28px; border-radius: 40px; font-weight: 700; font-size: 14px; text-decoration: none; transition: 0.3s; }
-        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168,85,247,0.3); }
-        .menu-toggle { display: none; background: none; border: none; color: #f0f4ff; font-size: 28px; cursor: pointer; }
-        @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding: 16px 0; gap: 16px; } .nav-links.open { display: flex; } }
-        .hero { padding: 140px 0 40px; background: linear-gradient(145deg, #111a2a, #0a0f1e); border-bottom: 1px solid #1f2a40; }
-        .hero .back { color: #c084fc; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 12px; }
-        .hero .back:hover { text-decoration: underline; }
-        .hero h1 { font-size: 42px; font-weight: 900; margin-bottom: 8px; }
-        .hero h1 span { color: #c084fc; }
-        .hero .meta { color: #8899bb; font-size: 14px; margin-bottom: 16px; }
-        .hero .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .hero .tags span { background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.12); padding: 4px 14px; border-radius: 30px; font-size: 12px; color: #c084fc; }
-        .content { padding: 50px 0; }
-        .content h2 { font-size: 26px; color: #c084fc; margin: 40px 0 12px; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e8e0d8; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== HEADER ===== */
+        .header {
+            padding: 12px 0 10px;
+            background: #0a0a0a;
+            border-bottom: 1px solid rgba(204, 51, 51, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: 900;
+            color: #e8e0d8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo span { color: #cc3333; }
+        .header-nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .header-nav a {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .header-nav a:hover {
+            color: #fff;
+            background: rgba(204, 51, 51, 0.10);
+            border-color: rgba(204, 51, 51, 0.12);
+        }
+        .header-nav .btn-enroll-sm {
+            background: #cc3333;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 30px;
+            border-color: #cc3333;
+        }
+        .header-nav .btn-enroll-sm:hover {
+            background: #991111;
+            transform: translateY(-1px);
+            color: #fff;
+        }
+
+        /* ===== HERO ===== */
+        .book-hero {
+            padding: 100px 0 30px;
+            background: linear-gradient(145deg, #0d0d0d, #0a0a0a);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .book-hero .back {
+            color: #cc3333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .book-hero .back:hover { text-decoration: underline; }
+        .book-hero h1 {
+            font-size: clamp(28px, 4.5vw, 42px);
+            font-weight: 900;
+            margin-bottom: 6px;
+            color: #e8e0d8;
+        }
+        .book-hero h1 span { color: #cc3333; }
+        .book-hero .meta {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .book-hero .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .book-hero .tags span {
+            background: rgba(204, 51, 51, 0.08);
+            border: 1px solid rgba(204, 51, 51, 0.10);
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            color: #cc3333;
+        }
+        .book-hero .count-badge {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #888;
+            font-size: 14px;
+        }
+        .book-hero .count-badge strong { color: #cc3333; font-size: 18px; }
+
+        /* ===== CONTENT ===== */
+        .content { padding: 40px 0; }
+        .content h2 {
+            font-size: 24px;
+            color: #cc3333;
+            margin: 35px 0 12px;
+        }
         .content h2:first-of-type { margin-top: 0; }
-        .content p { color: #b0c4e8; font-size: 17px; max-width: 720px; margin-bottom: 16px; }
-        .content ul { color: #b0c4e8; font-size: 17px; padding-left: 24px; max-width: 720px; margin-bottom: 16px; }
-        .content ul li { margin-bottom: 8px; }
-        .content .highlight { background: rgba(168,85,247,0.05); border-left: 3px solid #a855f7; padding: 16px 24px; border-radius: 8px; margin: 20px 0; max-width: 720px; }
-        .content .highlight p { margin-bottom: 0; font-style: italic; color: #d0dfff; }
-        .btn-enroll { background: linear-gradient(135deg, #a855f7, #7e22ce); color: #fff; padding: 16px 48px; border-radius: 60px; font-weight: 800; font-size: 18px; border: none; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 8px 30px rgba(168,85,247,0.3); margin: 20px 0; }
-        .btn-enroll:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(168,85,247,0.5); }
-        .related { background: #111a2a; border-radius: 16px; padding: 24px; border: 1px solid #1f2a40; margin: 30px 0; max-width: 720px; }
-        .related h3 { color: #c084fc; font-size: 18px; margin-bottom: 12px; }
-        .related a { color: #b0c4e8; text-decoration: none; display: inline-block; margin-right: 16px; font-size: 15px; }
-        .related a:hover { color: #c084fc; text-decoration: underline; }
-        footer { padding: 40px 0; border-top: 1px solid #1f2a40; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: #556688; font-size: 14px; }
-        footer a { color: #8899bb; text-decoration: none; }
-        footer a:hover { color: #c084fc; }
-        @media (max-width: 768px) { .hero h1 { font-size: 28px; } }
+        .content h3 {
+            font-size: 19px;
+            color: #e8e0d8;
+            margin: 25px 0 8px;
+        }
+        .content p {
+            color: #bbb;
+            font-size: 16px;
+            max-width: 720px;
+            margin-bottom: 14px;
+            line-height: 1.7;
+        }
+        .content ul {
+            color: #bbb;
+            font-size: 16px;
+            padding-left: 24px;
+            max-width: 720px;
+            margin-bottom: 14px;
+        }
+        .content ul li { margin-bottom: 6px; }
+        .content .highlight {
+            background: rgba(204, 51, 51, 0.04);
+            border-left: 3px solid #cc3333;
+            padding: 14px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            max-width: 720px;
+        }
+        .content .highlight p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #d0c8c0;
+            font-size: 17px;
+        }
+        .content .author-note {
+            background: rgba(204, 51, 51, 0.03);
+            border: 1px solid rgba(204, 51, 51, 0.06);
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-width: 720px;
+        }
+        .content .author-note p {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        .content .author-note strong { color: #cc3333; }
+
+        /* ===== TABLES ===== */
+        .table-wrap {
+            max-width: 720px;
+            overflow-x: auto;
+            margin: 16px 0 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 320px;
+        }
+        .table-wrap th {
+            background: rgba(204, 51, 51, 0.08);
+            color: #cc3333;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .table-wrap td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: #bbb;
+        }
+        .table-wrap tr:last-child td { border-bottom: none; }
+        .table-wrap td:first-child { font-weight: 600; color: #e8e0d8; }
+
+        /* ===== ACTION BLOCK ===== */
+        .action-block {
+            max-width: 720px;
+            background: #111;
+            border-radius: 14px;
+            padding: 20px 22px;
+            border: 1px solid rgba(204, 51, 51, 0.06);
+            margin: 20px 0;
+        }
+        .action-block h4 {
+            color: #cc3333;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .action-block p {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+        .action-block .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .action-block .btn-sm {
+            background: rgba(204, 51, 51, 0.08);
+            border: 1px solid rgba(204, 51, 51, 0.10);
+            color: #cc3333;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .action-block .btn-sm:hover {
+            background: rgba(204, 51, 51, 0.15);
+            border-color: #cc3333;
+            color: #fff;
+        }
+        .action-block .btn-sm.primary {
+            background: #cc3333;
+            border-color: #cc3333;
+            color: #fff;
+        }
+        .action-block .btn-sm.primary:hover {
+            background: #991111;
+            transform: translateY(-1px);
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist {
+            max-width: 720px;
+            background: #111;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin: 16px 0;
+        }
+        .checklist h4 {
+            color: #cc3333;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .checklist label {
+            display: block;
+            padding: 6px 0 6px 32px;
+            position: relative;
+            font-size: 14px;
+            color: #bbb;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+        .checklist label:last-child { border-bottom: none; }
+        .checklist input[type="checkbox"] {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            accent-color: #cc3333;
+            cursor: pointer;
+        }
+        .checklist label:has(input:checked) {
+            color: #555;
+            text-decoration: line-through;
+        }
+        .checklist .btn-reset {
+            background: none;
+            border: none;
+            color: #cc3333;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 0 0;
+            font-weight: 600;
+        }
+        .checklist .btn-reset:hover { color: #fff; }
+
+        /* ===== RESOURCE LINKS ===== */
+        .resource-links {
+            max-width: 720px;
+            background: #111;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border: 1px solid rgba(204, 51, 51, 0.04);
+            margin: 16px 0;
+        }
+        .resource-links h4 {
+            color: #cc3333;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .resource-links a {
+            display: inline-block;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 0;
+            margin-right: 16px;
+            transition: 0.3s;
+        }
+        .resource-links a:hover { color: #60a5fa; text-decoration: underline; }
+
+        /* ===== BUTTON ENROLL ===== */
+        .btn-enroll {
+            background: linear-gradient(135deg, #cc3333, #991111);
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(204, 51, 51, 0.2);
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0 0;
+        }
+        .btn-enroll:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(204, 51, 51, 0.35);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            max-width: 720px;
+            background: #111;
+            border-radius: 10px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin: 8px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .faq-item:hover { border-color: rgba(204, 51, 51, 0.2); }
+        .faq-item h4 {
+            color: #e8e0d8;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-item h4 span { color: #cc3333; font-size: 18px; transition: 0.3s; }
+        .faq-item p {
+            color: #999;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+            max-width: 100%;
+        }
+        .faq-item.open p { display: block; }
+        .faq-item.open h4 span { transform: rotate(45deg); }
+
+        /* ===== RELATED ===== */
+        .related {
+            background: #111;
+            border-radius: 14px;
+            padding: 20px 24px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin: 30px 0;
+            max-width: 720px;
+        }
+        .related h3 {
+            color: #cc3333;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+        .related a {
+            color: #bbb;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 14px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .related a:hover { color: #fff; text-decoration: underline; }
+
+        /* ===== SAND FOOTER ===== */
+        .footer-sand-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: #0a0a0a;
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .footer-sand-wrapper canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .footer-overlay {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(10,10,10,0.55);
+            backdrop-filter: blur(6px);
+            padding: 4px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,215,0,0.06);
+            z-index: 10;
+            white-space: nowrap;
+        }
+        .footer-overlay .tg-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .footer-overlay .tg-icon svg {
+            width: 14px;
+            height: 14px;
+            fill: #0a0a0a;
+            display: block;
+        }
+        .footer-overlay .tg-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+            padding: 2px 0;
+        }
+        .footer-overlay .tg-link:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 6px 0 12px;
+            color: #444;
+            font-size: 10px;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+
+        /* ===== ADAPTIVE ===== */
+        @media (max-width: 768px) {
+            .book-hero { padding: 80px 0 20px; }
+            .book-hero h1 { font-size: 26px; }
+            .content p, .content ul { font-size: 15px; }
+            .header-nav a { font-size: 11px; padding: 3px 10px; }
+            .footer-sand-wrapper { height: 150px; }
+            .footer-overlay { bottom: 12px; padding: 3px 14px; gap: 6px; }
+            .footer-overlay .tg-icon { width: 18px; height: 18px; }
+            .footer-overlay .tg-icon svg { width: 12px; height: 12px; }
+            .footer-overlay .tg-link { font-size: 12px; }
+            .table-wrap table { font-size: 13px; }
+            .table-wrap th, .table-wrap td { padding: 8px 10px; }
+            .content h3 { font-size: 17px; }
+        }
+        @media (max-width: 480px) {
+            .book-hero { padding: 70px 0 16px; }
+            .book-hero h1 { font-size: 22px; }
+            .content { padding: 24px 0; }
+            .content h2 { font-size: 20px; }
+            .content h3 { font-size: 16px; }
+            .content p, .content ul { font-size: 14px; }
+            .btn-enroll { padding: 12px 28px; font-size: 14px; }
+            .footer-sand-wrapper { height: 120px; }
+            .footer-overlay { bottom: 8px; padding: 2px 10px; gap: 4px; border-radius: 24px; }
+            .footer-overlay .tg-icon { width: 16px; height: 16px; }
+            .footer-overlay .tg-icon svg { width: 10px; height: 10px; }
+            .footer-overlay .tg-link { font-size: 10px; }
+            .footer-bottom { font-size: 9px; }
+            .related { padding: 14px 16px; }
+            .related a { font-size: 13px; margin-right: 10px; }
+            .action-block { padding: 14px 16px; }
+            .action-block .btn-sm { font-size: 12px; padding: 4px 12px; }
+            .checklist { padding: 12px 14px; }
+            .checklist label { font-size: 13px; padding: 5px 0 5px 28px; }
+            .resource-links a { font-size: 13px; }
+            .table-wrap table { font-size: 12px; min-width: 280px; }
+            .table-wrap th, .table-wrap td { padding: 6px 8px; }
+            .faq-item { padding: 10px 14px; }
+            .faq-item h4 { font-size: 14px; }
+            .faq-item p { font-size: 13px; }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+
+    <header class="header">
         <div class="container">
-            <a href="../../index.html" class="logo">💎 <span>Sivalko</span> System</a>
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../../index.html">Главная</a></li>
-                <li><a href="../../biografiya.html">Биография</a></li>
-                <li><a href="../../books.html">Книги</a></li>
-                <li><a href="../../courses.html" class="active">Курсы</a></li>
-                <li><a href="../../index.html#contact" class="btn-nav">Консультация</a></li>
-            </ul>
+            <div class="header-content">
+                <a href="../../index.html" class="logo">💎 <span>Sivalko</span> System</a>
+                <nav class="header-nav">
+                    <a href="../../index.html">Главная</a>
+                    <a href="../../biografiya.html">Био</a>
+                    <a href="../../courses.html">Курсы</a>
+                    <a href="../../index.html#contact" class="btn-enroll-sm">Записаться</a>
+                </nav>
+            </div>
         </div>
-    </nav>
-    <section class="hero">
+    </header>
+
+    <section class="book-hero">
         <div class="container">
             <a href="../../courses.html" class="back">← Все курсы</a>
             <h1>🎓 <span>Сильный продавец PRO</span></h1>
             <div class="meta">Курс #7 · Автор: Наталья Сивалко · 2026</div>
-            <div class="tags"><span>Продажи</span><span>Мышление</span><span>Навыки</span><span>Практика</span></div>
+            <div class="tags">
+                <span>Продажи</span>
+                <span>Мышление</span>
+                <span>Навыки</span>
+                <span>Практика</span>
+            </div>
+            <div class="count-badge">
+                💪 Уже <strong>3 847</strong> продавцов стали сильнее
+            </div>
         </div>
     </section>
+
     <section class="content">
         <div class="container">
+
             <h2>О курсе</h2>
-            <p><strong>«Сильный продавец PRO»</strong> — это курс о том, как стать продавцом, который продаёт легко, с удовольствием и без выгорания. Наталья Сивалко показывает, <strong>как развить мышление и навыки</strong>, которые делают продавца неуязвимым.</p>
-            <div class="highlight"><p>«Слабый продавец продаёт товар. Сильный продавец решает проблему клиента. А великий продавец меняет жизнь клиента.»</p></div>
+            <p>
+                <strong>«Сильный продавец PRO»</strong> — это курс о том, как стать продавцом, который продаёт легко, с удовольствием и без выгорания. Наталья Сивалко показывает, <strong>как развить мышление и навыки</strong>, которые делают продавца неуязвимым.
+            </p>
+            <p>
+                Это не про «давить на клиента». Это про <strong>уверенность, экологичные продажи и результат</strong>, который приходит без насилия над собой.
+            </p>
+
+            <div class="highlight">
+                <p>«Слабый продавец продаёт товар. Сильный продавец решает проблему клиента. А великий продавец меняет жизнь клиента.»</p>
+            </div>
+
+            <!-- ===== ТАБЛИЦА: МОДУЛИ ===== -->
             <h2>Программа курса</h2>
-            <ul><li>✅ Модуль 1: Мышление сильного продавца</li><li>✅ Модуль 2: 7 навыков топ-продавцов</li><li>✅ Модуль 3: Работа со страхом отказа</li><li>✅ Модуль 4: Личная система продаж</li></ul>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Модуль</th>
+                            <th>Тема</th>
+                            <th>Результат</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Мышление сильного продавца</td>
+                            <td>Уверенность и устойчивость</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>7 навыков топ-продавцов</td>
+                            <td>База сильного продавца</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Работа со страхом отказа</td>
+                            <td>Свобода от страхов</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Личная система продаж</td>
+                            <td>Автоматизация результата</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Что вы получите</h2>
+            <ul>
+                <li>✅ Мышление сильного продавца</li>
+                <li>✅ 7 ключевых навыков топ-продавцов</li>
+                <li>✅ Инструменты работы со страхом отказа</li>
+                <li>✅ Личную систему продаж</li>
+                <li>✅ Уверенность в любых переговорах</li>
+            </ul>
+
+            <!-- ===== ЧЕК-ЛИСТ ===== -->
+            <h2>Готовы ли вы стать сильным продавцом?</h2>
+            <div class="checklist" id="checklist1">
+                <h4>📋 Чек-лист сильного продавца</h4>
+                <label>
+                    <input type="checkbox" /> Я не боюсь отказов
+                </label>
+                <label>
+                    <input type="checkbox" /> Я умею задавать правильные вопросы
+                </label>
+                <label>
+                    <input type="checkbox" /> Я работаю с ценностью, а не с ценой
+                </label>
+                <label>
+                    <input type="checkbox" /> Я умею закрывать сделки
+                </label>
+                <label>
+                    <input type="checkbox" /> Я постоянно развиваюсь
+                </label>
+                <button class="btn-reset" onclick="resetChecklist('checklist1')">🔄 Сбросить</button>
+            </div>
+
+            <div class="author-note">
+                <p><strong>✍️ От автора:</strong></p>
+                <p>«Я прошла путь от новичка до топ-продавца и знаю, через что проходит каждый. В этом курсе я даю не просто техники — я даю систему трансформации продавца. Ты перестанешь бояться и начнёшь продавать с удовольствием.»</p>
+            </div>
+
+            <!-- ===== ТАБЛИЦА: ФОРМАТ ===== -->
+            <h2>Формат курса</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Длительность</td>
+                            <td>4 модуля (1 месяц активной работы)</td>
+                        </tr>
+                        <tr>
+                            <td>Формат</td>
+                            <td>Онлайн-курс с видеоуроками</td>
+                        </tr>
+                        <tr>
+                            <td>Материалы</td>
+                            <td>Скрипты, шаблоны, чек-листы</td>
+                        </tr>
+                        <tr>
+                            <td>Поддержка</td>
+                            <td>Чат с участниками, обратная связь</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <h2>Для кого этот курс</h2>
-            <ul><li>🔸 Менеджеров по продажам</li><li>🔸 Начинающих продавцов</li><li>🔸 Опытных продавцов</li><li>🔸 Руководителей, которые хотят развивать команду</li></ul>
-            <div class="related"><h3>📚 Рекомендуемые книги</h3><a href="../../books/prodazhi/silnyy-prodavets.html">Сильный продавец</a><a href="../../books/prodazhi/prodazhi-bez-davleniya.html">Продажи без давления</a></div>
+            <ul>
+                <li>🔸 Менеджеров по продажам</li>
+                <li>🔸 Начинающих продавцов</li>
+                <li>🔸 Опытных продавцов</li>
+                <li>🔸 Руководителей, которые хотят развивать команду</li>
+            </ul>
+
+            <!-- ===== БЛОК ДЕЙСТВИЙ ===== -->
+            <div class="action-block">
+                <h4>🚀 Станьте сильным продавцом</h4>
+                <p>Пройдите тест и узнайте свой уровень продавца</p>
+                <div class="btn-group">
+                    <a href="#" class="btn-sm primary">Пройти тест</a>
+                    <a href="#" class="btn-sm">Скачать чек-лист навыков</a>
+                </div>
+            </div>
+
+            <h2>Результаты после курса</h2>
+            <ul>
+                <li><strong>Мышление</strong> — вы перестанете бояться отказов</li>
+                <li><strong>Навыки</strong> — у вас будут 7 ключевых навыков</li>
+                <li><strong>Система</strong> — у вас будет личная система продаж</li>
+                <li><strong>Доход</strong> — вы начнёте зарабатывать больше</li>
+            </ul>
+
+            <div class="highlight">
+                <p>«Стать сильным продавцом — это не про талант. Это про систему мышления и навыки. И это доступно каждому.»</p>
+            </div>
+
+            <!-- ===== FAQ ===== -->
+            <h2>Частые вопросы</h2>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>Кому подходит этот курс? <span>+</span></h4>
+                <p>Курс подходит продавцам любого уровня — от новичков до опытных, а также руководителям, которые хотят развивать команду.</p>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>Что входит в курс? <span>+</span></h4>
+                <p>4 модуля с видеоуроками, скрипты, шаблоны, чек-листы, доступ в закрытый чат и обратная связь.</p>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>Какой результат я получу? <span>+</span></h4>
+                <p>Вы разовьёте мышление сильного продавца, освоите 7 ключевых навыков и создадите личную систему продаж.</p>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>Есть ли обратная связь от автора? <span>+</span></h4>
+                <p>Да, вы можете задавать вопросы в закрытом чате и получать обратную связь от Натальи и кураторов.</p>
+            </div>
+
+            <h2>Старт обучения</h2>
+            <p>
+                Набор в группу открыт. Вы получаете доступ сразу после оплаты и начинаете в удобное время.
+            </p>
+
             <a href="../../index.html#contact" class="btn-enroll">🎓 Записаться на курс</a>
+
+            <!-- ===== ПОХОЖИЕ КУРСЫ И КНИГИ ===== -->
+            <div class="related">
+                <h3>📚 Похожие курсы</h3>
+                <a href="ot-lida-do-sdelki.html">От лида до сделки</a>
+                <a href="iskusstvo-peregovorov.html">Искусство переговоров</a>
+                <a href="prodazhi-dlya-vladeltsa.html">Продажи для владельцев</a>
+            </div>
+            <div class="related">
+                <h3>📖 Похожие книги</h3>
+                <a href="../../books/prodazhi/silnyy-prodavets.html">Сильный продавец</a>
+                <a href="../../books/prodazhi/prodazhi-bez-davleniya.html">Продажи без давления</a>
+                <a href="../../books/prodazhi/sistema-prodazh.html">Система продаж</a>
+            </div>
+
         </div>
     </section>
-    <div class="container"><footer><div><strong style="color:#f0f4ff;">Наталья Сивалко</strong> · Sivalko System</div><div>© 2026</div></footer></div>
-    <script>document.getElementById('menuToggle').addEventListener('click', function(){document.getElementById('navLinks').classList.toggle('open');});</script>
+
+    <!-- ===== SAND FOOTER ===== -->
+    <div class="footer-sand-wrapper" id="sandFooter">
+        <canvas id="sandCanvas"></canvas>
+        <div class="footer-overlay">
+            <span class="tg-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.216-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.029 5.52-4.99c.24-.213-.052-.332-.373-.12l-6.82 4.293-2.938-.918c-.638-.198-.65-.638.139-.944l11.48-4.428c.532-.191.999.128.805.762z"/></svg>
+            </span>
+            <a href="https://t.me/METAIMPERIYA" target="_blank" rel="noopener noreferrer" class="tg-link">@METAIMPERIYA</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 · Наталья Сивалко · Sivalko System · Все права защищены
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // ===== ПЕСОК =====
+        const sandCanvas = document.getElementById("sandCanvas");
+        const sandCtx = sandCanvas.getContext("2d");
+        let sw = 0, sh = 0;
+        let sdpr = Math.min(window.devicePixelRatio || 1, 2);
+        const sandSettings = {
+            cellSize: 3,
+            startText: "METAIMPERIYA",
+            releaseTestsPerFrame: 800,
+            releaseChance: 0.025,
+            gravity: 500,
+            airDrag: 0.992,
+            settleStepsPerFrame: 3,
+            pileHoldSeconds: 0.5,
+            hiddenFadeInSeconds: 0.3,
+            reformDurationSeconds: 1.5,
+            reformStaggerSeconds: 0.4,
+            revealHoldSeconds: 2,
+            revealFadeSeconds: 0.4,
+        };
+        let scols = 0, srows = 0;
+        let fixedSand, sandPile;
+        let sandCells = [], freeCells = [];
+        let fallingSand = [];
+        let reformingSand = [];
+        let sandHiddenAlpha = 0;
+        let sandPhase = "codepen";
+        let sandPhaseTime = 0;
+        let lastSandTime = performance.now();
+
+        function resizeSand() {
+            const wrapper = document.getElementById('sandFooter');
+            sw = wrapper.clientWidth;
+            sh = wrapper.clientHeight;
+            sandCanvas.width = sw * sdpr;
+            sandCanvas.height = sh * sdpr;
+            sandCanvas.style.width = sw + "px";
+            sandCanvas.style.height = sh + "px";
+            sandCtx.setTransform(sdpr, 0, 0, sdpr, 0, 0);
+            scols = Math.ceil(sw / sandSettings.cellSize);
+            srows = Math.ceil(sh / sandSettings.cellSize);
+            fixedSand = new Uint8Array(scols * srows);
+            sandPile = new Uint8Array(scols * srows);
+            sandCells = [];
+            freeCells = [];
+            fallingSand = [];
+            reformingSand = [];
+            sandHiddenAlpha = 0;
+            sandPhase = "codepen";
+            sandPhaseTime = 0;
+            buildSandText();
+        }
+
+        function sIdx(col, row) { return row * scols + col; }
+        function sCol(i) { return i % scols; }
+        function sRow(i) { return Math.floor(i / scols); }
+        function sInBounds(col, row) { return col >= 0 && col < scols && row >= 0 && row < srows; }
+        function sRand(min, max) { return min + Math.random() * (max - min); }
+        function sRandInt(min, max) { return Math.floor(min + Math.random() * (max - min + 1)); }
+        function sClamp01(v) { return Math.max(0, Math.min(1, v)); }
+        function sEaseInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+        function sShuffle(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const temp = array[i]; array[i] = array[j]; array[j] = temp; } }
+
+        function buildSandText() {
+            const maskCanvas = document.createElement("canvas");
+            const maskCtx = maskCanvas.getContext("2d");
+            maskCanvas.width = sw;
+            maskCanvas.height = sh;
+            const fontSize = Math.min(sw * 0.08, sh * 0.22, 80);
+            maskCtx.clearRect(0, 0, sw, sh);
+            maskCtx.fillStyle = "#fff";
+            maskCtx.textAlign = "center";
+            maskCtx.textBaseline = "middle";
+            maskCtx.font = `900 ${fontSize}px system-ui, sans-serif`;
+            maskCtx.fillText(sandSettings.startText, sw / 2, sh * 0.50);
+            const image = maskCtx.getImageData(0, 0, sw, sh).data;
+            for (let row = 0; row < srows; row++) {
+                for (let col = 0; col < scols; col++) {
+                    const x = Math.floor(col * sandSettings.cellSize + sandSettings.cellSize / 2);
+                    const y = Math.floor(row * sandSettings.cellSize + sandSettings.cellSize / 2);
+                    const pixelIndex = (y * sw + x) * 4;
+                    const alpha = image[pixelIndex + 3];
+                    if (alpha > 35) {
+                        const i = sIdx(col, row);
+                        fixedSand[i] = 1;
+                        sandCells.push(i);
+                        freeCells.push(i);
+                    }
+                }
+            }
+            sShuffle(freeCells);
+        }
+
+        function sResetCycle() {
+            fixedSand.fill(0);
+            sandPile.fill(0);
+            freeCells = sandCells.slice();
+            sShuffle(freeCells);
+            fallingSand = [];
+            reformingSand = [];
+            for (const cell of sandCells) fixedSand[cell] = 1;
+            sandHiddenAlpha = 0;
+            sandPhase = "codepen";
+            sandPhaseTime = 0;
+        }
+
+        function sReleaseOne(cellIdx) {
+            const col = sCol(cellIdx), row = sRow(cellIdx);
+            fixedSand[cellIdx] = 0;
+            fallingSand.push({
+                x: col * sandSettings.cellSize, y: row * sandSettings.cellSize,
+                vx: sRand(-15, 15), vy: sRand(25, 100),
+                drift: sRand(-35, 35), driftTarget: sRand(-60, 60),
+                driftTimer: sRand(0.15, 0.7)
+            });
+        }
+
+        function sReleaseCodepen() {
+            if (freeCells.length === 0) { sandPhase = "falling"; sandPhaseTime = 0; return; }
+            for (let i = 0; i < sandSettings.releaseTestsPerFrame; i++) {
+                if (freeCells.length === 0) break;
+                const idx = sRandInt(0, freeCells.length - 1);
+                const cellIdx = freeCells[idx];
+                if (fixedSand[cellIdx] === 0) { freeCells.splice(idx, 1); continue; }
+                const col = sCol(cellIdx), row = sRow(cellIdx);
+                const belowEmpty = row >= srows - 1 || fixedSand[sIdx(col, Math.min(row + 1, srows - 1))] === 0;
+                const sideEmpty = col <= 0 || col >= scols - 1 ||
+                    fixedSand[sIdx(Math.max(col - 1, 0), row)] === 0 ||
+                    fixedSand[sIdx(Math.min(col + 1, scols - 1), row)] === 0;
+                const mult = belowEmpty || sideEmpty ? 3.3 : 1;
+                if (Math.random() < sandSettings.releaseChance * mult) {
+                    sReleaseOne(cellIdx);
+                    freeCells.splice(idx, 1);
+                }
+            }
+        }
+
+        function sPileSolid(col, row) {
+            if (row >= srows) return true;
+            if (col < 0 || col >= scols) return true;
+            return sandPile[sIdx(col, row)] === 1;
+        }
+
+        function sSetPile(col, row) {
+            if (!sInBounds(col, row)) return;
+            sandPile[sIdx(col, row)] = 1;
+        }
+
+        function sSettleFalling(p) {
+            let col = Math.floor(p.x / sandSettings.cellSize);
+            let row = Math.floor(p.y / sandSettings.cellSize);
+            col = Math.max(0, Math.min(scols - 1, col));
+            row = Math.max(0, Math.min(srows - 1, row));
+            if (!sPileSolid(col, row)) { sSetPile(col, row); return; }
+            if (!sPileSolid(col - 1, row)) { sSetPile(col - 1, row); return; }
+            if (!sPileSolid(col + 1, row)) { sSetPile(col + 1, row); return; }
+            for (let y = row - 1; y >= 0; y--) {
+                if (!sPileSolid(col, y)) { sSetPile(col, y); return; }
+            }
+        }
+
+        function sUpdateFalling(dt) {
+            for (let i = fallingSand.length - 1; i >= 0; i--) {
+                const p = fallingSand[i];
+                p.driftTimer -= dt;
+                if (p.driftTimer <= 0) { p.driftTarget = sRand(-60, 60); p.driftTimer = sRand(0.2, 0.9); }
+                p.drift += (p.driftTarget - p.drift) * dt * 2;
+                p.vx += p.drift * dt;
+                p.vy += sandSettings.gravity * dt;
+                p.vx *= sandSettings.airDrag;
+                p.vy *= sandSettings.airDrag;
+                p.x += p.vx * dt;
+                p.y += p.vy * dt;
+                const col = Math.floor(p.x / sandSettings.cellSize);
+                const nextRow = Math.floor((p.y + sandSettings.cellSize) / sandSettings.cellSize);
+                if (p.x < -60) p.x = 0;
+                if (p.x > sw + 60) p.x = sw - sandSettings.cellSize;
+                if (nextRow >= srows || sPileSolid(col, nextRow)) {
+                    sSettleFalling(p);
+                    fallingSand.splice(i, 1);
+                }
+            }
+            if (sandPhase === "falling" && fallingSand.length === 0) { sandPhase = "pile"; sandPhaseTime = 0; }
+        }
+
+        function sSettlePile() {
+            const leftToRight = Math.random() > 0.5;
+            for (let row = srows - 2; row >= 0; row--) {
+                if (leftToRight) {
+                    for (let col = 1; col < scols - 1; col++) sSettlePileCell(col, row);
+                } else {
+                    for (let col = scols - 2; col >= 1; col--) sSettlePileCell(col, row);
+                }
+            }
+        }
+
+        function sSettlePileCell(col, row) {
+            const current = sIdx(col, row);
+            if (sandPile[current] !== 1) return;
+            if (!sPileSolid(col, row + 1)) { sandPile[sIdx(col, row + 1)] = 1; sandPile[current] = 0; return; }
+            const preferLeft = Math.random() > 0.5;
+            if (preferLeft) {
+                if (!sPileSolid(col - 1, row + 1)) { sandPile[sIdx(col - 1, row + 1)] = 1; sandPile[current] = 0; return; }
+                if (!sPileSolid(col + 1, row + 1)) { sandPile[sIdx(col + 1, row + 1)] = 1; sandPile[current] = 0; return; }
+            } else {
+                if (!sPileSolid(col + 1, row + 1)) { sandPile[sIdx(col + 1, row + 1)] = 1; sandPile[current] = 0; return; }
+                if (!sPileSolid(col - 1, row + 1)) { sandPile[sIdx(col - 1, row + 1)] = 1; sandPile[current] = 0; return; }
+            }
+        }
+
+        function sCollectPile() {
+            const cells = [];
+            for (let row = srows - 1; row >= 0; row--) {
+                for (let col = 0; col < scols; col++) {
+                    if (sandPile[sIdx(col, row)] === 1) cells.push(sIdx(col, row));
+                }
+            }
+            return cells;
+        }
+
+        function sStartReform() {
+            const pileCells = sCollectPile();
+            const targets = sandCells.slice();
+            sandPile.fill(0);
+            pileCells.sort((a, b) => sRow(b) - sRow(a));
+            targets.sort((a, b) => sRow(b) - sRow(a));
+            const count = Math.min(pileCells.length, targets.length);
+            for (let i = 0; i < count; i++) {
+                const src = pileCells[i], tgt = targets[i];
+                reformingSand.push({
+                    sx: sCol(src) * sandSettings.cellSize, sy: sRow(src) * sandSettings.cellSize,
+                    tx: sCol(tgt) * sandSettings.cellSize, ty: sRow(tgt) * sandSettings.cellSize,
+                    x: sCol(src) * sandSettings.cellSize, y: sRow(src) * sandSettings.cellSize,
+                    delay: sRand(0, sandSettings.reformStaggerSeconds),
+                    duration: sRand(sandSettings.reformDurationSeconds * 0.75, sandSettings.reformDurationSeconds * 1.15),
+                    wave: sRand(-12, 12), phaseOffset: sRand(0, Math.PI * 2), arrived: false
+                });
+            }
+            sandPhase = "reform";
+            sandPhaseTime = 0;
+        }
+
+        function sUpdateReform(dt) {
+            sandHiddenAlpha = 1;
+            let allArrived = true;
+            for (const p of reformingSand) {
+                const localTime = sandPhaseTime - p.delay;
+                if (localTime <= 0) { p.x = p.sx; p.y = p.sy; allArrived = false; continue; }
+                const t = sClamp01(localTime / p.duration);
+                const eased = sEaseInOutCubic(t);
+                const arc = Math.sin(eased * Math.PI);
+                const wobble = Math.sin(eased * Math.PI * 2 + p.phaseOffset) * p.wave * arc;
+                p.x = p.sx + (p.tx - p.sx) * eased + wobble;
+                p.y = p.sy + (p.ty - p.sy) * eased - arc * sh * 0.06;
+                if (t < 1) allArrived = false;
+            }
+            if (allArrived) {
+                for (const cell of sandCells) fixedSand[cell] = 1;
+                reformingSand = [];
+                sandPhase = "hiddenHold";
+                sandPhaseTime = 0;
+                sandHiddenAlpha = 1;
+            }
+        }
+
+        function sUpdatePhase(dt) {
+            sandPhaseTime += dt;
+            if (sandPhase === "codepen") sReleaseCodepen();
+            if (sandPhase === "pile" && sandPhaseTime >= sandSettings.pileHoldSeconds) {
+                sandPhase = "hiddenFadeIn";
+                sandPhaseTime = 0;
+                sandHiddenAlpha = 0;
+            }
+            if (sandPhase === "hiddenFadeIn") {
+                sandHiddenAlpha = Math.min(1, sandPhaseTime / sandSettings.hiddenFadeInSeconds);
+                if (sandHiddenAlpha >= 1) { sandHiddenAlpha = 1; sStartReform(); }
+            }
+            if (sandPhase === "reform") sUpdateReform(dt);
+            if (sandPhase === "hiddenHold") {
+                sandHiddenAlpha = 1;
+                if (sandPhaseTime >= sandSettings.revealHoldSeconds) {
+                    sandPhase = "hiddenFade";
+                    sandPhaseTime = 0;
+                }
+            }
+            if (sandPhase === "hiddenFade") {
+                sandHiddenAlpha = Math.max(0, 1 - sandPhaseTime / sandSettings.revealFadeSeconds);
+                if (sandHiddenAlpha <= 0) { sandHiddenAlpha = 0; sResetCycle(); }
+            }
+        }
+
+        function sDraw() {
+            sandCtx.clearRect(0, 0, sw, sh);
+            const size = sandSettings.cellSize;
+            sandCtx.fillStyle = "rgb(255, 215, 0)";
+            for (let row = 0; row < srows; row++) {
+                for (let col = 0; col < scols; col++) {
+                    if (fixedSand[sIdx(col, row)] === 1) {
+                        sandCtx.fillRect(col * size, row * size, size, size);
+                    }
+                }
+            }
+            for (const p of fallingSand) {
+                sandCtx.fillRect(p.x, p.y, size, size);
+            }
+            for (let row = 0; row < srows; row++) {
+                for (let col = 0; col < scols; col++) {
+                    if (sandPile[sIdx(col, row)] === 1) {
+                        sandCtx.fillRect(col * size, row * size, size, size);
+                    }
+                }
+            }
+            for (const p of reformingSand) {
+                sandCtx.fillRect(p.x, p.y, size, size);
+            }
+        }
+
+        function sTick(now) {
+            const dt = Math.min((now - lastSandTime) / 1000, 0.033);
+            lastSandTime = now;
+            sUpdatePhase(dt);
+            sUpdateFalling(dt);
+            if (sandPhase !== "reform" && sandPhase !== "hiddenHold" && sandPhase !== "hiddenFade") {
+                for (let i = 0; i < sandSettings.settleStepsPerFrame; i++) sSettlePile();
+            }
+            sDraw();
+            requestAnimationFrame(sTick);
+        }
+
+        function initSand() {
+            resizeSand();
+            if (sandCells.length === 0) {
+                const text = "METAIMPERIYA";
+                const fontSize = Math.min(sw * 0.08, sh * 0.22, 80);
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = sw;
+                tempCanvas.height = sh;
+                const tCtx = tempCanvas.getContext('2d');
+                tCtx.fillStyle = '#fff';
+                tCtx.textAlign = 'center';
+                tCtx.textBaseline = 'middle';
+                tCtx.font = `900 ${fontSize}px system-ui, sans-serif`;
+                tCtx.fillText(text, sw / 2, sh * 0.50);
+                const data = tCtx.getImageData(0, 0, sw, sh).data;
+                const step = 4;
+                for (let y = 0; y < sh; y += step) {
+                    for (let x = 0; x < sw; x += step) {
+                        const idx = (y * sw + x) * 4;
+                        if (data[idx + 3] > 30) {
+                            const col = Math.floor(x / sandSettings.cellSize);
+                            const row = Math.floor(y / sandSettings.cellSize);
+                            if (col < scols && row < srows) {
+                                const i = sIdx(col, row);
+                                fixedSand[i] = 1;
+                                sandCells.push(i);
+                                freeCells.push(i);
+                            }
+                        }
+                    }
+                }
+                sShuffle(freeCells);
+            }
+            sResetCycle();
+            requestAnimationFrame(sTick);
+        }
+
+        window.addEventListener('resize', () => { resizeSand(); sResetCycle(); });
+        setTimeout(initSand, 100);
+
+        // ===== ФУНКЦИИ ДЛЯ ИНТЕРАКТИВА =====
+        function resetChecklist(id) {
+            const container = document.getElementById(id);
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+        }
+
+        function toggleFaq(el) {
+            el.classList.toggle('open');
+        }
+
+        console.log('💪 Сильный продавец PRO — страница курса загружена!');
+        console.log('🚀 Становитесь сильнее с каждым днём!');
+    </script>
 </body>
 </html>
