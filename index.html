@@ -20,11 +20,11 @@
         }
         .container { max-width: 100%; padding: 0 16px; margin: 0 auto; }
         
-        /* ===== ШАПКА (простая, без меню) ===== */
+        /* ===== ШАПКА ===== */
         .header {
-            padding: 16px 0 12px;
+            padding: 12px 0 10px;
             background: #0a0a0a;
-            border-bottom: 1px solid rgba(200, 50, 50, 0.15);
+            border-bottom: 1px solid rgba(200, 50, 50, 0.12);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -36,44 +36,45 @@
             align-items: center;
         }
         .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             color: #e8e0d8;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            white-space: nowrap;
         }
         .logo span { color: #cc3333; }
         .header-nav {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         .header-nav a {
-            color: #aaa;
+            color: #999;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            padding: 6px 12px;
+            padding: 4px 12px;
             border-radius: 20px;
             transition: 0.3s;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .header-nav a:hover, .header-nav a.active {
             color: #fff;
-            background: rgba(204, 51, 51, 0.15);
-            border-color: rgba(204, 51, 51, 0.2);
+            background: rgba(204, 51, 51, 0.12);
+            border-color: rgba(204, 51, 51, 0.15);
         }
         
-        /* ===== ГЕРОЙ С 3D (без управления) ===== */
+        /* ===== ГЕРОЙ С 3D ===== */
         #canvas-container { 
             position: relative; 
             width: 100%; 
-            height: 55vh; 
-            min-height: 320px; 
-            max-height: 500px;
+            height: 50vh; 
+            min-height: 280px; 
+            max-height: 480px;
             background: #0a0a0a; 
             overflow: hidden; 
             margin-top: 0; 
@@ -93,25 +94,25 @@
             align-items: center; 
             text-align: center; 
             pointer-events: none; 
-            padding: 20px; 
-            background: radial-gradient(ellipse at center, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.7) 100%); 
+            padding: 16px; 
+            background: radial-gradient(ellipse at center, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.7) 100%); 
         }
         .hero-overlay .badge { 
             display: inline-block; 
-            background: rgba(204, 51, 51, 0.15); 
-            border: 1px solid rgba(204, 51, 51, 0.25); 
-            padding: 4px 16px; 
+            background: rgba(204, 51, 51, 0.12); 
+            border: 1px solid rgba(204, 51, 51, 0.2); 
+            padding: 4px 14px; 
             border-radius: 40px; 
-            font-size: 11px; 
+            font-size: 10px; 
             font-weight: 600; 
             color: #cc3333; 
             letter-spacing: 1.5px; 
             text-transform: uppercase; 
             pointer-events: auto; 
-            margin-bottom: 12px; 
+            margin-bottom: 10px; 
         }
         .hero-overlay h1 { 
-            font-size: clamp(28px, 6vw, 48px); 
+            font-size: clamp(26px, 5.5vw, 44px); 
             font-weight: 900; 
             line-height: 1.1; 
             pointer-events: auto; 
@@ -119,45 +120,45 @@
         }
         .hero-overlay h1 span { color: #cc3333; }
         .hero-overlay p { 
-            font-size: clamp(14px, 2vw, 18px); 
+            font-size: clamp(13px, 1.8vw, 17px); 
             color: #aaa; 
-            margin: 12px 0 20px; 
+            margin: 8px 0 16px; 
             max-width: 500px; 
             pointer-events: auto; 
         }
         .hero-overlay .btn-group { 
             display: flex; 
             flex-wrap: wrap; 
-            gap: 12px; 
+            gap: 10px; 
             justify-content: center; 
             pointer-events: auto; 
         }
         .btn-primary { 
             background: linear-gradient(135deg, #cc3333, #991111); 
             color: #fff; 
-            padding: 14px 36px; 
+            padding: 12px 30px; 
             border-radius: 60px; 
             font-weight: 700; 
-            font-size: 15px; 
+            font-size: 14px; 
             border: none; 
             cursor: pointer; 
             transition: all 0.3s ease; 
-            box-shadow: 0 4px 20px rgba(204, 51, 51, 0.25); 
+            box-shadow: 0 4px 20px rgba(204, 51, 51, 0.2); 
             text-decoration: none; 
             display: inline-block; 
         }
         .btn-primary:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 8px 30px rgba(204, 51, 51, 0.4); 
+            box-shadow: 0 8px 30px rgba(204, 51, 51, 0.35); 
         }
         .btn-secondary { 
             background: transparent; 
-            border: 1.5px solid rgba(204, 51, 51, 0.4); 
+            border: 1.5px solid rgba(204, 51, 51, 0.35); 
             color: #e8e0d8; 
-            padding: 14px 36px; 
+            padding: 12px 30px; 
             border-radius: 60px; 
             font-weight: 600; 
-            font-size: 15px; 
+            font-size: 14px; 
             cursor: pointer; 
             transition: all 0.3s ease; 
             text-decoration: none; 
@@ -165,34 +166,34 @@
         }
         .btn-secondary:hover { 
             border-color: #cc3333; 
-            background: rgba(204, 51, 51, 0.06); 
+            background: rgba(204, 51, 51, 0.05); 
         }
         
         /* ===== СЕКЦИИ ===== */
-        section { padding: 40px 0; }
+        section { padding: 32px 0; }
         .section-title { 
-            font-size: clamp(24px, 4vw, 34px); 
+            font-size: clamp(22px, 3.5vw, 32px); 
             font-weight: 800; 
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
             color: #e8e0d8;
         }
         .section-title span { color: #cc3333; }
         .section-sub { 
             color: #888; 
-            font-size: 15px; 
-            margin-bottom: 24px; 
+            font-size: 14px; 
+            margin-bottom: 20px; 
         }
         
-        /* ===== АККОРДЕОН (ГАРМОШКА) ===== */
+        /* ===== АККОРДЕОН ===== */
         .accordion {
             background: #111;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 10px;
             overflow: hidden;
         }
         .accordion-header {
-            padding: 16px 20px;
+            padding: 14px 18px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -203,16 +204,16 @@
         }
         .accordion-header:hover { background: #141414; }
         .accordion-header .title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
             color: #e8e0d8;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .accordion-header .title span { color: #cc3333; }
         .accordion-header .arrow {
-            font-size: 18px;
+            font-size: 16px;
             color: #cc3333;
             transition: 0.3s;
         }
@@ -224,71 +225,72 @@
             background: #0a0a0a;
         }
         .accordion-body-inner {
-            padding: 16px 20px 20px;
+            padding: 14px 18px 18px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 6px;
         }
         .accordion-body-inner a {
             color: #bbb;
             text-decoration: none;
-            font-size: 13px;
-            padding: 8px 12px;
+            font-size: 12px;
+            padding: 6px 10px;
             border-radius: 8px;
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.03);
             transition: 0.3s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
         .accordion-body-inner a:hover {
             color: #fff;
-            background: rgba(204, 51, 51, 0.08);
-            border-color: rgba(204, 51, 51, 0.15);
+            background: rgba(204, 51, 51, 0.06);
+            border-color: rgba(204, 51, 51, 0.12);
         }
-        .accordion-body-inner .emoji { font-size: 14px; }
+        .accordion-body-inner .emoji { font-size: 13px; }
         @media (max-width: 480px) {
-            .accordion-body-inner { grid-template-columns: 1fr; }
+            .accordion-body-inner { grid-template-columns: 1fr; gap: 4px; }
+            .accordion-body-inner a { font-size: 11px; padding: 5px 8px; }
         }
         
         /* ===== ФОРМА ===== */
         .form-section { 
             background: #111; 
             border-radius: 16px; 
-            padding: 32px 20px; 
-            border: 1px solid rgba(255,255,255,0.05); 
+            padding: 28px 16px; 
+            border: 1px solid rgba(255,255,255,0.04); 
             text-align: center; 
         }
-        .form-section h2 { font-size: 24px; margin-bottom: 8px; color: #e8e0d8; }
-        .form-section p { color: #888; margin-bottom: 20px; font-size: 14px; }
+        .form-section h2 { font-size: 22px; margin-bottom: 6px; color: #e8e0d8; }
+        .form-section p { color: #888; margin-bottom: 16px; font-size: 13px; }
         .form-group { 
             display: flex; 
             flex-wrap: wrap; 
-            gap: 12px; 
+            gap: 10px; 
             justify-content: center; 
             max-width: 500px; 
             margin: 0 auto; 
         }
         .form-group input { 
-            flex: 1 1 180px; 
-            padding: 14px 20px; 
+            flex: 1 1 160px; 
+            padding: 12px 18px; 
             border-radius: 60px; 
             border: 1px solid #222; 
             background: #0a0a0a; 
             color: #e8e0d8; 
-            font-size: 14px; 
+            font-size: 13px; 
             outline: none; 
-            min-width: 150px; 
+            min-width: 140px; 
         }
-        .form-group input:focus { border-color: #cc3333; box-shadow: 0 0 0 3px rgba(204,51,51,0.08); }
+        .form-group input:focus { border-color: #cc3333; box-shadow: 0 0 0 3px rgba(204,51,51,0.06); }
         .form-group input::placeholder { color: #555; }
         
-        /* ===== ПОДВАЛ С ПЕСКОМ ===== */
+        /* ===== ПОДВАЛ С ПЕСКОМ (БОЛЬШЕ И ВЫШЕ) ===== */
         .footer-sand-wrapper {
             position: relative;
             width: 100%;
-            height: 180px;
+            height: 220px;
             background: #0a0a0a;
             overflow: hidden;
             border-top: 1px solid rgba(255,255,255,0.04);
@@ -301,68 +303,109 @@
         }
         .footer-overlay {
             position: absolute;
-            bottom: 16px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(10,10,10,0.6);
+            gap: 8px;
+            background: rgba(10,10,10,0.55);
             backdrop-filter: blur(6px);
-            padding: 4px 16px;
+            padding: 5px 18px;
             border-radius: 30px;
-            border: 1px solid rgba(204,51,51,0.1);
+            border: 1px solid rgba(255,215,0,0.08);
             z-index: 10;
+            white-space: nowrap;
         }
-        .footer-overlay .tg-link {
+        .footer-overlay .tg-icon {
             display: flex;
             align-items: center;
-            gap: 6px;
-            color: #cc3333;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: 0.3s;
-            padding: 4px 8px;
-        }
-        .footer-overlay .tg-link:hover { color: #ff5555; }
-        .footer-overlay .tg-link svg {
-            width: 16px;
-            height: 16px;
-            fill: #cc3333;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border-radius: 50%;
             flex-shrink: 0;
         }
-        .footer-overlay .tg-link:hover svg { fill: #ff5555; }
-        .footer-bottom {
-            text-align: center;
-            padding: 8px 0 14px;
-            color: #444;
-            font-size: 11px;
-            background: #0a0a0a;
-            border-top: 1px solid rgba(255,255,255,0.03);
+        .footer-overlay .tg-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: #0a0a0a;
+            display: block;
+        }
+        .footer-overlay .tg-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            padding: 2px 0;
+        }
+        .footer-overlay .tg-link:hover { 
+            color: #60a5fa; 
+            text-decoration: underline;
         }
         
+        .footer-bottom {
+            text-align: center;
+            padding: 6px 0 12px;
+            color: #444;
+            font-size: 10px;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+        
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
-            .header-nav a { font-size: 12px; padding: 4px 10px; }
-            .footer-sand-wrapper { height: 140px; }
-            .footer-overlay { bottom: 10px; padding: 3px 12px; }
-            .footer-overlay .tg-link { font-size: 11px; }
-            .footer-overlay .tg-link svg { width: 14px; height: 14px; }
-            .form-section { padding: 24px 16px; }
-            .btn-primary, .btn-secondary { padding: 12px 28px; font-size: 14px; }
+            .footer-sand-wrapper { height: 180px; }
+            .footer-overlay { bottom: 14px; padding: 4px 14px; gap: 6px; }
+            .footer-overlay .tg-icon { width: 20px; height: 20px; }
+            .footer-overlay .tg-icon svg { width: 13px; height: 13px; }
+            .footer-overlay .tg-link { font-size: 12px; }
+            .header-nav a { font-size: 11px; padding: 3px 10px; }
+            .logo { font-size: 16px; }
+            .btn-primary, .btn-secondary { padding: 10px 24px; font-size: 13px; }
+            .form-section { padding: 20px 14px; }
+            .form-section h2 { font-size: 20px; }
         }
         @media (max-width: 480px) {
-            #canvas-container { height: 40vh; min-height: 250px; max-height: 380px; }
-            .footer-sand-wrapper { height: 110px; }
-            .footer-overlay { bottom: 6px; padding: 2px 10px; }
-            .footer-overlay .tg-link { font-size: 10px; gap: 4px; }
-            .footer-overlay .tg-link svg { width: 12px; height: 12px; }
+            #canvas-container { height: 38vh; min-height: 220px; max-height: 340px; }
+            .footer-sand-wrapper { height: 150px; }
+            .footer-overlay { 
+                bottom: 10px; 
+                padding: 3px 12px; 
+                gap: 5px;
+                border-radius: 24px;
+            }
+            .footer-overlay .tg-icon { width: 18px; height: 18px; }
+            .footer-overlay .tg-icon svg { width: 11px; height: 11px; }
+            .footer-overlay .tg-link { font-size: 11px; }
             .footer-bottom { font-size: 9px; padding: 4px 0 10px; }
             section { padding: 24px 0; }
-            .accordion-header { padding: 12px 16px; }
-            .accordion-header .title { font-size: 15px; }
-            .accordion-body-inner { padding: 12px 16px 16px; gap: 6px; }
-            .accordion-body-inner a { font-size: 12px; padding: 6px 10px; }
+            .accordion-header { padding: 10px 14px; }
+            .accordion-header .title { font-size: 14px; }
+            .accordion-body-inner { padding: 10px 14px 14px; gap: 4px; }
+            .accordion-body-inner a { font-size: 11px; padding: 4px 8px; }
+            .hero-overlay h1 { font-size: 22px; }
+            .hero-overlay p { font-size: 12px; }
+            .btn-primary, .btn-secondary { padding: 8px 20px; font-size: 12px; }
+            .form-group input { padding: 10px 14px; font-size: 12px; min-width: 120px; }
+        }
+        @media (max-width: 380px) {
+            .footer-sand-wrapper { height: 130px; }
+            .footer-overlay { 
+                bottom: 8px; 
+                padding: 2px 10px; 
+                gap: 4px;
+                border-radius: 20px;
+            }
+            .footer-overlay .tg-icon { width: 16px; height: 16px; }
+            .footer-overlay .tg-icon svg { width: 10px; height: 10px; }
+            .footer-overlay .tg-link { font-size: 10px; }
+            .footer-bottom { font-size: 8px; }
+            .header-nav a { font-size: 10px; padding: 2px 8px; }
+            .logo { font-size: 14px; }
         }
     </style>
 </head>
@@ -400,12 +443,12 @@
         <div class="container">
             <h2 class="section-title">Наталья <span>Сивалко</span></h2>
             <p class="section-sub">Бизнес-тренер, наставник, основатель Sivalko System. 16 лет управленческого опыта.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;background:#111;border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,0.04);">
-                <div style="flex:1;min-width:200px;">
-                    <p style="color:#bbb;font-size:15px;">Авторская <span style="color:#cc3333;font-weight:700;">каскадная система</span> из 3 шагов. Более 300 выпускников. Средний рост дохода — 3x.</p>
-                    <a href="biografiya.html" style="color:#cc3333;font-weight:600;display:inline-block;margin-top:10px;font-size:14px;">Читать биографию →</a>
+            <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#111;border-radius:16px;padding:16px 18px;border:1px solid rgba(255,255,255,0.04);">
+                <div style="flex:1;min-width:180px;">
+                    <p style="color:#bbb;font-size:14px;">Авторская <span style="color:#cc3333;font-weight:700;">каскадная система</span> из 3 шагов. Более 300 выпускников. Средний рост дохода — 3x.</p>
+                    <a href="biografiya.html" style="color:#cc3333;font-weight:600;display:inline-block;margin-top:8px;font-size:13px;">Читать биографию →</a>
                 </div>
-                <div style="flex:0 0 80px;border-radius:50%;overflow:hidden;border:2px solid rgba(204,51,51,0.2);">
+                <div style="flex:0 0 64px;border-radius:50%;overflow:hidden;border:2px solid rgba(204,51,51,0.15);">
                     <img src="images/biznes-trener.jpg" alt="Наталья Сивалко" style="width:100%;display:block;" />
                 </div>
             </div>
@@ -420,7 +463,7 @@
 
             <div class="accordion" id="bookAccordion1">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>📈</span> Продажи <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="title"><span>📈</span> Продажи <span style="font-weight:400;color:#888;font-size:12px;">10 книг</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -441,7 +484,7 @@
 
             <div class="accordion" id="bookAccordion2">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>⚙️</span> Управление <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="title"><span>⚙️</span> Управление <span style="font-weight:400;color:#888;font-size:12px;">10 книг</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -462,7 +505,7 @@
 
             <div class="accordion" id="bookAccordion3">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>🚀</span> Бизнес и развитие <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="title"><span>🚀</span> Бизнес и развитие <span style="font-weight:400;color:#888;font-size:12px;">10 книг</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -483,7 +526,7 @@
 
             <div class="accordion" id="bookAccordion4">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>🧠</span> Психология и лидерство <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="title"><span>🧠</span> Психология и лидерство <span style="font-weight:400;color:#888;font-size:12px;">10 книг</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -504,7 +547,7 @@
 
             <div class="accordion" id="bookAccordion5">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>💎</span> Наставничество <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="title"><span>💎</span> Наставничество <span style="font-weight:400;color:#888;font-size:12px;">10 книг</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -533,7 +576,7 @@
 
             <div class="accordion" id="courseAccordion1">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>📈</span> Продажи PRO <span style="font-weight:400;color:#888;font-size:13px;">8 курсов</span></div>
+                    <div class="title"><span>📈</span> Продажи PRO <span style="font-weight:400;color:#888;font-size:12px;">8 курсов</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -552,7 +595,7 @@
 
             <div class="accordion" id="courseAccordion2">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>⚙️</span> Управление продажами <span style="font-weight:400;color:#888;font-size:13px;">7 курсов</span></div>
+                    <div class="title"><span>⚙️</span> Управление продажами <span style="font-weight:400;color:#888;font-size:12px;">7 курсов</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -570,7 +613,7 @@
 
             <div class="accordion" id="courseAccordion3">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>🚀</span> Управление бизнесом <span style="font-weight:400;color:#888;font-size:13px;">7 курсов</span></div>
+                    <div class="title"><span>🚀</span> Управление бизнесом <span style="font-weight:400;color:#888;font-size:12px;">7 курсов</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -588,7 +631,7 @@
 
             <div class="accordion" id="courseAccordion4">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>🧠</span> Психология <span style="font-weight:400;color:#888;font-size:13px;">5 курсов</span></div>
+                    <div class="title"><span>🧠</span> Психология <span style="font-weight:400;color:#888;font-size:12px;">5 курсов</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -604,7 +647,7 @@
 
             <div class="accordion" id="courseAccordion5">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="title"><span>💎</span> Наставничество <span style="font-weight:400;color:#888;font-size:13px;">3 курса</span></div>
+                    <div class="title"><span>💎</span> Наставничество <span style="font-weight:400;color:#888;font-size:12px;">3 курса</span></div>
                     <div class="arrow">▼</div>
                 </div>
                 <div class="accordion-body">
@@ -628,10 +671,10 @@
                     <div class="form-group">
                         <input type="text" placeholder="Ваше имя" required />
                         <input type="tel" placeholder="+7 (999) 999-99-99" required />
-                        <button type="submit" class="btn-primary" style="padding:14px 36px;font-size:15px;">Записаться</button>
+                        <button type="submit" class="btn-primary" style="padding:12px 30px;font-size:14px;">Записаться</button>
                     </div>
                 </form>
-                <p style="font-size:12px;color:#555;margin-top:14px;">🔒 Никакого спама. Только полезный контент.</p>
+                <p style="font-size:11px;color:#555;margin-top:12px;">🔒 Никакого спама. Только полезный контент.</p>
             </div>
         </div>
     </section>
@@ -640,10 +683,10 @@
     <div class="footer-sand-wrapper" id="sandFooter">
         <canvas id="sandCanvas"></canvas>
         <div class="footer-overlay">
-            <a href="https://t.me/METAIMPERIYA" target="_blank" rel="noopener noreferrer" class="tg-link">
+            <span class="tg-icon">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.216-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.029 5.52-4.99c.24-.213-.052-.332-.373-.12l-6.82 4.293-2.938-.918c-.638-.198-.65-.638.139-.944l11.48-4.428c.532-.191.999.128.805.762z"/></svg>
-                @METAIMPERIYA
-            </a>
+            </span>
+            <a href="https://t.me/METAIMPERIYA" target="_blank" rel="noopener noreferrer" class="tg-link">@METAIMPERIYA</a>
         </div>
     </div>
     <div class="footer-bottom">
@@ -652,7 +695,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- ===== ПЕСОК В ПОДВАЛЕ ===== -->
+    <!-- ===== ПЕСОК В ПОДВАЛЕ (ЗОЛОТОЙ) ===== -->
     <script>
         const sandCanvas = document.getElementById("sandCanvas");
         const sandCtx = sandCanvas.getContext("2d");
@@ -662,17 +705,17 @@
             cellSize: 3,
             startText: "METAIMPERIYA",
             hiddenText: "",
-            releaseTestsPerFrame: 800,
+            releaseTestsPerFrame: 1000,
             releaseChance: 0.025,
-            gravity: 500,
+            gravity: 550,
             airDrag: 0.992,
-            settleStepsPerFrame: 3,
-            pileHoldSeconds: 0.5,
-            hiddenFadeInSeconds: 0.3,
-            reformDurationSeconds: 1.5,
-            reformStaggerSeconds: 0.4,
-            revealHoldSeconds: 2,
-            revealFadeSeconds: 0.4,
+            settleStepsPerFrame: 4,
+            pileHoldSeconds: 0.6,
+            hiddenFadeInSeconds: 0.4,
+            reformDurationSeconds: 1.8,
+            reformStaggerSeconds: 0.5,
+            revealHoldSeconds: 2.5,
+            revealFadeSeconds: 0.5,
         };
         let scols = 0, srows = 0;
         let fixedSand, sandPile;
@@ -722,13 +765,13 @@
             const maskCtx = maskCanvas.getContext("2d");
             maskCanvas.width = sw;
             maskCanvas.height = sh;
-            const fontSize = Math.min(sw * 0.08, sh * 0.22, 80);
+            const fontSize = Math.min(sw * 0.08, sh * 0.22, 85);
             maskCtx.clearRect(0, 0, sw, sh);
             maskCtx.fillStyle = "#fff";
             maskCtx.textAlign = "center";
             maskCtx.textBaseline = "middle";
             maskCtx.font = `900 ${fontSize}px system-ui, sans-serif`;
-            maskCtx.fillText(sandSettings.startText, sw / 2, sh * 0.45);
+            maskCtx.fillText(sandSettings.startText, sw / 2, sh * 0.50);
             const image = maskCtx.getImageData(0, 0, sw, sh).data;
             for (let row = 0; row < srows; row++) {
                 for (let col = 0; col < scols; col++) {
@@ -765,9 +808,9 @@
             fixedSand[cellIdx] = 0;
             fallingSand.push({
                 x: col * sandSettings.cellSize, y: row * sandSettings.cellSize,
-                vx: sRand(-15, 15), vy: sRand(25, 100),
-                drift: sRand(-35, 35), driftTarget: sRand(-60, 60),
-                driftTimer: sRand(0.15, 0.7)
+                vx: sRand(-18, 18), vy: sRand(30, 110),
+                drift: sRand(-40, 40), driftTarget: sRand(-65, 65),
+                driftTimer: sRand(0.15, 0.8)
             });
         }
 
@@ -819,7 +862,7 @@
             for (let i = fallingSand.length - 1; i >= 0; i--) {
                 const p = fallingSand[i];
                 p.driftTimer -= dt;
-                if (p.driftTimer <= 0) { p.driftTarget = sRand(-60, 60); p.driftTimer = sRand(0.2, 0.9); }
+                if (p.driftTimer <= 0) { p.driftTarget = sRand(-65, 65); p.driftTimer = sRand(0.2, 0.9); }
                 p.drift += (p.driftTarget - p.drift) * dt * 2;
                 p.vx += p.drift * dt;
                 p.vy += sandSettings.gravity * dt;
@@ -889,7 +932,7 @@
                     x: sCol(src) * sandSettings.cellSize, y: sRow(src) * sandSettings.cellSize,
                     delay: sRand(0, sandSettings.reformStaggerSeconds),
                     duration: sRand(sandSettings.reformDurationSeconds * 0.75, sandSettings.reformDurationSeconds * 1.15),
-                    wave: sRand(-12, 12), phaseOffset: sRand(0, Math.PI * 2), arrived: false
+                    wave: sRand(-14, 14), phaseOffset: sRand(0, Math.PI * 2), arrived: false
                 });
             }
             sandPhase = "reform";
@@ -948,7 +991,8 @@
         function sDraw() {
             sandCtx.clearRect(0, 0, sw, sh);
             const size = sandSettings.cellSize;
-            sandCtx.fillStyle = "rgb(204, 51, 51)";
+            // ЗОЛОТОЙ ПЕСОК
+            sandCtx.fillStyle = "rgb(255, 215, 0)";
             for (let row = 0; row < srows; row++) {
                 for (let col = 0; col < scols; col++) {
                     if (fixedSand[sIdx(col, row)] === 1) {
@@ -987,7 +1031,7 @@
             resizeSand();
             if (sandCells.length === 0) {
                 const text = "METAIMPERIYA";
-                const fontSize = Math.min(sw * 0.08, sh * 0.22, 80);
+                const fontSize = Math.min(sw * 0.08, sh * 0.22, 85);
                 const tempCanvas = document.createElement('canvas');
                 tempCanvas.width = sw;
                 tempCanvas.height = sh;
@@ -996,7 +1040,7 @@
                 tCtx.textAlign = 'center';
                 tCtx.textBaseline = 'middle';
                 tCtx.font = `900 ${fontSize}px system-ui, sans-serif`;
-                tCtx.fillText(text, sw / 2, sh * 0.45);
+                tCtx.fillText(text, sw / 2, sh * 0.50);
                 const data = tCtx.getImageData(0, 0, sw, sh).data;
                 const step = 4;
                 for (let y = 0; y < sh; y += step) {
@@ -1024,7 +1068,7 @@
         setTimeout(initSand, 100);
     </script>
 
-    <!-- ===== 3D ГАЛЕРЕЯ (без управления) ===== -->
+    <!-- ===== 3D ГАЛЕРЕЯ ===== -->
     <script>
         const imageFiles = [
             'biznes-ekspert.jpg', 'biznes-konsalting.jpg', 'biznes-konsultant.jpg',
@@ -1174,20 +1218,16 @@
             const accordion = header.closest('.accordion');
             const body = accordion.querySelector('.accordion-body');
             const isOpen = accordion.classList.contains('open');
-            
-            // Закрываем все
             document.querySelectorAll('.accordion').forEach(el => {
                 el.classList.remove('open');
                 el.querySelector('.accordion-body').style.maxHeight = '0';
             });
-            
             if (!isOpen) {
                 accordion.classList.add('open');
                 body.style.maxHeight = body.scrollHeight + 40 + 'px';
             }
         }
 
-        // Открываем первую книгу и первый курс по умолчанию
         setTimeout(() => {
             const firstBook = document.getElementById('bookAccordion1');
             if (firstBook) {
