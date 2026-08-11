@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="google-site-verification" content="Yn606XFsYaK55tYUjokpJvAKsIjNrOrABhzal_gNKqw" />
     <title>Наталья Сивалко | Sivalko System</title>
     <meta name="description" content="Наталья Сивалко — бизнес-тренер, коуч и наставник. Система продаж, стратегия, масштабирование бизнеса." />
@@ -13,109 +13,76 @@
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Inter', sans-serif; 
-            background: #0c0a0a; 
-            color: #ecdccc; 
+            background: #0a0a0a; 
+            color: #e8e0d8; 
             line-height: 1.6; 
             overflow-x: hidden; 
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 100%; padding: 0 16px; margin: 0 auto; }
         
-        /* ===== НАВИГАЦИЯ ===== */
-        .navbar { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            z-index: 1000; 
-            background: rgba(12,10,10,0.92); 
-            backdrop-filter: blur(12px); 
-            border-bottom: 1px solid rgba(204,184,144,0.15); 
-            padding: 12px 0; 
+        /* ===== ШАПКА (простая, без меню) ===== */
+        .header {
+            padding: 16px 0 12px;
+            background: #0a0a0a;
+            border-bottom: 1px solid rgba(200, 50, 50, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
         }
-        .navbar .container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            flex-wrap: wrap; 
-            gap: 12px; 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .logo { 
-            font-size: 22px; 
-            font-weight: 900; 
-            color: #ecdccc; 
-            text-decoration: none; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: #e8e0d8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .logo span { color: #c9a84c; }
-        .nav-links { 
-            display: flex; 
-            gap: 28px; 
-            list-style: none; 
-            align-items: center; 
-            flex-wrap: wrap; 
+        .logo span { color: #cc3333; }
+        .header-nav {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        .nav-links a { 
-            color: #b8a888; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 15px; 
-            transition: 0.3s; 
+        .header-nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .nav-links a:hover { color: #e8d5a8; }
-        .nav-links a.active { color: #c9a84c; }
-        .btn-nav { 
-            background: linear-gradient(135deg, #c9a84c, #a8862e); 
-            color: #0c0a0a; 
-            padding: 10px 28px; 
-            border-radius: 40px; 
-            font-weight: 700; 
-            font-size: 14px; 
-            text-decoration: none; 
-            transition: 0.3s; 
-            border: none; 
-            cursor: pointer; 
-        }
-        .btn-nav:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 30px rgba(201,168,76,0.3); 
-        }
-        .menu-toggle { 
-            display: none; 
-            background: none; 
-            border: none; 
-            color: #ecdccc; 
-            font-size: 28px; 
-            cursor: pointer; 
-        }
-        @media (max-width: 768px) { 
-            .menu-toggle { display: block; } 
-            .nav-links { 
-                display: none; 
-                width: 100%; 
-                flex-direction: column; 
-                align-items: center; 
-                padding: 16px 0; 
-                gap: 16px; 
-            } 
-            .nav-links.open { display: flex; } 
+        .header-nav a:hover, .header-nav a.active {
+            color: #fff;
+            background: rgba(204, 51, 51, 0.15);
+            border-color: rgba(204, 51, 51, 0.2);
         }
         
-        /* ===== ГЕРОЙ ===== */
+        /* ===== ГЕРОЙ С 3D (без управления) ===== */
         #canvas-container { 
             position: relative; 
             width: 100%; 
-            height: 100vh; 
-            min-height: 500px; 
-            background: #0c0a0a; 
+            height: 55vh; 
+            min-height: 320px; 
+            max-height: 500px;
+            background: #0a0a0a; 
             overflow: hidden; 
-            margin-top: 66px; 
+            margin-top: 0; 
         }
         #canvas-container canvas { 
             display: block; 
             width: 100% !important; 
             height: 100% !important; 
+            pointer-events: none;
         }
         .hero-overlay { 
             position: absolute; 
@@ -127,427 +94,549 @@
             text-align: center; 
             pointer-events: none; 
             padding: 20px; 
-            background: radial-gradient(ellipse at center, rgba(12,10,10,0.2) 0%, rgba(12,10,10,0.6) 100%); 
+            background: radial-gradient(ellipse at center, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.7) 100%); 
         }
         .hero-overlay .badge { 
             display: inline-block; 
-            background: rgba(201,168,76,0.15); 
-            border: 1px solid rgba(201,168,76,0.3); 
-            padding: 6px 24px; 
+            background: rgba(204, 51, 51, 0.15); 
+            border: 1px solid rgba(204, 51, 51, 0.25); 
+            padding: 4px 16px; 
             border-radius: 40px; 
-            font-size: 14px; 
+            font-size: 11px; 
             font-weight: 600; 
-            color: #c9a84c; 
-            letter-spacing: 2px; 
+            color: #cc3333; 
+            letter-spacing: 1.5px; 
             text-transform: uppercase; 
             pointer-events: auto; 
-            margin-bottom: 20px; 
-            backdrop-filter: blur(4px); 
+            margin-bottom: 12px; 
         }
         .hero-overlay h1 { 
-            font-size: clamp(36px, 7vw, 72px); 
+            font-size: clamp(28px, 6vw, 48px); 
             font-weight: 900; 
             line-height: 1.1; 
-            letter-spacing: -1px; 
             pointer-events: auto; 
-            max-width: 900px; 
-            color: #ecdccc;
+            color: #e8e0d8;
         }
-        .hero-overlay h1 span { 
-            background: linear-gradient(135deg, #ecdccc, #c9a84c); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            background-clip: text; 
-        }
+        .hero-overlay h1 span { color: #cc3333; }
         .hero-overlay p { 
-            font-size: clamp(16px, 2vw, 22px); 
-            color: #b8a888; 
-            margin: 16px 0 32px; 
-            max-width: 600px; 
+            font-size: clamp(14px, 2vw, 18px); 
+            color: #aaa; 
+            margin: 12px 0 20px; 
+            max-width: 500px; 
             pointer-events: auto; 
         }
         .hero-overlay .btn-group { 
             display: flex; 
             flex-wrap: wrap; 
-            gap: 16px; 
+            gap: 12px; 
             justify-content: center; 
             pointer-events: auto; 
         }
         .btn-primary { 
-            background: linear-gradient(135deg, #c9a84c, #a8862e); 
-            color: #0c0a0a; 
-            padding: 16px 44px; 
+            background: linear-gradient(135deg, #cc3333, #991111); 
+            color: #fff; 
+            padding: 14px 36px; 
             border-radius: 60px; 
-            font-weight: 800; 
-            font-size: 18px; 
+            font-weight: 700; 
+            font-size: 15px; 
             border: none; 
             cursor: pointer; 
             transition: all 0.3s ease; 
-            box-shadow: 0 8px 30px rgba(201,168,76,0.3); 
+            box-shadow: 0 4px 20px rgba(204, 51, 51, 0.25); 
             text-decoration: none; 
             display: inline-block; 
         }
         .btn-primary:hover { 
-            transform: translateY(-3px) scale(1.02); 
-            box-shadow: 0 12px 40px rgba(201,168,76,0.5); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 30px rgba(204, 51, 51, 0.4); 
         }
         .btn-secondary { 
             background: transparent; 
-            border: 2px solid rgba(201,168,76,0.4); 
-            color: #ecdccc; 
-            padding: 16px 44px; 
+            border: 1.5px solid rgba(204, 51, 51, 0.4); 
+            color: #e8e0d8; 
+            padding: 14px 36px; 
             border-radius: 60px; 
-            font-weight: 700; 
-            font-size: 18px; 
+            font-weight: 600; 
+            font-size: 15px; 
             cursor: pointer; 
             transition: all 0.3s ease; 
             text-decoration: none; 
             display: inline-block; 
-            backdrop-filter: blur(4px); 
         }
         .btn-secondary:hover { 
-            border-color: #c9a84c; 
-            background: rgba(201,168,76,0.08); 
-            transform: translateY(-3px); 
-        }
-        .scroll-hint { 
-            position: absolute; 
-            bottom: 80px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            color: rgba(255,255,255,0.2); 
-            font-size: 13px; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            animation: bounceDown 2s infinite; 
-            pointer-events: none; 
-        }
-        @keyframes bounceDown { 
-            0%,100% { transform: translateX(-50%) translateY(0); } 
-            50% { transform: translateX(-50%) translateY(8px); } 
+            border-color: #cc3333; 
+            background: rgba(204, 51, 51, 0.06); 
         }
         
         /* ===== СЕКЦИИ ===== */
-        section { padding: 80px 0; }
+        section { padding: 40px 0; }
         .section-title { 
-            font-size: clamp(30px, 5vw, 48px); 
-            font-weight: 900; 
-            margin-bottom: 16px; 
-            letter-spacing: -0.5px; 
-            color: #ecdccc;
+            font-size: clamp(24px, 4vw, 34px); 
+            font-weight: 800; 
+            margin-bottom: 8px; 
+            color: #e8e0d8;
         }
-        .section-title span { color: #c9a84c; }
+        .section-title span { color: #cc3333; }
         .section-sub { 
-            color: #8a7a66; 
-            font-size: 18px; 
-            max-width: 640px; 
-            margin-bottom: 48px; 
+            color: #888; 
+            font-size: 15px; 
+            margin-bottom: 24px; 
         }
         
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { 
-            background: #1a1614; 
-            border-radius: 20px; 
-            padding: 28px 24px; 
-            border: 1px solid #2a241e; 
-            transition: all 0.3s ease; 
-            text-decoration: none; 
-            color: #ecdccc; 
-            display: block; 
+        /* ===== АККОРДЕОН (ГАРМОШКА) ===== */
+        .accordion {
+            background: #111;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 12px;
+            overflow: hidden;
         }
-        .card:hover { 
-            border-color: #c9a84c; 
-            transform: translateY(-6px); 
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6); 
+        .accordion-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+            user-select: none;
+            background: #0d0d0d;
         }
-        .card .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
-        .card h4 { font-size: 20px; margin-bottom: 6px; }
-        .card p { color: #8a7a66; font-size: 15px; }
-        .card .tag { 
-            display: inline-block; 
-            background: rgba(201,168,76,0.12); 
-            color: #c9a84c; 
-            font-size: 12px; 
-            padding: 2px 14px; 
-            border-radius: 20px; 
-            margin-top: 12px; 
-            font-weight: 600; 
+        .accordion-header:hover { background: #141414; }
+        .accordion-header .title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #e8e0d8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .accordion-header .title span { color: #cc3333; }
+        .accordion-header .arrow {
+            font-size: 18px;
+            color: #cc3333;
+            transition: 0.3s;
+        }
+        .accordion.open .accordion-header .arrow { transform: rotate(180deg); }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #0a0a0a;
+        }
+        .accordion-body-inner {
+            padding: 16px 20px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .accordion-body-inner a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .accordion-body-inner a:hover {
+            color: #fff;
+            background: rgba(204, 51, 51, 0.08);
+            border-color: rgba(204, 51, 51, 0.15);
+        }
+        .accordion-body-inner .emoji { font-size: 14px; }
+        @media (max-width: 480px) {
+            .accordion-body-inner { grid-template-columns: 1fr; }
         }
         
-        .about-flex { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
-        .about-flex .text { flex: 1; min-width: 240px; }
-        .about-flex .text p { color: #b8a888; font-size: 17px; }
-        .about-flex .image { 
-            flex: 0 0 200px; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            border: 1px solid #2a241e; 
-        }
-        .about-flex .image img { width: 100%; display: block; }
-        
+        /* ===== ФОРМА ===== */
         .form-section { 
-            background: linear-gradient(145deg, #1a1614, #120e0c); 
-            border-radius: 30px; 
-            padding: 60px 40px; 
-            border: 1px solid #2a241e; 
+            background: #111; 
+            border-radius: 16px; 
+            padding: 32px 20px; 
+            border: 1px solid rgba(255,255,255,0.05); 
             text-align: center; 
         }
-        .form-section h2 { font-size: 32px; margin-bottom: 12px; color: #ecdccc; }
-        .form-section p { color: #8a7a66; margin-bottom: 32px; }
+        .form-section h2 { font-size: 24px; margin-bottom: 8px; color: #e8e0d8; }
+        .form-section p { color: #888; margin-bottom: 20px; font-size: 14px; }
         .form-group { 
             display: flex; 
             flex-wrap: wrap; 
-            gap: 16px; 
+            gap: 12px; 
             justify-content: center; 
-            max-width: 600px; 
+            max-width: 500px; 
             margin: 0 auto; 
         }
         .form-group input { 
-            flex: 1 1 200px; 
-            padding: 16px 24px; 
+            flex: 1 1 180px; 
+            padding: 14px 20px; 
             border-radius: 60px; 
-            border: 1px solid #2a241e; 
-            background: #0c0a0a; 
-            color: #ecdccc; 
-            font-size: 16px; 
+            border: 1px solid #222; 
+            background: #0a0a0a; 
+            color: #e8e0d8; 
+            font-size: 14px; 
             outline: none; 
-            min-width: 180px; 
+            min-width: 150px; 
         }
-        .form-group input:focus { border-color: #c9a84c; box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
-        .form-group input::placeholder { color: #5a4a3a; }
+        .form-group input:focus { border-color: #cc3333; box-shadow: 0 0 0 3px rgba(204,51,51,0.08); }
+        .form-group input::placeholder { color: #555; }
         
-        /* ===== ФУТЕР С ПЕСКОМ ===== */
+        /* ===== ПОДВАЛ С ПЕСКОМ ===== */
         .footer-sand-wrapper {
             position: relative;
             width: 100%;
-            height: 220px;
-            background: #0c0a0a;
+            height: 180px;
+            background: #0a0a0a;
             overflow: hidden;
-            border-top: 1px solid #2a241e;
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
         .footer-sand-wrapper canvas {
             display: block;
             width: 100%;
             height: 100%;
+            pointer-events: none;
         }
-        
         .footer-overlay {
             position: absolute;
-            bottom: 20px;
+            bottom: 16px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(12,10,10,0.5);
-            backdrop-filter: blur(8px);
-            padding: 6px 20px;
-            border-radius: 40px;
-            border: 1px solid rgba(201,168,76,0.12);
+            background: rgba(10,10,10,0.6);
+            backdrop-filter: blur(6px);
+            padding: 4px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(204,51,51,0.1);
             z-index: 10;
         }
         .footer-overlay .tg-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: #c9a84c;
+            gap: 6px;
+            color: #cc3333;
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 13px;
             transition: 0.3s;
             padding: 4px 8px;
         }
-        .footer-overlay .tg-link:hover { 
-            color: #ecdccc; 
-        }
+        .footer-overlay .tg-link:hover { color: #ff5555; }
         .footer-overlay .tg-link svg {
-            width: 20px;
-            height: 20px;
-            fill: #c9a84c;
+            width: 16px;
+            height: 16px;
+            fill: #cc3333;
             flex-shrink: 0;
         }
-        .footer-overlay .tg-link:hover svg { 
-            fill: #ecdccc; 
-        }
-        
+        .footer-overlay .tg-link:hover svg { fill: #ff5555; }
         .footer-bottom {
             text-align: center;
-            padding: 8px 0 16px;
-            color: #3a322a;
-            font-size: 12px;
-            background: #0c0a0a;
+            padding: 8px 0 14px;
+            color: #444;
+            font-size: 11px;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.03);
         }
         
-        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
-            .footer-sand-wrapper { 
-                height: 160px; 
-            }
-            .footer-overlay {
-                bottom: 14px;
-                padding: 4px 14px;
-            }
-            .footer-overlay .tg-link { 
-                font-size: 13px; 
-                gap: 6px;
-            }
-            .footer-overlay .tg-link svg { 
-                width: 16px; 
-                height: 16px; 
-            }
-            .footer-bottom {
-                font-size: 10px;
-                padding: 6px 0 12px;
-            }
+            .header-nav a { font-size: 12px; padding: 4px 10px; }
+            .footer-sand-wrapper { height: 140px; }
+            .footer-overlay { bottom: 10px; padding: 3px 12px; }
+            .footer-overlay .tg-link { font-size: 11px; }
+            .footer-overlay .tg-link svg { width: 14px; height: 14px; }
+            .form-section { padding: 24px 16px; }
+            .btn-primary, .btn-secondary { padding: 12px 28px; font-size: 14px; }
         }
         @media (max-width: 480px) {
-            .footer-sand-wrapper { 
-                height: 130px; 
-            }
-            .footer-overlay {
-                bottom: 10px;
-                padding: 3px 12px;
-                border-radius: 30px;
-            }
-            .footer-overlay .tg-link { 
-                font-size: 11px; 
-                gap: 4px;
-            }
-            .footer-overlay .tg-link svg { 
-                width: 14px; 
-                height: 14px; 
-            }
-            .footer-bottom {
-                font-size: 9px;
-                padding: 4px 0 10px;
-            }
+            #canvas-container { height: 40vh; min-height: 250px; max-height: 380px; }
+            .footer-sand-wrapper { height: 110px; }
+            .footer-overlay { bottom: 6px; padding: 2px 10px; }
+            .footer-overlay .tg-link { font-size: 10px; gap: 4px; }
+            .footer-overlay .tg-link svg { width: 12px; height: 12px; }
+            .footer-bottom { font-size: 9px; padding: 4px 0 10px; }
+            section { padding: 24px 0; }
+            .accordion-header { padding: 12px 16px; }
+            .accordion-header .title { font-size: 15px; }
+            .accordion-body-inner { padding: 12px 16px 16px; gap: 6px; }
+            .accordion-body-inner a { font-size: 12px; padding: 6px 10px; }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">💎 <span>Sivalko</span> System</a>
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">Главная</a></li>
-                <li><a href="biografiya.html">Биография</a></li>
-                <li><a href="knigi.html">Книги</a></li>
-                <li><a href="kursy.html">Курсы</a></li>
-                <li><a href="#contact" class="btn-nav">Консультация</a></li>
-            </ul>
-        </div>
-    </nav>
 
+    <!-- ===== ШАПКА ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">💎 <span>Sivalko</span> System</a>
+                <nav class="header-nav">
+                    <a href="index.html" class="active">Главная</a>
+                    <a href="biografiya.html">Био</a>
+                    <a href="#contact">Консультация</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ГЕРОЙ С 3D ===== -->
     <div id="canvas-container">
         <div class="hero-overlay">
             <div class="badge">💎 Sivalko System · Бизнес-тренер · Наставник</div>
-            <h1>Система <span>продаж</span><br />на 300K+ в месяц</h1>
-            <p>Стратегия, воронки, трафик — превращаю знания в управляемый доход.</p>
+            <h1>Система <span>продаж</span><br />на 300K+</h1>
+            <p>Стратегия, воронки, трафик — превращаю знания в доход.</p>
             <div class="btn-group">
-                <a href="#contact" class="btn-primary">Записаться на консультацию</a>
-                <a href="biografiya.html" class="btn-secondary">Узнать больше</a>
+                <a href="#contact" class="btn-primary">Записаться</a>
+                <a href="biografiya.html" class="btn-secondary">Обо мне</a>
             </div>
         </div>
-        <div class="scroll-hint">↓ Листай вниз</div>
     </div>
 
+    <!-- ===== О СЕБЕ ===== -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">Наталья <span>Сивалко</span></h2>
-            <p class="section-sub">Бизнес-тренер, наставник, основатель Sivalko System.</p>
-            <div class="about-flex">
-                <div class="text">
-                    <p>Авторская <span style="color:#c9a84c;font-weight:700;">каскадная система</span> из 3 шагов. Более 300 выпускников. Средний рост дохода — 3x.</p>
-                    <p style="margin-top:12px;">16 лет управленческого опыта. Бизнес-коуч, НЛП-практик, сертифицированный специалист по КПТ.</p>
-                    <a href="biografiya.html" style="color:#c9a84c;font-weight:600;display:inline-block;margin-top:16px;">Читать полную биографию →</a>
+            <p class="section-sub">Бизнес-тренер, наставник, основатель Sivalko System. 16 лет управленческого опыта.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;background:#111;border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,0.04);">
+                <div style="flex:1;min-width:200px;">
+                    <p style="color:#bbb;font-size:15px;">Авторская <span style="color:#cc3333;font-weight:700;">каскадная система</span> из 3 шагов. Более 300 выпускников. Средний рост дохода — 3x.</p>
+                    <a href="biografiya.html" style="color:#cc3333;font-weight:600;display:inline-block;margin-top:10px;font-size:14px;">Читать биографию →</a>
                 </div>
-                <div class="image">
-                    <img src="images/biznes-trener.jpg" alt="Наталья Сивалко" />
+                <div style="flex:0 0 80px;border-radius:50%;overflow:hidden;border:2px solid rgba(204,51,51,0.2);">
+                    <img src="images/biznes-trener.jpg" alt="Наталья Сивалко" style="width:100%;display:block;" />
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="books" style="background:#120e0c;">
+    <!-- ===== КНИГИ (АККОРДЕОН) ===== -->
+    <section id="books" style="background:#0d0d0d;">
         <div class="container">
             <h2 class="section-title">📚 Мои <span>книги</span></h2>
-            <p class="section-sub">Практические руководства по продажам, стратегии и масштабированию.</p>
-            <div class="grid-3">
-                <a href="knigi/sistema-prodazh.html" class="card">
-                    <span class="emoji">📖</span>
-                    <h4>Система продаж</h4>
-                    <p>Пошаговый алгоритм выхода на доход от 150 000 ₽.</p>
-                    <span class="tag">Бестселлер</span>
-                </a>
-                <a href="knigi/strategiya-rosta.html" class="card">
-                    <span class="emoji">🚀</span>
-                    <h4>Стратегия роста</h4>
-                    <p>Как масштабировать бизнес без выгорания.</p>
-                    <span class="tag">Новинка</span>
-                </a>
-                <a href="knigi/voronki-traffic.html" class="card">
-                    <span class="emoji">🎯</span>
-                    <h4>Воронки и трафик</h4>
-                    <p>Топ-4 воронки 2026 года и бесплатный трафик.</p>
-                    <span class="tag">Практика</span>
-                </a>
+            <p class="section-sub">Практические руководства по продажам, управлению и развитию бизнеса.</p>
+
+            <div class="accordion" id="bookAccordion1">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>📈</span> Продажи <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="books/prodazhi/prodazhi-bez-davleniya.html"><span class="emoji">📖</span> Продажи без давления</a>
+                        <a href="books/prodazhi/sistema-prodazh.html"><span class="emoji">📖</span> Система продаж</a>
+                        <a href="books/prodazhi/iskusstvo-zakrytiya-sdelok.html"><span class="emoji">📖</span> Искусство закрытия сделок</a>
+                        <a href="books/prodazhi/prodazhi-dlya-rukovoditelya.html"><span class="emoji">📖</span> Продажи для руководителя</a>
+                        <a href="books/prodazhi/silnyy-prodavets.html"><span class="emoji">📖</span> Сильный продавец</a>
+                        <a href="books/prodazhi/upravlenie-otdelom-prodazh.html"><span class="emoji">📖</span> Управление отделом продаж</a>
+                        <a href="books/prodazhi/prodazhi-v-usloviyah-konkurentsii.html"><span class="emoji">📖</span> Продажи в условиях конкуренции</a>
+                        <a href="books/prodazhi/peregovory-k-sdelke.html"><span class="emoji">📖</span> Переговоры к сделке</a>
+                        <a href="books/prodazhi/rabota-s-vozrazheniyami.html"><span class="emoji">📖</span> Работа с возражениями</a>
+                        <a href="books/prodazhi/holodnye-prodazhi.html"><span class="emoji">📖</span> Холодные продажи</a>
+                    </div>
+                </div>
             </div>
-            <div style="text-align:center;margin-top:30px;">
-                <a href="knigi.html" class="btn-secondary" style="display:inline-block;">Смотреть все книги →</a>
+
+            <div class="accordion" id="bookAccordion2">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>⚙️</span> Управление <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="books/upravlenie/rukovoditel-otdela-prodazh.html"><span class="emoji">📖</span> Руководитель отдела продаж</a>
+                        <a href="books/upravlenie/upravlenie-bez-haosa.html"><span class="emoji">📖</span> Управление без хаоса</a>
+                        <a href="books/upravlenie/sistema-upravleniya-biznesom.html"><span class="emoji">📖</span> Система управления бизнесом</a>
+                        <a href="books/upravlenie/operatsionnoe-upravlenie.html"><span class="emoji">📖</span> Операционное управление</a>
+                        <a href="books/upravlenie/rukovoditel-novogo-pokoleniya.html"><span class="emoji">📖</span> Руководитель нового поколения</a>
+                        <a href="books/upravlenie/upravlenie-rezultatom.html"><span class="emoji">📖</span> Управление результатом</a>
+                        <a href="books/upravlenie/kak-postroit-komandu.html"><span class="emoji">📖</span> Как построить команду</a>
+                        <a href="books/upravlenie/delegirovanie.html"><span class="emoji">📖</span> Делегирование</a>
+                        <a href="books/upravlenie/upravlenie-lyudmi.html"><span class="emoji">📖</span> Управление людьми</a>
+                        <a href="books/upravlenie/operatsionnyy-direktor.html"><span class="emoji">📖</span> Операционный директор</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="bookAccordion3">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>🚀</span> Бизнес и развитие <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="books/biznes/masshtabirovanie-biznesa.html"><span class="emoji">📖</span> Масштабирование бизнеса</a>
+                        <a href="books/biznes/rost-bez-haosa.html"><span class="emoji">📖</span> Рост без хаоса</a>
+                        <a href="books/biznes/biznes-bez-vladeltsa.html"><span class="emoji">📖</span> Бизнес без владельца</a>
+                        <a href="books/biznes/vyvesti-biznes-na-novyy-uroven.html"><span class="emoji">📖</span> Новый уровень бизнеса</a>
+                        <a href="books/biznes/strategiya-rosta-kompanii.html"><span class="emoji">📖</span> Стратегия роста</a>
+                        <a href="books/biznes/upravlenie-pribylyu.html"><span class="emoji">📖</span> Управление прибылью</a>
+                        <a href="books/biznes/biznes-sistema.html"><span class="emoji">📖</span> Бизнес-система</a>
+                        <a href="books/biznes/tochka-rosta.html"><span class="emoji">📖</span> Точка роста</a>
+                        <a href="books/biznes/predprinimatel-kak-strateg.html"><span class="emoji">📖</span> Предприниматель как стратег</a>
+                        <a href="books/biznes/ot-malogo-biznesa-k-sisteme.html"><span class="emoji">📖</span> От малого бизнеса к системе</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="bookAccordion4">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>🧠</span> Психология и лидерство <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="books/psihologiya/psihologiya-uspeshnyh-prodazh.html"><span class="emoji">📖</span> Психология успешных продаж</a>
+                        <a href="books/psihologiya/psihologiya-klienta.html"><span class="emoji">📖</span> Психология клиента</a>
+                        <a href="books/psihologiya/psihologiya-peregovorov.html"><span class="emoji">📖</span> Психология переговоров</a>
+                        <a href="books/psihologiya/myshlenie-rukovoditelya.html"><span class="emoji">📖</span> Мышление руководителя</a>
+                        <a href="books/psihologiya/liderstvo-bez-davleniya.html"><span class="emoji">📖</span> Лидерство без давления</a>
+                        <a href="books/psihologiya/emotsionalnyy-intellekt.html"><span class="emoji">📖</span> Эмоциональный интеллект</a>
+                        <a href="books/psihologiya/uverennost-v-peregovorah.html"><span class="emoji">📖</span> Уверенность в переговорах</a>
+                        <a href="books/psihologiya/ne-boyatsya-prodavat.html"><span class="emoji">📖</span> Не бояться продавать</a>
+                        <a href="books/psihologiya/psihologiya-deneg.html"><span class="emoji">📖</span> Психология денег</a>
+                        <a href="books/psihologiya/chelovek-dogovarivaetsya.html"><span class="emoji">📖</span> Человек договаривается</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="bookAccordion5">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>💎</span> Наставничество <span style="font-weight:400;color:#888;font-size:13px;">10 книг</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="books/nastavnichestvo/nastavnik-dlya-biznesa.html"><span class="emoji">📖</span> Наставник для бизнеса</a>
+                        <a href="books/nastavnichestvo/kak-stat-rukovoditelem.html"><span class="emoji">📖</span> Как стать руководителем</a>
+                        <a href="books/nastavnichestvo/lichnaya-effektivnost.html"><span class="emoji">📖</span> Личная эффективность</a>
+                        <a href="books/nastavnichestvo/distsiplina-rukovoditelya.html"><span class="emoji">📖</span> Дисциплина руководителя</a>
+                        <a href="books/nastavnichestvo/ekspertnost-kak-biznes.html"><span class="emoji">📖</span> Экспертность как бизнес</a>
+                        <a href="books/nastavnichestvo/lichnyy-brend-eksperta.html"><span class="emoji">📖</span> Личный бренд эксперта</a>
+                        <a href="books/nastavnichestvo/biznes-nastavnichestvo.html"><span class="emoji">📖</span> Бизнес-наставничество</a>
+                        <a href="books/nastavnichestvo/sistema-lichnogo-razvitiya.html"><span class="emoji">📖</span> Система личного развития</a>
+                        <a href="books/nastavnichestvo/kurator-k-rezultatu.html"><span class="emoji">📖</span> Куратор к результату</a>
+                        <a href="books/nastavnichestvo/put-biznes-lidera.html"><span class="emoji">📖</span> Путь бизнес-лидера</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== КУРСЫ (АККОРДЕОН) ===== -->
     <section id="courses">
         <div class="container">
             <h2 class="section-title">🎓 <span>Курсы</span> и программы</h2>
             <p class="section-sub">Обучение для экспертов и предпринимателей.</p>
-            <div class="grid-3">
-                <a href="kursy/kaskadnaya-sistema.html" class="card">
-                    <span class="emoji">⚡</span>
-                    <h4>Каскадная система</h4>
-                    <p>3 шага к стабильному доходу. Воронки, трафик, продажи.</p>
-                    <span class="tag">Флагман</span>
-                </a>
-                <a href="kursy/biznes-koching.html" class="card">
-                    <span class="emoji">💎</span>
-                    <h4>Бизнес-коучинг 1:1</h4>
-                    <p>Индивидуальные сессии с разбором бизнеса.</p>
-                    <span class="tag">VIP</span>
-                </a>
-                <a href="kursy/korporativnyy-trening.html" class="card">
-                    <span class="emoji">🏆</span>
-                    <h4>Корпоративный тренинг</h4>
-                    <p>Программы для команд: стратегия, продажи, лидерство.</p>
-                    <span class="tag">Для компаний</span>
-                </a>
+
+            <div class="accordion" id="courseAccordion1">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>📈</span> Продажи PRO <span style="font-weight:400;color:#888;font-size:13px;">8 курсов</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="courses/prodazhi/prodazhi-pro.html"><span class="emoji">🎓</span> Продажи PRO</a>
+                        <a href="courses/prodazhi/ot-lida-do-sdelki.html"><span class="emoji">🎓</span> От лида до сделки</a>
+                        <a href="courses/prodazhi/iskusstvo-peregovorov.html"><span class="emoji">🎓</span> Искусство переговоров</a>
+                        <a href="courses/prodazhi/prodazhi-bez-davleniya.html"><span class="emoji">🎓</span> Продажи без давления</a>
+                        <a href="courses/prodazhi/masterstvo-vozrazheniy.html"><span class="emoji">🎓</span> Мастерство возражений</a>
+                        <a href="courses/prodazhi/holodnye-prodazhi-pro.html"><span class="emoji">🎓</span> Холодные продажи PRO</a>
+                        <a href="courses/prodazhi/silnyy-prodavets-pro.html"><span class="emoji">🎓</span> Сильный продавец PRO</a>
+                        <a href="courses/prodazhi/prodazhi-dlya-vladeltsa.html"><span class="emoji">🎓</span> Продажи для владельца</a>
+                    </div>
+                </div>
             </div>
-            <div style="text-align:center;margin-top:30px;">
-                <a href="kursy.html" class="btn-secondary" style="display:inline-block;">Все курсы →</a>
+
+            <div class="accordion" id="courseAccordion2">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>⚙️</span> Управление продажами <span style="font-weight:400;color:#888;font-size:13px;">7 курсов</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="courses/upravlenie/rukovoditel-otdela-prodazh.html"><span class="emoji">🎓</span> Руководитель отдела продаж</a>
+                        <a href="courses/upravlenie/postroit-otdel-prodazh.html"><span class="emoji">🎓</span> Построить отдел продаж</a>
+                        <a href="courses/upravlenie/upravlenie-prodazhami.html"><span class="emoji">🎓</span> Управление продажами</a>
+                        <a href="courses/upravlenie/kontrol-otdela-prodazh.html"><span class="emoji">🎓</span> Контроль отдела продаж</a>
+                        <a href="courses/upravlenie/motivatsiya-menedzherov.html"><span class="emoji">🎓</span> Мотивация менеджеров</a>
+                        <a href="courses/upravlenie/plan-prodazh.html"><span class="emoji">🎓</span> План продаж</a>
+                        <a href="courses/upravlenie/kpi-otdela-prodazh.html"><span class="emoji">🎓</span> KPI отдела продаж</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="courseAccordion3">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>🚀</span> Управление бизнесом <span style="font-weight:400;color:#888;font-size:13px;">7 курсов</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="courses/biznes/operatsionnoe-upravlenie.html"><span class="emoji">🎓</span> Операционное управление</a>
+                        <a href="courses/biznes/biznes-bez-haosa.html"><span class="emoji">🎓</span> Бизнес без хаоса</a>
+                        <a href="courses/biznes/delegirovanie-i-kontrol.html"><span class="emoji">🎓</span> Делегирование и контроль</a>
+                        <a href="courses/biznes/masshtabirovanie.html"><span class="emoji">🎓</span> Масштабирование</a>
+                        <a href="courses/biznes/strategiya-rosta.html"><span class="emoji">🎓</span> Стратегия роста</a>
+                        <a href="courses/biznes/biznes-protsessy.html"><span class="emoji">🎓</span> Бизнес-процессы</a>
+                        <a href="courses/biznes/rukovoditel-novogo-pokoleniya.html"><span class="emoji">🎓</span> Руководитель нового поколения</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="courseAccordion4">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>🧠</span> Психология <span style="font-weight:400;color:#888;font-size:13px;">5 курсов</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="courses/psihologiya/psihologiya-prodazh.html"><span class="emoji">🎓</span> Психология продаж</a>
+                        <a href="courses/psihologiya/psihologiya-klienta.html"><span class="emoji">🎓</span> Психология клиента</a>
+                        <a href="courses/psihologiya/psihologiya-peregovorov.html"><span class="emoji">🎓</span> Психология переговоров</a>
+                        <a href="courses/psihologiya/uverennost-rukovoditelya.html"><span class="emoji">🎓</span> Уверенность руководителя</a>
+                        <a href="courses/psihologiya/emotsionalnyy-intellekt.html"><span class="emoji">🎓</span> Эмоциональный интеллект</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="courseAccordion5">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="title"><span>💎</span> Наставничество <span style="font-weight:400;color:#888;font-size:13px;">3 курса</span></div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                        <a href="courses/nastavnichestvo/biznes-nastavnichestvo.html"><span class="emoji">🎓</span> Бизнес-наставничество</a>
+                        <a href="courses/nastavnichestvo/ekspert-kak-biznes.html"><span class="emoji">🎓</span> Эксперт как бизнес</a>
+                        <a href="courses/nastavnichestvo/lichnyy-brend-eksperta.html"><span class="emoji">🎓</span> Личный бренд эксперта</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="background:#120e0c;">
+    <!-- ===== КОНТАКТ ===== -->
+    <section id="contact" style="background:#0d0d0d;">
         <div class="container">
             <div class="form-section">
-                <h2>Готовы <span style="color:#c9a84c;">расти</span>?</h2>
+                <h2>Готовы <span style="color:#cc3333;">расти</span>?</h2>
                 <p>Запишитесь на бесплатную 30-минутную диагностику вашего бизнеса.</p>
-                <form onsubmit="alert('Спасибо! Я свяжусь с вами в ближайшее время.'); return false;">
+                <form onsubmit="alert('Спасибо! Я свяжусь с вами.'); return false;">
                     <div class="form-group">
                         <input type="text" placeholder="Ваше имя" required />
                         <input type="tel" placeholder="+7 (999) 999-99-99" required />
-                        <input type="email" placeholder="E-mail (опционально)" />
-                        <button type="submit" class="btn-primary" style="padding:16px 44px;">Записаться</button>
+                        <button type="submit" class="btn-primary" style="padding:14px 36px;font-size:15px;">Записаться</button>
                     </div>
                 </form>
-                <p style="font-size:14px;color:#5a4a3a;margin-top:20px;">🔒 Никакого спама. Только полезный контент.</p>
+                <p style="font-size:12px;color:#555;margin-top:14px;">🔒 Никакого спама. Только полезный контент.</p>
             </div>
         </div>
     </section>
 
-    <!-- ===== ФУТЕР С ПЕСКОМ ===== -->
+    <!-- ===== ПОДВАЛ С ПЕСКОМ ===== -->
     <div class="footer-sand-wrapper" id="sandFooter">
         <canvas id="sandCanvas"></canvas>
         <div class="footer-overlay">
@@ -563,31 +652,28 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- ===== СКРИПТ ПЕСКА ДЛЯ ПОДВАЛА ===== -->
+    <!-- ===== ПЕСОК В ПОДВАЛЕ ===== -->
     <script>
         const sandCanvas = document.getElementById("sandCanvas");
         const sandCtx = sandCanvas.getContext("2d");
-
         let sw = 0, sh = 0;
         let sdpr = Math.min(window.devicePixelRatio || 1, 2);
-
         const sandSettings = {
             cellSize: 3,
             startText: "METAIMPERIYA",
             hiddenText: "",
-            releaseTestsPerFrame: 1200,
+            releaseTestsPerFrame: 800,
             releaseChance: 0.025,
-            gravity: 600,
+            gravity: 500,
             airDrag: 0.992,
-            settleStepsPerFrame: 4,
-            pileHoldSeconds: 0.6,
-            hiddenFadeInSeconds: 0.4,
-            reformDurationSeconds: 1.8,
-            reformStaggerSeconds: 0.5,
-            revealHoldSeconds: 2.5,
-            revealFadeSeconds: 0.5,
+            settleStepsPerFrame: 3,
+            pileHoldSeconds: 0.5,
+            hiddenFadeInSeconds: 0.3,
+            reformDurationSeconds: 1.5,
+            reformStaggerSeconds: 0.4,
+            revealHoldSeconds: 2,
+            revealFadeSeconds: 0.4,
         };
-
         let scols = 0, srows = 0;
         let fixedSand, sandPile;
         let sandCells = [], freeCells = [];
@@ -602,20 +688,15 @@
             const wrapper = document.getElementById('sandFooter');
             sw = wrapper.clientWidth;
             sh = wrapper.clientHeight;
-
             sandCanvas.width = sw * sdpr;
             sandCanvas.height = sh * sdpr;
             sandCanvas.style.width = sw + "px";
             sandCanvas.style.height = sh + "px";
-
             sandCtx.setTransform(sdpr, 0, 0, sdpr, 0, 0);
-
             scols = Math.ceil(sw / sandSettings.cellSize);
             srows = Math.ceil(sh / sandSettings.cellSize);
-
             fixedSand = new Uint8Array(scols * srows);
             sandPile = new Uint8Array(scols * srows);
-
             sandCells = [];
             freeCells = [];
             fallingSand = [];
@@ -623,7 +704,6 @@
             sandHiddenAlpha = 0;
             sandPhase = "codepen";
             sandPhaseTime = 0;
-
             buildSandText();
         }
 
@@ -635,32 +715,21 @@
         function sRandInt(min, max) { return Math.floor(min + Math.random() * (max - min + 1)); }
         function sClamp01(v) { return Math.max(0, Math.min(1, v)); }
         function sEaseInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-
-        function sShuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                const temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        }
+        function sShuffle(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const temp = array[i]; array[i] = array[j]; array[j] = temp; } }
 
         function buildSandText() {
             const maskCanvas = document.createElement("canvas");
             const maskCtx = maskCanvas.getContext("2d");
             maskCanvas.width = sw;
             maskCanvas.height = sh;
-
-            const fontSize = Math.min(sw * 0.08, sh * 0.22, 100);
+            const fontSize = Math.min(sw * 0.08, sh * 0.22, 80);
             maskCtx.clearRect(0, 0, sw, sh);
             maskCtx.fillStyle = "#fff";
             maskCtx.textAlign = "center";
             maskCtx.textBaseline = "middle";
             maskCtx.font = `900 ${fontSize}px system-ui, sans-serif`;
             maskCtx.fillText(sandSettings.startText, sw / 2, sh * 0.45);
-
             const image = maskCtx.getImageData(0, 0, sw, sh).data;
-
             for (let row = 0; row < srows; row++) {
                 for (let col = 0; col < scols; col++) {
                     const x = Math.floor(col * sandSettings.cellSize + sandSettings.cellSize / 2);
@@ -696,9 +765,9 @@
             fixedSand[cellIdx] = 0;
             fallingSand.push({
                 x: col * sandSettings.cellSize, y: row * sandSettings.cellSize,
-                vx: sRand(-18, 18), vy: sRand(30, 120),
-                drift: sRand(-40, 40), driftTarget: sRand(-70, 70),
-                driftTimer: sRand(0.15, 0.8)
+                vx: sRand(-15, 15), vy: sRand(25, 100),
+                drift: sRand(-35, 35), driftTarget: sRand(-60, 60),
+                driftTimer: sRand(0.15, 0.7)
             });
         }
 
@@ -738,7 +807,6 @@
             let row = Math.floor(p.y / sandSettings.cellSize);
             col = Math.max(0, Math.min(scols - 1, col));
             row = Math.max(0, Math.min(srows - 1, row));
-
             if (!sPileSolid(col, row)) { sSetPile(col, row); return; }
             if (!sPileSolid(col - 1, row)) { sSetPile(col - 1, row); return; }
             if (!sPileSolid(col + 1, row)) { sSetPile(col + 1, row); return; }
@@ -751,7 +819,7 @@
             for (let i = fallingSand.length - 1; i >= 0; i--) {
                 const p = fallingSand[i];
                 p.driftTimer -= dt;
-                if (p.driftTimer <= 0) { p.driftTarget = sRand(-70, 70); p.driftTimer = sRand(0.2, 1.0); }
+                if (p.driftTimer <= 0) { p.driftTarget = sRand(-60, 60); p.driftTimer = sRand(0.2, 0.9); }
                 p.drift += (p.driftTarget - p.drift) * dt * 2;
                 p.vx += p.drift * dt;
                 p.vy += sandSettings.gravity * dt;
@@ -821,7 +889,7 @@
                     x: sCol(src) * sandSettings.cellSize, y: sRow(src) * sandSettings.cellSize,
                     delay: sRand(0, sandSettings.reformStaggerSeconds),
                     duration: sRand(sandSettings.reformDurationSeconds * 0.75, sandSettings.reformDurationSeconds * 1.15),
-                    wave: sRand(-14, 14), phaseOffset: sRand(0, Math.PI * 2), arrived: false
+                    wave: sRand(-12, 12), phaseOffset: sRand(0, Math.PI * 2), arrived: false
                 });
             }
             sandPhase = "reform";
@@ -879,10 +947,8 @@
 
         function sDraw() {
             sandCtx.clearRect(0, 0, sw, sh);
-
             const size = sandSettings.cellSize;
-            sandCtx.fillStyle = "rgb(236, 204, 116)";
-
+            sandCtx.fillStyle = "rgb(204, 51, 51)";
             for (let row = 0; row < srows; row++) {
                 for (let col = 0; col < scols; col++) {
                     if (fixedSand[sIdx(col, row)] === 1) {
@@ -890,11 +956,9 @@
                     }
                 }
             }
-
             for (const p of fallingSand) {
                 sandCtx.fillRect(p.x, p.y, size, size);
             }
-
             for (let row = 0; row < srows; row++) {
                 for (let col = 0; col < scols; col++) {
                     if (sandPile[sIdx(col, row)] === 1) {
@@ -902,7 +966,6 @@
                     }
                 }
             }
-
             for (const p of reformingSand) {
                 sandCtx.fillRect(p.x, p.y, size, size);
             }
@@ -911,14 +974,11 @@
         function sTick(now) {
             const dt = Math.min((now - lastSandTime) / 1000, 0.033);
             lastSandTime = now;
-
             sUpdatePhase(dt);
             sUpdateFalling(dt);
-
             if (sandPhase !== "reform" && sandPhase !== "hiddenHold" && sandPhase !== "hiddenFade") {
                 for (let i = 0; i < sandSettings.settleStepsPerFrame; i++) sSettlePile();
             }
-
             sDraw();
             requestAnimationFrame(sTick);
         }
@@ -927,7 +987,7 @@
             resizeSand();
             if (sandCells.length === 0) {
                 const text = "METAIMPERIYA";
-                const fontSize = Math.min(sw * 0.08, sh * 0.22, 100);
+                const fontSize = Math.min(sw * 0.08, sh * 0.22, 80);
                 const tempCanvas = document.createElement('canvas');
                 tempCanvas.width = sw;
                 tempCanvas.height = sh;
@@ -960,15 +1020,11 @@
             requestAnimationFrame(sTick);
         }
 
-        window.addEventListener('resize', () => {
-            resizeSand();
-            sResetCycle();
-        });
-
+        window.addEventListener('resize', () => { resizeSand(); sResetCycle(); });
         setTimeout(initSand, 100);
     </script>
 
-    <!-- ===== СКРИПТ 3D ГАЛЕРЕИ ===== -->
+    <!-- ===== 3D ГАЛЕРЕЯ (без управления) ===== -->
     <script>
         const imageFiles = [
             'biznes-ekspert.jpg', 'biznes-konsalting.jpg', 'biznes-konsultant.jpg',
@@ -987,21 +1043,20 @@
         }
         const IMAGE_BASE_PATH = 'images/';
         const container3D = document.getElementById('canvas-container');
-        const DEPTH_LAYERS = 4;
-        const IMAGES_PER_LAYER = 14;
+        const DEPTH_LAYERS = 3;
+        const IMAGES_PER_LAYER = 10;
         const LAYER_CONFIG = [
-            { scale: 1.6, speed: 70, opacity: 0.9 },
-            { scale: 1.1, speed: 45, opacity: 0.75 },
-            { scale: 0.8, speed: 28, opacity: 0.6 },
-            { scale: 0.6, speed: 16, opacity: 0.4 }
+            { scale: 1.6, speed: 50, opacity: 0.7 },
+            { scale: 1.1, speed: 30, opacity: 0.5 },
+            { scale: 0.7, speed: 16, opacity: 0.3 }
         ];
         let textures = [], loadedCount = 0, layers = [];
         const totalImages = DEPTH_LAYERS * IMAGES_PER_LAYER;
-        let speedFactor = 1, dragVelocity = 0, dragActive = false, lastX = 0;
+        let speedFactor = 0.8;
         const scene = new THREE.Scene();
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-        renderer.setClearColor(0x0c0a0a, 0);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        renderer.setClearColor(0x0a0a0a, 0);
         container3D.appendChild(renderer.domElement);
         let camera;
 
@@ -1018,15 +1073,15 @@
         const loader = new THREE.TextureLoader();
         function createFallbackTexture() {
             const c = document.createElement('canvas');
-            c.width = 160; c.height = 160;
+            c.width = 120; c.height = 120;
             const ctx = c.getContext('2d');
             ctx.fillStyle = '#1a1410';
-            ctx.fillRect(0, 0, 160, 160);
-            ctx.fillStyle = '#c9a84c';
-            ctx.font = '60px sans-serif';
+            ctx.fillRect(0, 0, 120, 120);
+            ctx.fillStyle = '#cc3333';
+            ctx.font = '40px sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText('💎', 80, 80);
+            ctx.fillText('💎', 60, 60);
             return new THREE.CanvasTexture(c);
         }
 
@@ -1045,28 +1100,28 @@
 
         function buildSprites() {
             for (let l = 0; l < DEPTH_LAYERS; l++) layers[l] = [];
-            const w = container3D.clientWidth || 1200, h = container3D.clientHeight || 800;
+            const w = container3D.clientWidth || 1200, h = container3D.clientHeight || 400;
             for (let l = 0; l < DEPTH_LAYERS; l++) {
                 const cfg = LAYER_CONFIG[l];
-                let xPos = -w * 0.2;
+                let xPos = -w * 0.1;
                 for (let i = 0; i < IMAGES_PER_LAYER; i++) {
                     const texIdx = (l * IMAGES_PER_LAYER + i) % textures.length;
                     const tex = textures[texIdx] || createFallbackTexture();
                     const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: cfg.opacity, depthWrite: false, depthTest: false });
                     const sprite = new THREE.Sprite(mat);
                     const img = tex.image;
-                    let wImg = 160, hImg = 160;
+                    let wImg = 120, hImg = 120;
                     if (img && img.width && img.height) {
                         const ratio = img.width / img.height;
-                        if (ratio > 1) { wImg = 160; hImg = 160 / ratio; } else { hImg = 160; wImg = 160 * ratio; }
+                        if (ratio > 1) { wImg = 120; hImg = 120 / ratio; } else { hImg = 120; wImg = 120 * ratio; }
                     }
-                    const sizeVar = 0.8 + Math.random() * 0.4;
+                    const sizeVar = 0.7 + Math.random() * 0.4;
                     const sw = wImg * cfg.scale * sizeVar;
                     const sh = hImg * cfg.scale * sizeVar;
-                    const spacing = sw * (0.5 + Math.random() * 0.5);
+                    const spacing = sw * (0.4 + Math.random() * 0.5);
                     sprite.scale.set(sw, sh, 1);
-                    sprite.position.set(xPos + sw / 2 + spacing * 0.5, h * 0.1 + Math.random() * h * 0.8, -l * 60);
-                    sprite.userData = { speed: cfg.speed * (0.5 + Math.random() * 0.8), width: sw, height: sh, seed: Math.random() * 1000, baseY: h * 0.1 + Math.random() * h * 0.8, opacity: cfg.opacity };
+                    sprite.position.set(xPos + sw / 2 + spacing * 0.5, h * 0.1 + Math.random() * h * 0.8, -l * 80);
+                    sprite.userData = { speed: cfg.speed * (0.6 + Math.random() * 0.6), width: sw, height: sh, seed: Math.random() * 1000, baseY: h * 0.1 + Math.random() * h * 0.8 };
                     layers[l].push(sprite);
                     scene.add(sprite);
                     xPos += sw + spacing;
@@ -1082,42 +1137,27 @@
         }
 
         function animate() {
-            const w = container3D.clientWidth || 1200, h = container3D.clientHeight || 800;
-            dragVelocity *= 0.92;
-            if (Math.abs(dragVelocity) > 0.001) { speedFactor = Math.sign(dragVelocity) * Math.min(5, Math.abs(dragVelocity) * 0.5); }
+            const w = container3D.clientWidth || 1200, h = container3D.clientHeight || 400;
             for (let l = 0; l < layers.length; l++) {
                 const sprites = layers[l];
                 if (!sprites) continue;
                 for (const s of sprites) {
                     const ud = s.userData;
-                    s.position.x += ud.speed * speedFactor * 0.016;
-                    if (speedFactor > 0 && s.position.x - ud.width / 2 > w + 100) {
-                        s.position.x = -ud.width / 2 - 50 - Math.random() * 200;
-                        s.position.y = h * 0.1 + Math.random() * h * 0.8;
-                        ud.baseY = s.position.y;
-                    } else if (speedFactor < 0 && s.position.x + ud.width / 2 < -100) {
-                        s.position.x = w + ud.width / 2 + 50 + Math.random() * 200;
+                    s.position.x += ud.speed * speedFactor * 0.012;
+                    if (s.position.x - ud.width / 2 > w + 50) {
+                        s.position.x = -ud.width / 2 - 30 - Math.random() * 150;
                         s.position.y = h * 0.1 + Math.random() * h * 0.8;
                         ud.baseY = s.position.y;
                     }
-                    const pulse = 1 + Math.sin(performance.now() * 0.0008 + ud.seed) * 0.02;
+                    const pulse = 1 + Math.sin(performance.now() * 0.0006 + ud.seed) * 0.015;
                     s.scale.x = ud.width * pulse;
                     s.scale.y = ud.height * pulse;
-                    s.position.y = ud.baseY + Math.sin(performance.now() * 0.0006 + ud.seed) * 6;
+                    s.position.y = ud.baseY + Math.sin(performance.now() * 0.0005 + ud.seed) * 4;
                 }
             }
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
-
-        function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
-        container3D.addEventListener('mousedown', e => { dragActive = true; lastX = getX(e); });
-        container3D.addEventListener('mousemove', e => { if (!dragActive) return; dragVelocity = (getX(e) - lastX) * 0.03; lastX = getX(e); });
-        window.addEventListener('mouseup', () => { dragActive = false; });
-        container3D.addEventListener('touchstart', e => { dragActive = true; lastX = getX(e); }, { passive: true });
-        container3D.addEventListener('touchmove', e => { if (!dragActive) return; dragVelocity = (getX(e) - lastX) * 0.03; lastX = getX(e); }, { passive: true });
-        window.addEventListener('touchend', () => { dragActive = false; });
-        container3D.addEventListener('wheel', e => { e.preventDefault(); speedFactor = Math.max(-6, Math.min(6, speedFactor + Math.sign(e.deltaY) * 0.5)); if (Math.abs(speedFactor) < 0.3) speedFactor = 0; dragVelocity = 0; }, { passive: false });
 
         function init3D() { loadAllTextures(); resizeRenderer(); animate(); }
         window.addEventListener('resize', resizeRenderer);
@@ -1129,8 +1169,41 @@
         }, 3000);
         init3D();
 
-        document.getElementById('menuToggle').addEventListener('click', function() { document.getElementById('navLinks').classList.toggle('open'); });
-        console.log('💎 METAIMPERIYA — сайт запущен!');
+        // ===== АККОРДЕОН =====
+        function toggleAccordion(header) {
+            const accordion = header.closest('.accordion');
+            const body = accordion.querySelector('.accordion-body');
+            const isOpen = accordion.classList.contains('open');
+            
+            // Закрываем все
+            document.querySelectorAll('.accordion').forEach(el => {
+                el.classList.remove('open');
+                el.querySelector('.accordion-body').style.maxHeight = '0';
+            });
+            
+            if (!isOpen) {
+                accordion.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 40 + 'px';
+            }
+        }
+
+        // Открываем первую книгу и первый курс по умолчанию
+        setTimeout(() => {
+            const firstBook = document.getElementById('bookAccordion1');
+            if (firstBook) {
+                const body = firstBook.querySelector('.accordion-body');
+                firstBook.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 40 + 'px';
+            }
+            const firstCourse = document.getElementById('courseAccordion1');
+            if (firstCourse) {
+                const body = firstCourse.querySelector('.accordion-body');
+                firstCourse.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 40 + 'px';
+            }
+        }, 500);
+
+        console.log('🔥 Sivalko System — сайт переупакован!');
     </script>
 </body>
 </html>
