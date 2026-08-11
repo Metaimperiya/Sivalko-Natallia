@@ -164,24 +164,162 @@
             margin-bottom: 4px;
         }
         .content .author-note strong { color: #cc3333; }
-        .content .schema {
-            background: #111;
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin: 20px 0;
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrap {
             max-width: 720px;
-            border: 1px solid rgba(204, 51, 51, 0.06);
+            overflow-x: auto;
+            margin: 16px 0 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.04);
         }
-        .content .schema h4 {
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 320px;
+        }
+        .table-wrap th {
+            background: rgba(204, 51, 51, 0.08);
+            color: #cc3333;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .table-wrap td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: #bbb;
+        }
+        .table-wrap tr:last-child td { border-bottom: none; }
+        .table-wrap td:first-child { font-weight: 600; color: #e8e0d8; }
+
+        /* ===== БЛОКИ С КНОПКАМИ ===== */
+        .action-block {
+            max-width: 720px;
+            background: #111;
+            border-radius: 14px;
+            padding: 20px 22px;
+            border: 1px solid rgba(204, 51, 51, 0.06);
+            margin: 20px 0;
+        }
+        .action-block h4 {
+            color: #cc3333;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .action-block p {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+        .action-block .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .action-block .btn-sm {
+            background: rgba(204, 51, 51, 0.08);
+            border: 1px solid rgba(204, 51, 51, 0.10);
+            color: #cc3333;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .action-block .btn-sm:hover {
+            background: rgba(204, 51, 51, 0.15);
+            border-color: #cc3333;
+            color: #fff;
+        }
+        .action-block .btn-sm.primary {
+            background: #cc3333;
+            border-color: #cc3333;
+            color: #fff;
+        }
+        .action-block .btn-sm.primary:hover {
+            background: #991111;
+            transform: translateY(-1px);
+        }
+
+        /* ===== ЧЕК-ЛИСТЫ ===== */
+        .checklist {
+            max-width: 720px;
+            background: #111;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin: 16px 0;
+        }
+        .checklist h4 {
             color: #cc3333;
             font-size: 15px;
             margin-bottom: 8px;
         }
-        .content .schema p {
+        .checklist label {
+            display: block;
+            padding: 6px 0 6px 32px;
+            position: relative;
             font-size: 14px;
-            color: #999;
-            margin-bottom: 4px;
+            color: #bbb;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
+        .checklist label:last-child { border-bottom: none; }
+        .checklist input[type="checkbox"] {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            accent-color: #cc3333;
+            cursor: pointer;
+        }
+        .checklist label:has(input:checked) {
+            color: #555;
+            text-decoration: line-through;
+        }
+        .checklist .btn-reset {
+            background: none;
+            border: none;
+            color: #cc3333;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 0 0;
+            font-weight: 600;
+        }
+        .checklist .btn-reset:hover { color: #fff; }
+
+        /* ===== ССЫЛКИ-РЕСУРСЫ ===== */
+        .resource-links {
+            max-width: 720px;
+            background: #111;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border: 1px solid rgba(204, 51, 51, 0.04);
+            margin: 16px 0;
+        }
+        .resource-links h4 {
+            color: #cc3333;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .resource-links a {
+            display: inline-block;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 0;
+            margin-right: 16px;
+            transition: 0.3s;
+        }
+        .resource-links a:hover { color: #60a5fa; text-decoration: underline; }
 
         .btn-order {
             background: linear-gradient(135deg, #cc3333, #991111);
@@ -305,6 +443,8 @@
             .footer-overlay .tg-icon { width: 18px; height: 18px; }
             .footer-overlay .tg-icon svg { width: 12px; height: 12px; }
             .footer-overlay .tg-link { font-size: 12px; }
+            .table-wrap table { font-size: 13px; }
+            .table-wrap th, .table-wrap td { padding: 8px 10px; }
         }
         @media (max-width: 480px) {
             .book-hero { padding: 70px 0 16px; }
@@ -321,6 +461,17 @@
             .footer-bottom { font-size: 9px; }
             .related { padding: 14px 16px; }
             .related a { font-size: 13px; margin-right: 10px; }
+            .action-block { padding: 14px 16px; }
+            .action-block .btn-sm { font-size: 12px; padding: 4px 12px; }
+            .checklist { padding: 12px 14px; }
+            .checklist label { font-size: 13px; padding: 5px 0 5px 28px; }
+            .resource-links a { font-size: 13px; }
+            .table-wrap table { font-size: 12px; min-width: 280px; }
+            .table-wrap th, .table-wrap td { padding: 6px 8px; }
+        }
+        @media (max-width: 380px) {
+            .table-wrap table { font-size: 11px; min-width: 240px; }
+            .table-wrap th, .table-wrap td { padding: 4px 6px; }
         }
     </style>
 </head>
@@ -364,40 +515,97 @@
                 и работает без вашего постоянного участия.
             </p>
             <p>
-                В этой книге вы найдёте пошаговый план по созданию бизнес-системы — от диагностики 
-                текущего состояния до полного внедрения процессов и стандартов. Это практическое 
-                руководство для тех, кто устал от хаоса и хочет управлять бизнесом системно.
+                Это практическое руководство для тех, кто устал от хаоса и хочет управлять бизнесом системно.
             </p>
 
             <div class="highlight">
                 <p>«Бизнес-система — это не про бюрократию. Это про порядок, который даёт свободу 
-                и возможность расти. Система — это когда вы управляете бизнесом, а не бизнес управляет вами.»</p>
+                и возможность расти.»</p>
             </div>
 
-            <h2>Что вы узнаете из этой книги</h2>
+            <!-- ===== ТАБЛИЦА ===== -->
+            <h2>Структура бизнес-системы</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Элемент</th>
+                            <th>Что это</th>
+                            <th>Зачем</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Процессы</td>
+                            <td>Как делается работа</td>
+                            <td>Предсказуемость</td>
+                        </tr>
+                        <tr>
+                            <td>Стандарты</td>
+                            <td>Критерии качества</td>
+                            <td>Единообразие</td>
+                        </tr>
+                        <tr>
+                            <td>Структура</td>
+                            <td>Кто за что отвечает</td>
+                            <td>Ответственность</td>
+                        </tr>
+                        <tr>
+                            <td>Инструменты</td>
+                            <td>Технологии и автоматизация</td>
+                            <td>Скорость</td>
+                        </tr>
+                        <tr>
+                            <td>Контроль</td>
+                            <td>Как отслеживается выполнение</td>
+                            <td>Прозрачность</td>
+                        </tr>
+                        <tr>
+                            <td>Культура</td>
+                            <td>Как принимаются решения</td>
+                            <td>Устойчивость</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Что вы узнаете</h2>
             <ul>
                 <li>✅ Из чего состоит бизнес-система и как её построить</li>
                 <li>✅ Как создать системное управление в компании</li>
                 <li>✅ Как внедрять процессы и стандарты без сопротивления</li>
                 <li>✅ Как контролировать систему и постоянно улучшать её</li>
                 <li>✅ Как масштабировать бизнес через систему</li>
-                <li>✅ Как сделать систему устойчивой к изменениям</li>
-                <li>✅ Как автоматизировать системные процессы</li>
             </ul>
 
-            <h2>Для кого эта книга</h2>
-            <ul>
-                <li>🔸 Владельцев бизнеса, которые хотят порядок вместо хаоса</li>
-                <li>🔸 Руководителей, которые создают системы управления</li>
-                <li>🔸 Всех, кто хочет, чтобы бизнес работал без хаоса</li>
-                <li>🔸 Компаний на этапе роста и масштабирования</li>
-                <li>🔸 Предпринимателей, которые устали «тушить пожары»</li>
-            </ul>
+            <!-- ===== ЧЕК-ЛИСТ ===== -->
+            <h2>Готовность к системному бизнесу</h2>
+            <div class="checklist" id="checklist1">
+                <h4>📋 Чек-лист: готов ли ваш бизнес к системе?</h4>
+                <label>
+                    <input type="checkbox" /> У вас есть описанные процессы
+                </label>
+                <label>
+                    <input type="checkbox" /> Сотрудники знают свои зоны ответственности
+                </label>
+                <label>
+                    <input type="checkbox" /> Есть стандарты качества
+                </label>
+                <label>
+                    <input type="checkbox" /> Используются инструменты автоматизации
+                </label>
+                <label>
+                    <input type="checkbox" /> Вы не участвуете в каждой операционной задаче
+                </label>
+                <label>
+                    <input type="checkbox" /> Бизнес может работать без вас 1 день
+                </label>
+                <button class="btn-reset" onclick="resetChecklist('checklist1')">🔄 Сбросить</button>
+            </div>
 
             <div class="author-note">
                 <p><strong>✍️ От автора:</strong></p>
-                <p>«Более 16 лет я строю бизнес-системы для себя и своих клиентов. Я знаю, как трудно 
-                наводить порядок, когда горит всё вокруг. Но я также знаю, что система — это единственный 
+                <p>«Более 16 лет я строю бизнес-системы для себя и своих клиентов. Система — это единственный 
                 способ масштабироваться и обрести свободу. В этой книге я даю проверенный алгоритм, 
                 который работает в любом бизнесе.»</p>
             </div>
@@ -409,42 +617,66 @@
                 знакомые фразы? Но хаос — это не норма. Это <strong>диагноз</strong>, который 
                 ограничивает ваш рост и крадёт вашу энергию.
             </p>
-            <p>
-                Хаос в бизнесе проявляется по-разному: постоянные срывы сроков, недовольные клиенты, 
-                уставшие сотрудники, финансовые дыры, бесконечные «авралы». И главное — вы не можете 
-                передать такой бизнес никому, потому что в нём нет системы.
-            </p>
-            <p>
-                В этой главе мы проведём <strong>диагностику хаоса</strong> в вашем бизнесе и поймём, 
-                какие зоны требуют системного подхода.
-            </p>
 
             <div class="highlight">
                 <p>«Хаос — это не норма. Это сигнал, что система не выстроена. И пока вы не построите систему — вы будете жить в хаосе.»</p>
             </div>
 
+            <!-- ===== КНОПКИ-ДЕЙСТВИЯ ===== -->
+            <div class="action-block">
+                <h4>🎯 Начните прямо сейчас</h4>
+                <p>Пройдите диагностику хаоса в вашем бизнесе за 5 минут</p>
+                <div class="btn-group">
+                    <a href="#" class="btn-sm primary">Пройти диагностику</a>
+                    <a href="#" class="btn-sm">Скачать чек-лист</a>
+                </div>
+            </div>
+
             <h2>Глава 2: Из чего состоит бизнес-система</h2>
             <p>
                 Бизнес-система — это не просто набор инструкций. Это <strong>целостная структура</strong>, 
-                которая включает в себя:
-            </p>
-            <ul>
-                <li><strong>Процессы</strong> — как делается работа</li>
-                <li><strong>Стандарты</strong> — критерии качества</li>
-                <li><strong>Структура</strong> — кто за что отвечает</li>
-                <li><strong>Инструменты</strong> — технологии и автоматизация</li>
-                <li><strong>Контроль</strong> — как отслеживается выполнение</li>
-                <li><strong>Культура</strong> — как принимаются решения</li>
-            </ul>
-            <p>
-                В этой главе я подробно разбираю каждый элемент и показываю, как они соединяются 
-                в единую работающую систему.
+                которая включает в себя шесть ключевых элементов. В этой главе я подробно разбираю 
+                каждый элемент и показываю, как они соединяются в единую работающую систему.
             </p>
 
-            <div class="schema">
-                <h4>🔧 Структура бизнес-системы</h4>
-                <p><strong>Процессы →</strong> Стандарты → Структура → Инструменты → Контроль → Культура</p>
-                <p style="margin-top:6px;color:#888;font-size:13px;">Каждый элемент связан с другими. Если один выпадает — система даёт сбой.</p>
+            <!-- ===== ТАБЛИЦА 2 ===== -->
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Этап внедрения</th>
+                            <th>Действие</th>
+                            <th>Срок</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Диагностика</td>
+                            <td>Опишите текущие процессы</td>
+                            <td>1–2 недели</td>
+                        </tr>
+                        <tr>
+                            <td>2. Проектирование</td>
+                            <td>Спроектируйте целевую систему</td>
+                            <td>2–3 недели</td>
+                        </tr>
+                        <tr>
+                            <td>3. Внедрение</td>
+                            <td>Начните с одного отдела</td>
+                            <td>1–2 месяца</td>
+                        </tr>
+                        <tr>
+                            <td>4. Контроль</td>
+                            <td>Настройте систему контроля</td>
+                            <td>Постоянно</td>
+                        </tr>
+                        <tr>
+                            <td>5. Масштабирование</td>
+                            <td>Распространите на весь бизнес</td>
+                            <td>3–6 месяцев</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <h2>Глава 3: Как внедрять процессы без сопротивления</h2>
@@ -460,89 +692,15 @@
                 <li><strong>Шаг 4:</strong> Объясняйте «зачем» — не только «как»</li>
                 <li><strong>Шаг 5:</strong> Отмечайте первые победы</li>
             </ul>
-            <p>
-                В книге я делюсь конкретными примерами внедрения процессов в реальных компаниях.
-            </p>
 
-            <h2>Глава 4: Стандарты — основа порядка</h2>
-            <p>
-                Стандарты — это критерии качества, которые делают работу предсказуемой. Когда 
-                у вас есть стандарты, каждый сотрудник знает, что от него ожидают, и может работать 
-                без постоянного контроля.
-            </p>
-            <ul>
-                <li><strong>Стандарты обслуживания</strong> — как общаться с клиентами</li>
-                <li><strong>Стандарты качества</strong> — что считается «хорошо сделано»</li>
-                <li><strong>Стандарты сроков</strong> — когда что должно быть готово</li>
-                <li><strong>Стандарты отчётности</strong> — как и что отчитывать</li>
-            </ul>
-            <p>
-                В этой главе я даю готовые шаблоны стандартов, которые вы можете адаптировать под свой бизнес.
-            </p>
-
-            <h2>Глава 5: Структура управления</h2>
-            <p>
-                Правильная структура — это когда каждый знает свою зону ответственности и не дублирует 
-                работу других. В системном бизнесе структура строится не вокруг людей, а вокруг функций.
-            </p>
-            <ul>
-                <li><strong>Зоны ответственности</strong> — кто за что отвечает</li>
-                <li><strong>Принцип «один владелец»</strong> — за каждую задачу отвечает один человек</li>
-                <li><strong>Уровни управления</strong> — стратегический, тактический, операционный</li>
-                <li><strong>Прозрачность</strong> — кто кому подчиняется и отчитывается</li>
-            </ul>
-
-            <h2>Глава 6: Автоматизация системных процессов</h2>
-            <p>
-                Автоматизация — это способ заменить ручной труд машинами. И в бизнесе это работает так же. 
-                Внедрите CRM-систему, автоматические рассылки, чат-боты, скрипты. Чем больше 
-                автоматизировано — тем меньше ошибок и тем больше времени у команды на развитие.
-            </p>
-            <p>
-                В этой главе я даю чек-лист инструментов для автоматизации на разных этапах роста бизнеса.
-            </p>
-
-            <h2>Глава 7: Контроль без микроменеджмента</h2>
-            <p>
-                Контроль — это не про слежку. Это про <strong>прозрачность</strong>. Когда система 
-                контроля выстроена правильно, вы видите, что происходит в бизнесе, но не лезете 
-                в каждую мелочь. Вы управляете через показатели, а не через эмоции.
-            </p>
-            <ul>
-                <li>📊 Еженедельные отчёты по процессам</li>
-                <li>📊 Ежемесячные обзоры ключевых показателей</li>
-                <li>📊 Дашборды для каждого отдела</li>
-                <li>📊 KPI и их мониторинг</li>
-            </ul>
-
-            <h2>Глава 8: Как масштабировать бизнес через систему</h2>
-            <p>
-                Когда система выстроена — масштабирование становится естественным процессом. 
-                Вы можете открывать новые филиалы, запускать новые продукты, выходить на новые рынки — 
-                и всё это будет работать по единым стандартам.
-            </p>
-            <p>
-                В этой главе я делюсь стратегиями масштабирования через систему.
-            </p>
-
-            <div class="highlight">
-                <p>«Система — это единственный способ масштабироваться без потери качества. Когда система есть — масштаб не страшен.»</p>
+            <!-- ===== РЕСУРСЫ ===== -->
+            <div class="resource-links">
+                <h4>🔗 Полезные ресурсы</h4>
+                <a href="#" target="_blank">Шаблон описания процессов</a>
+                <a href="#" target="_blank">Примеры стандартов</a>
+                <a href="#" target="_blank">Инструменты для автоматизации</a>
+                <a href="#" target="_blank">Курс по системному управлению</a>
             </div>
-
-            <h2>Глава 9: Ошибки при построении бизнес-системы</h2>
-            <p>
-                Я прошла через многие ошибки в построении систем и хочу, чтобы вы их не повторяли:
-            </p>
-            <ul>
-                <li>❌ Ошибка 1: Думать, что система — это бюрократия</li>
-                <li>❌ Ошибка 2: Внедрять систему без команды</li>
-                <li>❌ Ошибка 3: Не документировать процессы</li>
-                <li>❌ Ошибка 4: Останавливаться на полпути</li>
-                <li>❌ Ошибка 5: Не обновлять систему</li>
-            </ul>
-            <p>
-                Каждая ошибка — это опыт. Но лучше учиться на чужих ошибках, чем на своих.
-            </p>
 
             <h2>Заключение: Ваш бизнес может быть системой</h2>
             <p>
@@ -550,14 +708,13 @@
                 Вы можете начать прямо сейчас. Начните с диагностики — где у вас хаос? И начните 
                 с одного процесса, который вы опишете и внедрите.
             </p>
-            <p>
-                Системный бизнес — это не мечта. Это реальность, которую можно создать. 
-                И я верю, что у вас всё получится.
-            </p>
 
             <div class="highlight">
                 <p>«Хаос в бизнесе — это выбор. Порядок — тоже выбор. Всё зависит от того, что вы готовы сделать, чтобы создать систему.»</p>
             </div>
+
+            <!-- ===== КНОПКА ЗАКАЗАТЬ ===== -->
+            <a href="../../index.html#contact" class="btn-order">📚 Заказать книгу</a>
 
             <div class="related">
                 <h3>📚 Похожие книги</h3>
@@ -566,8 +723,6 @@
                 <a href="biznes-bez-vladeltsa.html">Бизнес без владельца</a>
                 <a href="masshtabirovanie-biznesa.html">Масштабирование бизнеса</a>
             </div>
-
-            <a href="../../index.html#contact" class="btn-order">📚 Заказать книгу</a>
 
         </div>
     </section>
@@ -587,6 +742,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+    <!-- ===== ПЕСОК ===== -->
     <script>
         const sandCanvas = document.getElementById("sandCanvas");
         const sandCtx = sandCanvas.getContext("2d");
@@ -958,7 +1114,13 @@
         setTimeout(initSand, 100);
     </script>
 
+    <!-- ===== СКРИПТ ДЛЯ ЧЕК-ЛИСТА ===== -->
     <script>
+        function resetChecklist(id) {
+            const container = document.getElementById(id);
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+        }
         console.log('📖 Бизнес-система — страница загружена!');
         console.log('🏗️ Строим систему, которая работает без хаоса.');
     </script>
