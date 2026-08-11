@@ -320,7 +320,7 @@
         .footer-sand-wrapper {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 220px;
             background: #0c0a0a;
             overflow: hidden;
             border-top: 1px solid #2a241e;
@@ -333,83 +333,94 @@
         
         .footer-overlay {
             position: absolute;
-            bottom: 16px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            gap: 16px;
-            background: rgba(12,10,10,0.7);
-            backdrop-filter: blur(8px);
-            padding: 8px 24px;
-            border-radius: 40px;
-            border: 1px solid rgba(201,168,76,0.15);
-            z-index: 10;
-            white-space: nowrap;
-            flex-wrap: wrap;
             justify-content: center;
-        }
-        .footer-overlay .brand {
-            font-size: 16px;
-            font-weight: 800;
-            color: #ecdccc;
-            letter-spacing: 1px;
-        }
-        .footer-overlay .brand span { color: #c9a84c; }
-        .footer-overlay .divider {
-            color: #3a322a;
-            font-size: 14px;
+            background: rgba(12,10,10,0.5);
+            backdrop-filter: blur(8px);
+            padding: 6px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(201,168,76,0.12);
+            z-index: 10;
         }
         .footer-overlay .tg-link {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             color: #c9a84c;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             transition: 0.3s;
+            padding: 4px 8px;
         }
-        .footer-overlay .tg-link:hover { color: #ecdccc; }
+        .footer-overlay .tg-link:hover { 
+            color: #ecdccc; 
+        }
         .footer-overlay .tg-link svg {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             fill: #c9a84c;
+            flex-shrink: 0;
         }
-        .footer-overlay .tg-link:hover svg { fill: #ecdccc; }
+        .footer-overlay .tg-link:hover svg { 
+            fill: #ecdccc; 
+        }
         
         .footer-bottom {
             text-align: center;
-            padding: 12px 0 20px;
+            padding: 8px 0 16px;
             color: #3a322a;
             font-size: 12px;
             background: #0c0a0a;
         }
         
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
-            .footer-sand-wrapper { height: 140px; }
-            .footer-overlay {
-                bottom: 10px;
-                padding: 6px 16px;
-                gap: 10px;
-                flex-wrap: wrap;
-                white-space: normal;
+            .footer-sand-wrapper { 
+                height: 160px; 
             }
-            .footer-overlay .brand { font-size: 13px; }
-            .footer-overlay .tg-link { font-size: 12px; }
-            .footer-overlay .divider { display: none; }
+            .footer-overlay {
+                bottom: 14px;
+                padding: 4px 14px;
+            }
+            .footer-overlay .tg-link { 
+                font-size: 13px; 
+                gap: 6px;
+            }
+            .footer-overlay .tg-link svg { 
+                width: 16px; 
+                height: 16px; 
+            }
+            .footer-bottom {
+                font-size: 10px;
+                padding: 6px 0 12px;
+            }
         }
         @media (max-width: 480px) {
-            .footer-sand-wrapper { height: 110px; }
+            .footer-sand-wrapper { 
+                height: 130px; 
+            }
             .footer-overlay {
-                bottom: 6px;
-                padding: 4px 12px;
-                gap: 6px;
+                bottom: 10px;
+                padding: 3px 12px;
                 border-radius: 30px;
             }
-            .footer-overlay .brand { font-size: 11px; }
-            .footer-overlay .tg-link { font-size: 11px; }
-            .footer-overlay .tg-link svg { width: 14px; height: 14px; }
+            .footer-overlay .tg-link { 
+                font-size: 11px; 
+                gap: 4px;
+            }
+            .footer-overlay .tg-link svg { 
+                width: 14px; 
+                height: 14px; 
+            }
+            .footer-bottom {
+                font-size: 9px;
+                padding: 4px 0 10px;
+            }
         }
     </style>
 </head>
@@ -540,8 +551,6 @@
     <div class="footer-sand-wrapper" id="sandFooter">
         <canvas id="sandCanvas"></canvas>
         <div class="footer-overlay">
-            <span class="brand">💎 <span>METAIMPERIYA</span></span>
-            <span class="divider">|</span>
             <a href="https://t.me/METAIMPERIYA" target="_blank" rel="noopener noreferrer" class="tg-link">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.216-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.029 5.52-4.99c.24-.213-.052-.332-.373-.12l-6.82 4.293-2.938-.918c-.638-.198-.65-.638.139-.944l11.48-4.428c.532-.191.999.128.805.762z"/></svg>
                 @METAIMPERIYA
@@ -565,7 +574,7 @@
         const sandSettings = {
             cellSize: 3,
             startText: "METAIMPERIYA",
-            hiddenText: "WELCOME TO THE BEACH",
+            hiddenText: "",
             releaseTestsPerFrame: 1200,
             releaseChance: 0.025,
             gravity: 600,
@@ -871,19 +880,6 @@
         function sDraw() {
             sandCtx.clearRect(0, 0, sw, sh);
 
-            // Рисуем скрытый текст
-            if (sandHiddenAlpha > 0) {
-                sandCtx.save();
-                sandCtx.globalAlpha = sandHiddenAlpha;
-                sandCtx.fillStyle = "rgb(255, 232, 168)";
-                sandCtx.textAlign = "center";
-                sandCtx.textBaseline = "middle";
-                sandCtx.font = `900 11px system-ui, sans-serif`;
-                sandCtx.fillText(sandSettings.hiddenText, sw / 2, sh - 18);
-                sandCtx.restore();
-            }
-
-            // Песок
             const size = sandSettings.cellSize;
             sandCtx.fillStyle = "rgb(236, 204, 116)";
 
@@ -927,12 +923,9 @@
             requestAnimationFrame(sTick);
         }
 
-        // Инициализация песка
         function initSand() {
             resizeSand();
-            // Если нет песчинок — делаем надпись из пикселей вручную
             if (sandCells.length === 0) {
-                // Создаём простую надпись из точек
                 const text = "METAIMPERIYA";
                 const fontSize = Math.min(sw * 0.08, sh * 0.22, 100);
                 const tempCanvas = document.createElement('canvas');
@@ -972,7 +965,6 @@
             sResetCycle();
         });
 
-        // Запускаем песок после загрузки
         setTimeout(initSand, 100);
     </script>
 
